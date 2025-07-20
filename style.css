@@ -1,6 +1,6 @@
-/* ===== ROOT ===== */
+/* ========== ROOT ================================================= */
 :root{
-  --bg-color:#ffffff;
+  --bg:#ffffff;
   --primary:#00a86b;
   --text:#0a0a1e;
   --muted:#4a4a4a;
@@ -8,49 +8,49 @@
   --glow:0 0 15px rgba(0,168,107,.6);
 }
 
-/* ===== GLOBAL ===== */
+/* ========== RESET & GLOBAL ======================================= */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--font);color:var(--text);background:var(--bg-color);overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden}
 body.no-scroll{overflow:hidden}
 #interactive-bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1}
 
-/* ===== NAV ===== */
+/* ========== NAV =================================================== */
 .main-header{position:fixed;top:0;left:0;width:100%;padding:20px 5%;z-index:100}
-.navbar{display:flex;justify-content:space-between;align-items:center;max-width:1400px;margin:0 auto}
+.navbar{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .logo{font-size:1.7rem;font-weight:700;color:var(--text)}
 .nav-links{display:flex;list-style:none}
 .nav-links li{margin-left:40px}
 .nav-links a{color:var(--text);text-decoration:none;font-weight:500;transition:.3s}
 .nav-links a:hover{color:var(--primary)}
 
-/* ===== BUTTON ===== */
+/* ========== BUTTON =============================================== */
 .btn{padding:10px 25px;border:1px solid var(--primary);border-radius:5px;background:transparent;color:var(--primary);cursor:pointer;transition:.3s}
 .btn:hover{background:var(--primary);color:#fff;box-shadow:0 0 15px var(--primary)}
 .btn-primary{background:var(--primary);color:#fff;font-weight:700}
 .btn-primary:hover{background:#00965f}
 
-/* ===== HERO ===== */
-.hero-section{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 5%}
+/* ========== HERO ================================================= */
+.hero-section{min-height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:0 5%}
 .hero-content h1{font-size:clamp(2.5rem,6vw,5rem);font-weight:700;text-shadow:var(--glow);margin-bottom:20px}
 .hero-content p{font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);max-width:800px;margin:0 auto 40px;line-height:1.6}
 
-/* ===== SECTIONS ===== */
+/* ========== SECTIONS ============================================= */
 .content-section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 10%}
 .section-text{max-width:800px;padding:40px;background:#f7f7f7;border-left:4px solid var(--primary);border-radius:10px}
 .section-text h2{font-size:1rem;color:var(--primary);margin-bottom:10px;font-weight:700;text-transform:uppercase}
 .section-text h2 span{margin-right:10px}
 .section-text h3{font-size:clamp(1.8rem,4vw,2.4rem);margin-bottom:20px}
 .section-text p{color:var(--muted);margin-bottom:25px;line-height:1.7}
-.section-text ul{list-style:none;color:var(--text);margin:0 0 5px 0}
+.section-text ul{list-style:none;color:var(--text)}
 .section-text ul li{padding-left:25px;position:relative;margin-bottom:10px}
 .section-text ul li::before{content:"✓";position:absolute;left:0;color:var(--primary)}
 
-/* ===== ANIMATIONS ===== */
+/* ========== ANIMATIONS =========================================== */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
 .reveal.visible{opacity:1;transform:none}
 
-/* ===== CONTACT ===== */
+/* ========== CONTACT ============================================== */
 .contact-section{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px 5%}
 .contact-section h2{font-size:clamp(2rem,5vw,3.4rem);margin-bottom:10px}
 .contact-section p{color:var(--muted);margin-bottom:40px;max-width:500px}
@@ -60,33 +60,21 @@ body.no-scroll{overflow:hidden}
 .contact-form label{margin-bottom:6px;font-size:.9rem;font-weight:600;color:var(--muted)}
 .contact-form input,
 .contact-form select,
-.contact-form textarea{padding:12px 16px;border:1px solid #ccc;border-radius:6px;font-family:inherit;font-size:1rem;color:var(--text);background:#fff;transition:border-color .25s,box-shadow .25s}
+.contact-form textarea{padding:12px 16px;border:1px solid #ccc;border-radius:6px;font-size:1rem;font-family:inherit;color:var(--text);background:#fff;transition:border-color .25s,box-shadow .25s}
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,168,107,.2);outline:none}
 .contact-form textarea{resize:vertical;min-height:120px}
 .contact-form button{grid-column:1/-1;margin-top:10px}
 
-/* ===== BURGER ===== */
+/* ========== BURGER =============================================== */
 .mobile-nav-toggle{display:none;position:fixed;top:30px;right:5%;background:none;border:none;cursor:pointer;z-index:101}
 .mobile-nav-toggle .line{width:25px;height:3px;background:var(--text);margin:5px;transition:.3s}
 .mobile-nav-toggle.active .line:nth-child(1){transform:translateY(8px) rotate(45deg)}
 .mobile-nav-toggle.active .line:nth-child(2){opacity:0}
 .mobile-nav-toggle.active .line:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
-/* ===== MOBILE NAV ===== */
+/* ========== MOBILE NAV =========================================== */
 @media(max-width:768px){
   .mobile-nav-toggle{display:block}
-  .nav-links{position:fixed;right:0;top:0;height:100vh;width:70%;background:#fff;flex-direction:column;justify-content:center;align-items:center;transform:translateX(100%);transition:.5s}
-  .nav-links a{color:var(--text)}
-  .navbar.active .nav-links{transform:translateX(0)}
-  .nav-links li{margin:25px 0}
-}
-
-/* ===== REDUCED MOTION ===== */
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  #interactive-bg{display:none}
-  .reveal{opacity:1;transform:none}
-}
+  .nav-links{position:fixed;right:0;top:0;height:100vh;width:70%;background:#fff;flex-direction:column;justify-content:center;align-items:center;transform:translateX(100%);transition
