@@ -1,0 +1,70 @@
+# .gitignore for a standard web project (HTML, CSS, JS)
+
+# General System Files
+# =================================
+# Ignore OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor Directories
+# =================================
+# Ignore settings and cache files from popular code editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# Node.js Dependencies
+# =================================
+# If you use Node.js for any build tools (like Sass, or a development server),
+# you should ignore the massive node_modules folder.
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+pnpm-lock.yaml
+
+# Build Output & Compiled Files
+# =================================
+# Ignore any folders where compiled or built assets are placed.
+dist/
+build/
+out/
+public/
+.tmp/
+
+# Sass/SCSS Cache Files
+# =================================
+# If you use Sass/SCSS for styling, ignore the cache directories.
+.sass-cache/
+.scss-cache/
+
+# Log Files
+# =================================
+# Ignore various log files.
+*.log
+logs/
+
+# Environment Variables
+# =================================
+# VERY IMPORTANT: Never commit files containing sensitive information
+# like API keys, database passwords, etc.
+.env
+.env.local
+.env.*.local
+*.env
+
+# Miscellaneous
+# =================================
+# Ignore compressed files that you might have in your project temporarily.
+*.zip
+*.rar
+*.tar.gz
