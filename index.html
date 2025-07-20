@@ -5,14 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Aghasultan Digital: We architect growth for elite brands through data-driven Meta (Facebook/Instagram) & Google Ads management. Turn your data into dominance.">
-    <meta name="keywords" content="digital marketing, meta ads, facebook ads, google ads, ppc management, seo, growth marketing, aghasultan">
     <meta name="author" content="Aghasultan Digital">
 
     <!-- SEO & SOCIAL SHARING (OPEN GRAPH) -->
     <meta property="og:title" content="Aghasultan Digital | Architecting Growth for Elite Brands">
     <meta property="og:description" content="We don't just run ads. We architect growth, turning data into dominance with expert Meta & Google Ads management.">
     <meta property="og:image" content="https://placehold.co/1200x630/0a0a1e/ffffff?text=Aghasultan+Digital">
-    <meta property="og:url" content="https://your-domain.com">
+    <meta property="og:url" content="https://aghasultan.github.io/marketing-test-site/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
@@ -30,8 +29,8 @@
       "@type": "ProfessionalService",
       "name": "Aghasultan Digital",
       "image": "https://placehold.co/1200x630/0a0a1e/ffffff?text=Aghasultan+Digital",
-      "@id": "",
-      "url": "https://your-domain.com",
+      "@id": "https://aghasultan.github.io/marketing-test-site/",
+      "url": "https://aghasultan.github.io/marketing-test-site/",
       "telephone": "+92-300-0000000",
       "description": "An expert digital marketing agency specializing in high-ROAS Meta (Facebook/Instagram) and Google Ads campaigns for growth-focused businesses.",
       "address": {
@@ -60,19 +59,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- The interactive background will live here -->
-    <canvas id="interactive-bg"></canvas>
+    <!-- ACCESSIBILITY: SKIP LINK -->
+    <a class="skip-link" href="#hero">Skip to content</a>
+
+    <!-- ACCESSIBILITY: DECORATIVE CANVAS -->
+    <canvas id="interactive-bg" role="presentation" aria-hidden="true"></canvas>
 
     <!-- MOBILE NAVIGATION -->
-    <div class="mobile-nav-toggle" id="mobile-nav-toggle">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
-    </div>
+    <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </button>
     
     <!-- HEADER & NAVIGATION -->
     <header class="main-header">
-        <nav class="navbar" id="navbar">
+        <nav class="navbar" id="navbar" aria-label="Primary">
             <a href="#" class="logo">Aghasultan</a>
             <ul class="nav-links">
                 <li><a href="#discovery">Discovery</a></li>
@@ -89,14 +91,14 @@
         <!-- HERO SECTION -->
         <section class="hero-section" id="hero">
             <div class="hero-content">
-                <h1 class="fade-in">We Don't Just Run Ads.<br>We Architect Growth.</h1>
-                <p class="fade-in delay-1">Transforming your data into market dominance with unparalleled Meta & Google Ads expertise.</p>
-                <a href="#discovery" class="btn btn-primary fade-in delay-2">Begin The Ascent</a>
+                <h1 class="reveal">We Don't Just Run Ads.<br>We Architect Growth.</h1>
+                <p class="reveal" data-delay="200">Transforming your data into market dominance with unparalleled Meta & Google Ads expertise.</p>
+                <a href="#discovery" class="btn btn-primary reveal" data-delay="400">Begin The Ascent</a>
             </div>
         </section>
 
         <!-- DISCOVERY SECTION -->
-        <section class="content-section" id="discovery">
+        <section class="content-section reveal" id="discovery">
             <div class="section-text">
                 <h2><span>01</span>Discovery: The Genesis</h2>
                 <h3>Unearthing Your Audience's Digital DNA</h3>
@@ -107,13 +109,10 @@
                     <li>Customer Journey Visualization</li>
                 </ul>
             </div>
-            <div class="section-visual">
-                <!-- Visuals can be added here -->
-            </div>
         </section>
 
         <!-- CREATION SECTION -->
-        <section class="content-section" id="creation">
+        <section class="content-section reveal" id="creation">
             <div class="section-text">
                 <h2><span>02</span>Creation: The Spark</h2>
                 <h3>Crafting Creative That Commands Attention</h3>
@@ -124,13 +123,10 @@
                     <li>Rigorous A/B Creative Testing</li>
                 </ul>
             </div>
-             <div class="section-visual">
-                <!-- Visuals can be added here -->
-            </div>
         </section>
 
         <!-- OPTIMIZATION SECTION -->
-        <section class="content-section" id="optimization">
+        <section class="content-section reveal" id="optimization">
             <div class="section-text">
                 <h2><span>03</span>Optimization: The Alchemy</h2>
                 <h3>Turning Clicks Into Customers, Relentlessly</h3>
@@ -141,43 +137,88 @@
                     <li>Predictive Scaling & Budget Allocation</li>
                 </ul>
             </div>
-             <div class="section-visual">
-                <!-- Visuals can be added here -->
-            </div>
         </section>
 
-        <!-- CONTACT SECTION -->
-        <section class="contact-section" id="contact">
+        <!-- CONTACT SECTION WITH FORM -->
+        <section class="contact-section reveal" id="contact">
              <h2>Ready to Architect Your Growth?</h2>
-             <p>Let's build something remarkable together. Reach out to begin the conversation.</p>
-             <a href="mailto:contact@aghasultan.com" class="btn btn-primary">contact@aghasultan.com</a>
+             <p>Let's build something remarkable together. Complete the form to begin the conversation.</p>
+             
+             <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
+                <div class="form-group">
+                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                    <label for="name">Name</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" required placeholder="Your Email Address">
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="whatsapp" name="whatsapp" required placeholder="Your WhatsApp Number">
+                    <label for="whatsapp">WhatsApp</label>
+                </div>
+                <div class="form-group">
+                    <select id="service" name="service" required>
+                        <option value="" disabled selected>Which service are you interested in?</option>
+                        <option value="Meta Ads (Facebook/Instagram)">Meta Ads (Facebook/Instagram)</option>
+                        <option value="Google Ads">Google Ads</option>
+                        <option value="Both Meta & Google Ads">Both Meta & Google Ads</option>
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your business..."></textarea>
+                    <label for="message">Your Message</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Proposal Request</button>
+             </form>
         </section>
 
     </main>
 
     <!-- JAVASCRIPT FOR INTERACTIVITY -->
     <script>
-        // --- INTERACTIVE CANVAS BACKGROUND ---
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- CONFIGURATION CONSTANTS ---
+        const PARTICLE_DENSITY = 9000; // Lower number = more particles
+        const MAX_PARTICLES = 350;     // Hard cap on particles for performance
+        const INTERACTION_RADIUS_FACTOR = 100; // How far the mouse pushes particles
+        const CONNECTION_DISTANCE_FACTOR = 7; // How close particles must be to connect
+
+        // --- FEATURE DETECTION ---
+        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let reduceMotion = motionQuery.matches;
+
+        // --- CANVAS SETUP ---
         const canvas = document.getElementById('interactive-bg');
         const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
         let particlesArray;
 
-        // Mouse position
+        function setupCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            if (!reduceMotion) {
+                initParticles();
+            }
+        }
+
+        // --- MOUSE INTERACTION ---
         const mouse = {
             x: null,
             y: null,
-            radius: (canvas.height / 120) * (canvas.width / 120)
+            radius: (window.innerHeight / INTERACTION_RADIUS_FACTOR) * (window.innerWidth / INTERACTION_RADIUS_FACTOR)
         };
 
         window.addEventListener('mousemove', (event) => {
             mouse.x = event.x;
             mouse.y = event.y;
         });
+        window.addEventListener('mouseout', () => {
+            mouse.x = undefined;
+            mouse.y = undefined;
+        });
 
-        // Particle class
+        // --- PARTICLE LOGIC ---
         class Particle {
             constructor(x, y, directionX, directionY, size, color) {
                 this.x = x;
@@ -191,35 +232,22 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-                ctx.fillStyle = 'rgba(173, 216, 230, 0.5)'; // Light blue with transparency
+                ctx.fillStyle = 'rgba(173, 216, 230, 0.4)';
                 ctx.fill();
             }
 
             update() {
-                if (this.x > canvas.width || this.x < 0) {
-                    this.directionX = -this.directionX;
-                }
-                if (this.y > canvas.height || this.y < 0) {
-                    this.directionY = -this.directionY;
-                }
+                if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+                if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
 
-                // Mouse collision
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
                 if (distance < mouse.radius + this.size) {
-                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) {
-                        this.x += 5;
-                    }
-                    if (mouse.x > this.x && this.x > this.size * 10) {
-                        this.x -= 5;
-                    }
-                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) {
-                        this.y += 5;
-                    }
-                    if (mouse.y > this.y && this.y > this.size * 10) {
-                        this.y -= 5;
-                    }
+                    if (mouse.x < this.x && this.x < canvas.width - this.size * 10) this.x += 5;
+                    if (mouse.x > this.x && this.x > this.size * 10) this.x -= 5;
+                    if (mouse.y < this.y && this.y < canvas.height - this.size * 10) this.y += 5;
+                    if (mouse.y > this.y && this.y > this.size * 10) this.y -= 5;
                 }
 
                 this.x += this.directionX;
@@ -228,37 +256,28 @@
             }
         }
 
-        function init() {
+        function initParticles() {
             particlesArray = [];
-            let numberOfParticles = (canvas.height * canvas.width) / 9000;
+            let particleCount = (canvas.height * canvas.width) / PARTICLE_DENSITY;
+            let numberOfParticles = Math.min(MAX_PARTICLES, particleCount);
+
             for (let i = 0; i < numberOfParticles; i++) {
                 let size = (Math.random() * 2) + 1;
                 let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
                 let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
                 let directionX = (Math.random() * 0.4) - 0.2;
                 let directionY = (Math.random() * 0.4) - 0.2;
-                let color = 'rgba(173, 216, 230, 0.5)';
-                particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+                particlesArray.push(new Particle(x, y, directionX, directionY, size, 'rgba(173, 216, 230, 0.4)'));
             }
         }
 
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, innerWidth, innerHeight);
-
-            for (let i = 0; i < particlesArray.length; i++) {
-                particlesArray[i].update();
-            }
-            connect();
-        }
-        
-        function connect() {
+        function connectParticles() {
             let opacityValue = 1;
             for (let a = 0; a < particlesArray.length; a++) {
                 for (let b = a; b < particlesArray.length; b++) {
                     let distance = ((particlesArray[a].x - particlesArray[b].x) * (particlesArray[a].x - particlesArray[b].x)) +
                                    ((particlesArray[a].y - particlesArray[b].y) * (particlesArray[a].y - particlesArray[b].y));
-                    if (distance < (canvas.width / 7) * (canvas.height / 7)) {
+                    if (distance < (canvas.width / CONNECTION_DISTANCE_FACTOR) * (canvas.height / CONNECTION_DISTANCE_FACTOR)) {
                         opacityValue = 1 - (distance / 20000);
                         ctx.strokeStyle = `rgba(140, 180, 200, ${opacityValue})`;
                         ctx.lineWidth = 1;
@@ -271,48 +290,63 @@
             }
         }
 
-        window.addEventListener('resize', () => {
-            canvas.width = innerWidth;
-            canvas.height = innerHeight;
-            mouse.radius = (canvas.height / 120) * (canvas.width / 120);
-            init();
-        });
+        function animate() {
+            if (reduceMotion) return;
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, innerWidth, innerHeight);
+            for (let i = 0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+            }
+            connectParticles();
+        }
 
-        window.addEventListener('mouseout', () => {
-            mouse.x = undefined;
-            mouse.y = undefined;
-        });
-        
-        init();
-        animate();
-
-        // --- SCROLL-BASED FADE-IN ANIMATIONS ---
+        // --- SCROLL-BASED ANIMATIONS ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    const delay = parseInt(entry.target.getAttribute('data-delay') || 0);
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, delay);
                 }
             });
-        }, {
-            threshold: 0.2
-        });
+        }, { threshold: 0.1 });
 
-        const sections = document.querySelectorAll('.content-section, .contact-section');
-        sections.forEach(section => observer.observe(section));
-        
-        const heroElements = document.querySelectorAll('.fade-in');
-        heroElements.forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-
-        // --- MOBILE NAVIGATION TOGGLE ---
+        // --- MOBILE NAVIGATION ---
         const navToggle = document.getElementById('mobile-nav-toggle');
         const nav = document.getElementById('navbar');
 
         navToggle.addEventListener('click', () => {
-            nav.classList.toggle('active');
+            const isExpanded = nav.classList.toggle('active');
             navToggle.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', isExpanded);
+            document.body.classList.toggle('no-scroll', isExpanded);
         });
 
+        // --- EVENT LISTENERS ---
+        window.addEventListener('resize', () => {
+            setupCanvas();
+            mouse.radius = (window.innerHeight / INTERACTION_RADIUS_FACTOR) * (window.innerWidth / INTERACTION_RADIUS_FACTOR);
+        });
+        
+        motionQuery.addEventListener('change', (e) => {
+            reduceMotion = e.matches;
+            if (reduceMotion) {
+                 ctx.clearRect(0, 0, canvas.width, canvas.height);
+            } else {
+                initParticles();
+                animate();
+            }
+        });
+
+        // --- INITIALIZATION ---
+        setupCanvas();
+        if (!reduceMotion) {
+            animate();
+        }
+    });
     </script>
 </body>
 </html>
