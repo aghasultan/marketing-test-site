@@ -1,85 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- ===================== Core metadata ===================== -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Agha Sultan Naseer | Meta & Google Ads Strategist</title>
-  <meta name="description" content="Lahore-based media buyer turning ad spend into profit with 7-figure Meta & Google Ads budgets.">
-  <link rel="icon" type="image/png" href="https://placehold.co/32x32/00a86b/ffffff.png">
+  <meta name="description" content="Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="theme-color" content="#00a86b" />
+  <meta name="color-scheme" content="light only" />
 
-  <!-- Fonts & CSS -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <!-- Canonical (update to your live URL) -->
+  <link rel="canonical" href="https://aghasultan.github.io/marketing-test-site/" />
+
+  <!-- Favicons / PWA placeholders -->
+  <link rel="icon" sizes="32x32" type="image/png" href="https://placehold.co/32x32/00a86b/ffffff.png" />
+  <link rel="icon" sizes="192x192" type="image/png" href="https://placehold.co/192x192/00a86b/ffffff.png" />
+  <link rel="apple-touch-icon" href="https://placehold.co/180x180/00a86b/ffffff.png" />
+  <!-- <link rel="manifest" href="/site.webmanifest"> -->
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Scale Profitably with Agha Sultan Naseer" />
+  <meta property="og:description" content="Paid‑media strategy, GA4 tracking, GoHighLevel automations, and 7‑figure ROAS wins." />
+  <meta property="og:url" content="https://aghasultan.github.io/marketing-test-site/" />
+  <meta property="og:image" content="https://placehold.co/1200x630/ffffff/00a86b?text=Agha+Sultan+Naseer" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Performance: connection hints -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Structured data (Organization/Person + WebSite) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Agha Sultan Naseer",
+    "jobTitle":"Paid-media strategist",
+    "url":"https://aghasultan.github.io/marketing-test-site/",
+    "image":"https://placehold.co/600x600/ffffff/00a86b?text=Agha+Sultan",
+    "sameAs":[
+      "https://www.linkedin.com",
+      "https://twitter.com"
+    ],
+    "worksFor":{
+      "@type":"Organization",
+      "name":"Agha Sultan Digital"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://aghasultan.github.io/marketing-test-site/",
+    "name":"Agha Sultan Naseer",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://aghasultan.github.io/marketing-test-site/?q={search_term_string}",
+      "query-input":"required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- GA4 placeholder (replace G-XXXX) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXX"></script>
+  <script>
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date()); gtag('config','G-XXXX');
+  </script>
+  -->
 </head>
 
 <body class="no-js">
-  <canvas id="interactive-bg" role="presentation" aria-hidden="true"></canvas>
+  <!-- Decorative background -->
+  <canvas id="interactive-bg" aria-hidden="true"></canvas>
 
-  <!-- sticky CTA (mobile) -->
-  <a href="#contact" class="sticky-cta">Book Call</a>
+  <!-- Sticky CTA for mobile -->
+  <a href="#contact" class="sticky-cta" aria-label="Book a strategy call">Book Call</a>
 
-  <!-- burger -->
+  <!-- Mobile burger -->
   <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-    <div class="line"></div><div class="line"></div><div class="line"></div>
+    <span class="line"></span><span class="line"></span><span class="line"></span>
   </button>
 
   <header class="main-header">
     <nav id="navbar" class="navbar" aria-label="Primary">
-      <a href="#" class="logo">Agha&nbsp;Sultan</a>
+      <a href="#hero" class="logo" aria-label="Agha Sultan home">Agha&nbsp;Sultan</a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#wins">Wins</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#contact" class="btn">Contact</a></li>
+        <li><a class="btn" href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="content-wrapper">
-    <!-- HERO -->
-    <section class="hero-section" id="hero">
+  <main class="content-wrapper" id="main">
+    <!-- ========== HERO ========== -->
+    <section class="hero-section" id="hero" aria-labelledby="hero-title">
       <div class="hero-content">
-        <h1 class="reveal">I Turn Ad&nbsp;Spend into&nbsp;Profit.</h1>
+        <h1 id="hero-title" class="reveal">I Turn Ad&nbsp;Spend into&nbsp;Profit.</h1>
         <p class="reveal" data-delay="200">
           I’m <strong>Agha Sultan Naseer</strong> — Lahore-based media buyer who’s managed
-          <strong>7-figure Meta &amp; Google Ad budgets</strong> for brands in the USA, UK &amp; Europe.
-          From audience research to GA4 tracking and GoHighLevel automations,
-          I build campaigns that convert cold traffic into loyal customers — profitably.
+          <strong>7‑figure Meta &amp; Google Ads budgets</strong> for brands across the USA, UK &amp; Europe.
+          With audience research, GA4 tracking, and GoHighLevel automations, I turn cold traffic into loyal customers — profitably.
         </p>
         <a href="#contact" class="btn btn-primary reveal" data-delay="400">Book a Strategy Call</a>
       </div>
     </section>
 
-    <!-- LOGO BAR -->
-    <section class="logo-bar reveal">
-      <img src="https://placehold.co/120x40?text=Brand+1" alt="Brand 1 logo">
-      <img src="https://placehold.co/120x40?text=Brand+2" alt="Brand 2 logo">
-      <img src="https://placehold.co/120x40?text=Brand+3" alt="Brand 3 logo">
-      <img src="https://placehold.co/120x40?text=Brand+4" alt="Brand 4 logo">
+    <!-- ========== SOCIAL PROOF / LOGO BAR ========== -->
+    <section class="logo-bar reveal" aria-label="Client logos">
+      <img src="https://placehold.co/120x40?text=Brand+1" width="120" height="40" alt="Brand 1" loading="lazy" />
+      <img src="https://placehold.co/120x40?text=Brand+2" width="120" height="40" alt="Brand 2" loading="lazy" />
+      <img src="https://placehold.co/120x40?text=Brand+3" width="120" height="40" alt="Brand 3" loading="lazy" />
+      <img src="https://placehold.co/120x40?text=Brand+4" width="120" height="40" alt="Brand 4" loading="lazy" />
     </section>
 
-    <!-- ABOUT -->
-    <section class="content-section reveal" id="about">
+    <!-- ========== ABOUT ========== -->
+    <section class="content-section reveal" id="about" aria-labelledby="about-title">
       <div class="section-text">
-        <h2><span>01</span>Experience Snapshot</h2>
-        <h3>4 + Years of Paid-Media Mastery</h3>
-        <p>Intern-to-executive in <em>three months</em>; now trusted with 5- to 7-figure monthly ad budgets.</p>
+        <h2 id="about-title"><span>01</span>Experience Snapshot</h2>
+        <h3>4 + Years of Paid‑Media Mastery</h3>
+        <p>Intern‑to‑executive in <em>three months</em>; now trusted with 5‑ to 7‑figure monthly ad budgets.</p>
         <ul>
-          <li>18.1 % CTR on Google Ads for water-slide rentals</li>
-          <li>15 % lift in traffic &amp; conversions for dental / med-spa clients</li>
-          <li>A$1.08 CPC → 37 k LP views on A$2.3 k spend</li>
+          <li>18.1 % CTR on Google Ads for water‑slide rentals</li>
+          <li>15 % lift in traffic &amp; conversions for dental / med‑spa clients</li>
+          <li>A$1.08 CPC → 37 k landing‑page views on A$2.3 k spend</li>
         </ul>
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section class="content-section reveal" id="skills">
+    <!-- ========== SKILLS ========== -->
+    <section class="content-section reveal" id="skills" aria-labelledby="skills-title">
       <div class="section-text">
-        <h2><span>02</span>Core Skills &amp; Tech Stack</h2>
-        <h3>Ad Architecture → Server-Side Tracking</h3>
+        <h2 id="skills-title"><span>02</span>Core Skills &amp; Tech Stack</h2>
+        <h3>Ad Architecture → Server‑Side Tracking</h3>
         <ul>
           <li>Meta, Google, TikTok, LinkedIn Ads strategy</li>
           <li>Pixel, CAPI, GTM, GA4 conversion tracking</li>
@@ -90,52 +156,52 @@
       </div>
     </section>
 
-    <!-- WINS -->
-    <section class="content-section reveal" id="wins">
+    <!-- ========== WINS ========== -->
+    <section class="content-section reveal" id="wins" aria-labelledby="wins-title">
       <div class="section-text">
-        <h2><span>03</span>Certifications &amp; Wins</h2>
+        <h2 id="wins-title"><span>03</span>Certifications &amp; Wins</h2>
         <h3>Proof You Can Bank On</h3>
         <ul>
           <li>Google Ads Search &amp; Display Certified</li>
-          <li>Meta Blueprint — Lead Gen &amp; Real-Estate Ads</li>
+          <li>Meta Blueprint — Lead Gen &amp; Real‑Estate Ads</li>
           <li>Google Analytics Advanced</li>
           <li>HubSpot Social &amp; Digital Advertising</li>
         </ul>
       </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="content-section reveal" id="services">
+    <!-- ========== SERVICES ========== -->
+    <section class="content-section reveal" id="services" aria-labelledby="services-title">
       <div class="section-text">
-        <h2><span>04</span>Services</h2>
+        <h2 id="services-title"><span>04</span>Services</h2>
         <h3>What I Deliver</h3>
         <ul>
-          <li>Ad-account setup &amp; pixel/event configuration</li>
-          <li>Search, P-Max, Meta CBO/ABO campaign scaling</li>
+          <li>Ad‑account setup &amp; pixel/event configuration</li>
+          <li>Search, P‑Max, Meta CBO/ABO campaign scaling</li>
           <li>Copy &amp; creative direction (static, carousel, video)</li>
-          <li>90-day optimisation road-maps (CVR, CPA, ROAS)</li>
+          <li>90‑day optimisation road‑maps (CVR, CPA, ROAS)</li>
           <li>Dashboards &amp; CRO recommendations</li>
         </ul>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="contact-section reveal" id="contact">
-      <h2>Ready to Scale Profitably?</h2>
-      <p>Fill out the form — let’s see if we’re a 100 % fit.</p>
+    <!-- ========== CONTACT ========== -->
+    <section class="contact-section reveal" id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Ready to Scale Profitably?</h2>
+      <p>Fill out the form — let’s see if we’re a 100% fit.</p>
 
-      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
+      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form" novalidate>
         <div class="form-group">
           <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required>
+          <input id="name" name="name" type="text" autocomplete="name" required />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
+          <input id="email" name="email" type="email" autocomplete="email" required />
         </div>
         <div class="form-group">
           <label for="whatsapp">WhatsApp</label>
-          <input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" required>
+          <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required />
         </div>
         <div class="form-group">
           <label for="service">Service Interest</label>
@@ -143,19 +209,26 @@
             <option value="" disabled selected>Select a service</option>
             <option value="Meta Ads">Meta Ads</option>
             <option value="Google Ads">Google Ads</option>
-            <option value="Full-Funnel Package">Full-Funnel Package</option>
+            <option value="Full-Funnel Package">Full‑Funnel Package</option>
           </select>
         </div>
         <div class="form-group wide">
           <label for="message">Your Message</label>
           <textarea id="message" name="message" rows="4" placeholder="Tell me about your goals…"></textarea>
         </div>
-        <input type="text" name="_gotcha" style="display:none">
+        <!-- Honeypot -->
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
         <button type="submit" class="btn btn-primary">Send Proposal Request</button>
       </form>
     </section>
   </main>
 
+  <!-- No-JS fallback -->
+  <noscript>
+    <style>.reveal{opacity:1 !important;transform:none !important}</style>
+  </noscript>
+
+  <!-- Scripts (kept lean; your dynamic background & nav in script.js) -->
   <script src="script.js" defer></script>
 </body>
 </html>
