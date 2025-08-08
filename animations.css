@@ -1,0 +1,42 @@
+/* ================================
+   animations.css – Reusable Animations
+   ================================ */
+
+/* Fade In */
+.fade-in {
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Slide Up */
+.slide-up {
+  animation: slideUp 1s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Scale In */
+.scale-in {
+  animation: scaleIn 0.8s ease-in-out forwards;
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Hover Glow */
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 168, 107, 0.6);
+}
