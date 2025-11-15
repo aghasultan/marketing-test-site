@@ -1,15 +1,16 @@
 # Marketing-Test-Site
 
-This repo hosts **Agha Sultan Naseer’s single-page portfolio**—a fast, SEO-optimised landing page built with vanilla HTML/CSS/JS and deployed via **GitHub Pages**.
+This repo hosts **Agha Sultan Naseer’s multi-page marketing experience**—a fast, SEO-optimised site built with vanilla HTML/CSS/JS and deployed via **GitHub Pages**.
 
-| Section | Highlights |
-|---------|------------|
-| **Hero** | 7-figure Meta & Google Ads headline + CTA |
-| **About** | 4 + years of paid-media experience, global clients |
-| **Skills** | GA4, GTM, GoHighLevel, ROAS optimisation & more |
-| **Wins** | 18.1 % CTR & other real-world case studies |
-| **Services** | Ad-account setup, campaign scaling, CRO dashboards |
-| **Contact** | Formspree form with anti-bot honeypot |
+## Pages & Purpose
+
+| File | Live URL (GitHub Pages) | Purpose |
+|------|-------------------------|---------|
+| `index.html` | `/marketing-test-site/` | Personal overview covering experience, skills, wins, and a general enquiry form. |
+| `scale.html` | `/marketing-test-site/scale.html` | Main client acquisition landing page showcasing the Profit Scaling System™, services, and proof. |
+| `apply.html` | `/marketing-test-site/apply.html` | High-intent application page with a detailed form to qualify strategy call applicants. |
+
+**Conversion flow:** Paid and organic traffic land on `scale.html`, warm prospects click through to `apply.html`, and serious leads complete the Formspree-powered application. The overview page (`index.html`) links back into this journey for visitors who start on the personal profile.
 
 ### Tech Stack
 
@@ -28,3 +29,4 @@ This repo hosts **Agha Sultan Naseer’s single-page portfolio**—a fast, SEO-o
 git clone https://github.com/aghasultan/marketing-test-site.git
 cd marketing-test-site
 # open index.html in your browser or use a live-server extension
+```
