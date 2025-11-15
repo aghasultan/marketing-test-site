@@ -9,6 +9,12 @@
   const media = window.matchMedia('(prefers-reduced-motion: reduce)');
   let reduced = media.matches;
 
+  const addMQListener = (mq, handler) => {
+    if (!mq || !handler) return;
+    if (typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
+    else if (typeof mq.addListener === 'function') mq.addListener(handler);
+  };
+
   const colors = [
     [255,255,255],
     [246,255,249],
@@ -21,7 +27,7 @@
   const speed = 0.0016;
   let raf = null;
 
-  media.addEventListener?.('change', e => {
+  addMQListener(media, e => {
     reduced = e.matches;
     if (reduced){ cancelAnimationFrame(raf); el.style.background='linear-gradient(90deg,#fff,#f6fff9)'; }
     else animate();

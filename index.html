@@ -30,7 +30,13 @@
   <a href="#contact" class="sticky-cta" aria-label="Book a strategy call">Book Call</a>
 
   <!-- Mobile burger -->
-  <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+  <button
+    id="mobile-nav-toggle"
+    class="mobile-nav-toggle"
+    aria-label="Toggle navigation"
+    aria-controls="navbar"
+    aria-expanded="false"
+  >
     <span class="line"></span><span class="line"></span><span class="line"></span>
   </button>
 
@@ -63,10 +69,12 @@
 
     <!-- LOGO BAR -->
     <section class="logo-bar reveal" aria-label="Client logos">
-      <img src="https://placehold.co/120x40?text=Brand+1" width="120" height="40" alt="Brand 1" loading="lazy" />
-      <img src="https://placehold.co/120x40?text=Brand+2" width="120" height="40" alt="Brand 2" loading="lazy" />
-      <img src="https://placehold.co/120x40?text=Brand+3" width="120" height="40" alt="Brand 3" loading="lazy" />
-      <img src="https://placehold.co/120x40?text=Brand+4" width="120" height="40" alt="Brand 4" loading="lazy" />
+      <ul class="logo-list" role="list">
+        <li class="logo-chip">Meta Partner</li>
+        <li class="logo-chip">Google Ads Certified</li>
+        <li class="logo-chip">HubSpot Solutions</li>
+        <li class="logo-chip">Shopify Plus</li>
+      </ul>
     </section>
 
     <!-- ABOUT -->
@@ -132,7 +140,7 @@
       <h2 id="contact-title">Ready to Scale Profitably?</h2>
       <p>Fill out the form — let’s see if we’re a 100% fit.</p>
 
-      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form" novalidate>
+      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
         <div class="form-group">
           <label for="name">Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required />
