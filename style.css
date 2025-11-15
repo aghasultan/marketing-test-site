@@ -151,7 +151,11 @@ a{color:inherit}
 .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{
   outline:none;border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-100);
 }
-.contact-form input:user-invalid,.contact-form select:user-invalid{border-color:#c62828}
+.contact-form input:invalid,
+.contact-form select:invalid,
+.contact-form textarea:invalid{border-color:#c62828}
+.contact-form select:invalid{color:var(--muted)}
+.contact-form option[value=""]{color:#6f6f6f}
 .contact-form button{grid-column:1/-1;margin-top:6px}
 /* custom select arrow */
 .contact-form select{

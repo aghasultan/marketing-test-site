@@ -30,7 +30,13 @@
   <a href="#contact" class="sticky-cta" aria-label="Book a strategy call">Book Call</a>
 
   <!-- Mobile burger -->
-  <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+  <button
+    id="mobile-nav-toggle"
+    class="mobile-nav-toggle"
+    aria-label="Toggle navigation"
+    aria-controls="navbar"
+    aria-expanded="false"
+  >
     <span class="line"></span><span class="line"></span><span class="line"></span>
   </button>
 
@@ -132,7 +138,7 @@
       <h2 id="contact-title">Ready to Scale Profitably?</h2>
       <p>Fill out the form — let’s see if we’re a 100% fit.</p>
 
-      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form" novalidate>
+      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
         <div class="form-group">
           <label for="name">Name</label>
           <input id="name" name="name" type="text" autocomplete="name" required />
