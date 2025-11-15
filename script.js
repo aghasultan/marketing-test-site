@@ -15,10 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
     FORCE_MOTION: false       // set true to ignore reduced-motion
   };
 
+  const addMQListener = (mq, handler) => {
+    if (!mq || !handler) return;
+    if (typeof mq.addEventListener === 'function') mq.addEventListener('change', handler);
+    else if (typeof mq.addListener === 'function') mq.addListener(handler);
+  };
+
   /* ---------------- REDUCED MOTION ---------------- */
   const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
   let reduced = mq.matches && !CFG.FORCE_MOTION;
-  mq.addEventListener?.('change', e => {
+  addMQListener(mq, e => {
     reduced = e.matches && !CFG.FORCE_MOTION;
     reduced ? stopParticles() : startParticles(true);
   });
@@ -91,7 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const dy = particles[a].y - particles[b].y;
         const d2 = dx*dx + dy*dy;
         if (d2 < (canvas.width/CFG.CONNECT) * (canvas.height/CFG.CONNECT)){
-          ctx.strokeStyle = CFG.LINE_BASE + (1 - d2/20000) + ')';
+          const alpha = Math.max(0, 1 - d2/20000);
+          if (alpha <= 0.05) continue;
+          ctx.strokeStyle = `${CFG.LINE_BASE}${alpha})`;
           ctx.lineWidth = 1;
           ctx.beginPath();
           ctx.moveTo(particles[a].x,particles[a].y);
@@ -155,13 +163,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.getElementById('mobile-nav-toggle');
   const nav = document.getElementById('navbar');
   if (toggle && nav){
+    const navLinks = nav.querySelectorAll('.nav-links a');
+    const desktopMQ = window.matchMedia('(min-width: 769px)');
+
+    const openNav = () => {
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.classList.add('active');
+      nav.classList.add('active');
+      document.body.classList.add('no-scroll');
+    };
+
+    const closeNav = () => {
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.classList.remove('active');
+      nav.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    };
+
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      toggle.classList.toggle('active');
-      nav.classList.toggle('active');
-      document.body.classList.toggle('no-scroll', !expanded);
+      expanded ? closeNav() : openNav();
     });
+
+    navLinks.forEach(link => link.addEventListener('click', closeNav));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && toggle.classList.contains('active')) closeNav();
+    });
+
+    addMQListener(desktopMQ, e => { if (e.matches) closeNav(); });
   }
 
   // Init
