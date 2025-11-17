@@ -10,7 +10,17 @@
   <meta property="og:description" content="Meet the strategist helping brands across the USA, UK & Europe turn paid media into profit with precision tracking and full-funnel execution." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#00a86b" />
-  <meta name="color-scheme" content="light only" />
+  <meta name="color-scheme" content="light dark" />
+
+  <script>
+    // Apply saved theme ASAP to avoid flashes
+    (function(){
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
