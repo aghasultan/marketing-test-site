@@ -7,10 +7,20 @@
   <title>Apply for a Strategy Call | Agha Sultan Naseer</title>
   <meta name="description" content="Submit your application for a 1:1 strategy call with Agha Sultan Naseer to craft a profit-scaling Meta & Google Ads roadmap tailored to your brand." />
   <meta name="theme-color" content="#00a86b" />
-  <meta name="color-scheme" content="light only" />
+  <meta name="color-scheme" content="light dark" />
   <meta property="og:title" content="Apply for a Strategy Call | Agha Sultan Naseer" />
   <meta property="og:description" content="Fill out the high-intent application to secure a 1:1 strategy call and receive a tailored scaling roadmap for your ads." />
   <meta property="og:type" content="website" />
+
+  <script>
+    // Apply saved theme ASAP to avoid flashes
+    (function(){
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
