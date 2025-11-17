@@ -3,20 +3,42 @@
    Top-notch + battery aware + touch/mouse reactive
    ========================================================== */
 
-// Apply stored theme early for all pages (mirrors inline script)
-(() => {
-  try {
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const theme = saved || (prefersDark ? 'dark' : 'light');
-    document.documentElement.dataset.theme = theme;
-  } catch (err) {
-    console.warn('Theme storage unavailable', err);
-  }
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.remove('no-js');
+
+  /* ---------------- THEME ---------------- */
+  const prefersDarkMQ = window.matchMedia('(prefers-color-scheme: dark)');
+  let storedTheme;
+  try { storedTheme = localStorage.getItem('theme'); } catch (err) { console.warn('Theme storage unavailable', err); }
+
+  const themeToggleBtn = document.querySelector('[data-theme-toggle]');
+  const themeToggleLabel = themeToggleBtn?.querySelector('.label');
+
+  const syncThemeToggle = (isDark) => {
+    if (!themeToggleBtn) return;
+    themeToggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    if (themeToggleLabel) themeToggleLabel.textContent = isDark ? '☀️ Light' : '🌙 Dark';
+  };
+
+  const applyTheme = (nextTheme) => {
+    const isDark = nextTheme === 'dark';
+    document.body.classList.toggle('theme-dark', isDark);
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+    try { localStorage.setItem('theme', isDark ? 'dark' : 'light'); } catch (err) { console.warn('Theme storage unavailable', err); }
+    syncThemeToggle(isDark);
+  };
+
+  const initialTheme = storedTheme
+    || (document.body.classList.contains('theme-dark') ? 'dark' : null)
+    || (prefersDarkMQ.matches ? 'dark' : 'light');
+
+  applyTheme(initialTheme);
+
+  themeToggleBtn?.addEventListener('click', () => {
+    const next = document.body.classList.contains('theme-dark') ? 'light' : 'dark';
+    applyTheme(next);
+  });
 
   /* ---------------- CONFIG ---------------- */
   const CFG = {
@@ -41,28 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
     reduced = e.matches && !CFG.FORCE_MOTION;
     reduced ? stopParticles() : startParticles(true);
   });
-
-  /* ---------------- THEME ---------------- */
-  const themeLabelText = { dark: 'Light', light: 'Dark' };
-  let themeToggleBtn = null;
-  let themeToggleLabel = null;
-
-  const syncThemeToggle = () => {
-    if (!themeToggleBtn || !themeToggleLabel) return;
-    const current = document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-    themeToggleLabel.textContent = `${themeLabelText[current]} mode`;
-    themeToggleBtn.setAttribute('aria-label', `Switch to ${themeLabelText[current].toLowerCase()} mode`);
-    themeToggleBtn.dataset.mode = current;
-  };
-
-  const setTheme = (nextTheme) => {
-    const safeTheme = nextTheme === 'dark' ? 'dark' : 'light';
-    document.documentElement.dataset.theme = safeTheme;
-    try { localStorage.setItem('theme', safeTheme); } catch (err) {
-      console.warn('Theme storage unavailable', err);
-    }
-    syncThemeToggle();
-  };
 
   /* ---------------- CANVAS ---------------- */
   const canvas = document.getElementById('interactive-bg');
@@ -269,31 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealTargets.forEach(el=>revealObserver.observe(el));
     staggerParents.forEach(parent => staggerObserver.observe(parent));
-  }
-
-  // Inject theme toggle into nav
-  if (nav){
-    const navList = nav.querySelector('.nav-links');
-    if (navList){
-      const li = document.createElement('li');
-      themeToggleBtn = document.createElement('button');
-      themeToggleBtn.type = 'button';
-      themeToggleBtn.className = 'theme-toggle';
-      const dot = document.createElement('span');
-      dot.className = 'dot';
-      const label = document.createElement('span');
-      label.className = 'label';
-      themeToggleLabel = label;
-      themeToggleBtn.append(dot, label);
-      li.appendChild(themeToggleBtn);
-      navList.appendChild(li);
-      syncThemeToggle();
-
-      themeToggleBtn.addEventListener('click', () => {
-        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-        setTheme(next);
-      });
-    }
   }
 
   // Mobile nav + anchor scroll
