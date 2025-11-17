@@ -192,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const nav = document.getElementById('navbar');
   const navLinks = nav ? Array.from(nav.querySelectorAll('.nav-links a')) : [];
   const trackedSectionIds = ['hero','about','skills','wins','services','contact'];
+  const getHeaderOffset = () => (header?.offsetHeight || 0) + 6;
 
   const isInPageLink = (link) => {
     const href = link.getAttribute('href') || '';
@@ -208,8 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       target.scrollIntoView({ behavior:'auto', block:'start' });
       return;
     }
-    const headerOffset = (header?.offsetHeight || 0) + 6;
-    const targetY = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    const targetY = target.getBoundingClientRect().top + window.scrollY - getHeaderOffset();
     const startY = window.scrollY;
     const distance = targetY - startY;
     const duration = 650;
@@ -271,6 +271,15 @@ document.addEventListener('DOMContentLoaded', () => {
     staggerParents.forEach(parent => staggerObserver.observe(parent));
   }
 
+  const handleInternalAnchor = (event, link) => {
+    if (!isInPageLink(link)) return;
+    event.preventDefault();
+    const targetId = new URL(link.getAttribute('href'), window.location.href).hash;
+    if (!targetId || targetId === '#') return;
+    const target = document.querySelector(targetId);
+    smoothScrollTo(target);
+  };
+
   // Mobile nav + anchor scroll
   const toggle = document.getElementById('mobile-nav-toggle');
   if (toggle && nav){
@@ -296,12 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     navLinks.forEach(link => link.addEventListener('click', (event) => {
-      if (isInPageLink(link)){
-        event.preventDefault();
-        const targetId = new URL(link.getAttribute('href'), window.location.href).hash;
-        const target = document.querySelector(targetId);
-        smoothScrollTo(target);
-      }
+      handleInternalAnchor(event, link);
       closeNav();
     }));
 
@@ -316,11 +320,15 @@ document.addEventListener('DOMContentLoaded', () => {
   navLinks.forEach(link => {
     link.addEventListener('click', (event) => {
       if (event.defaultPrevented) return;
-      if (!isInPageLink(link)) return;
-      event.preventDefault();
-      const targetId = new URL(link.getAttribute('href'), window.location.href).hash;
-      const target = document.querySelector(targetId);
-      smoothScrollTo(target);
+      handleInternalAnchor(event, link);
+    });
+  });
+
+  const inPageAnchors = Array.from(document.querySelectorAll('a[href^="#"]')).filter(link => !navLinks.includes(link));
+  inPageAnchors.forEach(link => {
+    link.addEventListener('click', (event) => {
+      if (event.defaultPrevented) return;
+      handleInternalAnchor(event, link);
     });
   });
 
@@ -353,19 +361,58 @@ document.addEventListener('DOMContentLoaded', () => {
   // Sticky navbar treatment
   if (header){
     const hero = document.getElementById('hero');
+    let heroInView = true;
+
+    const updateHeaderState = () => {
+      const scrolled = window.scrollY > 10 || !heroInView;
+      header.classList.toggle('navbar--scrolled', scrolled);
+      header.classList.toggle('navbar-scrolled', scrolled);
+    };
+
     if (hero){
       const heroObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) header.classList.add('navbar-scrolled');
-          else header.classList.remove('navbar-scrolled');
-        });
+        heroInView = entries.some(entry => entry.isIntersecting);
+        updateHeaderState();
       }, { threshold:0.1 });
       heroObserver.observe(hero);
-    } else {
-      window.addEventListener('scroll', () => {
-        header.classList.toggle('navbar-scrolled', window.scrollY > 10);
-      }, { passive:true });
     }
+
+    window.addEventListener('scroll', updateHeaderState, { passive:true });
+    updateHeaderState();
+  }
+
+  // Magnetic hover for primary CTAs (desktop only)
+  const pointerFineMQ = window.matchMedia('(pointer: fine)');
+  if (pointerFineMQ.matches && !reduced){
+    const magneticTargets = document.querySelectorAll('.btn-primary, .sticky-cta');
+    magneticTargets.forEach(target => {
+      const strength = 12;
+      let rafId;
+
+      const reset = () => {
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          target.style.transform = 'translate3d(0,0,0)';
+        });
+      };
+
+      const handlePointerMove = (event) => {
+        if (event.pointerType && event.pointerType !== 'mouse') return;
+        const rect = target.getBoundingClientRect();
+        const x = (event.clientX - rect.left - rect.width / 2) / (rect.width / 2);
+        const y = (event.clientY - rect.top - rect.height / 2) / (rect.height / 2);
+        const moveX = Math.max(Math.min(x * strength, strength), -strength);
+        const moveY = Math.max(Math.min(y * strength, strength), -strength);
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          target.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+        });
+      };
+
+      target.addEventListener('pointermove', handlePointerMove);
+      target.addEventListener('pointerleave', reset);
+      target.addEventListener('mouseleave', reset);
+    });
   }
 
   // Init
