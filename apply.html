@@ -12,16 +12,6 @@
   <meta name="theme-color" content="#00a86b" />
   <meta name="color-scheme" content="light dark" />
 
-  <script>
-    // Apply saved theme ASAP to avoid flashes
-    (function(){
-      const saved = localStorage.getItem('theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const theme = saved || (prefersDark ? 'dark' : 'light');
-      document.documentElement.dataset.theme = theme;
-    })();
-  </script>
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,6 +23,17 @@
 </head>
 
 <body class="no-js">
+  <script>
+    (function(){
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let saved;
+      try { saved = localStorage.getItem('theme'); } catch (err) {}
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      const isDark = theme === 'dark';
+      if (isDark) document.body.classList.add('theme-dark');
+      document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+    })();
+  </script>
   <!-- Optional animated gradient (background.js controls it) -->
   <div id="gradient-bg" aria-hidden="true"></div>
 
@@ -61,6 +62,12 @@
         <li><a href="index.html#skills">Skills</a></li>
         <li><a href="index.html#wins">Wins</a></li>
         <li><a href="services.html">Services</a></li>
+        <li>
+          <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle dark mode">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="label">🌙 Dark</span>
+          </button>
+        </li>
         <li><a class="btn" href="apply.html" aria-current="page">Apply</a></li>
       </ul>
     </nav>
