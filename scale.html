@@ -7,10 +7,20 @@
   <title>Meta &amp; Google Ads Growth Partner | Agha Sultan Naseer</title>
   <meta name="description" content="Partner with Agha Sultan Naseer to architect full-funnel Meta & Google Ads systems that turn ad spend into profit for brands across the USA, UK & Europe." />
   <meta name="theme-color" content="#00a86b" />
-  <meta name="color-scheme" content="light only" />
+  <meta name="color-scheme" content="light dark" />
   <meta property="og:title" content="Meta &amp; Google Ads Growth Partner | Agha Sultan Naseer" />
   <meta property="og:description" content="Discover the Profit Scaling System™ used to run 7-figure Meta & Google Ads budgets and deliver predictable growth for international brands." />
   <meta property="og:type" content="website" />
+
+  <script>
+    // Apply saved theme ASAP to avoid flashes
+    (function(){
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
