@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aghasultan.github.io/marketing-test-site/sitemap.xml

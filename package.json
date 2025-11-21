@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "This repo hosts **Agha Sultan Naseer’s multi-page marketing experience**—a fast, SEO-optimised site built with vanilla HTML/CSS/JS and deployed via **GitHub Pages**.",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aghasultan/marketing-test-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/aghasultan/marketing-test-site/issues"
+  },
+  "homepage": "https://github.com/aghasultan/marketing-test-site#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "http-server": "^14.1.1",
+    "prettier": "^3.6.2"
+  }
+}

@@ -1,217 +1,449 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
-<head>
-  <!-- ===== Core meta ===== -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Agha Sultan Naseer | Meta & Google Ads Strategist</title>
-  <meta name="description" content="Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe." />
-  <meta property="og:title" content="Agha Sultan Naseer | Meta & Google Ads Strategist" />
-  <meta property="og:description" content="Meet the strategist helping brands across the USA, UK & Europe turn paid media into profit with precision tracking and full-funnel execution." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#00a86b" />
-  <meta name="color-scheme" content="light dark" />
+  <head>
+    <!-- ===== Core meta ===== -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Agha Sultan Naseer | Meta & Google Ads Strategist</title>
+    <meta
+      name="description"
+      content="Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe."
+    />
+    <meta
+      property="og:title"
+      content="Agha Sultan Naseer | Meta & Google Ads Strategist"
+    />
+    <meta
+      property="og:description"
+      content="Meet the strategist helping brands across the USA, UK & Europe turn paid media into profit with precision tracking and full-funnel execution."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aghasultan.github.io/marketing-test-site/"
+    />
+    <meta
+      property="og:image"
+      content="https://aghasultan.github.io/marketing-test-site/assets/og-image.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Agha Sultan Naseer | Meta & Google Ads Strategist"
+    />
+    <meta
+      name="twitter:description"
+      content="Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe."
+    />
+    <meta
+      name="twitter:image"
+      content="https://aghasultan.github.io/marketing-test-site/assets/og-image.jpg"
+    />
+    <meta name="theme-color" content="#00a86b" />
+    <meta name="color-scheme" content="light dark" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+    />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="animations.css" />
-</head>
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Agha Sultan Naseer",
+        "jobTitle": "Meta & Google Ads Strategist",
+        "url": "https://aghasultan.github.io/marketing-test-site/",
+        "sameAs": [
+          "https://www.linkedin.com/in/aghasultannaseer",
+          "https://twitter.com/aghasultan"
+        ],
+        "description": "Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe."
+      }
+    </script>
 
-<body class="no-js">
-  <script>
-    (function(){
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      let saved;
-      try { saved = localStorage.getItem('theme'); } catch (err) {}
-      const theme = saved || (prefersDark ? 'dark' : 'light');
-      const isDark = theme === 'dark';
-      if (isDark) document.body.classList.add('theme-dark');
-      document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-    })();
-  </script>
-  <!-- Optional animated gradient (background.js controls it) -->
-  <div id="gradient-bg" aria-hidden="true"></div>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Particle canvas (script.js controls it) -->
-  <canvas id="interactive-bg" aria-hidden="true"></canvas>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+  </head>
 
-  <!-- Sticky CTA (mobile) -->
-  <a href="apply.html" class="sticky-cta" aria-label="Apply for a strategy call">Apply</a>
+  <body class="no-js">
+    <script>
+      (function () {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        let saved;
+        try {
+          saved = localStorage.getItem("theme");
+        } catch (err) {}
+        const theme = saved || (prefersDark ? "dark" : "light");
+        const isDark = theme === "dark";
+        if (isDark) document.body.classList.add("theme-dark");
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+      })();
+    </script>
+    <!-- Optional animated gradient (background.js controls it) -->
+    <div id="gradient-bg" aria-hidden="true"></div>
 
-  <!-- Mobile burger -->
-  <button
-    id="mobile-nav-toggle"
-    class="mobile-nav-toggle"
-    aria-label="Toggle navigation"
-    aria-controls="navbar"
-    aria-expanded="false"
-  >
-    <span class="line"></span><span class="line"></span><span class="line"></span>
-  </button>
+    <!-- Particle canvas (script.js controls it) -->
+    <canvas id="interactive-bg" aria-hidden="true"></canvas>
 
-  <header class="main-header">
-    <nav id="navbar" class="navbar" aria-label="Primary">
-      <a href="index.html#hero" class="logo" aria-label="Agha Sultan home">Agha&nbsp;Sultan</a>
-      <ul class="nav-links">
-        <li><a href="index.html#about" aria-current="page">About</a></li>
-        <li><a href="index.html#skills">Skills</a></li>
-        <li><a href="index.html#wins">Wins</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li>
-          <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle dark mode">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="label">🌙 Dark</span>
+    <!-- Sticky CTA (mobile) -->
+    <a
+      href="apply.html"
+      class="sticky-cta"
+      aria-label="Apply for a strategy call"
+      >Apply</a
+    >
+
+    <!-- Mobile burger -->
+    <button
+      id="mobile-nav-toggle"
+      class="mobile-nav-toggle"
+      aria-label="Toggle navigation"
+      aria-controls="navbar"
+      aria-expanded="false"
+    >
+      <span class="line"></span><span class="line"></span
+      ><span class="line"></span>
+    </button>
+
+    <header class="main-header">
+      <nav id="navbar" class="navbar" aria-label="Primary">
+        <a href="index.html#hero" class="logo" aria-label="Agha Sultan home"
+          >Agha&nbsp;Sultan</a
+        >
+        <ul class="nav-links">
+          <li><a href="index.html#about" aria-current="page">About</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#wins">Wins</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li>
+            <button
+              type="button"
+              class="theme-toggle"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Toggle dark mode"
+            >
+              <span class="dot" aria-hidden="true"></span>
+              <span class="label">🌙 Dark</span>
+            </button>
+          </li>
+          <li><a class="btn shimmer" href="apply.html">Apply</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="content-wrapper" id="main">
+      <!-- HERO -->
+      <section class="hero-section" id="hero" aria-labelledby="hero-title">
+        <div class="hero-content fade-in">
+          <h1 id="hero-title">I Turn Ad&nbsp;Spend into&nbsp;Profit.</h1>
+          <p class="slide-up" style="--a-delay: 120ms">
+            I’m <strong>Agha Sultan Naseer</strong> — Lahore-based media buyer
+            who’s managed
+            <strong>7‑figure Meta &amp; Google Ads budgets</strong> for brands
+            across the USA, UK &amp; Europe. With audience research, GA4
+            tracking, and GoHighLevel automations, I turn cold traffic into
+            loyal customers — profitably.
+          </p>
+          <a
+            href="services.html"
+            class="btn btn-primary hover-glow"
+            style="--a-delay: 240ms"
+            >Explore Services</a
+          >
+        </div>
+      </section>
+
+      <!-- LOGO BAR -->
+      <section class="logo-bar reveal" aria-label="Client logos">
+        <ul class="logo-list" role="list">
+          <li class="logo-chip">Meta Partner</li>
+          <li class="logo-chip">Google Ads Certified</li>
+          <li class="logo-chip">HubSpot Solutions</li>
+          <li class="logo-chip">Shopify Plus</li>
+        </ul>
+      </section>
+
+      <section
+        class="content-section reveal"
+        id="who-i-help"
+        aria-labelledby="who-i-help-title"
+      >
+        <div class="section-text">
+          <h2 id="who-i-help-title"><span>01</span>Founders I Help Most</h2>
+          <h3>Built for operators who already know ads can work</h3>
+          <ul>
+            <li>
+              Ecommerce, local services, and info products with proven offers.
+            </li>
+            <li>
+              Brands already investing in paid ads that need cleaner tracking
+              and strategy.
+            </li>
+            <li>
+              Teams who want paid media as a second sales channel, not a gamble.
+            </li>
+            <li>
+              Founders who value fast communication, transparency, and proactive
+              ideas.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section
+        class="content-section reveal"
+        id="about"
+        aria-labelledby="about-title"
+      >
+        <div class="section-text">
+          <h2 id="about-title"><span>02</span>Experience Snapshot</h2>
+          <h3>4 + Years of Paid‑Media Mastery</h3>
+          <p>
+            Intern‑to‑executive in <em>three months</em>; now trusted with 5‑ to
+            7‑figure monthly ad budgets.
+          </p>
+          <ul>
+            <li>18.1 % CTR on Google Ads for water‑slide rentals</li>
+            <li>
+              15 % lift in traffic &amp; conversions for dental / med‑spa
+              clients
+            </li>
+            <li>A$1.08 CPC → 37 k landing‑page views on A$2.3 k spend</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SKILLS -->
+      <section
+        class="content-section reveal"
+        id="skills"
+        aria-labelledby="skills-title"
+      >
+        <div class="section-text">
+          <h2 id="skills-title"><span>03</span>Core Skills &amp; Tech Stack</h2>
+          <h3>Ad Architecture → Server‑Side Tracking</h3>
+          <ul>
+            <li>Meta, Google, TikTok, LinkedIn Ads strategy</li>
+            <li>Pixel, CAPI, GTM, GA4 conversion tracking</li>
+            <li>Budget management &amp; ROAS optimisation</li>
+            <li>GoHighLevel funnel automations &amp; CRM</li>
+          </ul>
+          <p>
+            <strong>Tools:</strong> Ads Manager • Google Ads • GTM • GA4 •
+            Hotjar • Looker Studio
+          </p>
+        </div>
+      </section>
+
+      <!-- WINS -->
+      <section
+        class="content-section reveal"
+        id="wins"
+        aria-labelledby="wins-title"
+      >
+        <div class="section-text">
+          <h2 id="wins-title"><span>04</span>Certifications &amp; Wins</h2>
+          <h3>Proof You Can Bank On</h3>
+          <ul>
+            <li>Google Ads Search &amp; Display Certified</li>
+            <li>Meta Blueprint — Lead Gen &amp; Real‑Estate Ads</li>
+            <li>Google Analytics Advanced</li>
+            <li>HubSpot Social &amp; Digital Advertising</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section
+        class="content-section reveal"
+        id="services"
+        aria-labelledby="services-title"
+      >
+        <div class="section-text">
+          <h2 id="services-title"><span>05</span>Services</h2>
+          <h3>What I Deliver</h3>
+          <ul>
+            <li>Ad‑account setup &amp; pixel/event configuration</li>
+            <li>Search, P‑Max, Meta CBO/ABO campaign scaling</li>
+            <li>Copy &amp; creative direction (static, carousel, video)</li>
+            <li>90‑day optimisation road‑maps (CVR, CPA, ROAS)</li>
+            <li>Dashboards &amp; CRO recommendations</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ROI CALCULATOR -->
+      <section
+        class="content-section reveal"
+        id="roi-calculator"
+        aria-labelledby="roi-title"
+      >
+        <div class="section-text">
+          <h2 id="roi-title"><span>06</span>ROI Estimator</h2>
+          <h3>Forecast Your Growth</h3>
+          <p>
+            Adjust the sliders to see how optimized ad spend compounds into
+            profit.
+          </p>
+          <div class="roi-calc-container">
+            <div class="roi-inputs">
+              <div class="range-group">
+                <div class="range-header">
+                  <label for="calc-spend">Monthly Ad Spend</label>
+                  <span id="spend-val" class="range-value">$5,000</span>
+                </div>
+                <input
+                  type="range"
+                  id="calc-spend"
+                  min="1000"
+                  max="50000"
+                  step="1000"
+                  value="5000"
+                />
+              </div>
+              <div class="range-group">
+                <div class="range-header">
+                  <label for="calc-roas">Target ROAS (Return)</label>
+                  <span id="roas-val" class="range-value">3.0x</span>
+                </div>
+                <input
+                  type="range"
+                  id="calc-roas"
+                  min="1.0"
+                  max="10.0"
+                  step="0.1"
+                  value="3.0"
+                />
+              </div>
+            </div>
+            <div class="roi-results">
+              <div class="roi-card">
+                <h4>Estimated Revenue</h4>
+                <p id="roi-revenue">$15,000</p>
+              </div>
+              <div class="roi-card highlight">
+                <h4>Est. Gross Profit</h4>
+                <p id="roi-profit">$10,000</p>
+                <small>(Revenue - Ad Spend)</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section
+        class="contact-section reveal"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <h2 id="contact-title">Ready to Scale Profitably?</h2>
+        <p>Fill out the form — let’s see if we’re a 100% fit.</p>
+
+        <form
+          action="https://formspree.io/f/your_form_id"
+          method="POST"
+          class="contact-form"
+        >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input
+              id="whatsapp"
+              name="whatsapp"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interest</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="Meta Ads">Meta Ads</option>
+              <option value="Google Ads">Google Ads</option>
+              <option value="Full-Funnel Package">Full‑Funnel Package</option>
+            </select>
+          </div>
+          <div class="form-group wide">
+            <label for="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Tell me about your goals…"
+            ></textarea>
+          </div>
+          <!-- Honeypot -->
+          <input
+            type="text"
+            name="_gotcha"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            hidden
+          />
+          <button type="submit" class="btn btn-primary hover-glow">
+            Send Proposal Request
           </button>
-        </li>
-        <li><a class="btn" href="apply.html">Apply</a></li>
-      </ul>
-    </nav>
-  </header>
+          <p class="form-note">
+            If you&apos;re already spending on ads and want a second pair of
+            eyes, mention your current monthly budget in the message.
+          </p>
+        </form>
+      </section>
+    </main>
 
-  <main class="content-wrapper" id="main">
-    <!-- HERO -->
-    <section class="hero-section" id="hero" aria-labelledby="hero-title">
-      <div class="hero-content fade-in">
-        <h1 id="hero-title">I Turn Ad&nbsp;Spend into&nbsp;Profit.</h1>
-        <p class="slide-up" style="--a-delay:120ms">
-          I’m <strong>Agha Sultan Naseer</strong> — Lahore-based media buyer who’s managed
-          <strong>7‑figure Meta &amp; Google Ads budgets</strong> for brands across the USA, UK &amp; Europe.
-          With audience research, GA4 tracking, and GoHighLevel automations, I turn cold traffic into loyal customers — profitably.
-        </p>
-        <a href="services.html" class="btn btn-primary hover-glow" style="--a-delay:240ms">Explore Services</a>
-      </div>
-    </section>
+    <!-- No-JS fallback -->
+    <noscript
+      ><style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
 
-    <!-- LOGO BAR -->
-    <section class="logo-bar reveal" aria-label="Client logos">
-      <ul class="logo-list" role="list">
-        <li class="logo-chip">Meta Partner</li>
-        <li class="logo-chip">Google Ads Certified</li>
-        <li class="logo-chip">HubSpot Solutions</li>
-        <li class="logo-chip">Shopify Plus</li>
-      </ul>
-    </section>
-
-    <section class="content-section reveal" id="who-i-help" aria-labelledby="who-i-help-title">
-      <div class="section-text">
-        <h2 id="who-i-help-title"><span>01</span>Founders I Help Most</h2>
-        <h3>Built for operators who already know ads can work</h3>
-        <ul>
-          <li>Ecommerce, local services, and info products with proven offers.</li>
-          <li>Brands already investing in paid ads that need cleaner tracking and strategy.</li>
-          <li>Teams who want paid media as a second sales channel, not a gamble.</li>
-          <li>Founders who value fast communication, transparency, and proactive ideas.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="content-section reveal" id="about" aria-labelledby="about-title">
-      <div class="section-text">
-        <h2 id="about-title"><span>02</span>Experience Snapshot</h2>
-        <h3>4 + Years of Paid‑Media Mastery</h3>
-        <p>Intern‑to‑executive in <em>three months</em>; now trusted with 5‑ to 7‑figure monthly ad budgets.</p>
-        <ul>
-          <li>18.1 % CTR on Google Ads for water‑slide rentals</li>
-          <li>15 % lift in traffic &amp; conversions for dental / med‑spa clients</li>
-          <li>A$1.08 CPC → 37 k landing‑page views on A$2.3 k spend</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="content-section reveal" id="skills" aria-labelledby="skills-title">
-      <div class="section-text">
-        <h2 id="skills-title"><span>03</span>Core Skills &amp; Tech Stack</h2>
-        <h3>Ad Architecture → Server‑Side Tracking</h3>
-        <ul>
-          <li>Meta, Google, TikTok, LinkedIn Ads strategy</li>
-          <li>Pixel, CAPI, GTM, GA4 conversion tracking</li>
-          <li>Budget management &amp; ROAS optimisation</li>
-          <li>GoHighLevel funnel automations &amp; CRM</li>
-        </ul>
-        <p><strong>Tools:</strong> Ads Manager • Google Ads • GTM • GA4 • Hotjar • Looker Studio</p>
-      </div>
-    </section>
-
-    <!-- WINS -->
-    <section class="content-section reveal" id="wins" aria-labelledby="wins-title">
-      <div class="section-text">
-        <h2 id="wins-title"><span>04</span>Certifications &amp; Wins</h2>
-        <h3>Proof You Can Bank On</h3>
-        <ul>
-          <li>Google Ads Search &amp; Display Certified</li>
-          <li>Meta Blueprint — Lead Gen &amp; Real‑Estate Ads</li>
-          <li>Google Analytics Advanced</li>
-          <li>HubSpot Social &amp; Digital Advertising</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="content-section reveal" id="services" aria-labelledby="services-title">
-      <div class="section-text">
-        <h2 id="services-title"><span>05</span>Services</h2>
-        <h3>What I Deliver</h3>
-        <ul>
-          <li>Ad‑account setup &amp; pixel/event configuration</li>
-          <li>Search, P‑Max, Meta CBO/ABO campaign scaling</li>
-          <li>Copy &amp; creative direction (static, carousel, video)</li>
-          <li>90‑day optimisation road‑maps (CVR, CPA, ROAS)</li>
-          <li>Dashboards &amp; CRO recommendations</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="contact-section reveal" id="contact" aria-labelledby="contact-title">
-      <h2 id="contact-title">Ready to Scale Profitably?</h2>
-      <p>Fill out the form — let’s see if we’re a 100% fit.</p>
-
-      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
-        </div>
-        <div class="form-group">
-          <label for="whatsapp">WhatsApp</label>
-          <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required />
-        </div>
-        <div class="form-group">
-          <label for="service">Service Interest</label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Select a service</option>
-            <option value="Meta Ads">Meta Ads</option>
-            <option value="Google Ads">Google Ads</option>
-            <option value="Full-Funnel Package">Full‑Funnel Package</option>
-          </select>
-        </div>
-        <div class="form-group wide">
-          <label for="message">Your Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Tell me about your goals…"></textarea>
-        </div>
-        <!-- Honeypot -->
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
-        <button type="submit" class="btn btn-primary hover-glow">Send Proposal Request</button>
-        <p class="form-note">If you&apos;re already spending on ads and want a second pair of eyes, mention your current monthly budget in the message.</p>
-      </form>
-    </section>
-  </main>
-
-  <!-- No-JS fallback -->
-  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
-
-  <!-- Scripts -->
-  <script src="script.js" defer></script>
-  <script src="background.js" defer></script>
-</body>
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+    <script src="background.js" defer></script>
+  </body>
 </html>

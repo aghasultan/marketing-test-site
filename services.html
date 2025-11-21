@@ -1,155 +1,294 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
-<head>
-  <!-- ===== Core meta ===== -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Services | Agha Sultan Naseer</title>
-  <meta name="description" content="Meta & Google Ads, full-funnel strategy, tracking & CRO services by Agha Sultan Naseer." />
-  <meta property="og:title" content="Services | Agha Sultan Naseer" />
-  <meta property="og:description" content="Meta & Google Ads, full-funnel strategy, tracking & CRO services by Agha Sultan Naseer." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#00a86b" />
-  <meta name="color-scheme" content="light dark" />
+  <head>
+    <!-- ===== Core meta ===== -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Services | Agha Sultan Naseer</title>
+    <meta
+      name="description"
+      content="Meta & Google Ads, full-funnel strategy, tracking & CRO services by Agha Sultan Naseer."
+    />
+    <meta property="og:title" content="Services | Agha Sultan Naseer" />
+    <meta
+      property="og:description"
+      content="Meta & Google Ads, full-funnel strategy, tracking & CRO services by Agha Sultan Naseer."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aghasultan.github.io/marketing-test-site/services.html"
+    />
+    <meta
+      property="og:image"
+      content="https://aghasultan.github.io/marketing-test-site/assets/og-image.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Services | Agha Sultan Naseer" />
+    <meta
+      name="twitter:description"
+      content="Meta & Google Ads, full-funnel strategy, tracking & CRO services by Agha Sultan Naseer."
+    />
+    <meta
+      name="twitter:image"
+      content="https://aghasultan.github.io/marketing-test-site/assets/og-image.jpg"
+    />
+    <meta name="theme-color" content="#00a86b" />
+    <meta name="color-scheme" content="light dark" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+    />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="animations.css" />
-</head>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<body class="no-js">
-  <script>
-    (function(){
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      let saved;
-      try { saved = localStorage.getItem('theme'); } catch (err) {}
-      const theme = saved || (prefersDark ? 'dark' : 'light');
-      const isDark = theme === 'dark';
-      if (isDark) document.body.classList.add('theme-dark');
-      document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-    })();
-  </script>
-  <!-- Optional animated gradient (background.js controls it) -->
-  <div id="gradient-bg" aria-hidden="true"></div>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+  </head>
 
-  <!-- Particle canvas (script.js controls it) -->
-  <canvas id="interactive-bg" aria-hidden="true"></canvas>
+  <body class="no-js">
+    <script>
+      (function () {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        let saved;
+        try {
+          saved = localStorage.getItem("theme");
+        } catch (err) {}
+        const theme = saved || (prefersDark ? "dark" : "light");
+        const isDark = theme === "dark";
+        if (isDark) document.body.classList.add("theme-dark");
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+      })();
+    </script>
+    <!-- Optional animated gradient (background.js controls it) -->
+    <div id="gradient-bg" aria-hidden="true"></div>
 
-  <!-- Sticky CTA (mobile) -->
-  <a href="apply.html#apply-form" class="sticky-cta" aria-label="Apply for a strategy call">Apply</a>
+    <!-- Particle canvas (script.js controls it) -->
+    <canvas id="interactive-bg" aria-hidden="true"></canvas>
 
-  <!-- Mobile burger -->
-  <button
-    id="mobile-nav-toggle"
-    class="mobile-nav-toggle"
-    aria-label="Toggle navigation"
-    aria-controls="navbar"
-    aria-expanded="false"
-  >
-    <span class="line"></span><span class="line"></span><span class="line"></span>
-  </button>
+    <!-- Sticky CTA (mobile) -->
+    <a
+      href="apply.html#apply-form"
+      class="sticky-cta"
+      aria-label="Apply for a strategy call"
+      >Apply</a
+    >
 
-  <header class="main-header">
-    <nav id="navbar" class="navbar" aria-label="Primary">
-      <a href="index.html#hero" class="logo" aria-label="Agha Sultan home">Agha&nbsp;Sultan</a>
-      <ul class="nav-links">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#skills">Skills</a></li>
-        <li><a href="index.html#wins">Wins</a></li>
-        <li><a href="services.html" aria-current="page">Services</a></li>
-        <li>
-          <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle dark mode">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="label">🌙 Dark</span>
-          </button>
-        </li>
-        <li><a class="btn" href="apply.html">Apply</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Mobile burger -->
+    <button
+      id="mobile-nav-toggle"
+      class="mobile-nav-toggle"
+      aria-label="Toggle navigation"
+      aria-controls="navbar"
+      aria-expanded="false"
+    >
+      <span class="line"></span><span class="line"></span
+      ><span class="line"></span>
+    </button>
 
-  <main class="content-wrapper" id="main">
-    <section class="hero-section" id="hero" aria-labelledby="services-hero-title">
-      <div class="hero-content fade-in">
-        <h1 id="services-hero-title">Paid Media That Compounds Growth</h1>
-        <p class="slide-up" style="--a-delay:120ms">
-          Precision Meta &amp; Google Ads management with full-funnel tracking so every dollar drives measurable profit.
-        </p>
-      </div>
-    </section>
-
-    <section class="content-section reveal" aria-labelledby="meta-ads-title">
-      <div class="section-text">
-        <h2 id="meta-ads-title"><span>01</span>Meta Ads Management</h2>
-        <h3>Scale creative that converts</h3>
-        <ul>
-          <li>Creative testing sprints to validate angles and hooks</li>
-          <li>CBO &amp; ABO structures tuned for volume and efficiency</li>
-          <li>Retargeting frameworks for warm audiences &amp; UGC</li>
-          <li>Pixel/CAPI hygiene to keep attribution clean</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="content-section reveal" aria-labelledby="google-ads-title">
-      <div class="section-text">
-        <h2 id="google-ads-title"><span>02</span>Google Ads &amp; P‑Max</h2>
-        <h3>Own intent across search &amp; shopping</h3>
-        <ul>
-          <li>Search, Shopping &amp; P‑Max builds with tight query control</li>
-          <li>High-intent keyword mapping and negative sculpting</li>
-          <li>Ad copy &amp; extensions tailored for CTR and CVR lifts</li>
-          <li>Budget pacing and bid strategies aligned to ROAS</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="content-section reveal" aria-labelledby="full-funnel-title">
-      <div class="section-text">
-        <h2 id="full-funnel-title"><span>03</span>Full-Funnel Growth &amp; Tracking</h2>
-        <h3>See the whole journey, not just clicks</h3>
-        <ul>
-          <li>GA4 &amp; GTM implementation with server-side readiness</li>
-          <li>GoHighLevel automations to nurture and close leads</li>
-          <li>CRO recommendations backed by heatmaps &amp; onsite data</li>
-          <li>Dashboards to align marketing, sales &amp; finance</li>
-        </ul>
-        <a href="apply.html#apply-form" class="btn btn-primary hover-glow" style="margin-top:1.5rem">Apply to Work Together</a>
-      </div>
-    </section>
-
-    <section class="content-section reveal" aria-labelledby="proof-title">
-      <div class="section-text">
-        <h2 id="proof-title"><span>04</span>Client Wins at a Glance</h2>
-        <h3>Proof this system compounds</h3>
-        <ul class="stat-list">
+    <header class="main-header">
+      <nav id="navbar" class="navbar" aria-label="Primary">
+        <a href="index.html#hero" class="logo" aria-label="Agha Sultan home"
+          >Agha&nbsp;Sultan</a
+        >
+        <ul class="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#wins">Wins</a></li>
+          <li><a href="services.html" aria-current="page">Services</a></li>
           <li>
-            <strong>18.1% CTR</strong>
-            <span>Google Ads for regional water-slide rentals after tightening tracking.</span>
+            <button
+              type="button"
+              class="theme-toggle"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Toggle dark mode"
+            >
+              <span class="dot" aria-hidden="true"></span>
+              <span class="label">🌙 Dark</span>
+            </button>
           </li>
-          <li>
-            <strong>37k Visits</strong>
-            <span>A$1.08 CPC pushing 37k landing-page visits on A$2.3k ad spend.</span>
-          </li>
-          <li>
-            <strong>15% Lift</strong>
-            <span>Traffic and conversions for dental and med-spa clients within 60 days.</span>
-          </li>
+          <li><a class="btn shimmer" href="apply.html">Apply</a></li>
         </ul>
-      </div>
-    </section>
-  </main>
+      </nav>
+    </header>
 
-  <!-- No-JS fallback -->
-  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+    <main class="content-wrapper" id="main">
+      <section
+        class="hero-section"
+        id="hero"
+        aria-labelledby="services-hero-title"
+      >
+        <div class="hero-content fade-in">
+          <h1 id="services-hero-title">Paid Media That Compounds Growth</h1>
+          <p class="slide-up" style="--a-delay: 120ms">
+            Precision Meta &amp; Google Ads management with full-funnel tracking
+            so every dollar drives measurable profit.
+          </p>
+        </div>
+      </section>
 
-  <!-- Scripts -->
-  <script src="script.js" defer></script>
-  <script src="background.js" defer></script>
-</body>
+      <section class="content-section reveal" aria-labelledby="meta-ads-title">
+        <div class="section-text">
+          <h2 id="meta-ads-title"><span>01</span>Meta Ads Management</h2>
+          <h3>Scale creative that converts</h3>
+          <ul>
+            <li>Creative testing sprints to validate angles and hooks</li>
+            <li>CBO &amp; ABO structures tuned for volume and efficiency</li>
+            <li>Retargeting frameworks for warm audiences &amp; UGC</li>
+            <li>Pixel/CAPI hygiene to keep attribution clean</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="content-section reveal"
+        aria-labelledby="google-ads-title"
+      >
+        <div class="section-text">
+          <h2 id="google-ads-title"><span>02</span>Google Ads &amp; P‑Max</h2>
+          <h3>Own intent across search &amp; shopping</h3>
+          <ul>
+            <li>
+              Search, Shopping &amp; P‑Max builds with tight query control
+            </li>
+            <li>High-intent keyword mapping and negative sculpting</li>
+            <li>Ad copy &amp; extensions tailored for CTR and CVR lifts</li>
+            <li>Budget pacing and bid strategies aligned to ROAS</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="content-section reveal"
+        aria-labelledby="full-funnel-title"
+      >
+        <div class="section-text">
+          <h2 id="full-funnel-title">
+            <span>03</span>Full-Funnel Growth &amp; Tracking
+          </h2>
+          <h3>See the whole journey, not just clicks</h3>
+          <ul>
+            <li>GA4 &amp; GTM implementation with server-side readiness</li>
+            <li>GoHighLevel automations to nurture and close leads</li>
+            <li>CRO recommendations backed by heatmaps &amp; onsite data</li>
+            <li>Dashboards to align marketing, sales &amp; finance</li>
+          </ul>
+          <a
+            href="apply.html#apply-form"
+            class="btn btn-primary hover-glow"
+            style="margin-top: 1.5rem"
+            >Apply to Work Together</a
+          >
+        </div>
+      </section>
+
+      <!-- PROCESS SECTION -->
+      <section class="content-section reveal" aria-labelledby="process-title">
+        <div class="section-text process-wrapper">
+          <h2 id="process-title"><span>04</span>How We Scale</h2>
+          <h3>From Audit to Automation</h3>
+          <ol class="process-list">
+            <li class="process-item">
+              <span class="step-indicator">01</span>
+              <div class="step-content">
+                <h4>Discovery & Audit</h4>
+                <p>
+                  Review past data, audience insights, and offer economics to
+                  find the "leaky bucket" gaps.
+                </p>
+              </div>
+            </li>
+            <li class="process-item">
+              <span class="step-indicator">02</span>
+              <div class="step-content">
+                <h4>Strategy & Tracking Setup</h4>
+                <p>
+                  Build the campaign architecture and ensure every pixel event
+                  fires correctly (Server-Side + Client).
+                </p>
+              </div>
+            </li>
+            <li class="process-item">
+              <span class="step-indicator">03</span>
+              <div class="step-content">
+                <h4>Creative Testing</h4>
+                <p>
+                  Launch initial tests with varying angles, hooks, and formats to
+                  identify winners early.
+                </p>
+              </div>
+            </li>
+            <li class="process-item">
+              <span class="step-indicator">04</span>
+              <div class="step-content">
+                <h4>Scale & Optimize</h4>
+                <p>
+                  Double down on winning ads while pruning losers. Implement
+                  automated rules for budget scaling.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="content-section reveal" aria-labelledby="proof-title">
+        <div class="section-text">
+          <h2 id="proof-title"><span>05</span>Client Wins at a Glance</h2>
+          <h3>Proof this system compounds</h3>
+          <ul class="stat-list">
+            <li>
+              <strong>18.1% CTR</strong>
+              <span
+                >Google Ads for regional water-slide rentals after tightening
+                tracking.</span
+              >
+            </li>
+            <li>
+              <strong>37k Visits</strong>
+              <span
+                >A$1.08 CPC pushing 37k landing-page visits on A$2.3k ad
+                spend.</span
+              >
+            </li>
+            <li>
+              <strong>15% Lift</strong>
+              <span
+                >Traffic and conversions for dental and med-spa clients within
+                60 days.</span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <!-- No-JS fallback -->
+    <noscript
+      ><style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
+
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+    <script src="background.js" defer></script>
+  </body>
 </html>
