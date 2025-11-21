@@ -5,24 +5,20 @@
 /* Fade In */
 .fade-in {
   opacity: 0;
-  animation: fadeIn 0.9s ease-out forwards;
-  animation-delay: var(--a-delay, 0);
+  animation: fadeIn var(--dur-slow) var(--ease-out-soft) forwards;
+  animation-delay: var(--a-delay, 0ms);
 }
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* Slide Up */
 .slide-up {
   opacity: 0;
   transform: translateY(24px);
-  animation: slideUp 0.8s ease-out forwards;
-  animation-delay: var(--a-delay, 0);
+  animation: slideUp var(--dur-slow) var(--ease-out-soft) forwards;
+  animation-delay: var(--a-delay, 0ms);
 }
 @keyframes slideUp {
   to {
@@ -34,9 +30,9 @@
 /* Scale In */
 .scale-in {
   opacity: 0;
-  transform: scale(0.975);
-  animation: scaleIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-  animation-delay: var(--a-delay, 0);
+  transform: scale(0.95);
+  animation: scaleIn var(--dur-med) var(--ease-standard) forwards;
+  animation-delay: var(--a-delay, 0ms);
 }
 @keyframes scaleIn {
   to {
@@ -52,7 +48,7 @@
     transform 0.05s;
 }
 .hover-glow:hover {
-  box-shadow: 0 0 20px rgba(0, 168, 107, 0.6);
+  box-shadow: var(--glow-primary);
 }
 .hover-glow:active {
   transform: translateY(1px);

@@ -46,7 +46,9 @@
     <meta name="color-scheme" content="light dark" />
 
     <link rel="icon" type="image/svg+xml" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
-    <link rel="apple-touch-icon" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -105,8 +107,11 @@
 
     <header class="main-header">
       <nav id="navbar" class="navbar" aria-label="Primary">
-        <a href="/" class="logo">
-          <img src="/assets/img/Riffat Labs Transparent.svg" alt="Riffat Labs" height="34" />
+        <a href="/" class="logo" aria-label="Agha Sultan Home">
+          <div class="logo-icon-wrapper">
+            <img src="/assets/img/Riffat Labs Transparent.svg" alt="" height="32" width="32" />
+          </div>
+          <span class="logo-text">Agha Sultan</span>
         </a>
         <ul class="nav-links">
           <li><a href="index.html#about">About</a></li>
@@ -178,6 +183,7 @@
               autocomplete="name"
               required
             />
+            <span class="form-error-msg">Please enter your name.</span>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -188,6 +194,7 @@
               autocomplete="email"
               required
             />
+            <span class="form-error-msg">Please enter a valid email address.</span>
           </div>
           <div class="form-group">
             <label for="whatsapp">WhatsApp</label>
@@ -199,6 +206,7 @@
               autocomplete="tel"
               required
             />
+            <span class="form-error-msg">Please enter your WhatsApp number (e.g., +123...).</span>
           </div>
           <div class="form-group">
             <label for="service">Service Interest</label>
@@ -208,6 +216,7 @@
               <option value="Google Ads">Google Ads</option>
               <option value="Full-Funnel Package">Full‑Funnel Package</option>
             </select>
+            <span class="form-error-msg">Please select a service.</span>
           </div>
           <div class="form-group">
             <label for="spend">Monthly Ad Spend</label>
@@ -219,6 +228,7 @@
               <option value="10k_50k">10k–50k</option>
               <option value="50k_plus">50k+</option>
             </select>
+            <span class="form-error-msg">Please select your current ad spend.</span>
           </div>
           <div class="form-group">
             <label for="website">Business Website URL</label>
@@ -230,6 +240,7 @@
               placeholder="https://"
               required
             />
+            <span class="form-error-msg">Please enter a valid URL (starting with http:// or https://).</span>
           </div>
           <div class="form-group wide">
             <label for="message">Your Message</label>
