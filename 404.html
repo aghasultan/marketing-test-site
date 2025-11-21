@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <!-- ===== Core meta ===== -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Page Not Found | Agha Sultan Naseer</title>
+    <meta name="description" content="Page not found." />
+    <meta name="theme-color" content="#00a86b" />
+    <meta name="color-scheme" content="light dark" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+  </head>
+
+  <body class="no-js">
+    <script>
+      (function () {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        let saved;
+        try {
+          saved = localStorage.getItem("theme");
+        } catch (err) {}
+        const theme = saved || (prefersDark ? "dark" : "light");
+        const isDark = theme === "dark";
+        if (isDark) document.body.classList.add("theme-dark");
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+      })();
+    </script>
+    <!-- Optional animated gradient (background.js controls it) -->
+    <div id="gradient-bg" aria-hidden="true"></div>
+
+    <!-- Particle canvas (script.js controls it) -->
+    <canvas id="interactive-bg" aria-hidden="true"></canvas>
+
+    <header class="main-header">
+      <nav id="navbar" class="navbar" aria-label="Primary">
+        <a href="index.html#hero" class="logo" aria-label="Agha Sultan home"
+          >Agha&nbsp;Sultan</a
+        >
+        <ul class="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li>
+            <button
+              type="button"
+              class="theme-toggle"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Toggle dark mode"
+            >
+              <span class="dot" aria-hidden="true"></span>
+              <span class="label">🌙 Dark</span>
+            </button>
+          </li>
+          <li><a class="btn" href="apply.html">Apply</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main
+      class="content-wrapper"
+      id="main"
+      style="
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 5%;
+      "
+    >
+      <section class="hero-content fade-in">
+        <h1>404 - Page Not Found</h1>
+        <p>The page you are looking for does not exist.</p>
+        <a href="index.html" class="btn btn-primary hover-glow">Go Home</a>
+      </section>
+    </main>
+
+    <!-- No-JS fallback -->
+    <noscript
+      ><style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
+
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+    <script src="background.js" defer></script>
+  </body>
+</html>

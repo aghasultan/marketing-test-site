@@ -1,145 +1,276 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
-<head>
-  <!-- ===== Core meta ===== -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Apply to Work With Agha | Agha Sultan Naseer</title>
-  <meta name="description" content="Apply to work directly with Agha Sultan Naseer if you're ready to scale Meta & Google Ads with full-funnel tracking." />
-  <meta property="og:title" content="Apply to Work With Agha | Agha Sultan Naseer" />
-  <meta property="og:description" content="Submit your details to work directly with Agha Sultan Naseer on Meta & Google Ads growth." />
-  <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#00a86b" />
-  <meta name="color-scheme" content="light dark" />
+  <head>
+    <!-- ===== Core meta ===== -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Apply to Work With Agha | Agha Sultan Naseer</title>
+    <meta
+      name="description"
+      content="Apply to work directly with Agha Sultan Naseer if you're ready to scale Meta & Google Ads with full-funnel tracking."
+    />
+    <meta
+      property="og:title"
+      content="Apply to Work With Agha | Agha Sultan Naseer"
+    />
+    <meta
+      property="og:description"
+      content="Submit your details to work directly with Agha Sultan Naseer on Meta & Google Ads growth."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://aghasultan.github.io/marketing-test-site/apply.html"
+    />
+    <meta
+      property="og:image"
+      content="https://aghasultan.github.io/marketing-test-site/assets/og-image.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Apply to Work With Agha | Agha Sultan Naseer"
+    />
+    <meta
+      name="twitter:description"
+      content="Apply to work directly with Agha Sultan Naseer if you're ready to scale Meta & Google Ads with full-funnel tracking."
+    />
+    <meta
+      name="twitter:image"
+      content="https://aghasultan.github.io/marketing-test-site/assets/og-image.jpg"
+    />
+    <meta name="theme-color" content="#00a86b" />
+    <meta name="color-scheme" content="light dark" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>"
+    />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="animations.css" />
-</head>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<body class="no-js">
-  <script>
-    (function(){
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      let saved;
-      try { saved = localStorage.getItem('theme'); } catch (err) {}
-      const theme = saved || (prefersDark ? 'dark' : 'light');
-      const isDark = theme === 'dark';
-      if (isDark) document.body.classList.add('theme-dark');
-      document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
-    })();
-  </script>
-  <!-- Optional animated gradient (background.js controls it) -->
-  <div id="gradient-bg" aria-hidden="true"></div>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="animations.css" />
+  </head>
 
-  <!-- Particle canvas (script.js controls it) -->
-  <canvas id="interactive-bg" aria-hidden="true"></canvas>
+  <body class="no-js">
+    <script>
+      (function () {
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+        let saved;
+        try {
+          saved = localStorage.getItem("theme");
+        } catch (err) {}
+        const theme = saved || (prefersDark ? "dark" : "light");
+        const isDark = theme === "dark";
+        if (isDark) document.body.classList.add("theme-dark");
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+      })();
+    </script>
+    <!-- Optional animated gradient (background.js controls it) -->
+    <div id="gradient-bg" aria-hidden="true"></div>
 
-  <!-- Sticky CTA (mobile) -->
-  <a href="apply.html#apply-form" class="sticky-cta" aria-label="Skip to application form">Apply</a>
+    <!-- Particle canvas (script.js controls it) -->
+    <canvas id="interactive-bg" aria-hidden="true"></canvas>
 
-  <!-- Mobile burger -->
-  <button
-    id="mobile-nav-toggle"
-    class="mobile-nav-toggle"
-    aria-label="Toggle navigation"
-    aria-controls="navbar"
-    aria-expanded="false"
-  >
-    <span class="line"></span><span class="line"></span><span class="line"></span>
-  </button>
+    <!-- Sticky CTA (mobile) -->
+    <a
+      href="apply.html#apply-form"
+      class="sticky-cta"
+      aria-label="Skip to application form"
+      >Apply</a
+    >
 
-  <header class="main-header">
-    <nav id="navbar" class="navbar" aria-label="Primary">
-      <a href="index.html#hero" class="logo" aria-label="Agha Sultan home">Agha&nbsp;Sultan</a>
-      <ul class="nav-links">
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#skills">Skills</a></li>
-        <li><a href="index.html#wins">Wins</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li>
-          <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle dark mode">
-            <span class="dot" aria-hidden="true"></span>
-            <span class="label">🌙 Dark</span>
-          </button>
-        </li>
-        <li><a class="btn" href="apply.html" aria-current="page">Apply</a></li>
-      </ul>
-    </nav>
-  </header>
+    <!-- Mobile burger -->
+    <button
+      id="mobile-nav-toggle"
+      class="mobile-nav-toggle"
+      aria-label="Toggle navigation"
+      aria-controls="navbar"
+      aria-expanded="false"
+    >
+      <span class="line"></span><span class="line"></span
+      ><span class="line"></span>
+    </button>
 
-  <main class="content-wrapper" id="main">
-    <section class="hero-section" id="hero" aria-labelledby="apply-hero-title">
-      <div class="hero-content fade-in">
-        <h1 id="apply-hero-title">Apply to Work With Agha</h1>
-        <p class="slide-up" style="--a-delay:120ms">
-          For serious businesses ready to scale paid media with accountable tracking and full-funnel execution.
+    <header class="main-header">
+      <nav id="navbar" class="navbar" aria-label="Primary">
+        <a href="index.html#hero" class="logo" aria-label="Agha Sultan home"
+          >Agha&nbsp;Sultan</a
+        >
+        <ul class="nav-links">
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#wins">Wins</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li>
+            <button
+              type="button"
+              class="theme-toggle"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Toggle dark mode"
+            >
+              <span class="dot" aria-hidden="true"></span>
+              <span class="label">🌙 Dark</span>
+            </button>
+          </li>
+          <li>
+            <a class="btn" href="apply.html" aria-current="page">Apply</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="content-wrapper" id="main">
+      <section
+        class="hero-section"
+        id="hero"
+        aria-labelledby="apply-hero-title"
+      >
+        <div class="hero-content fade-in">
+          <h1 id="apply-hero-title">Apply to Work With Agha</h1>
+          <p class="slide-up" style="--a-delay: 120ms">
+            For serious businesses ready to scale paid media with accountable
+            tracking and full-funnel execution.
+          </p>
+          <a
+            href="#apply-form"
+            class="btn btn-primary hover-glow"
+            style="--a-delay: 240ms"
+            >Start the Application</a
+          >
+        </div>
+      </section>
+
+      <section
+        class="contact-section reveal"
+        id="apply-form"
+        aria-labelledby="apply-form-title"
+      >
+        <h2 id="apply-form-title">Tell Me About Your Business</h2>
+        <p>
+          Share the essentials so I can confirm we&apos;re a strong fit before
+          we schedule time.
         </p>
-        <a href="#apply-form" class="btn btn-primary hover-glow" style="--a-delay:240ms">Start the Application</a>
-      </div>
-    </section>
 
-    <section class="contact-section reveal" id="apply-form" aria-labelledby="apply-form-title">
-      <h2 id="apply-form-title">Tell Me About Your Business</h2>
-      <p>Share the essentials so I can confirm we&apos;re a strong fit before we schedule time.</p>
+        <form
+          action="https://formspree.io/f/your_form_id"
+          method="POST"
+          class="contact-form"
+        >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="whatsapp">WhatsApp</label>
+            <input
+              id="whatsapp"
+              name="whatsapp"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="service">Service Interest</label>
+            <select id="service" name="service" required>
+              <option value="" disabled selected>Select a service</option>
+              <option value="Meta Ads">Meta Ads</option>
+              <option value="Google Ads">Google Ads</option>
+              <option value="Full-Funnel Package">Full‑Funnel Package</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="spend">Monthly Ad Spend</label>
+            <select id="spend" name="monthly_ad_spend" required>
+              <option value="" disabled selected>
+                Select your current spend
+              </option>
+              <option value="under_10k">&lt;10k</option>
+              <option value="10k_50k">10k–50k</option>
+              <option value="50k_plus">50k+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="website">Business Website URL</label>
+            <input
+              id="website"
+              name="business_website"
+              type="url"
+              inputmode="url"
+              placeholder="https://"
+              required
+            />
+          </div>
+          <div class="form-group wide">
+            <label for="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Tell me about your goals…"
+            ></textarea>
+          </div>
+          <!-- Honeypot -->
+          <input
+            type="text"
+            name="_gotcha"
+            tabindex="-1"
+            autocomplete="off"
+            aria-hidden="true"
+            hidden
+          />
+          <button type="submit" class="btn btn-primary hover-glow">
+            Submit Application
+          </button>
+        </form>
+        <p class="form-note">You&apos;ll hear back within 24–48 hours.</p>
+      </section>
+    </main>
 
-      <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
-        </div>
-        <div class="form-group">
-          <label for="whatsapp">WhatsApp</label>
-          <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required />
-        </div>
-        <div class="form-group">
-          <label for="service">Service Interest</label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Select a service</option>
-            <option value="Meta Ads">Meta Ads</option>
-            <option value="Google Ads">Google Ads</option>
-            <option value="Full-Funnel Package">Full‑Funnel Package</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="spend">Monthly Ad Spend</label>
-          <select id="spend" name="monthly_ad_spend" required>
-            <option value="" disabled selected>Select your current spend</option>
-            <option value="under_10k">&lt;10k</option>
-            <option value="10k_50k">10k–50k</option>
-            <option value="50k_plus">50k+</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="website">Business Website URL</label>
-          <input id="website" name="business_website" type="url" inputmode="url" placeholder="https://" required />
-        </div>
-        <div class="form-group wide">
-          <label for="message">Your Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="Tell me about your goals…"></textarea>
-        </div>
-        <!-- Honeypot -->
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" hidden />
-        <button type="submit" class="btn btn-primary hover-glow">Submit Application</button>
-      </form>
-      <p class="form-note">You&apos;ll hear back within 24–48 hours.</p>
-    </section>
-  </main>
+    <!-- No-JS fallback -->
+    <noscript
+      ><style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
 
-  <!-- No-JS fallback -->
-  <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
-
-  <!-- Scripts -->
-  <script src="script.js" defer></script>
-  <script src="background.js" defer></script>
-</body>
+    <!-- Scripts -->
+    <script src="script.js" defer></script>
+    <script src="background.js" defer></script>
+  </body>
 </html>
