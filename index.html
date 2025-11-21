@@ -46,7 +46,9 @@
     <meta name="color-scheme" content="light dark" />
 
     <link rel="icon" type="image/svg+xml" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
-    <link rel="apple-touch-icon" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
@@ -121,8 +123,11 @@
 
     <header class="main-header">
       <nav id="navbar" class="navbar" aria-label="Primary">
-        <a href="/" class="logo">
-          <img src="/assets/img/Riffat Labs Transparent.svg" alt="Riffat Labs" height="34" />
+        <a href="/" class="logo" aria-label="Agha Sultan Home">
+          <div class="logo-icon-wrapper">
+            <img src="/assets/img/Riffat Labs Transparent.svg" alt="" height="32" width="32" />
+          </div>
+          <span class="logo-text">Agha Sultan</span>
         </a>
         <ul class="nav-links">
           <li><a href="index.html#about" aria-current="page">About</a></li>
@@ -159,12 +164,14 @@
             tracking, and GoHighLevel automations, I turn cold traffic into
             loyal customers — profitably.
           </p>
-          <a
-            href="services.html"
-            class="btn btn-primary hover-glow"
-            style="--a-delay: 240ms"
-            >Explore Services</a
-          >
+          <div class="hero-cta slide-up" style="--a-delay: 200ms">
+            <a href="services.html" class="btn btn-primary hover-glow">Explore Services</a>
+            <a href="apply.html" class="btn hover-glow">Book a Strategy Call</a>
+          </div>
+          <div class="social-proof-line slide-up" style="--a-delay: 320ms">
+            <span class="proof-icon">✓</span>
+            Managing 7-figure ad budgets for brands in the USA, UK &amp; Europe.
+          </div>
         </div>
       </section>
 
@@ -179,112 +186,122 @@
       </section>
 
       <section
-        class="content-section reveal"
+        class="section shell reveal"
         id="who-i-help"
         aria-labelledby="who-i-help-title"
       >
-        <div class="section-text">
-          <h2 id="who-i-help-title"><span>01</span>Founders I Help Most</h2>
+        <div class="section-header">
+          <h2 id="who-i-help-title" class="section-eyebrow"><span>01</span>Founders I Help Most</h2>
           <h3>Built for operators who already know ads can work</h3>
-          <ul>
-            <li>
-              Ecommerce, local services, and info products with proven offers.
-            </li>
-            <li>
-              Brands already investing in paid ads that need cleaner tracking
-              and strategy.
-            </li>
-            <li>
-              Teams who want paid media as a second sales channel, not a gamble.
-            </li>
-            <li>
-              Founders who value fast communication, transparency, and proactive
-              ideas.
-            </li>
-          </ul>
+        </div>
+
+        <div class="card-grid cols-3 reveal-stagger" style="margin-top: var(--space-xl)">
+            <div class="card card--primary">
+                <h3>Ecom &amp; Local Services</h3>
+                <p>Businesses with proven offers ready to scale beyond organic reach.</p>
+            </div>
+            <div class="card card--primary">
+                <h3>Active Advertisers</h3>
+                <p>Brands already investing in paid ads that need cleaner tracking and better ROAS.</p>
+            </div>
+            <div class="card card--primary">
+                <h3>Growth Teams</h3>
+                <p>Founders who want paid media as a reliable revenue engine, not a gamble.</p>
+            </div>
         </div>
       </section>
 
-      <!-- ABOUT -->
+      <!-- ABOUT / PROOF -->
       <section
-        class="content-section reveal"
+        class="section shell reveal"
         id="about"
         aria-labelledby="about-title"
       >
-        <div class="section-text">
-          <h2 id="about-title"><span>02</span>Experience Snapshot</h2>
-          <h3>4 + Years of Paid‑Media Mastery</h3>
-          <p>
-            Intern‑to‑executive in <em>three months</em>; now trusted with 5‑ to
-            7‑figure monthly ad budgets.
-          </p>
-          <ul>
-            <li>18.1 % CTR on Google Ads for water‑slide rentals</li>
-            <li>
-              15 % lift in traffic &amp; conversions for dental / med‑spa
-              clients
-            </li>
-            <li>A$1.08 CPC → 37 k landing‑page views on A$2.3 k spend</li>
-          </ul>
+        <div class="section-header">
+             <h2 id="about-title" class="section-eyebrow"><span>02</span>Experience Snapshot</h2>
+             <h3>4+ Years of Paid-Media Mastery</h3>
+             <p style="max-width: 600px; margin-top: 8px; color: var(--text-muted)">Intern-to-executive in three months; now trusted with 5- to 7-figure monthly ad budgets.</p>
+        </div>
+
+        <div class="card-grid cols-3 reveal-stagger" style="margin-top: var(--space-xl)">
+            <div class="card">
+                <span class="card-stat">18.1%</span>
+                <h3>CTR on Google Ads</h3>
+                <p>For regional water-slide rentals after tightening tracking and query sculpting.</p>
+            </div>
+            <div class="card">
+                <span class="card-stat">15%</span>
+                <h3>Lift in Conversions</h3>
+                <p>For dental &amp; med-spa clients within 60 days of restructuring accounts.</p>
+            </div>
+            <div class="card">
+                <span class="card-stat">37k</span>
+                <h3>Landing Page Views</h3>
+                <p>Generated with A$1.08 CPC on just A$2.3k total ad spend.</p>
+            </div>
         </div>
       </section>
 
       <!-- SKILLS -->
       <section
-        class="content-section reveal"
+        class="section shell reveal"
         id="skills"
         aria-labelledby="skills-title"
       >
-        <div class="section-text">
-          <h2 id="skills-title"><span>03</span>Core Skills &amp; Tech Stack</h2>
-          <h3>Ad Architecture → Server‑Side Tracking</h3>
-          <ul>
-            <li>Meta, Google, TikTok, LinkedIn Ads strategy</li>
-            <li>Pixel, CAPI, GTM, GA4 conversion tracking</li>
-            <li>Budget management &amp; ROAS optimisation</li>
-            <li>GoHighLevel funnel automations &amp; CRM</li>
-          </ul>
-          <p>
-            <strong>Tools:</strong> Ads Manager • Google Ads • GTM • GA4 •
-            Hotjar • Looker Studio
-          </p>
+        <div class="section-header">
+            <h2 id="skills-title" class="section-eyebrow"><span>03</span>Core Skills &amp; Tech Stack</h2>
+            <h3>Ad Architecture → Server‑Side Tracking</h3>
+        </div>
+        <div class="card-grid cols-3 reveal-stagger" style="margin-top: var(--space-xl)">
+            <div class="card card--primary">
+                <h3>Ad Strategy</h3>
+                <ul style="margin: 0; padding-left: 20px; color: var(--text-muted);">
+                    <li>Meta, Google, TikTok, LinkedIn</li>
+                    <li>Budget &amp; ROAS optimization</li>
+                    <li>Full-funnel planning</li>
+                </ul>
+            </div>
+             <div class="card card--primary">
+                <h3>Tracking &amp; Analytics</h3>
+                <ul style="margin: 0; padding-left: 20px; color: var(--text-muted);">
+                    <li>Pixel / CAPI / GTM Setup</li>
+                    <li>GA4 Conversion Tracking</li>
+                    <li>Attribution Modeling</li>
+                </ul>
+            </div>
+             <div class="card card--primary">
+                <h3>Tools</h3>
+                <p>Ads Manager • Google Ads • GTM • GA4 • Hotjar • Looker Studio • GoHighLevel</p>
+            </div>
         </div>
       </section>
 
-      <!-- WINS -->
+      <!-- WINS / SERVICES TEASER -->
       <section
-        class="content-section reveal"
-        id="wins"
-        aria-labelledby="wins-title"
-      >
-        <div class="section-text">
-          <h2 id="wins-title"><span>04</span>Certifications &amp; Wins</h2>
-          <h3>Proof You Can Bank On</h3>
-          <ul>
-            <li>Google Ads Search &amp; Display Certified</li>
-            <li>Meta Blueprint — Lead Gen &amp; Real‑Estate Ads</li>
-            <li>Google Analytics Advanced</li>
-            <li>HubSpot Social &amp; Digital Advertising</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- SERVICES -->
-      <section
-        class="content-section reveal"
+        class="section shell reveal"
         id="services"
         aria-labelledby="services-title"
       >
-        <div class="section-text">
-          <h2 id="services-title"><span>05</span>Services</h2>
-          <h3>What I Deliver</h3>
-          <ul>
-            <li>Ad‑account setup &amp; pixel/event configuration</li>
-            <li>Search, P‑Max, Meta CBO/ABO campaign scaling</li>
-            <li>Copy &amp; creative direction (static, carousel, video)</li>
-            <li>90‑day optimisation road‑maps (CVR, CPA, ROAS)</li>
-            <li>Dashboards &amp; CRO recommendations</li>
-          </ul>
+        <div class="section-header">
+            <h2 id="services-title" class="section-eyebrow"><span>04</span>Services &amp; Wins</h2>
+            <h3>Certified Performance</h3>
+        </div>
+        <div class="card-grid cols-3 reveal-stagger" style="margin-top: var(--space-xl)">
+             <div class="card">
+                <h3>Meta Ads</h3>
+                <p>Blueprint certified strategies for Lead Gen &amp; Ecom. CBO/ABO scaling structures.</p>
+            </div>
+            <div class="card">
+                <h3>Google Ads</h3>
+                <p>Search &amp; Display Certified. High-intent keyword mapping and negative sculpting.</p>
+            </div>
+            <div class="card">
+                <h3>CRO &amp; Analytics</h3>
+                <p>HubSpot &amp; Google Analytics Advanced. Turning data into actionable profit levers.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-2xl);">
+            <a href="services.html" class="btn btn-primary hover-glow">View All Services</a>
         </div>
       </section>
 
@@ -370,6 +387,7 @@
               autocomplete="name"
               required
             />
+            <span class="form-error-msg">Please enter your name.</span>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -380,6 +398,7 @@
               autocomplete="email"
               required
             />
+            <span class="form-error-msg">Please enter a valid email address.</span>
           </div>
           <div class="form-group">
             <label for="whatsapp">WhatsApp</label>
@@ -391,6 +410,7 @@
               autocomplete="tel"
               required
             />
+            <span class="form-error-msg">Please enter your WhatsApp number (e.g., +123...).</span>
           </div>
           <div class="form-group">
             <label for="service">Service Interest</label>
@@ -400,6 +420,7 @@
               <option value="Google Ads">Google Ads</option>
               <option value="Full-Funnel Package">Full‑Funnel Package</option>
             </select>
+            <span class="form-error-msg">Please select a service.</span>
           </div>
           <div class="form-group wide">
             <label for="message">Your Message</label>
