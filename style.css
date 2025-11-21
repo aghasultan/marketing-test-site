@@ -204,8 +204,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 72px;
+  height: 72px;
   transition: transform 0.3s var(--ease-standard);
 }
 .logo img {
@@ -214,19 +214,10 @@ a {
   object-fit: contain;
 }
 
-.logo-text {
-  font-weight: 700;
-  font-size: 1.2rem;
-  letter-spacing: -0.02em;
-  white-space: nowrap;
-}
 
 /* Scrolled state tweaks */
 .navbar--scrolled .logo-icon-wrapper {
   transform: scale(0.9);
-}
-.navbar--scrolled .logo-text {
-  font-size: 1.15rem;
 }
 
 /* Nav Links (Desktop) */
