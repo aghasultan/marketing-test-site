@@ -1239,6 +1239,15 @@ input[type="range"]::-moz-range-thumb {
   margin-right: auto;
 }
 
+.hero-content .hero-tagline {
+  display: block;
+  font-size: clamp(1.2rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: var(--primary);
+  margin-top: -8px;
+  margin-bottom: var(--space-lg);
+}
+
 .hero-content p {
   font-size: 1.125rem;
   line-height: 1.7;
