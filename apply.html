@@ -45,10 +45,10 @@
     <meta name="theme-color" content="#00a86b" />
     <meta name="color-scheme" content="light dark" />
 
-    <link rel="icon" type="image/svg+xml" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
-    <link rel="icon" type="image/svg+xml" sizes="32x32" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
-    <link rel="icon" type="image/svg+xml" sizes="16x16" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="icon" type="image/svg+xml" href="./assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="32x32" href="./assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="./assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/Riffat Labs Favicon 180180 Transparent.svg" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,6 +64,7 @@
   </head>
 
   <body class="no-js">
+    <a class="skip-link" href="#main">Skip to main content</a>
     <script>
       (function () {
         const prefersDark = window.matchMedia(
@@ -107,9 +108,9 @@
 
     <header class="main-header">
       <nav id="navbar" class="navbar" aria-label="Primary">
-        <a href="/" class="logo" aria-label="Agha Sultan Home">
+        <a href="./" class="logo" aria-label="Agha Sultan Home">
           <div class="logo-icon-wrapper">
-            <img src="/assets/img/Riffat Labs Transparent.svg" alt="Riffat Labs Logo" height="36" width="36" />
+            <img src="./assets/img/Riffat Labs Transparent.svg" alt="Riffat Labs Logo" height="36" width="36" />
           </div>
           <span class="logo-text">Agha Sultan</span>
         </a>
@@ -178,11 +179,7 @@
           we schedule time.
         </p>
 
-        <form
-          action="https://formspree.io/f/your_form_id"
-          method="POST"
-          class="contact-form"
-        >
+        <form id="apply-form-body" class="contact-form" novalidate>
           <div class="form-group">
             <label for="name">Name</label>
             <input
@@ -270,12 +267,12 @@
             aria-hidden="true"
             hidden
           />
-          <div class="form-success-panel" hidden>
+          <div class="form-success-panel" role="status" aria-live="polite" hidden>
             <div style="display: flex; gap: 12px; align-items: center;">
-              <div style="width: 32px; height: 32px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">✓</div>
+              <div style="width: 32px; height: 32px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ℹ</div>
               <div>
-                <h4 style="margin: 0; font-size: 1rem;">Application Sent!</h4>
-                <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">I'll review your details and reply within 1–2 business days.</p>
+                <h4 style="margin: 0; font-size: 1rem;">Application portal is offline</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">Please email <a href="mailto:hello@aghasultan.com">hello@aghasultan.com</a> with your details while we migrate the form.</p>
               </div>
             </div>
           </div>
@@ -292,9 +289,9 @@
     <footer class="main-footer">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="/" class="logo" aria-label="Agha Sultan Home" style="margin-bottom: 16px;">
+          <a href="./" class="logo" aria-label="Agha Sultan Home" style="margin-bottom: 16px;">
             <div class="logo-icon-wrapper">
-              <img src="/assets/img/Riffat Labs Transparent.svg" alt="Riffat Labs Logo" height="36" width="36" />
+              <img src="./assets/img/Riffat Labs Transparent.svg" alt="Riffat Labs Logo" height="36" width="36" />
             </div>
             <span class="logo-text">Agha Sultan</span>
           </a>
@@ -342,6 +339,24 @@
     >
 
     <!-- Scripts -->
+    <script>
+      const applyFormEl = document.getElementById("apply-form-body");
+      const offlineNotice = document.querySelector(".form-success-panel");
+
+      if (applyFormEl && offlineNotice) {
+        offlineNotice.tabIndex = -1;
+        applyFormEl.addEventListener("submit", (event) => {
+          event.preventDefault();
+          if (!applyFormEl.checkValidity()) {
+            applyFormEl.reportValidity();
+            return;
+          }
+
+          offlineNotice.hidden = false;
+          offlineNotice.focus();
+        });
+      }
+    </script>
     <script src="script.js" defer></script>
     <script src="background.js" defer></script>
   </body>
