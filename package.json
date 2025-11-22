@@ -4,6 +4,7 @@
   "description": "This repo hosts **Agha Sultan Naseer’s multi-page marketing experience**—a fast, SEO-optimised site built with vanilla HTML/CSS/JS and deployed via **GitHub Pages**.",
   "main": "background.js",
   "scripts": {
+    "start": "http-server . -p 4173",
     "test": "npx playwright test"
   },
   "repository": {
