@@ -119,9 +119,39 @@ a {
   color: inherit;
 }
 :focus-visible {
-  outline: 3px solid var(--primary);
-  outline-offset: 2px;
+  outline: 4px solid var(--primary-dark);
+  outline-offset: 4px;
   border-radius: 6px;
+  box-shadow: 0 0 0 4px var(--surface);
+}
+.theme-dark :focus-visible {
+  outline-color: var(--primary-light);
+  box-shadow: 0 0 0 4px var(--surface-elevated);
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -999px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 12px 24px;
+  z-index: 9999;
+  font-weight: 700;
+  border-radius: 0 0 12px 12px;
+  text-decoration: none;
+  transition: top 0.3s ease;
+  pointer-events: none;
+  opacity: 0;
+}
+.skip-link:focus {
+  top: 0;
+  pointer-events: auto;
+  opacity: 1;
+  outline: 4px solid var(--text);
+  outline-offset: -4px;
 }
 .no-js .reveal {
   opacity: 1 !important;
