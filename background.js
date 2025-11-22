@@ -32,7 +32,8 @@
     reduced = e.matches;
     if (reduced) {
       cancelAnimationFrame(raf);
-      el.style.background = "linear-gradient(90deg,#fff,#f6fff9)";
+      // Removed hardcoded light background for reduced motion
+      // el.style.background = "linear-gradient(90deg,#fff,#f6fff9)";
     } else animate();
   });
 
@@ -44,13 +45,21 @@
   }
 
   function tick() {
-    const c0a = colors[idx[0]],
-      c0b = colors[idx[1]];
-    const c1a = colors[idx[2]],
-      c1b = colors[idx[3]];
-    const cLeft = color(c0a, c0b, step);
-    const cRight = color(c1a, c1b, 1 - step);
-    el.style.background = `linear-gradient(90deg, ${cLeft}, ${cRight})`;
+    // Check for dark mode
+    if (document.body.classList.contains("theme-dark")) {
+       // In dark mode, we let the CSS background (or gradient) take over
+       // to avoid showing the light-colored JS gradient.
+       // We can just clear the inline style so CSS wins.
+       el.style.background = "";
+    } else {
+        const c0a = colors[idx[0]],
+          c0b = colors[idx[1]];
+        const c1a = colors[idx[2]],
+          c1b = colors[idx[3]];
+        const cLeft = color(c0a, c0b, step);
+        const cRight = color(c1a, c1b, 1 - step);
+        el.style.background = `linear-gradient(90deg, ${cLeft}, ${cRight})`;
+    }
 
     step += speed;
     if (step >= 1) {
