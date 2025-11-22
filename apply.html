@@ -109,8 +109,9 @@
       <nav id="navbar" class="navbar" aria-label="Primary">
         <a href="/" class="logo" aria-label="Agha Sultan Home">
           <div class="logo-icon-wrapper">
-            <img src="/assets/img/Riffat Labs Transparent.svg" alt="" height="72" width="72" />
+            <img src="/assets/img/Riffat Labs Transparent.svg" alt="Riffat Labs Logo" height="36" width="36" />
           </div>
+          <span class="logo-text">Agha Sultan</span>
         </a>
         <ul class="nav-links">
           <li><a href="index.html#about">About</a></li>
@@ -154,6 +155,15 @@
             style="--a-delay: 240ms"
             >Start the Application</a
           >
+        </div>
+      </section>
+
+      <!-- PRE-FOOTER CTA -->
+      <section class="pre-footer-cta reveal" aria-labelledby="pre-footer-title">
+        <div class="pre-footer-content">
+          <h2 id="pre-footer-title">Ready to treat paid media like a profit center?</h2>
+          <p>Scale your campaigns with a strategy built for ROI, not just vanity metrics.</p>
+          <a href="#apply-form" class="btn btn-primary hover-glow">Apply to Work With Agha</a>
         </div>
       </section>
 
@@ -249,6 +259,7 @@
               rows="4"
               placeholder="Tell me about your goals…"
             ></textarea>
+            <span class="form-helper-text">Anything else I should know?</span>
           </div>
           <!-- Honeypot -->
           <input
@@ -259,13 +270,66 @@
             aria-hidden="true"
             hidden
           />
+          <div class="form-success-panel" hidden>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <div style="width: 32px; height: 32px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">✓</div>
+              <div>
+                <h4 style="margin: 0; font-size: 1rem;">Application Sent!</h4>
+                <p style="margin: 0; font-size: 0.9rem; color: var(--text-muted);">I'll review your details and reply within 1–2 business days.</p>
+              </div>
+            </div>
+          </div>
           <button type="submit" class="btn btn-primary hover-glow">
             Submit Application
           </button>
+          <p class="form-note" style="font-size: 0.85rem; text-align: center; margin-top: 16px;">
+             No spam. Your details are only used to respond to your enquiry.
+          </p>
         </form>
-        <p class="form-note">You&apos;ll hear back within 24–48 hours.</p>
       </section>
     </main>
+
+    <footer class="main-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo" aria-label="Agha Sultan Home" style="margin-bottom: 16px;">
+            <div class="logo-icon-wrapper">
+              <img src="/assets/img/Riffat Labs Transparent.svg" alt="Riffat Labs Logo" height="36" width="36" />
+            </div>
+            <span class="logo-text">Agha Sultan</span>
+          </a>
+          <p>
+            Data-driven paid media strategies that turn ad spend into
+            predictable profit for brands across the globe.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-nav">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="scale.html">Scale</a></li>
+            <li><a href="apply.html">Apply</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul class="footer-nav">
+            <li><a href="mailto:hello@aghasultan.com">hello@aghasultan.com</a></li>
+            <li><a href="https://linkedin.com/in/aghasultannaseer" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://twitter.com/aghasultan" target="_blank" rel="noopener">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 Agha Sultan Naseer. All rights reserved.</span>
+        <div style="display: flex; gap: 16px;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
 
     <!-- No-JS fallback -->
     <noscript
