@@ -578,17 +578,18 @@ document.addEventListener("DOMContentLoaded", () => {
       // Simulate network request
       setTimeout(() => {
         form.classList.remove("sending");
-        btn.classList.add("btn-success");
-        btn.textContent = "Sent — I’ll get back to you within 24 hours";
-        btn.disabled = true;
-
-        // Reset after a while if needed
-        // setTimeout(() => {
-        //   form.reset();
-        //   btn.textContent = originalText;
-        //   btn.disabled = false;
-        //   btn.classList.remove("btn-success");
-        // }, 5000);
+        // Show inline success panel
+        const successPanel = form.querySelector('.form-success-panel');
+        if (successPanel) {
+            successPanel.hidden = false;
+            // Optionally hide the button
+            btn.style.display = 'none';
+        } else {
+            // Fallback
+            btn.classList.add("btn-success");
+            btn.textContent = "Sent — I’ll get back to you within 24 hours";
+            btn.disabled = true;
+        }
       }, 1500);
     });
   });

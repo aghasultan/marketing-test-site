@@ -4,7 +4,7 @@ test("homepage has title and hero text", async ({ page }) => {
   await page.goto("/");
   await expect(page).toHaveTitle(/Agha Sultan Naseer/);
   await expect(
-    page.getByRole("heading", { name: /Turn Ad Spend into Profit/i }),
+    page.getByRole("heading", { name: /Turn Paid Ads Into Profit/i }),
   ).toBeVisible();
 });
 
@@ -12,7 +12,8 @@ test("navigation links work", async ({ page }) => {
   await page.goto("/");
 
   // Click the Services link.
-  await page.getByRole("link", { name: "Services", exact: true }).click();
+  // We use .first() or specify the container because there might be duplicate links in footer
+  await page.getByRole("navigation").getByRole("link", { name: "Services", exact: true }).click();
 
   // Expects page to have a heading with the name of Services.
   await expect(

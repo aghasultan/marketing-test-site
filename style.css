@@ -204,8 +204,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 72px;
-  height: 72px;
+  width: 36px;
+  height: 36px;
   transition: transform 0.3s var(--ease-standard);
 }
 .logo img {
@@ -214,10 +214,26 @@ a {
   object-fit: contain;
 }
 
+.logo-text {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+@media (max-width: 768px) {
+  .logo-icon-wrapper {
+    width: 32px;
+    height: 32px;
+  }
+  .logo-text {
+    font-size: 1.1rem;
+  }
+}
 
 /* Scrolled state tweaks */
 .navbar--scrolled .logo-icon-wrapper {
-  transform: scale(0.9);
+  transform: scale(0.95);
 }
 
 /* Nav Links (Desktop) */
@@ -1375,4 +1391,431 @@ input[type="range"]::-moz-range-thumb {
   color: #fff !important;
   cursor: default;
   box-shadow: none !important;
+}
+/* Task 2: Hero Layout Upgrade (Index) */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: var(--space-3xl);
+  }
+}
+
+.hero-text-col {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-text-col h1 {
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.1;
+  font-weight: 800;
+  margin: 0 0 var(--space-md);
+  text-shadow: var(--glow-primary);
+}
+
+.hero-text-col p {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 0 var(--space-xl);
+  line-height: 1.6;
+}
+
+.hero-visual-col {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+@media (max-width: 1023px) {
+  .hero-visual-col {
+    margin-top: var(--space-lg);
+    display: none; /* Hide visual on mobile if it takes too much space? Prompt says "stacking on mobile". Let's keep it. */
+    display: flex;
+  }
+  /* Fix alignment on mobile to be clean */
+  .hero-text-col {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+/* Section Label */
+.section-label {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: var(--space-sm);
+  background: var(--primary-soft);
+  padding: 6px 12px;
+  border-radius: 99px;
+}
+
+/* Fit Strip */
+.fit-strip {
+  margin-top: var(--space-lg);
+  width: 100%;
+  background: color-mix(in srgb, var(--surface) 50%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(4px);
+}
+
+.fit-strip h4 {
+  margin: 0 0 4px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.fit-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fit-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.fit-item::before {
+  content: "✓";
+  color: var(--primary);
+  font-weight: 800;
+}
+
+/* Snapshot Card */
+.snapshot-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 400px;
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.snapshot-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+.snapshot-row:last-child {
+  border-bottom: none;
+}
+.snapshot-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.snapshot-val {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Override hero-cta for grid */
+.hero-text-col .hero-cta {
+  justify-content: flex-start;
+  width: 100%;
+}
+/* Task 3: Unified Results Strip */
+.results-strip {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  padding: var(--space-xl) 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .results-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .results-strip {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+.result-pill {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.result-pill:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-soft);
+}
+
+.result-metric {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.result-label {
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+  display: block;
+  font-size: 1rem;
+}
+
+.result-explainer {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+/* Task 4: Process Section Styling */
+.process-section {
+  padding: var(--section-padding-y) 5%;
+}
+
+.process-grid {
+  display: grid;
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .process-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+.process-step {
+  position: relative;
+  padding-top: 20px;
+}
+
+/* Horizontal Line on Desktop */
+@media (min-width: 768px) {
+  .process-step::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--border);
+  }
+  /* Highlight current step part of line? Optional. */
+}
+
+.step-num {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary-soft); /* Faded number */
+  line-height: 1;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.process-step h3 {
+  font-size: 1.25rem;
+  margin: 0 0 10px;
+  color: var(--text);
+}
+
+.process-step p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+    padding-left: 20px;
+    border-left: 2px solid var(--border);
+    margin-left: 10px;
+  }
+  .process-step::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    box-shadow: 0 0 0 4px var(--surface);
+  }
+  .step-num {
+    display: none; /* Hide big number on mobile, use dot? Or keep it. */
+  }
+  .process-step {
+    padding-top: 0;
+  }
+}
+/* Task 6: Pre-footer CTA & Footer */
+.pre-footer-cta {
+  background: var(--surface-elevated);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: var(--space-3xl) 5%;
+  text-align: center;
+}
+
+.pre-footer-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.pre-footer-content h2 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin: 0 0 16px;
+  line-height: 1.2;
+}
+
+.pre-footer-content p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin: 0 0 24px;
+}
+
+/* Footer Polish */
+.main-footer {
+  background: var(--background);
+  padding: var(--space-3xl) 5% var(--space-xl);
+  border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+  display: grid;
+  gap: var(--space-2xl);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+.footer-brand h4 {
+  font-size: 1.1rem;
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+
+.footer-brand p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+.footer-col h5 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 0 0 16px;
+}
+
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.footer-nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.footer-nav a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: var(--space-2xl) auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+/* Task 7: Form & Microcopy Polish */
+.form-helper-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.form-success-panel {
+  background: color-mix(in srgb, var(--success) 10%, var(--surface));
+  border: 1px solid var(--success);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  grid-column: 1/-1;
+  animation: slideDown 0.4s var(--ease-out-soft);
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
