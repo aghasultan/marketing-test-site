@@ -5,7 +5,9 @@
   "main": "background.js",
   "scripts": {
     "start": "http-server . -p 4173",
-    "test": "http-server . -p 4173 >/dev/null 2>&1 & SERVER_PID=$!; npx playwright test --config=playwright.config.ts; code=$?; kill $SERVER_PID; exit $code"
+    "test": "http-server . -p 4173 >/dev/null 2>&1 & SERVER_PID=$!; npx playwright test --config=playwright.config.ts; code=$?; kill $SERVER_PID; exit $code",
+    "format": "prettier --write .",
+    "lint": "prettier --check ."
   },
   "repository": {
     "type": "git",

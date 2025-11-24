@@ -4,11 +4,12 @@ This repo hosts **Agha Sultan Naseer’s multi-page marketing experience**—a f
 
 ## Pages & Purpose
 
-| File         | Live URL (GitHub Pages)           | Purpose                                                                                           |
-| ------------ | --------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `index.html` | `/marketing-test-site/`           | Personal overview covering experience, skills, wins, and a general enquiry form.                  |
-| `scale.html` | `/marketing-test-site/scale.html` | Main client acquisition landing page showcasing the Profit Scaling System™, services, and proof. |
-| `apply.html` | `/marketing-test-site/apply.html` | High-intent application page with a detailed form to qualify strategy call applicants.            |
+| File            | Live URL (GitHub Pages)              | Purpose                                                                                           |
+| --------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| `index.html`    | `/marketing-test-site/`              | Personal overview covering experience, skills, wins, and a general enquiry form.                  |
+| `services.html` | `/marketing-test-site/services.html` | Detailed breakdown of Meta Ads, Google Ads, and full-funnel tracking services.                    |
+| `scale.html`    | `/marketing-test-site/scale.html`    | Main client acquisition landing page showcasing the Profit Scaling System™, services, and proof. |
+| `apply.html`    | `/marketing-test-site/apply.html`    | High-intent application page with a detailed form to qualify strategy call applicants.            |
 
 **Conversion flow:** Paid and organic traffic land on `scale.html`, warm prospects click through to `apply.html`, and serious leads complete the Formspree-powered application. The overview page (`index.html`) links back into this journey for visitors who start on the personal profile.
 

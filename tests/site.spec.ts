@@ -12,7 +12,10 @@ test("navigation links work", async ({ page }) => {
   await page.goto("/");
 
   // Click the Services link.
-  await page.getByRole("navigation").getByRole("link", { name: "Services", exact: true }).click();
+  await page
+    .getByRole("navigation")
+    .getByRole("link", { name: "Services", exact: true })
+    .click();
 
   // Expects page to have a heading with the name of Services.
   await expect(
@@ -98,6 +101,6 @@ test("index page form simulation works", async ({ page }) => {
   // Then eventually it shows "Sent" or success panel
   // The script.js shows success panel if present, else changes button text
   // index.html has .form-success-panel
-  const successPanel = page.locator('.form-success-panel').first();
+  const successPanel = page.locator(".form-success-panel").first();
   await expect(successPanel).toBeVisible({ timeout: 5000 });
 });

@@ -28,7 +28,9 @@
   --error-bg: #ffebee;
 
   /* Typography */
-  --font-sans: "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
+  --font-sans:
+    "Space Grotesk", system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
+    sans-serif;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-bold: 700;
@@ -56,7 +58,7 @@
   --glow-primary: 0 0 18px rgba(0, 168, 107, 0.45);
 
   /* Animation */
-  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-out-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --dur-fast: 200ms;
   --dur-med: 350ms;
@@ -122,7 +124,10 @@ body {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   z-index: 999;
   text-decoration: none;
-  transition: left 150ms ease, transform 150ms ease, box-shadow 150ms ease;
+  transition:
+    left 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
 }
 
 .skip-link:focus-visible {
@@ -526,7 +531,10 @@ a {
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
   backdrop-filter: blur(8px);
-  transition: transform 0.3s var(--ease-standard), box-shadow 0.3s var(--ease-standard), background-color 0.3s;
+  transition:
+    transform 0.3s var(--ease-standard),
+    box-shadow 0.3s var(--ease-standard),
+    background-color 0.3s;
 }
 .logo-card img {
   max-width: 100%;
@@ -700,7 +708,9 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
   box-shadow: 0 0 0 4px var(--surface);
   border: 2px solid var(--primary-dark);
-  transition: transform 0.1s, box-shadow 0.2s;
+  transition:
+    transform 0.1s,
+    box-shadow 0.2s;
 }
 input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.1);
@@ -796,7 +806,11 @@ input[type="range"]::-moz-range-thumb {
   margin-bottom: 0;
 }
 .guarantee-band .section-text {
-  background: color-mix(in srgb, var(--primary-soft) 40%, var(--surface-elevated));
+  background: color-mix(
+    in srgb,
+    var(--primary-soft) 40%,
+    var(--surface-elevated)
+  );
   border-color: var(--primary);
   box-shadow: var(--shadow-lg);
 }
@@ -896,7 +910,10 @@ input[type="range"]::-moz-range-thumb {
   color: var(--primary);
   font-family: var(--font-sans);
   box-shadow: 0 0 0 6px var(--surface-elevated); /* clear line behind */
-  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .process-item:hover .step-indicator {
@@ -1188,7 +1205,9 @@ input[type="range"]::-moz-range-thumb {
     padding: 80px 20px 40px;
 
     transform: translateY(-100%);
-    transition: transform 0.4s var(--ease-standard), opacity 0.4s ease;
+    transition:
+      transform 0.4s var(--ease-standard),
+      opacity 0.4s ease;
     opacity: 0;
     visibility: hidden;
     z-index: 40; /* Below toggle, above page */
@@ -1369,7 +1388,10 @@ input[type="range"]::-moz-range-thumb {
   border-radius: var(--radius-md);
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.25s var(--ease-standard), box-shadow 0.25s var(--ease-standard), border-color 0.2s;
+  transition:
+    transform 0.25s var(--ease-standard),
+    box-shadow 0.25s var(--ease-standard),
+    border-color 0.2s;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -1575,8 +1597,13 @@ input[type="range"]::-moz-range-thumb {
 }
 
 @keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .snapshot-row {
@@ -1635,7 +1662,9 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 .result-pill:hover {
   transform: translateY(-3px);
@@ -1865,6 +1894,12 @@ input[type="range"]::-moz-range-thumb {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
