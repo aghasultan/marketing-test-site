@@ -505,53 +505,66 @@ a {
   padding: var(--space-xl) 5% var(--space-2xl);
 }
 .logo-list {
-  width: min(100%, 760px);
+  width: min(100%, 1200px);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, minmax(160px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 18px;
   justify-items: stretch;
   align-items: center;
   list-style: none;
   padding: 0;
 }
-.logo-chip {
+.logo-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px 22px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  height: 100px;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s var(--ease-standard), box-shadow 0.3s var(--ease-standard), background-color 0.3s;
+}
+.logo-card img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+.logo-card:hover {
+  transform: translateY(-4px);
   box-shadow: var(--shadow-md);
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  backdrop-filter: blur(6px);
+  border-color: var(--primary-soft);
+  background: rgba(255, 255, 255, 0.95);
 }
-.logo-chip::before {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(0, 168, 107, 0.85),
-    rgba(0, 168, 107, 0.4)
-  );
-  box-shadow: 0 0 0 4px rgba(0, 168, 107, 0.08);
+.logo-card:hover img {
+  filter: grayscale(0);
+  opacity: 1;
+  transform: scale(1.05);
 }
-.logo-chip:hover {
-  color: var(--text);
-  border-color: rgba(0, 168, 107, 0.4);
-  box-shadow: 0 12px 36px rgba(0, 168, 107, 0.18);
+
+/* Ensure logos look good in dark mode by keeping card light */
+body.theme-dark .logo-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: transparent;
 }
+body.theme-dark .logo-card:hover {
+  background: #ffffff;
+}
+
 @media (min-width: 640px) {
   .logo-list {
-    grid-template-columns: repeat(4, minmax(160px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .logo-list {
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
