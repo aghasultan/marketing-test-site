@@ -548,6 +548,16 @@ a {
   transform: scale(1.05);
 }
 
+/* Handle white/light logos by inverting them to dark */
+.logo-card img.logo-inverted {
+  filter: invert(1) grayscale(100%);
+  opacity: 0.85;
+}
+.logo-card:hover img.logo-inverted {
+  filter: invert(1); /* Keep inverted so it stays visible */
+  opacity: 1;
+}
+
 /* Ensure logos look good in dark mode by keeping card light */
 body.theme-dark .logo-card {
   background: rgba(255, 255, 255, 0.85);
