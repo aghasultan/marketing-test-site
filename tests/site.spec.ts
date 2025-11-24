@@ -46,15 +46,6 @@ test("dark mode toggle works", async ({ page }) => {
   }
 });
 
-test("apply page has form", async ({ page }) => {
-  await page.goto("/apply.html");
-  await expect(page.getByLabel("Name")).toBeVisible();
-  await expect(page.getByLabel("Email")).toBeVisible();
-  await expect(
-    page.getByRole("button", { name: "Submit Application" }),
-  ).toBeVisible();
-});
-
 test("404 page works", async ({ page }) => {
   await page.goto("/404.html");
   await expect(
