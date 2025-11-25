@@ -230,8 +230,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 150px;
+  height: 150px;
   transition: transform 0.3s var(--ease-standard);
 }
 .logo img {
@@ -248,10 +248,6 @@ a {
 }
 
 @media (max-width: 768px) {
-  .logo-icon-wrapper {
-    width: 32px;
-    height: 32px;
-  }
   .logo-text {
     font-size: 1.1rem;
   }
