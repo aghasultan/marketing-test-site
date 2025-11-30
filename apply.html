@@ -37,16 +37,16 @@ description: High-intent application for brands ready to scale 7-figure ad budge
         <form id="wizard-form" class="wizard-form">
           <fieldset data-step="0" class="active-step">
             <legend>1. Who are you?</legend>
-            <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" required placeholder="Jane Doe" /></div>
-            <div class="form-group"><label for="email">Business Email</label><input type="email" id="email" name="email" required placeholder="jane@company.com" /></div>
-            <div class="form-group"><label for="website">Website URL</label><input type="url" id="website" name="website" required placeholder="https://company.com" /></div>
+            <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" class="form-control" required placeholder="Jane Doe" /></div>
+            <div class="form-group"><label for="email">Business Email</label><input type="email" id="email" name="email" class="form-control" required placeholder="jane@company.com" /></div>
+            <div class="form-group"><label for="website">Website URL</label><input type="url" id="website" name="website" class="form-control" required placeholder="https://company.com" /></div>
           </fieldset>
 
           <fieldset data-step="1" class="hidden">
             <legend>2. Business Metrics</legend>
             <div class="form-group">
               <label for="spend">Current Monthly Ad Spend</label>
-              <select id="spend" name="spend" required>
+              <select id="spend" name="spend" class="form-control" required>
                 <option value="" disabled selected>Select range...</option>
                 <option value="under_10k">&lt; $10k / mo</option>
                 <option value="10k_50k">$10k – $50k / mo</option>
@@ -55,7 +55,7 @@ description: High-intent application for brands ready to scale 7-figure ad budge
             </div>
             <div class="form-group">
               <label for="service">Primary Goal</label>
-              <select id="service" name="service" required>
+              <select id="service" name="service" class="form-control" required>
                 <option value="" disabled selected>What do you need most?</option>
                 <option value="scale">Scale ROAS / Volume</option>
                 <option value="tracking">Fix Tracking / Attribution</option>
@@ -68,7 +68,7 @@ description: High-intent application for brands ready to scale 7-figure ad budge
             <legend>3. The Vision</legend>
             <div class="form-group wide">
               <label for="message">Biggest bottleneck right now?</label>
-              <textarea id="message" name="message" rows="5" required placeholder="We have a winning creative but can't scale..."></textarea>
+              <textarea id="message" name="message" class="form-control" rows="5" required placeholder="We have a winning creative but can't scale..."></textarea>
             </div>
           </fieldset>
         </form>
