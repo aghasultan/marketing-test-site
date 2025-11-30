@@ -1,7 +1,7 @@
 title: "Agha Sultan Naseer"
 description: "Meta & Google Ads Strategist. Turning ad spend into profit."
-url: "https://aghasultan.github.io"
-baseurl: "/marketing-test-site"
+url: ""
+baseurl: ""
 theme: # Blank
 markdown: kramdown
 permalink: /blog/:title/
