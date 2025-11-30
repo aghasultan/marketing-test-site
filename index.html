@@ -50,6 +50,46 @@ description: Lahore-based media buyer turning ad spend into profit with 7‑figu
     <li class="logo-card"><img class="logo-inverted" src="{{ site.baseurl }}/assets/img/clients/peres-siding.avif" alt="Peres Siding" width="160" height="60" loading="lazy" /></li>
   </ul>
 </section>
+<section class="section shell reveal" id="roi-calculator">
+  <div class="section-header">
+    <h2 class="section-eyebrow"><span>05</span>Value Engineering</h2>
+    <h3>Estimate Your Upside</h3>
+  </div>
+
+  <div class="bento-grid">
+    <div class="bento-item bento-span-2">
+      <form id="roi-form" class="contact-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div class="form-group">
+          <label>Monthly Ad Spend ($)</label>
+          <input type="number" id="monthly-spend" placeholder="10000" />
+        </div>
+        <div class="form-group">
+          <label>Hours Managing Ads (Per Week)</label>
+          <input type="number" id="hours-week" placeholder="10" />
+        </div>
+        <div class="form-group wide">
+          <label>Your Hourly Rate ($)</label>
+          <input type="number" id="hourly-rate" placeholder="100" />
+        </div>
+      </form>
+      <div style="margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
+        *Calculates efficiency gains + time saved vs hiring an agency.
+      </div>
+    </div>
+
+    <div class="bento-item" style="background: var(--surface); border-color: var(--primary);">
+      <div>
+        <h3 class="bento-title" style="color: var(--primary);">Projected Annual Value</h3>
+        <div class="bento-value" id="projected-savings">$0</div>
+        <div style="margin-top: 10px; font-weight: 700;">ROI: <span id="annual-roi" style="color: var(--success);">0%</span></div>
+      </div>
+      <div class="bento-badges">
+        <span class="badge" style="background: var(--primary-soft); color: var(--primary);">High Leverage</span>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="{{ site.baseurl }}/assets/js/roi-calculator.js" defer></script>
 <section class="section shell reveal" id="skills" aria-labelledby="skills-title">
   <div class="section-header">
     <h2 id="skills-title" class="section-eyebrow"><span>04</span>Systematic Authority</h2>

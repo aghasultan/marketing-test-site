@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/aghasultan/marketing-test-site#readme",
   "devDependencies": {
-    "@playwright/test": "^1.56.1",
+    "@playwright/test": "^1.57.0",
     "http-server": "^14.1.1",
     "prettier": "^3.6.2"
   }

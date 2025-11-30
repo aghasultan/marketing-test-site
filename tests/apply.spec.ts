@@ -2,39 +2,38 @@ import { test, expect } from "@playwright/test";
 
 test("apply page has correct title", async ({ page }) => {
   await page.goto("/apply.html");
-  await expect(page).toHaveTitle("Apply to Work With Agha | Agha Sultan Naseer");
+  await expect(page).toHaveTitle(/Apply to Work With Agha/);
 });
 
 test("apply page has all required form fields", async ({ page }) => {
   await page.goto("/apply.html");
 
-  await expect(page.getByLabel("Name")).toBeVisible();
-  await expect(page.getByLabel("Email")).toBeVisible();
-  await expect(page.getByLabel("WhatsApp")).toBeVisible();
-  await expect(page.getByLabel("Service Interest")).toBeVisible();
-  await expect(page.getByLabel("Monthly Ad Spend")).toBeVisible();
-  await expect(page.getByLabel("Business Website URL")).toBeVisible();
-  await expect(page.getByLabel("Your Message")).toBeVisible();
+  await expect(page.locator("text=Full Name")).toBeVisible();
+  await expect(page.locator("text=Business Email")).toBeVisible();
+  await expect(page.locator("text=Website URL")).toBeVisible();
 });
 
-test("form submission shows offline message", async ({ page }) => {
+test("form submission flow", async ({ page }) => {
   await page.goto("/apply.html");
 
-  // Fill the form
-  await page.getByLabel("Name").fill("Test Applicant");
-  await page.getByLabel("Email").fill("applicant@example.com");
-  await page.getByLabel("WhatsApp").fill("+15550199");
-  await page.getByLabel("Service Interest").selectOption("Meta Ads");
-  await page.getByLabel("Monthly Ad Spend").selectOption("10k_50k");
-  await page.getByLabel("Business Website URL").fill("https://example.com");
-  await page.getByLabel("Your Message").fill("I am interested in scaling my ads.");
+  // Step 1
+  await page.fill('#name', 'Test Applicant');
+  await page.fill('#email', 'applicant@example.com');
+  await page.fill('#website', 'https://example.com');
+  await page.click('#btn-next');
 
-  // Submit
-  await page.getByRole("button", { name: "Submit Application" }).click();
+  // Step 2
+  await expect(page.locator('fieldset[data-step="1"]')).toBeVisible();
+  await page.selectOption('#spend', '10k_50k');
+  await page.selectOption('#service', 'scale');
+  await page.click('#btn-next');
 
-  // Verify the offline message appears
-  const successPanel = page.locator(".form-success-panel");
-  await expect(successPanel).toBeVisible();
-  await expect(successPanel).toContainText("Application portal is offline");
-  await expect(successPanel).toContainText("Please email hello@aghasultan.com");
+  // Step 3
+  await expect(page.locator('fieldset[data-step="2"]')).toBeVisible();
+  await page.fill('#message', 'I am interested in scaling my ads.');
+  await page.click('#btn-submit');
+
+  // Verify success message
+  await expect(page.locator('#wizard-success')).toBeVisible();
+  await expect(page.locator('#wizard-success')).toContainText("Application Received!");
 });

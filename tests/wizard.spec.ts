@@ -19,7 +19,7 @@ test.describe("Contact Wizard Flow", () => {
     await page.fill("#website", "https://valid-site.com");
     await page.click("#btn-next");
     await page.selectOption("#spend", "10k_50k");
-    await page.selectOption("#service", "Meta Ads");
+    await page.selectOption("#service", "scale");
     await page.click("#btn-next");
     await page.fill("#message", "Ready to scale.");
     await page.click("#btn-submit");
