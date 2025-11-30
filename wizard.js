@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
         body: payload,
-        headers: { 'Accept': 'application/json' }
+        headers: { Accept: "application/json" },
       });
       if (response.ok) {
         form.classList.add("hidden");
@@ -97,9 +97,13 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".wizard-progress").classList.add("hidden");
         successMsg.classList.remove("hidden");
         successMsg.classList.add("fade-in");
-      } else { throw new Error("Submission failed"); }
+      } else {
+        throw new Error("Submission failed");
+      }
     } catch (error) {
-      alert("Something went wrong. Please email me directly at hello@aghasultan.com");
+      alert(
+        "Something went wrong. Please email me directly at hello@aghasultan.com",
+      );
       submitBtn.disabled = false;
       submitBtn.textContent = "Submit Application";
     }
@@ -108,10 +112,14 @@ document.addEventListener("DOMContentLoaded", () => {
   nextBtn.addEventListener("click", handleNext);
   prevBtn.addEventListener("click", handlePrev);
   submitBtn.addEventListener("click", handleSubmit);
-  form.addEventListener("blur", (e) => {
-    if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) {
-      e.target.checkValidity() ? clearError(e.target) : showError(e.target);
-    }
-  }, true);
+  form.addEventListener(
+    "blur",
+    (e) => {
+      if (["INPUT", "TEXTAREA", "SELECT"].includes(e.target.tagName)) {
+        e.target.checkValidity() ? clearError(e.target) : showError(e.target);
+      }
+    },
+    true,
+  );
   updateUI();
 });

@@ -4,27 +4,47 @@ title: "Digital Garden & Insights"
 description: "Strategies, case studies, and tutorials on scaling paid media."
 permalink: /blog.html
 ---
-<section class="hero-section" style="min-height: 40vh; align-items: end; padding-bottom: var(--space-xl);">
+
+<section
+  class="hero-section"
+  style="min-height: 40vh; align-items: end; padding-bottom: var(--space-xl)"
+>
   <div class="hero-content fade-in">
     <h1>Digital Garden</h1>
-    <p class="slide-up" style="--a-delay: 100ms; max-width: 600px;">
-      Field notes on Meta Ads, Google performance, and full-funnel tracking architecture.
+    <p class="slide-up" style="--a-delay: 100ms; max-width: 600px">
+      Field notes on Meta Ads, Google performance, and full-funnel tracking
+      architecture.
     </p>
   </div>
 </section>
 <section class="section shell reveal">
   <div class="card-grid cols-3 reveal-stagger">
     {% for post in site.posts %}
-      <a href="{{ site.baseurl }}{{ post.url }}" class="card hover-glow" style="text-decoration: none; display: flex; flex-direction: column;">
-        <span class="section-label" style="font-size: 0.75rem; margin-bottom: 12px;">{{ post.category | default: "Strategy" }}</span>
-        <h3 style="margin-bottom: 12px;">{{ post.title }}</h3>
-        <p style="flex-grow: 1; color: var(--text-muted);">
-          {{ post.excerpt | strip_html | truncatewords: 20 }}
-        </p>
-        <div style="margin-top: 16px; font-size: 0.9rem; font-weight: 600; color: var(--primary);">
-          Read Article →
-        </div>
-      </a>
+    <a
+      href="{{ site.baseurl }}{{ post.url }}"
+      class="card hover-glow"
+      style="text-decoration: none; display: flex; flex-direction: column"
+    >
+      <span
+        class="section-label"
+        style="font-size: 0.75rem; margin-bottom: 12px"
+        >{{ post.category | default: "Strategy" }}</span
+      >
+      <h3 style="margin-bottom: 12px">{{ post.title }}</h3>
+      <p style="flex-grow: 1; color: var(--text-muted)">
+        {{ post.excerpt | strip_html | truncatewords: 20 }}
+      </p>
+      <div
+        style="
+          margin-top: 16px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          color: var(--primary);
+        "
+      >
+        Read Article →
+      </div>
+    </a>
     {% endfor %}
   </div>
 </section>

@@ -1,8 +1,17 @@
 title: "Agha Sultan Naseer"
 description: "Meta & Google Ads Strategist. Turning ad spend into profit."
-url: ""
-baseurl: ""
+url: "https://aghasultan.github.io"
+baseurl: "/marketing-test-site"
 theme: # Blank
 markdown: kramdown
 permalink: /blog/:title/
-exclude: ["node_modules", "package.json", "package-lock.json", "playwright.config.ts", "tests", "README.md"]
+exclude:
+  [
+    "node_modules",
+    "package.json",
+    "package-lock.json",
+    "playwright.config.ts",
+    "tests",
+    "README.md",
+    "vendor/",
+  ]

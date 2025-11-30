@@ -6,6 +6,7 @@
   "scripts": {
     "start": "http-server . -p 4173",
     "test": "npx playwright test",
+    "build:vercel": "jekyll build --config _config.yml,_config_vercel.yml",
     "format": "prettier --write .",
     "lint": "prettier --check .",
     "build": "jekyll build"

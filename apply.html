@@ -3,18 +3,20 @@ layout: default
 title: Apply to Work With Agha | Strategy Call
 description: High-intent application for brands ready to scale 7-figure ad budgets.
 ---
-<section class="section shell" style="padding-top: var(--space-3xl);">
+
+<section class="section shell" style="padding-top: var(--space-3xl)">
   <div class="bento-grid">
     <div class="bento-item">
       <div>
         <h1 class="bento-title">Let's Scale</h1>
-        <p style="color: var(--text-muted); margin-bottom: 20px;">
-          I partner with a select few brands each quarter. Fill out this application to see if we're a match.
+        <p style="color: var(--text-muted); margin-bottom: 20px">
+          I partner with a select few brands each quarter. Fill out this
+          application to see if we're a match.
         </p>
-        <ul style="list-style: none; padding: 0; color: var(--text-muted);">
-           <li style="margin-bottom: 8px;">✅ Audit & Strategy</li>
-           <li style="margin-bottom: 8px;">✅ Full-Funnel Tracking</li>
-           <li style="margin-bottom: 8px;">✅ Creative Testing</li>
+        <ul style="list-style: none; padding: 0; color: var(--text-muted)">
+          <li style="margin-bottom: 8px">✅ Audit & Strategy</li>
+          <li style="margin-bottom: 8px">✅ Full-Funnel Tracking</li>
+          <li style="margin-bottom: 8px">✅ Creative Testing</li>
         </ul>
       </div>
       <div class="bento-badges">
@@ -24,22 +26,70 @@ description: High-intent application for brands ready to scale 7-figure ad budge
     </div>
 
     <div class="bento-item bento-span-2">
-      <div id="wizard-app" class="wizard-container" style="border: none; box-shadow: none; padding: 0;">
-        <div class="wizard-progress"><div id="wizard-progress-fill" class="wizard-progress-fill"></div></div>
+      <div
+        id="wizard-app"
+        class="wizard-container"
+        style="border: none; box-shadow: none; padding: 0"
+      >
+        <div class="wizard-progress">
+          <div id="wizard-progress-fill" class="wizard-progress-fill"></div>
+        </div>
 
-        <div id="wizard-success" class="hidden text-center" style="padding: 40px;">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+        <div
+          id="wizard-success"
+          class="hidden text-center"
+          style="padding: 40px"
+        >
+          <div style="font-size: 3rem; margin-bottom: 1rem">🚀</div>
           <h2>Application Received!</h2>
-          <p style="color: var(--text-muted);">I've received your details. Expect a personal response within 24 hours.</p>
-          <a href="{{ site.baseurl }}/" class="btn btn-primary hover-glow" style="margin-top: 20px;">Back to Home</a>
+          <p style="color: var(--text-muted)">
+            I've received your details. Expect a personal response within 24
+            hours.
+          </p>
+          <a
+            href="{{ site.baseurl }}/"
+            class="btn btn-primary hover-glow"
+            style="margin-top: 20px"
+            >Back to Home</a
+          >
         </div>
 
         <form id="wizard-form" class="wizard-form">
           <fieldset data-step="0" class="active-step">
             <legend>1. Who are you?</legend>
-            <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" class="form-control" required placeholder="Jane Doe" /></div>
-            <div class="form-group"><label for="email">Business Email</label><input type="email" id="email" name="email" class="form-control" required placeholder="jane@company.com" /></div>
-            <div class="form-group"><label for="website">Website URL</label><input type="url" id="website" name="website" class="form-control" required placeholder="https://company.com" /></div>
+            <div class="form-group">
+              <label for="name">Full Name</label
+              ><input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                required
+                placeholder="Jane Doe"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Business Email</label
+              ><input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                required
+                placeholder="jane@company.com"
+              />
+            </div>
+            <div class="form-group">
+              <label for="website">Website URL</label
+              ><input
+                type="url"
+                id="website"
+                name="website"
+                class="form-control"
+                required
+                placeholder="https://company.com"
+              />
+            </div>
           </fieldset>
 
           <fieldset data-step="1" class="hidden">
@@ -56,7 +106,9 @@ description: High-intent application for brands ready to scale 7-figure ad budge
             <div class="form-group">
               <label for="service">Primary Goal</label>
               <select id="service" name="service" class="form-control" required>
-                <option value="" disabled selected>What do you need most?</option>
+                <option value="" disabled selected>
+                  What do you need most?
+                </option>
                 <option value="scale">Scale ROAS / Volume</option>
                 <option value="tracking">Fix Tracking / Attribution</option>
                 <option value="full_funnel">Full Funnel Build</option>
@@ -68,15 +120,26 @@ description: High-intent application for brands ready to scale 7-figure ad budge
             <legend>3. The Vision</legend>
             <div class="form-group wide">
               <label for="message">Biggest bottleneck right now?</label>
-              <textarea id="message" name="message" class="form-control" rows="5" required placeholder="We have a winning creative but can't scale..."></textarea>
+              <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                rows="5"
+                required
+                placeholder="We have a winning creative but can't scale..."
+              ></textarea>
             </div>
           </fieldset>
         </form>
 
         <div class="wizard-controls">
           <button type="button" id="btn-prev" class="btn">Back</button>
-          <button type="button" id="btn-next" class="btn btn-primary">Next Step</button>
-          <button type="button" id="btn-submit" class="btn btn-primary hidden">Submit Application</button>
+          <button type="button" id="btn-next" class="btn btn-primary">
+            Next Step
+          </button>
+          <button type="button" id="btn-submit" class="btn btn-primary hidden">
+            Submit Application
+          </button>
         </div>
       </div>
     </div>

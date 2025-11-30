@@ -17,23 +17,25 @@ test("form submission flow", async ({ page }) => {
   await page.goto("/apply.html");
 
   // Step 1
-  await page.fill('#name', 'Test Applicant');
-  await page.fill('#email', 'applicant@example.com');
-  await page.fill('#website', 'https://example.com');
-  await page.click('#btn-next');
+  await page.fill("#name", "Test Applicant");
+  await page.fill("#email", "applicant@example.com");
+  await page.fill("#website", "https://example.com");
+  await page.click("#btn-next");
 
   // Step 2
   await expect(page.locator('fieldset[data-step="1"]')).toBeVisible();
-  await page.selectOption('#spend', '10k_50k');
-  await page.selectOption('#service', 'scale');
-  await page.click('#btn-next');
+  await page.selectOption("#spend", "10k_50k");
+  await page.selectOption("#service", "scale");
+  await page.click("#btn-next");
 
   // Step 3
   await expect(page.locator('fieldset[data-step="2"]')).toBeVisible();
-  await page.fill('#message', 'I am interested in scaling my ads.');
-  await page.click('#btn-submit');
+  await page.fill("#message", "I am interested in scaling my ads.");
+  await page.click("#btn-submit");
 
   // Verify success message
-  await expect(page.locator('#wizard-success')).toBeVisible();
-  await expect(page.locator('#wizard-success')).toContainText("Application Received!");
+  await expect(page.locator("#wizard-success")).toBeVisible();
+  await expect(page.locator("#wizard-success")).toContainText(
+    "Application Received!",
+  );
 });
