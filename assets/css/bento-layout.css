@@ -1,0 +1,71 @@
+/* ==========================================================
+   Bento Grid Design System
+   ========================================================== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(180px, auto);
+  }
+  .bento-span-2 {
+    grid-column: span 2;
+  }
+  .bento-tall {
+    grid-row: span 2;
+  }
+}
+
+.bento-item {
+  background: var(--surface-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s var(--ease-out-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+.bento-item:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow: var(--glow-primary);
+  border-color: var(--primary-soft);
+  z-index: 2;
+}
+
+.bento-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.bento-value {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.bento-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.badge {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}

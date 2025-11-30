@@ -8,12 +8,9 @@
     <meta name="theme-color" content="#00a86b" />
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/img/riffat-labs-favicon.svg" />
-    <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/img/riffat-labs-favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
     <link rel="stylesheet" href="{{ site.baseurl }}/animations.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/bento-layout.css" />
   </head>
   <body class="no-js">
     <script>
@@ -30,10 +27,7 @@
     <a class="skip-link" href="#main">Skip to main content</a>
     <div id="gradient-bg" aria-hidden="true"></div>
     <canvas id="interactive-bg" aria-hidden="true"></canvas>
-    <a href="{{ site.baseurl }}/apply.html" class="sticky-cta" aria-label="Apply for a strategy call">Apply</a>
-    <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation" aria-controls="navbar" aria-expanded="false">
-      <span class="line"></span><span class="line"></span><span class="line"></span>
-    </button>
+
     <header class="main-header">
       <nav id="navbar" class="navbar" aria-label="Primary">
         <a href="{{ site.baseurl }}/" class="logo" aria-label="Agha Sultan Home">
@@ -44,21 +38,23 @@
         <ul class="nav-links">
           <li><a href="{{ site.baseurl }}/#about">About</a></li>
           <li><a href="{{ site.baseurl }}/#skills">Skills</a></li>
-          <li><a href="{{ site.baseurl }}/blog.html" {% if page.url == "/blog.html" %}class="active"{% endif %}>Blog</a></li>
-          <li><a href="{{ site.baseurl }}/services.html">Services</a></li>
+          <li><a href="{{ site.baseurl }}/blog">Blog</a></li>
+          <li><a href="{{ site.baseurl }}/services">Services</a></li>
           <li>
             <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle dark mode">
               <span class="dot" aria-hidden="true"></span>
               <span class="label">🌙 Dark</span>
             </button>
           </li>
-          <li><a class="btn shimmer" href="{{ site.baseurl }}/apply.html">Apply</a></li>
+          <li><a class="btn shimmer" href="{{ site.baseurl }}/apply">Apply</a></li>
         </ul>
       </nav>
     </header>
+
     <main class="content-wrapper" id="main">
       {{ content }}
     </main>
+
     <footer class="main-footer">
       <div class="footer-grid">
         <div class="footer-brand">
@@ -73,9 +69,9 @@
           <h5>Navigation</h5>
           <ul class="footer-nav">
             <li><a href="{{ site.baseurl }}/#about">About</a></li>
-            <li><a href="{{ site.baseurl }}/blog.html">Blog</a></li>
-            <li><a href="{{ site.baseurl }}/services.html">Services</a></li>
-            <li><a href="{{ site.baseurl }}/apply.html">Apply</a></li>
+            <li><a href="{{ site.baseurl }}/blog">Blog</a></li>
+            <li><a href="{{ site.baseurl }}/services">Services</a></li>
+            <li><a href="{{ site.baseurl }}/apply">Apply</a></li>
           </ul>
         </div>
         <div class="footer-col">
