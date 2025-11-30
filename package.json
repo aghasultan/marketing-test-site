@@ -1,29 +1,26 @@
 {
-  "name": "app",
-  "version": "1.0.0",
-  "description": "This repo hosts **Agha Sultan Naseer’s multi-page marketing experience**—a fast, SEO-optimised site built with vanilla HTML/CSS/JS and deployed via **GitHub Pages**.",
-  "main": "background.js",
+  "name": "marketing-test-site",
+  "version": "1.0.1",
+  "description": "Agha Sultan Naseer’s multi-page marketing experience",
+  "private": true,
   "scripts": {
     "start": "http-server . -p 4173",
-    "test": "http-server . -p 4173 >/dev/null 2>&1 & SERVER_PID=$!; npx playwright test --config=playwright.config.ts; code=$?; kill $SERVER_PID; exit $code",
+    "test": "npx playwright test",
     "format": "prettier --write .",
-    "lint": "prettier --check ."
+    "lint": "prettier --check .",
+    "build": "jekyll build"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "http-server": "^14.1.1",
+    "prettier": "^3.6.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aghasultan/marketing-test-site.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/aghasultan/marketing-test-site/issues"
-  },
-  "homepage": "https://github.com/aghasultan/marketing-test-site#readme",
-  "devDependencies": {
-    "@playwright/test": "^1.57.0",
-    "http-server": "^14.1.1",
-    "prettier": "^3.6.2"
-  }
+  "license": "MIT"
 }
