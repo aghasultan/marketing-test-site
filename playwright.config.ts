@@ -9,6 +9,7 @@ export default defineConfig({
   reporter: "html",
   use: {
     trace: "on-first-retry",
+    baseURL: "http://localhost:4173",
   },
   projects: [
     {
@@ -17,8 +18,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npx http-server .",
-    port: 8080,
+    command: "npx http-server . -p 4173",
+    port: 4173,
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },
