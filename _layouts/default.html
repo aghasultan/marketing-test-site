@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}" />
+    <meta name="theme-color" content="#00a86b" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/img/riffat-labs-favicon.svg" />
+    <link rel="apple-touch-icon" href="{{ site.baseurl }}/assets/img/riffat-labs-favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/animations.css" />
+  </head>
+  <body class="no-js">
+    <script>
+      (function () {
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        let saved;
+        try { saved = localStorage.getItem("theme"); } catch (err) {}
+        const theme = saved || (prefersDark ? "dark" : "light");
+        const isDark = theme === "dark";
+        if (isDark) document.body.classList.add("theme-dark");
+        document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+      })();
+    </script>
+    <a class="skip-link" href="#main">Skip to main content</a>
+    <div id="gradient-bg" aria-hidden="true"></div>
+    <canvas id="interactive-bg" aria-hidden="true"></canvas>
+    <a href="{{ site.baseurl }}/apply.html" class="sticky-cta" aria-label="Apply for a strategy call">Apply</a>
+    <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation" aria-controls="navbar" aria-expanded="false">
+      <span class="line"></span><span class="line"></span><span class="line"></span>
+    </button>
+    <header class="main-header">
+      <nav id="navbar" class="navbar" aria-label="Primary">
+        <a href="{{ site.baseurl }}/" class="logo" aria-label="Agha Sultan Home">
+          <div class="logo-icon-wrapper">
+            <img src="{{ site.baseurl }}/assets/img/riffat-labs-transparent.svg" alt="Riffat Labs Logo" height="150" width="150" />
+          </div>
+        </a>
+        <ul class="nav-links">
+          <li><a href="{{ site.baseurl }}/#about">About</a></li>
+          <li><a href="{{ site.baseurl }}/#skills">Skills</a></li>
+          <li><a href="{{ site.baseurl }}/blog.html" {% if page.url == "/blog.html" %}class="active"{% endif %}>Blog</a></li>
+          <li><a href="{{ site.baseurl }}/services.html">Services</a></li>
+          <li>
+            <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle dark mode">
+              <span class="dot" aria-hidden="true"></span>
+              <span class="label">🌙 Dark</span>
+            </button>
+          </li>
+          <li><a class="btn shimmer" href="{{ site.baseurl }}/apply.html">Apply</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="content-wrapper" id="main">
+      {{ content }}
+    </main>
+    <footer class="main-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="{{ site.baseurl }}/" class="logo" style="margin-bottom: 16px">
+            <div class="logo-icon-wrapper">
+              <img src="{{ site.baseurl }}/assets/img/riffat-labs-transparent.svg" alt="Logo" height="150" width="150" />
+            </div>
+          </a>
+          <p>Data-driven paid media strategies that turn ad spend into profit.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-nav">
+            <li><a href="{{ site.baseurl }}/#about">About</a></li>
+            <li><a href="{{ site.baseurl }}/blog.html">Blog</a></li>
+            <li><a href="{{ site.baseurl }}/services.html">Services</a></li>
+            <li><a href="{{ site.baseurl }}/apply.html">Apply</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Contact</h5>
+          <ul class="footer-nav">
+            <li><a href="mailto:hello@aghasultan.com">hello@aghasultan.com</a></li>
+            <li><a href="https://linkedin.com/in/aghasultannaseer" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://twitter.com/aghasultan" target="_blank" rel="noopener">Twitter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; {{ site.time | date: '%Y' }} Agha Sultan Naseer. All rights reserved.</span>
+        <div style="display: flex; gap: 16px">
+          <a href="#">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+    <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+    <script src="{{ site.baseurl }}/script.js" defer></script>
+    <script src="{{ site.baseurl }}/background.js" defer></script>
+  </body>
+</html>
