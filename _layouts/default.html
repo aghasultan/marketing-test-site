@@ -2,22 +2,42 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{{ page.description | default: site.description }}" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>
+      {% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{
+      site.title }}{% endif %}
+    </title>
+    <meta
+      name="description"
+      content="{{ page.description | default: site.description }}"
+    />
     <meta name="theme-color" content="#00a86b" />
     <meta name="color-scheme" content="light dark" />
-    <link rel="icon" type="image/svg+xml" href="{{ site.baseurl }}/assets/img/riffat-labs-favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="{{ site.baseurl }}/assets/img/riffat-labs-favicon.svg"
+    />
     <link rel="stylesheet" href="{{ site.baseurl }}/style.css" />
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/bento-layout.css" />
+    <link
+      rel="stylesheet"
+      href="{{ site.baseurl }}/assets/css/bento-layout.css"
+    />
     <link rel="stylesheet" href="{{ site.baseurl }}/animations.css" />
   </head>
   <body class="no-js">
     <script>
       (function () {
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
         let saved;
-        try { saved = localStorage.getItem("theme"); } catch (err) {}
+        try {
+          saved = localStorage.getItem("theme");
+        } catch (err) {}
         const theme = saved || (prefersDark ? "dark" : "light");
         const isDark = theme === "dark";
         if (isDark) document.body.classList.add("theme-dark");
@@ -30,9 +50,18 @@
 
     <header class="main-header">
       <nav id="navbar" class="navbar" aria-label="Primary">
-        <a href="{{ site.baseurl }}/" class="logo" aria-label="Agha Sultan Home">
+        <a
+          href="{{ site.baseurl }}/"
+          class="logo"
+          aria-label="Agha Sultan Home"
+        >
           <div class="logo-icon-wrapper">
-            <img src="{{ site.baseurl }}/assets/img/riffat-labs-transparent.svg" alt="Riffat Labs Logo" height="150" width="150" />
+            <img
+              src="{{ site.baseurl }}/assets/img/riffat-labs-transparent.svg"
+              alt="Riffat Labs Logo"
+              height="150"
+              width="150"
+            />
           </div>
         </a>
         <ul class="nav-links">
@@ -41,29 +70,47 @@
           <li><a href="{{ site.baseurl }}/blog">Blog</a></li>
           <li><a href="{{ site.baseurl }}/services">Services</a></li>
           <li>
-            <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false" aria-label="Toggle dark mode">
+            <button
+              type="button"
+              class="theme-toggle"
+              data-theme-toggle
+              aria-pressed="false"
+              aria-label="Toggle dark mode"
+            >
               <span class="dot" aria-hidden="true"></span>
               <span class="label">🌙 Dark</span>
             </button>
           </li>
-          <li><a class="btn shimmer" href="{{ site.baseurl }}/apply">Apply</a></li>
+          <li>
+            <a class="btn shimmer" href="{{ site.baseurl }}/apply">Apply</a>
+          </li>
         </ul>
       </nav>
     </header>
 
-    <main class="content-wrapper" id="main">
-      {{ content }}
-    </main>
+    <main class="content-wrapper" id="main">{{ content }}</main>
 
     <footer class="main-footer">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="{{ site.baseurl }}/" class="logo" style="margin-bottom: 16px">
+          <a
+            href="{{ site.baseurl }}/"
+            class="logo"
+            style="margin-bottom: 16px"
+          >
             <div class="logo-icon-wrapper">
-              <img src="{{ site.baseurl }}/assets/img/riffat-labs-transparent.svg" alt="Logo" height="150" width="150" />
+              <img
+                src="{{ site.baseurl }}/assets/img/riffat-labs-transparent.svg"
+                alt="Logo"
+                height="150"
+                width="150"
+              />
             </div>
           </a>
-          <p>Data-driven paid media strategies that turn ad spend into predictable profit.</p>
+          <p>
+            Data-driven paid media strategies that turn ad spend into
+            predictable profit.
+          </p>
         </div>
         <div class="footer-col">
           <h5>Navigation</h5>
@@ -77,20 +124,46 @@
         <div class="footer-col">
           <h5>Contact</h5>
           <ul class="footer-nav">
-            <li><a href="mailto:hello@aghasultan.com">hello@aghasultan.com</a></li>
-            <li><a href="https://linkedin.com/in/aghasultannaseer" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="https://twitter.com/aghasultan" target="_blank" rel="noopener">Twitter</a></li>
+            <li>
+              <a href="mailto:hello@aghasultan.com">hello@aghasultan.com</a>
+            </li>
+            <li>
+              <a
+                href="https://linkedin.com/in/aghasultannaseer"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/aghasultan"
+                target="_blank"
+                rel="noopener"
+                >Twitter</a
+              >
+            </li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; {{ site.time | date: '%Y' }} Agha Sultan Naseer. All rights reserved.</span>
+        <span
+          >&copy; {{ site.time | date: '%Y' }} Agha Sultan Naseer. All rights
+          reserved.</span
+        >
         <div style="display: flex; gap: 16px">
           <a href="#">Privacy Policy</a>
         </div>
       </div>
     </footer>
-    <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+    <noscript
+      ><style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
     <script src="{{ site.baseurl }}/script.js" defer></script>
     <script src="{{ site.baseurl }}/background.js" defer></script>
   </body>

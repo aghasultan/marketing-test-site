@@ -1,32 +1,70 @@
 ---
 layout: default
 ---
-<section class="section shell" style="padding-top: var(--space-3xl);">
+
+<section class="section shell" style="padding-top: var(--space-3xl)">
   <div class="blog-post-header fade-in">
     <span class="section-label">{{ page.category | default: "Insights" }}</span>
-    <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 16px;">{{ page.title }}</h1>
-    <div style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: var(--space-xl);">
+    <h1 style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 16px">
+      {{ page.title }}
+    </h1>
+    <div
+      style="
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: var(--space-xl);
+      "
+    >
       Published on {{ page.date | date_to_string }}
     </div>
   </div>
-  <div class="blog-grid" style="display: grid; grid-template-columns: 1fr; gap: var(--space-2xl); max-width: 1200px; margin: 0 auto;">
-    <article class="post-content reveal" style="max-width: 720px; line-height: 1.8; font-size: 1.1rem;">
+  <div
+    class="blog-grid"
+    style="
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-2xl);
+      max-width: 1200px;
+      margin: 0 auto;
+    "
+  >
+    <article
+      class="post-content reveal"
+      style="max-width: 720px; line-height: 1.8; font-size: 1.1rem"
+    >
       {{ content }}
     </article>
-    <aside class="blog-sidebar reveal-stagger" style="display: none;">
-      <div class="card card--primary sticky-cta-box" style="position: sticky; top: 100px;">
+    <aside class="blog-sidebar reveal-stagger" style="display: none">
+      <div
+        class="card card--primary sticky-cta-box"
+        style="position: sticky; top: 100px"
+      >
         <h3>Need to scale?</h3>
         <p>I help brands turn ad spend into profit.</p>
-        <a href="{{ site.baseurl }}/apply.html" class="btn btn-primary hover-glow" style="width: 100%">Work With Me</a>
+        <a
+          href="{{ site.baseurl }}/apply.html"
+          class="btn btn-primary hover-glow"
+          style="width: 100%"
+          >Work With Me</a
+        >
       </div>
     </aside>
   </div>
 </section>
 <style>
   @media (min-width: 1024px) {
-    .blog-grid { grid-template-columns: 2fr 1fr; }
-    .blog-sidebar { display: block !important; }
+    .blog-grid {
+      grid-template-columns: 2fr 1fr;
+    }
+    .blog-sidebar {
+      display: block !important;
+    }
   }
-  .post-content h2 { margin-top: 2rem; color: var(--primary); }
-  .post-content ul { margin-bottom: 1.5rem; }
+  .post-content h2 {
+    margin-top: 2rem;
+    color: var(--primary);
+  }
+  .post-content ul {
+    margin-bottom: 1.5rem;
+  }
 </style>

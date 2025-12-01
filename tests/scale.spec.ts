@@ -27,7 +27,9 @@ test("scale page displays profit scaling system", async ({ page }) => {
   ).toBeVisible();
 
   // Check for a few list items in the framework
-  await expect(page.getByText("Deep Research & Offer Positioning")).toBeVisible();
+  await expect(
+    page.getByText("Deep Research & Offer Positioning"),
+  ).toBeVisible();
   await expect(page.getByText("Tracking & Attribution Setup")).toBeVisible();
   await expect(page.getByText("Campaign Architecture")).toBeVisible();
 });
