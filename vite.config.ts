@@ -7,8 +7,17 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@components": path.resolve(__dirname, "./src/components"),
+      "@hooks": path.resolve(__dirname, "./src/hooks"),
+      "@pages": path.resolve(__dirname, "./src/pages"),
+      "@content": path.resolve(__dirname, "./src/content"),
     },
   },
-  // Vercel handles root routing natively. No base path needed.
+  // Vercel / Netlify / Modern Hosting default to root
   base: '/',
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+    sourcemap: false,
+  }
 });
