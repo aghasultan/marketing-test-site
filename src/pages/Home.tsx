@@ -18,6 +18,7 @@ export const Home = () => {
         title="Agha Sultan Naseer | Meta & Google Ads Strategist"
         description="Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe."
         canonical="https://aghasultan.com/"
+        image="/img/riffat-labs-transparent.svg"
       />
 
       {/* Hero Section */}
