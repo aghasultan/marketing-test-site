@@ -116,7 +116,6 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 # Hugo
-/public/
 
 # Next.js / Nuxt / SvelteKit
 .next/

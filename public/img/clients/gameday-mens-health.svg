@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80" role="img" aria-labelledby="title desc">
+  <title id="title">Gameday Men's Health</title>
+  <desc id="desc">Placeholder logo for Gameday Men's Health</desc>
+  <rect width="200" height="80" rx="12" fill="#111827"/>
+  <text x="50%" y="52%" text-anchor="middle" fill="#34d399" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="800">GAMEDAY</text>
+  <text x="50%" y="72%" text-anchor="middle" fill="#cbd5e1" font-family="'Inter', system-ui, sans-serif" font-size="12" letter-spacing="2">MEN'S HEALTH</text>
+</svg>

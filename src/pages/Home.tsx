@@ -8,17 +8,9 @@ export const Home = () => {
   const [hours, setHours] = useState<number | ''>(10);
   const [rate, setRate] = useState<number | ''>(100);
 
-  const safeSpend = Number(spend) || 0;
-  const safeHours = Number(hours) || 0;
-  const safeRate = Number(rate) || 0;
-
-  const annualLaborSavings = safeHours * safeRate * 52;
-  const adWasteSavings = safeSpend * 0.2 * 12; // 20% efficiency
-  const totalUpside = annualLaborSavings + adWasteSavings;
-  const annualROI = safeSpend > 0 ? (totalUpside / (safeSpend * 12)) * 100 : 0;
-
-  const formatCurrency = (val: number) =>
-    new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
+  const totalUpside = ((Number(hours) || 0) * (Number(rate) || 0) * 52) + ((Number(spend) || 0) * 0.2 * 12);
+  const annualROI = Number(spend) > 0 ? (totalUpside / ((Number(spend) || 0) * 12)) * 100 : 0;
+  const progressPercent = Math.min((totalUpside / 100000) * 100, 100);
 
   return (
     <>
@@ -107,19 +99,19 @@ export const Home = () => {
         </div>
         <ul className="logo-list" role="list">
           <li className="logo-card">
-            <img className="logo-inverted" src="/img/clients/epic-resource-group.webp" alt="Epic Resource Group" width="160" height="60" loading="lazy" />
+            <img className="logo-inverted" src="/img/clients/epic-resource-group.svg" alt="Epic Resource Group" width="160" height="60" loading="lazy" />
           </li>
           <li className="logo-card">
             <img src="/img/clients/gameday-mens-health.svg" alt="Gameday Men’s Health" width="160" height="60" loading="lazy" />
           </li>
           <li className="logo-card">
-            <img className="logo-inverted" src="/img/clients/man-with-a-pram.avif" alt="Man With A Pram" width="160" height="60" loading="lazy" />
+            <img className="logo-inverted" src="/img/clients/man-with-a-pram.svg" alt="Man With A Pram" width="160" height="60" loading="lazy" />
           </li>
           <li className="logo-card">
             <img src="/img/clients/title-vertical.svg" alt="Wedding Realm" width="160" height="60" loading="lazy" />
           </li>
           <li className="logo-card">
-            <img className="logo-inverted" src="/img/clients/peres-siding.avif" alt="Peres Siding" width="160" height="60" loading="lazy" />
+            <img className="logo-inverted" src="/img/clients/peres-siding.svg" alt="Peres Siding" width="160" height="60" loading="lazy" />
           </li>
         </ul>
       </section>
@@ -230,6 +222,15 @@ export const Home = () => {
 
         <div className="bento-grid">
           <div className="bento-item bento-span-2">
+            <div className="flex items-start justify-between gap-4 mb-6">
+              <div>
+                <h4 className="bento-title">Plug your numbers</h4>
+                <p style={{ color: 'var(--text-muted)', maxWidth: '640px' }}>
+                  Live calculator that blends time saved with media efficiency. The progress bar on the right fills as you uncover more upside (capped at $100k).
+                </p>
+              </div>
+              <span className="badge" style={{ background: 'var(--primary-soft)', color: 'var(--primary)' }}>Live</span>
+            </div>
             <form className="contact-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} onSubmit={e => e.preventDefault()}>
               <div className="form-group">
                 <label>Monthly Ad Spend ($)</label>
@@ -264,16 +265,28 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className="bento-item" style={{ background: 'var(--surface)', borderColor: 'var(--primary)' }}>
-            <div>
-              <h3 className="bento-title" style={{ color: 'var(--primary)' }}>Projected Annual Value</h3>
-              <div className="bento-value">{formatCurrency(totalUpside)}</div>
-              <div style={{ marginTop: '10px', fontWeight: 700 }}>
-                ROI: <span style={{ color: 'var(--success)' }}>{annualROI.toFixed(0)}%</span>
+          {/* ROI Result Card with gamified progress */}
+          <div className="bento-item relative overflow-hidden" style={{ background: 'var(--surface)', borderColor: 'var(--primary)' }}>
+            <div
+              className="absolute bottom-0 left-0 h-1 bg-emerald-500 transition-all duration-1000 ease-out"
+              style={{ width: `${progressPercent}%`, opacity: 0.5 }}
+            />
+            <div className="relative z-10">
+              <h3 className="bento-title text-emerald-500">Projected Annual Value</h3>
+              <div className="text-4xl md:text-5xl font-extrabold text-white my-4 transition-all">
+                {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(totalUpside)}
               </div>
-            </div>
-            <div className="bento-badges">
-              <span className="badge" style={{ background: 'var(--primary-soft)', color: 'var(--primary)' }}>High Leverage</span>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <div className="text-sm text-slate-400">Implied ROI</div>
+                  <div className="text-xl font-semibold text-white">{annualROI.toFixed(0)}%</div>
+                </div>
+                <div>
+                  <div className="text-sm text-slate-400">Progress to $100k</div>
+                  <div className="text-xl font-semibold text-white">{progressPercent.toFixed(0)}%</div>
+                </div>
+              </div>
+              <p className="mt-4 text-slate-400 text-sm">Progress fills while you type. We cap the visual at $100k to keep expectations grounded.</p>
             </div>
           </div>
         </div>
