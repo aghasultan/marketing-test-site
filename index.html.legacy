@@ -1,0 +1,285 @@
+---
+layout: default
+title: Agha Sultan Naseer | Meta & Google Ads Strategist
+description: Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe.
+---
+
+<section class="hero-section" id="hero" aria-labelledby="hero-title">
+  <div class="hero-grid fade-in">
+    <div class="hero-text-col">
+      <span class="section-label slide-up" style="--a-delay: 50ms"
+        >01 Performance Paid Media</span
+      >
+      <h1 id="hero-title" class="slide-up" style="--a-delay: 100ms">
+        We Turn Paid Ads Into Profit Engines.
+      </h1>
+      <p class="slide-up" style="--a-delay: 150ms">
+        I’m <strong>Agha Sultan Naseer</strong> — helping brands across the USA,
+        UK &amp; Europe turn <strong>7‑figure ad budgets</strong> into
+        predictable revenue.
+      </p>
+      <div class="hero-cta slide-up" style="--a-delay: 200ms">
+        <a
+          href="{{ site.baseurl }}/services.html"
+          class="btn btn-primary hover-glow"
+          >Explore Services</a
+        >
+        <a href="{{ site.baseurl }}/apply.html" class="btn hover-glow"
+          >Book a Strategy Call</a
+        >
+      </div>
+      <div class="fit-strip slide-up" style="--a-delay: 300ms">
+        <h4>Good fit if you:</h4>
+        <ul class="fit-list">
+          <li class="fit-item">
+            Already running ads &amp; want tighter tracking
+          </li>
+          <li class="fit-item">Have proven offers &amp; want scale</li>
+          <li class="fit-item">Want clear dashboards &amp; reporting</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hero-visual-col slide-up" style="--a-delay: 350ms">
+      <div class="snapshot-card">
+        <div
+          style="
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          "
+        >
+          <div
+            style="
+              width: 40px;
+              height: 40px;
+              background: var(--primary-soft);
+              border-radius: 8px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <span style="font-size: 1.2rem">🚀</span>
+          </div>
+          <div>
+            <strong style="display: block; line-height: 1.2"
+              >Performance Snapshot</strong
+            ><span style="font-size: 0.8rem; color: var(--text-muted)"
+              >Avg. Client Metrics</span
+            >
+          </div>
+        </div>
+        <div class="snapshot-row">
+          <span class="snapshot-label">Managed Spend</span
+          ><span class="snapshot-val">$5M+ / yr</span>
+        </div>
+        <div class="snapshot-row">
+          <span class="snapshot-label">Avg. ROAS</span
+          ><span class="snapshot-val">3.5x – 5.0x</span>
+        </div>
+        <div class="snapshot-row">
+          <span class="snapshot-label">Tracking</span
+          ><span class="snapshot-val">Server-Side (CAPI)</span>
+        </div>
+        <div class="snapshot-row">
+          <span class="snapshot-label">Retention</span
+          ><span class="snapshot-val">90% +</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section
+  class="logo-bar reveal"
+  aria-label="Client logos"
+  style="padding-bottom: 0"
+>
+  <div style="text-align: center; margin-bottom: 20px">
+    <p
+      style="
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+      "
+    >
+      Brands &amp; Operators I’ve Helped
+    </p>
+  </div>
+  <ul class="logo-list" role="list">
+    <li class="logo-card">
+      <img
+        class="logo-inverted"
+        src="{{ site.baseurl }}/assets/img/clients/epic-resource-group.webp"
+        alt="Epic Resource Group"
+        width="160"
+        height="60"
+        loading="lazy"
+      />
+    </li>
+    <li class="logo-card">
+      <img
+        src="{{ site.baseurl }}/assets/img/clients/gameday-mens-health.svg"
+        alt="Gameday Men’s Health"
+        width="160"
+        height="60"
+        loading="lazy"
+      />
+    </li>
+    <li class="logo-card">
+      <img
+        class="logo-inverted"
+        src="{{ site.baseurl }}/assets/img/clients/man-with-a-pram.avif"
+        alt="Man With A Pram"
+        width="160"
+        height="60"
+        loading="lazy"
+      />
+    </li>
+    <li class="logo-card">
+      <img
+        src="{{ site.baseurl }}/assets/img/clients/title-vertical.svg"
+        alt="Wedding Realm"
+        width="160"
+        height="60"
+        loading="lazy"
+      />
+    </li>
+    <li class="logo-card">
+      <img
+        class="logo-inverted"
+        src="{{ site.baseurl }}/assets/img/clients/peres-siding.avif"
+        alt="Peres Siding"
+        width="160"
+        height="60"
+        loading="lazy"
+      />
+    </li>
+  </ul>
+</section>
+<section class="section shell reveal" id="roi-calculator">
+  <div class="section-header">
+    <h2 class="section-eyebrow"><span>05</span>Value Engineering</h2>
+    <h3>Estimate Your Upside</h3>
+  </div>
+
+  <div class="bento-grid">
+    <div class="bento-item bento-span-2">
+      <form
+        id="roi-form"
+        class="contact-form"
+        style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px"
+      >
+        <div class="form-group">
+          <label>Monthly Ad Spend ($)</label>
+          <input type="number" id="monthly-spend" placeholder="10000" />
+        </div>
+        <div class="form-group">
+          <label>Hours Managing Ads (Per Week)</label>
+          <input type="number" id="hours-week" placeholder="10" />
+        </div>
+        <div class="form-group wide">
+          <label>Your Hourly Rate ($)</label>
+          <input type="number" id="hourly-rate" placeholder="100" />
+        </div>
+      </form>
+      <div
+        style="margin-top: 20px; color: var(--text-muted); font-size: 0.9rem"
+      >
+        *Calculates efficiency gains + time saved vs hiring an agency.
+      </div>
+    </div>
+
+    <div
+      class="bento-item"
+      style="background: var(--surface); border-color: var(--primary)"
+    >
+      <div>
+        <h3 class="bento-title" style="color: var(--primary)">
+          Projected Annual Value
+        </h3>
+        <div class="bento-value" id="projected-savings">$0</div>
+        <div style="margin-top: 10px; font-weight: 700">
+          ROI: <span id="annual-roi" style="color: var(--success)">0%</span>
+        </div>
+      </div>
+      <div class="bento-badges">
+        <span
+          class="badge"
+          style="background: var(--primary-soft); color: var(--primary)"
+          >High Leverage</span
+        >
+      </div>
+    </div>
+  </div>
+</section>
+<script src="{{ site.baseurl }}/assets/js/roi-calculator.js" defer></script>
+<section
+  class="section shell reveal"
+  id="skills"
+  aria-labelledby="skills-title"
+>
+  <div class="section-header">
+    <h2 id="skills-title" class="section-eyebrow">
+      <span>04</span>Systematic Authority
+    </h2>
+    <h3>The Results Engine</h3>
+  </div>
+  <div class="bento-grid reveal-stagger">
+    <div class="bento-item bento-span-2">
+      <div>
+        <h3 class="bento-title">Paid Media Profit</h3>
+        <p style="color: var(--text-muted); max-width: 450px">
+          We don't just run ads; we build full-funnel acquisition systems. From
+          creative strategy to server-side attribution, every component is
+          engineered for ROI.
+        </p>
+      </div>
+      <div class="bento-badges">
+        <span class="badge">Strategy</span><span class="badge">Creative</span
+        ><span class="badge">Analytics</span>
+      </div>
+    </div>
+    <div class="bento-item">
+      <span class="bento-label">Managed Spend</span
+      ><span class="bento-metric">$5M+</span
+      ><span class="bento-sub">Annual Budget Under Management</span>
+    </div>
+    <div class="bento-item">
+      <h3 class="bento-title">Platforms</h3>
+      <div class="bento-badges" style="margin-top: 1rem">
+        <span class="badge">Meta Ads</span><span class="badge">Google Ads</span
+        ><span class="badge">TikTok</span><span class="badge">LinkedIn</span>
+      </div>
+    </div>
+    <div class="bento-item bento-span-2">
+      <h3 class="bento-title">Tracking Architecture</h3>
+      <div
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+          margin-top: 1rem;
+        "
+      >
+        <div style="display: flex; align-items: center; gap: 8px">
+          <span style="color: var(--primary)">✓</span>
+          <span>Google Tag Manager</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <span style="color: var(--primary)">✓</span>
+          <span>GA4 Server-Side</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <span style="color: var(--primary)">✓</span> <span>Meta CAPI</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px">
+          <span style="color: var(--primary)">✓</span>
+          <span>Offline Events</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
