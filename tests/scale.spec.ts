@@ -1,14 +1,14 @@
 import { test, expect } from "@playwright/test";
 
 test("scale page has correct title", async ({ page }) => {
-  await page.goto("/scale.html");
+  await page.goto("/#/scale");
   await expect(page).toHaveTitle(
     "Meta & Google Ads Growth Partner | Agha Sultan Naseer",
   );
 });
 
 test("scale page displays hero section", async ({ page }) => {
-  await page.goto("/scale.html");
+  await page.goto("/#/scale");
   await expect(
     page.getByRole("heading", {
       name: "I Turn Ad Spend into Profit for Brands Ready to Scale",
@@ -18,7 +18,7 @@ test("scale page displays hero section", async ({ page }) => {
 });
 
 test("scale page displays profit scaling system", async ({ page }) => {
-  await page.goto("/scale.html");
+  await page.goto("/#/scale");
   await expect(
     page.getByRole("heading", { name: "Profit Scaling System™" }),
   ).toBeVisible();
@@ -35,7 +35,7 @@ test("scale page displays profit scaling system", async ({ page }) => {
 });
 
 test("scale page displays case studies", async ({ page }) => {
-  await page.goto("/scale.html");
+  await page.goto("/#/scale");
   await expect(
     page.getByRole("heading", { name: "Case Studies & Wins" }),
   ).toBeVisible();
@@ -45,19 +45,19 @@ test("scale page displays case studies", async ({ page }) => {
 });
 
 test("cta buttons link to apply page", async ({ page }) => {
-  await page.goto("/scale.html");
+  await page.goto("/#/scale");
 
   // Hero CTA
   await expect(
     page
       .locator(".hero-cta")
       .getByRole("link", { name: "Apply for Strategy Call" }),
-  ).toHaveAttribute("href", "apply.html");
+  ).toHaveAttribute("href", "/#/apply");
 
   // Final CTA
   await expect(
     page
       .locator(".contact-section")
       .getByRole("link", { name: "Apply for Strategy Call" }),
-  ).toHaveAttribute("href", "apply.html");
+  ).toHaveAttribute("href", "/#/apply");
 });
