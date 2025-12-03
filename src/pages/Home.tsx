@@ -124,10 +124,107 @@ export const Home = () => {
         </ul>
       </section>
 
+      {/* Services Section */}
+      <section className="section shell reveal visible" id="services">
+        <div className="section-header">
+           <h2 className="section-eyebrow"><span>02</span>Services</h2>
+           <h3>How We Scale Growth</h3>
+        </div>
+        <div className="card-grid">
+           {/* Service 1 */}
+           <div className="card hover-card group">
+            <div className="text-emerald-500 font-mono text-sm mb-4">01</div>
+            <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">Performance Paid Media</h3>
+            <p className="text-slate-400 leading-relaxed">
+              Meta, Google, and TikTok ads managed with algorithmic precision. We focus on contribution margin, not just ROAS.
+            </p>
+           </div>
+
+           {/* Service 2 */}
+           <div className="card hover-card group">
+            <div className="text-emerald-500 font-mono text-sm mb-4">02</div>
+            <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">Analytics Engineering</h3>
+            <p className="text-slate-400 leading-relaxed">
+              Server-side tracking (CAPI), attribution modeling, and custom dashboards. Know exactly where every dollar goes.
+            </p>
+           </div>
+
+           {/* Service 3 */}
+           <div className="card hover-card group">
+            <div className="text-emerald-500 font-mono text-sm mb-4">03</div>
+            <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">Marketing Automation</h3>
+            <p className="text-slate-400 leading-relaxed">
+              Email & SMS flows that print money while you sleep. Lifecycle marketing designed to maximize LTV.
+            </p>
+           </div>
+        </div>
+      </section>
+
+      {/* Skills */}
+      <section className="section shell reveal visible" id="skills" aria-labelledby="skills-title">
+        <div className="section-header">
+          <h2 id="skills-title" className="section-eyebrow">
+            <span>03</span>Systematic Authority
+          </h2>
+          <h3>The Results Engine</h3>
+        </div>
+        <div className="bento-grid reveal-stagger">
+          <div className="bento-item bento-span-2">
+            <div>
+              <h3 className="bento-title">Paid Media Profit</h3>
+              <p style={{ color: 'var(--text-muted)', maxWidth: '450px' }}>
+                We don't just run ads; we build full-funnel acquisition systems. From
+                creative strategy to server-side attribution, every component is
+                engineered for ROI.
+              </p>
+            </div>
+            <div className="bento-badges">
+              <span className="badge">Strategy</span>
+              <span className="badge">Creative</span>
+              <span className="badge">Analytics</span>
+            </div>
+          </div>
+          <div className="bento-item">
+            <span className="bento-label" style={{display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '4px'}}>Managed Spend</span>
+            <span className="bento-value" style={{fontSize: '2.5rem'}}>$5M+</span>
+            <span className="bento-sub" style={{display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px'}}>Annual Budget Under Management</span>
+          </div>
+          <div className="bento-item">
+            <h3 className="bento-title">Platforms</h3>
+            <div className="bento-badges" style={{ marginTop: '1rem' }}>
+              <span className="badge">Meta Ads</span>
+              <span className="badge">Google Ads</span>
+              <span className="badge">TikTok</span>
+              <span className="badge">LinkedIn</span>
+            </div>
+          </div>
+          <div className="bento-item bento-span-2">
+            <h3 className="bento-title">Tracking Architecture</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ color: 'var(--primary)' }}>✓</span>
+                <span>Google Tag Manager</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ color: 'var(--primary)' }}>✓</span>
+                <span>GA4 Server-Side</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ color: 'var(--primary)' }}>✓</span> <span>Meta CAPI</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ color: 'var(--primary)' }}>✓</span>
+                <span>Offline Events</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ROI Calculator */}
       <section className="section shell reveal visible" id="roi-calculator">
         <div className="section-header">
-          <h2 className="section-eyebrow"><span>05</span>Value Engineering</h2>
+          <h2 className="section-eyebrow"><span>04</span>Value Engineering</h2>
           <h3>Estimate Your Upside</h3>
         </div>
 
@@ -182,61 +279,34 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Skills */}
-      <section className="section shell reveal visible" id="skills" aria-labelledby="skills-title">
+      {/* About Section */}
+      <section className="section shell reveal visible" id="about">
         <div className="section-header">
-          <h2 id="skills-title" className="section-eyebrow">
-            <span>04</span>Systematic Authority
-          </h2>
-          <h3>The Results Engine</h3>
+           <h2 className="section-eyebrow"><span>05</span>About</h2>
+           <h3>Who We Are</h3>
         </div>
-        <div className="bento-grid reveal-stagger">
-          <div className="bento-item bento-span-2">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="bento-title">Paid Media Profit</h3>
-              <p style={{ color: 'var(--text-muted)', maxWidth: '450px' }}>
-                We don't just run ads; we build full-funnel acquisition systems. From
-                creative strategy to server-side attribution, every component is
-                engineered for ROI.
+              <p className="text-slate-400 mb-6 text-lg">
+                We are a team of data scientists, engineers, and marketers obsessed with growth.
+                We don't just run ads; we build systems that scale.
               </p>
-            </div>
-            <div className="bento-badges">
-              <span className="badge">Strategy</span>
-              <span className="badge">Creative</span>
-              <span className="badge">Analytics</span>
-            </div>
-          </div>
-          <div className="bento-item">
-            <span className="bento-label" style={{display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '4px'}}>Managed Spend</span>
-            <span className="bento-value" style={{fontSize: '2.5rem'}}>$5M+</span>
-            <span className="bento-sub" style={{display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px'}}>Annual Budget Under Management</span>
-          </div>
-          <div className="bento-item">
-            <h3 className="bento-title">Platforms</h3>
-            <div className="bento-badges" style={{ marginTop: '1rem' }}>
-              <span className="badge">Meta Ads</span>
-              <span className="badge">Google Ads</span>
-              <span className="badge">TikTok</span>
-              <span className="badge">LinkedIn</span>
-            </div>
-          </div>
-          <div className="bento-item bento-span-2">
-            <h3 className="bento-title">Tracking Architecture</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--primary)' }}>✓</span>
-                <span>Google Tag Manager</span>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <div className="text-3xl font-bold text-white mb-2">$50M+</div>
+                  <div className="text-sm text-slate-500">Ad Spend Managed</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-white mb-2">10x</div>
+                  <div className="text-sm text-slate-500">Average ROI</div>
+                </div>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--primary)' }}>✓</span>
-                <span>GA4 Server-Side</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--primary)' }}>✓</span> <span>Meta CAPI</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--primary)' }}>✓</span>
-                <span>Offline Events</span>
+            </div>
+            <div className="relative">
+              {/* TODO: Add about image */}
+              <div className="aspect-video bg-slate-800 rounded-lg border border-slate-700 flex items-center justify-center">
+                <span className="text-slate-500">About Image</span>
               </div>
             </div>
           </div>
