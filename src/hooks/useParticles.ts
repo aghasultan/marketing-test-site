@@ -23,6 +23,7 @@ export const useParticles = (canvasRef: RefObject<HTMLCanvasElement>) => {
     let particles: Particle[] = [];
     let rafId: number;
     let lastSizeKey = "";
+    let isHidden = false;
 
     // Reduced motion check
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -122,11 +123,20 @@ export const useParticles = (canvasRef: RefObject<HTMLCanvasElement>) => {
     };
 
     const frame = () => {
-      if (!ctx || !canvas) return;
+      if (!ctx || !canvas || isHidden) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) particles[i].update();
       connect();
       rafId = requestAnimationFrame(frame);
+    };
+
+    const handleVisibilityChange = () => {
+      isHidden = document.hidden;
+      if (isHidden) {
+        cancelAnimationFrame(rafId);
+      } else if (!reduced) {
+        frame();
+      }
     };
 
     const resizeCanvas = () => {
@@ -184,6 +194,7 @@ export const useParticles = (canvasRef: RefObject<HTMLCanvasElement>) => {
     window.addEventListener('mouseout', handleMouseOut);
     window.addEventListener('touchstart', handleTouch);
     window.addEventListener('touchmove', handleTouch);
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     mq.addEventListener('change', handleReducedMotion);
 
     // Cleanup
@@ -194,6 +205,7 @@ export const useParticles = (canvasRef: RefObject<HTMLCanvasElement>) => {
       window.removeEventListener('mouseout', handleMouseOut);
       window.removeEventListener('touchstart', handleTouch);
       window.removeEventListener('touchmove', handleTouch);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       mq.removeEventListener('change', handleReducedMotion);
     };
   }, [canvasRef]);

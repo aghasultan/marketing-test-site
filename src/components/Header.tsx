@@ -7,7 +7,8 @@ export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const isActive = (path: string) => location.pathname === path ? 'active' : '';
+  const isActive = (path: string) =>
+    location.pathname === path || location.pathname === `${path}/` ? 'active' : '';
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');

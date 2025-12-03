@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="0 0 320 120" role="img" aria-labelledby="title desc">
+  <title id="title">Riffat Labs Logo</title>
+  <desc id="desc">Minimal wordmark placeholder for Riffat Labs</desc>
+  <rect width="320" height="120" rx="16" fill="#0B1F17"/>
+  <text x="50%" y="55%" text-anchor="middle" fill="#4ade80" font-family="'Inter', system-ui, sans-serif" font-size="42" font-weight="700">Riffat</text>
+  <text x="50%" y="78%" text-anchor="middle" fill="#a5f3fc" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="600" letter-spacing="4">LABS</text>
+</svg>
