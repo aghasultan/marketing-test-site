@@ -1,33 +1,39 @@
-# Marketing-Test-Site
+# Riffat Labs (Marketing Site)
 
-This repo hosts **Agha Sultan Naseer’s multi-page marketing experience**—a fast, SEO-optimised site built with vanilla HTML/CSS/JS and deployed via **GitHub Pages**.
+This repo hosts the official website for **Riffat Labs**, a high-performance performance marketing agency led by **Agha Sultan Naseer**.
 
-## Pages & Purpose
+The site is a Single Page Application (SPA) built to demonstrate the very ad tracking and conversion technologies we implement for clients (CAPI, Server-Side Tracking, Profit Scaling).
 
-| File            | Live URL (GitHub Pages)              | Purpose                                                                                           |
-| --------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| `index.html`    | `/marketing-test-site/`              | Personal overview covering experience, skills, wins, and a general enquiry form.                  |
-| `services.html` | `/marketing-test-site/services.html` | Detailed breakdown of Meta Ads, Google Ads, and full-funnel tracking services.                    |
-| `scale.html`    | `/marketing-test-site/scale.html`    | Main client acquisition landing page showcasing the Profit Scaling System™, services, and proof. |
-| `apply.html`    | `/marketing-test-site/apply.html`    | High-intent application page with a detailed form to qualify strategy call applicants.            |
+## 🚀 Tech Stack
 
-**Conversion flow:** Paid and organic traffic land on `scale.html`, warm prospects click through to `apply.html`, and serious leads complete the Formspree-powered application. The overview page (`index.html`) links back into this journey for visitors who start on the personal profile.
+- **Core:** React 18, TypeScript, Vite
+- **Styling:** Tailwind CSS, Framer Motion
+- **Architecture:** SPA with Client-Side Routing (`react-router-dom`)
+- **Deployment:** Vercel (Root domain)
+- **Content:** Markdown-based blog (Headless architecture)
 
-### Tech Stack
+## ⚡️ Key Features
 
-- **HTML5 / CSS3** — semantic markup, responsive grid
-- **Vanilla JS** — interactive particle background, IntersectionObserver animations
-- **GitHub Pages** — zero-cost hosting & CI
-- **Formspree** — serverless form handling
+1.  **ROI Calculator:** Interactive tool for estimating ad spend upside.
+2.  **Apply Wizard:** Multi-step qualification form with state management.
+3.  **Performance:** Optimized for Core Web Vitals (LCP/CLS) to support Ad Quality Scores.
+4.  **Tracking:** Architecture ready for Meta CAPI & Google Offline Conversions.
 
-> **Live site:** <https://aghasultan.github.io/marketing-test-site/>
+## 📂 Project Structure
 
----
+| Path | Purpose |
+| :--- | :--- |
+| `src/pages/` | Main route views (`Home`, `Scale`, `Apply`) |
+| `src/components/` | Reusable UI components (Bento grid, Wizard) |
+| `src/content/` | Markdown content for the Blog |
+| `legacy_reference/` | Archived Jekyll site (Do not edit) |
 
-## Local Dev
+## 🛠 Local Development
 
 ```bash
-git clone https://github.com/aghasultan/marketing-test-site.git
+git clone [https://github.com/aghasultan/marketing-test-site.git](https://github.com/aghasultan/marketing-test-site.git)
 cd marketing-test-site
-# open index.html in your browser or use a live-server extension
-```
+npm install
+npm run dev
+
+Live Demo: https://marketing-test-site.vercel.app/
