@@ -7,7 +7,15 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+import { initAnimatedBackground } from './ui/AnimatedBackground';
+import { useEffect } from 'react';
+
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
+  useEffect(() => {
+    const cleanup = initAnimatedBackground();
+    return cleanup;
+  }, []);
+
   return (
     <>
       <InteractiveBg />
