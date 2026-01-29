@@ -1,7 +1,7 @@
 # Story 1.1: Zinc-950 Theme Implementation
 
 **Epic:** [Epic 1: Core Infrastructure & Global Styles](../epic-1-infra.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,11 +10,11 @@
 **So that** the site feels premium, authoritative, and consistent with the "Modern Agency" brand.
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Global Background:** The application background is forced to Zinc-950 (`#09090b`).
-- [ ] **Tailwind Configuration:** `tailwind.config.js` is updated to include the specific color palette defined in the Product Brief.
-- [ ] **Typography:** Font family is verified as `Space Grotesk` (or configured if missing).
-- [ ] **Reset:** All default light-mode styles are overridden or removed.
-- [ ] **Accents:** Utility classes for Cyan, Purple, and Lime are available in the config.
+- [x] **Global Background:** The application background is forced to Zinc-950 (`#09090b`).
+- [x] **Tailwind Configuration:** `tailwind.config.js` is updated to include the specific color palette defined in the Product Brief.
+- [x] **Typography:** Font family is verified as `Space Grotesk` (or configured if missing).
+- [x] **Reset:** All default light-mode styles are overridden or removed.
+- [x] **Accents:** Utility classes for Cyan, Purple, and Lime are available in the config.
 
 ## 3. Technical Context (Architecture & ADRs)
 * **ADR-001 (Styling):** Use Tailwind CSS utility abstractions. Do not use inline styles.

@@ -1,7 +1,7 @@
 # Story 2.3: Results Score Card
 
 **Epic:** [Epic 2: AI Ad Audit Tool](../epic-2-audit-tool.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,10 +10,10 @@
 **So that** I understand the gaps in my ad strategy and feel motivated to click "Fix This".
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Card UI:** Displays the 3 metrics returned from the service.
-- [ ] **CTA:** A prominent "Fix This Now" button that routes to `/apply`.
-- [ ] **Visuals:** Uses the Neon accents (Cyan/Purple) to highlight low scores.
-- [ ] **Reveal:** The card animates in after the scanning phase completes.
+- [x] **Card UI:** Displays the 3 metrics returned from the service.
+- [x] **CTA:** A prominent "Fix This Now" button that routes to `/apply`.
+- [x] **Visuals:** Uses the Neon accents (Cyan/Purple) to highlight low scores.
+- [x] **Reveal:** The card animates in after the scanning phase completes.
 
 ## 3. Technical Context
 * **Component:** `src/components/features/audit/ScoreCard.tsx`.

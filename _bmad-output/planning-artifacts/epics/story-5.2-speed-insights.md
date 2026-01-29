@@ -1,7 +1,7 @@
 # Story 5.2: Vercel Speed Insights
 
 **Epic:** [Epic 5: SEO & Performance Monitoring](../epic-5-seo.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,9 +10,9 @@
 **So that** I can ensure we meet the <2.5s LCP metric defined in the PRD.
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Installation:** `@vercel/speed-insights` is installed.
-- [ ] **Integration:** The `<SpeedInsights />` component is placed in the root of the application (e.g., `main.tsx` or `App.tsx`).
-- [ ] **Configuration:** Verify it is only active in production (or configured to not spam dev logs).
+- [x] **Installation:** `@vercel/speed-insights` is installed.
+- [x] **Integration:** The `<SpeedInsights />` component is placed in the root of the application (e.g., `main.tsx` or `App.tsx`).
+- [x] **Configuration:** Verify it is only active in production (or configured to not spam dev logs).
 
 ## 3. Technical Context
 * **Zero Config:** Vercel handles the backend; we just need the React component to report the metrics.

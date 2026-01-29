@@ -1,7 +1,7 @@
 # Story 5.1: Dynamic OG Images
 
 **Epic:** [Epic 5: SEO & Performance Monitoring](../epic-5-seo.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,10 +10,10 @@
 **So that** click-through rates on social media are maximized.
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Generation:** Uses `@vercel/og` to generate images on the fly.
-- [ ] **Design:** The image template includes the post Title, Author, and Riffat Labs branding.
-- [ ] **Route:** A resource route (e.g., `/api/og`) is created to serve these images.
-- [ ] **Integration:** All pages include the correct `<meta property="og:image">` tags pointing to this route.
+- [x] **Generation:** Uses `@vercel/og` to generate images on the fly.
+- [x] **Design:** The image template includes the post Title, Author, and Riffat Labs branding.
+- [x] **Route:** A resource route (e.g., `/api/og`) is created to serve these images.
+- [x] **Integration:** All pages include the correct `<meta property="og:image">` tags pointing to this route.
 
 ## 3. Technical Context
 * **Library:** `@vercel/og`.

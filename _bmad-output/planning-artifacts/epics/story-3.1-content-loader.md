@@ -1,7 +1,7 @@
 # Story 3.1: Content Sharding & Loader
 
 **Epic:** [Epic 3: Dynamic Case Study Engine](../epic-3-case-studies.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,11 +10,11 @@
 **So that** the frontend can query, filter, and display content dynamically without hardcoding.
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Dependency:** `gray-matter` is installed for frontmatter parsing.
-- [ ] **Directory Structure:** A `src/content/case-studies/` directory is created.
-- [ ] **Loader Utility:** `src/lib/content-loader.ts` is implemented.
-- [ ] **Functionality:** The loader must return an array of case study objects containing `slug`, `frontmatter`, and `content`.
-- [ ] **Type Safety:** TypeScript interfaces defined for `CaseStudy` and `CaseStudyFrontmatter` (industry, service, metrics).
+- [x] **Dependency:** `gray-matter` is installed for frontmatter parsing.
+- [x] **Directory Structure:** A `src/content/case-studies/` directory is created.
+- [x] **Loader Utility:** `src/lib/content-loader.ts` is implemented.
+- [x] **Functionality:** The loader must return an array of case study objects containing `slug`, `frontmatter`, and `content`.
+- [x] **Type Safety:** TypeScript interfaces defined for `CaseStudy` and `CaseStudyFrontmatter` (industry, service, metrics).
 
 ## 3. Technical Context
 * **Ref:** [ADR-003] Content Sharding.

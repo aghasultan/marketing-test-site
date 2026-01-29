@@ -1,7 +1,7 @@
 # Story 3.2: Bento Grid UI & Filtering
 
 **Epic:** [Epic 3: Dynamic Case Study Engine](../epic-3-case-studies.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,11 +10,11 @@
 **So that** I see relevant proof immediately without clicking through pages.
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Layout:** A responsive "Bento Grid" (masonry or variable span) layout.
-- [ ] **Card Design:** Glassmorphic cards that reveal details/metrics on hover.
-- [ ] **Filtering:** Tabs for "All", "SaaS", "E-commerce", "Lead Gen".
-- [ ] **Interaction:** Filtering is instant (client-side state) with `framer-motion` layout animations (reordering).
-- [ ] **Empty State:** Visual feedback if no items match a filter.
+- [x] **Layout:** A responsive "Bento Grid" (masonry or variable span) layout.
+- [x] **Card Design:** Glassmorphic cards that reveal details/metrics on hover.
+- [x] **Filtering:** Tabs for "All", "SaaS", "E-commerce", "Lead Gen".
+- [x] **Interaction:** Filtering is instant (client-side state) with `framer-motion` layout animations (reordering).
+- [x] **Empty State:** Visual feedback if no items match a filter.
 
 ## 3. Technical Context
 * **Styles:** Tailwind Grid (`grid-cols-1 md:grid-cols-3`). Use `col-span-2` for featured items.

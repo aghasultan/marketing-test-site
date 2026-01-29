@@ -1,7 +1,7 @@
 # Story 1.2: Lenis Scroll & Framer Motion Setup
 
 **Epic:** [Epic 1: Core Infrastructure & Global Styles](../epic-1-infra.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,11 +10,11 @@
 **So that** the experience feels "buttery smooth" and premium, reducing bounce rates.
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Smooth Scroll:** `lenis` (or `@studio-freight/lenis`) is installed and wrapped around the root application.
-- [ ] **Animation Library:** `framer-motion` is installed.
-- [ ] **Reveal Component:** A reusable `<ScrollReveal>` component is created that fades elements in and slides them up (`y: 20` -> `y: 0`) as they enter the viewport.
-- [ ] **Performance:** Animations use hardware-accelerated properties (transform/opacity) to avoid layout thrashing.
-- [ ] **Reduced Motion:** Animations respect the user's `prefers-reduced-motion` setting.
+- [x] **Smooth Scroll:** `lenis` (or `@studio-freight/lenis`) is installed and wrapped around the root application.
+- [x] **Animation Library:** `framer-motion` is installed.
+- [x] **Reveal Component:** A reusable `<ScrollReveal>` component is created that fades elements in and slides them up (`y: 20` -> `y: 0`) as they enter the viewport.
+- [x] **Performance:** Animations use hardware-accelerated properties (transform/opacity) to avoid layout thrashing.
+- [x] **Reduced Motion:** Animations respect the user's `prefers-reduced-motion` setting.
 
 ## 3. Technical Context
 * **Lenis:** Initialize in `src/main.tsx` or a root layout wrapper. Ensure it doesn't conflict with React 18 strict mode.

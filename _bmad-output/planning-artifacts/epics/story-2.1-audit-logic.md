@@ -1,7 +1,7 @@
 # Story 2.1: Audit Service Mock Logic
 
 **Epic:** [Epic 2: AI Ad Audit Tool](../epic-2-audit-tool.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,10 +10,10 @@
 **So that** we can easily swap the mock data for a real API in V3 without breaking the UI.
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Service Module:** `src/lib/audit-service.ts` is created.
-- [ ] **Interface:** Defines `AuditResult` interface with metrics: Tracking Quality, Creative Diversity, Scaling Potential.
-- [ ] **Mock Delay:** The `analyzeUrl` function returns a Promise that resolves after 3 seconds to simulate processing.
-- [ ] **Data:** Returns plausible mock scores (e.g., "B+", "Low", "High") based on random logic or static return for now.
+- [x] **Service Module:** `src/lib/audit-service.ts` is created.
+- [x] **Interface:** Defines `AuditResult` interface with metrics: Tracking Quality, Creative Diversity, Scaling Potential.
+- [x] **Mock Delay:** The `analyzeUrl` function returns a Promise that resolves after 3 seconds to simulate processing.
+- [x] **Data:** Returns plausible mock scores (e.g., "B+", "Low", "High") based on random logic or static return for now.
 
 ## 3. Technical Context
 * **ADR-002:** Use Service-Mock pattern.

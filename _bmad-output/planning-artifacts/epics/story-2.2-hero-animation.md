@@ -1,7 +1,7 @@
 # Story 2.2: Hero Input & Animation
 
 **Epic:** [Epic 2: AI Ad Audit Tool](../epic-2-audit-tool.md)
-**Status:** Ready for Dev
+**Status:** Completed
 **Assigned To:** Developer Agent
 
 ## 1. User Story
@@ -10,10 +10,10 @@
 **So that** I feel like a sophisticated analysis is taking place.
 
 ## 2. Acceptance Criteria (AC)
-- [ ] **Input UI:** Glassmorphic input field floating in the Hero section.
-- [ ] **Interaction:** Clicking "Scan" triggers the `audit-service`.
-- [ ] **Loading State:** During the 3s await, the UI replaces the input with a "Scanning..." Lottie or CSS animation.
-- [ ] **Validation:** Basic regex check to ensure input is a valid URL before submitting.
+- [x] **Input UI:** Glassmorphic input field floating in the Hero section.
+- [x] **Interaction:** Clicking "Scan" triggers the `audit-service`.
+- [x] **Loading State:** During the 3s await, the UI replaces the input with a "Scanning..." Lottie or CSS animation.
+- [x] **Validation:** Basic regex check to ensure input is a valid URL before submitting.
 
 ## 3. Technical Context
 * **Styles:** Use Tailwind for the Glassmorphism (backdrop-blur).
