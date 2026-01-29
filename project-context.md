@@ -18,7 +18,6 @@
 - **Entry Point:** `src/main.tsx` -> `src/App.tsx`
 - **Routing:** Client-side routing defined in `src/App.tsx`.
 - **Content Strategy:** Blog posts are stored as MD files in `src/content/blog/` and loaded dynamically.
-- **Legacy:** The folder `legacy_reference/` contains the old Jekyll site. DO NOT edit files there unless retrieving assets.
 
 ## Domain & Services
 - **Core Offerings:** Performance Paid Media (Meta/Google/TikTok Ads), Lead Gen, Sales Ads.

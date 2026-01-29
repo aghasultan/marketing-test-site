@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
+import { CaseStudyGrid } from '../components/CaseStudyGrid';
+import { motion } from 'framer-motion';
 
 export const Home = () => {
   // ROI Calculator State
@@ -11,6 +13,29 @@ export const Home = () => {
   const totalUpside = ((Number(hours) || 0) * (Number(rate) || 0) * 52) + ((Number(spend) || 0) * 0.2 * 12);
   const annualROI = Number(spend) > 0 ? (totalUpside / ((Number(spend) || 0) * 12)) * 100 : 0;
   const progressPercent = Math.min((totalUpside / 100000) * 100, 100);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
 
   return (
     <>
@@ -23,37 +48,42 @@ export const Home = () => {
 
       {/* Hero Section */}
       <section className="hero-section" id="hero" aria-labelledby="hero-title">
-        <div className="hero-grid fade-in">
+        <motion.div
+          className="hero-grid"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="hero-text-col">
-            <span className="section-label slide-up" style={{ '--a-delay': '50ms' } as React.CSSProperties}>
+            <motion.span className="section-label" variants={itemVariants}>
               01 Performance Paid Media
-            </span>
-            <h1 id="hero-title" className="slide-up" style={{ '--a-delay': '100ms' } as React.CSSProperties}>
+            </motion.span>
+            <motion.h1 id="hero-title" variants={itemVariants}>
               We Turn Paid Ads Into Profit Engines.
-            </h1>
-            <p className="slide-up" style={{ '--a-delay': '150ms' } as React.CSSProperties}>
+            </motion.h1>
+            <motion.p variants={itemVariants}>
               I’m <strong>Agha Sultan Naseer</strong> — helping brands across the USA,
               UK &amp; Europe turn <strong>7‑figure ad budgets</strong> into
               predictable revenue.
-            </p>
-            <div className="hero-cta slide-up" style={{ '--a-delay': '200ms' } as React.CSSProperties}>
+            </motion.p>
+            <motion.div className="hero-cta" variants={itemVariants}>
               <Link to="/services" className="btn btn-primary hover-glow">
                 Explore Services
               </Link>
               <Link to="/apply" className="btn hover-glow">
                 Book a Strategy Call
               </Link>
-            </div>
-            <div className="fit-strip slide-up" style={{ '--a-delay': '300ms' } as React.CSSProperties}>
+            </motion.div>
+            <motion.div className="fit-strip" variants={itemVariants}>
               <h4>Good fit if you:</h4>
               <ul className="fit-list">
                 <li className="fit-item">Already running ads &amp; want tighter tracking</li>
                 <li className="fit-item">Have proven offers &amp; want scale</li>
                 <li className="fit-item">Want clear dashboards &amp; reporting</li>
               </ul>
-            </div>
+            </motion.div>
           </div>
-          <div className="hero-visual-col slide-up" style={{ '--a-delay': '350ms' } as React.CSSProperties}>
+          <motion.div className="hero-visual-col" variants={itemVariants}>
             <div className="snapshot-card">
               <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <div style={{
@@ -84,8 +114,8 @@ export const Home = () => {
                 <span className="snapshot-val">90% +</span>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Logo Bar */}
@@ -120,36 +150,36 @@ export const Home = () => {
       {/* Services Section */}
       <section className="section shell reveal visible" id="services">
         <div className="section-header">
-           <h2 className="section-eyebrow"><span>02</span>Services</h2>
-           <h3>How We Scale Growth</h3>
+          <h2 className="section-eyebrow"><span>02</span>Services</h2>
+          <h3>How We Scale Growth</h3>
         </div>
         <div className="card-grid">
-           {/* Service 1 */}
-           <div className="card hover-card group">
+          {/* Service 1 */}
+          <div className="card hover-card group">
             <div className="text-emerald-500 font-mono text-sm mb-4">01</div>
             <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">Performance Paid Media</h3>
             <p className="text-slate-400 leading-relaxed">
               Meta, Google, and TikTok ads managed with algorithmic precision. We focus on contribution margin, not just ROAS.
             </p>
-           </div>
+          </div>
 
-           {/* Service 2 */}
-           <div className="card hover-card group">
+          {/* Service 2 */}
+          <div className="card hover-card group">
             <div className="text-emerald-500 font-mono text-sm mb-4">02</div>
             <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">Analytics Engineering</h3>
             <p className="text-slate-400 leading-relaxed">
               Server-side tracking (CAPI), attribution modeling, and custom dashboards. Know exactly where every dollar goes.
             </p>
-           </div>
+          </div>
 
-           {/* Service 3 */}
-           <div className="card hover-card group">
+          {/* Service 3 */}
+          <div className="card hover-card group">
             <div className="text-emerald-500 font-mono text-sm mb-4">03</div>
             <h3 className="text-2xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">Marketing Automation</h3>
             <p className="text-slate-400 leading-relaxed">
               Email & SMS flows that print money while you sleep. Lifecycle marketing designed to maximize LTV.
             </p>
-           </div>
+          </div>
         </div>
       </section>
 
@@ -178,9 +208,9 @@ export const Home = () => {
             </div>
           </div>
           <div className="bento-item">
-            <span className="bento-label" style={{display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '4px'}}>Managed Spend</span>
-            <span className="bento-value" style={{fontSize: '2.5rem'}}>$5M+</span>
-            <span className="bento-sub" style={{display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px'}}>Annual Budget Under Management</span>
+            <span className="bento-label" style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '4px' }}>Managed Spend</span>
+            <span className="bento-value" style={{ fontSize: '2.5rem' }}>$5M+</span>
+            <span className="bento-sub" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px' }}>Annual Budget Under Management</span>
           </div>
           <div className="bento-item">
             <h3 className="bento-title">Platforms</h3>
@@ -214,10 +244,13 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* Case Studies */}
+      <CaseStudyGrid />
+
       {/* ROI Calculator */}
       <section className="section shell reveal visible" id="roi-calculator">
         <div className="section-header">
-          <h2 className="section-eyebrow"><span>04</span>Value Engineering</h2>
+          <h2 className="section-eyebrow"><span>05</span>Value Engineering</h2>
           <h3>Estimate Your Upside</h3>
         </div>
 
@@ -296,8 +329,8 @@ export const Home = () => {
       {/* About Section */}
       <section className="section shell reveal visible" id="about">
         <div className="section-header">
-           <h2 className="section-eyebrow"><span>05</span>About</h2>
-           <h3>Who We Are</h3>
+          <h2 className="section-eyebrow"><span>05</span>About</h2>
+          <h3>Who We Are</h3>
         </div>
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
