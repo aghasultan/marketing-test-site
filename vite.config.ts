@@ -19,5 +19,13 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'framer-motion', 'react-router-dom'],
+        },
+      },
+    },
+    target: 'esnext',
   }
 });
