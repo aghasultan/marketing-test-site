@@ -6,7 +6,7 @@ interface WizardLayoutProps {
     currentStep: number;
     totalSteps: number;
     title: string;
-    description?: string;
+    description: string;
     children: React.ReactNode;
 }
 

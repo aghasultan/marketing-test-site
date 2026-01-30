@@ -18,7 +18,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npx http-server . -p 4173",
+    command: "npm run preview -- --port 4173",
     port: 4173,
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,

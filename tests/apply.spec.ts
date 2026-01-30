@@ -1,41 +1,83 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-test("apply page has correct title", async ({ page }) => {
-  await page.goto("/apply.html");
-  await expect(page).toHaveTitle(/Apply to Work With Agha/);
-});
+test.describe('Apply Wizard', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/apply');
+  });
 
-test("apply page has all required form fields", async ({ page }) => {
-  await page.goto("/apply.html");
+  test('navigates through steps correctly', async ({ page }) => {
+    // Step 1: Contact Info
+    await expect(page.getByText('Contact Info')).toBeVisible();
+    await expect(page.getByText('Step 1 of 3')).toBeVisible();
+    await expect(page.getByPlaceholder('Jane', { exact: true })).toBeVisible();
 
-  await expect(page.locator("text=Full Name")).toBeVisible();
-  await expect(page.locator("text=Business Email")).toBeVisible();
-  await expect(page.locator("text=Website URL")).toBeVisible();
-});
+    // Fill Step 1
+    await page.getByPlaceholder('Jane', { exact: true }).fill('John Doe');
+    await page.getByPlaceholder('jane@example.com').fill('john@example.com');
 
-test("form submission flow", async ({ page }) => {
-  await page.goto("/apply.html");
+    // Click Next
+    await page.getByRole('button', { name: 'Next Step' }).click();
 
-  // Step 1
-  await page.fill("#name", "Test Applicant");
-  await page.fill("#email", "applicant@example.com");
-  await page.fill("#website", "https://example.com");
-  await page.click("#btn-next");
+    // Step 2: Business Details
+    await expect(page.getByText('Business Details')).toBeVisible();
+    await expect(page.getByText('Step 2 of 3')).toBeVisible();
+    await expect(page.getByPlaceholder('Acme Inc.')).toBeVisible();
 
-  // Step 2
-  await expect(page.locator('fieldset[data-step="1"]')).toBeVisible();
-  await page.selectOption("#spend", "10k_50k");
-  await page.selectOption("#service", "scale");
-  await page.click("#btn-next");
+    // Fill Step 2
+    await page.getByPlaceholder('Acme Inc.').fill('My Startup');
+    await page.getByRole('combobox', { name: 'Industry' }).selectOption('Tech');
 
-  // Step 3
-  await expect(page.locator('fieldset[data-step="2"]')).toBeVisible();
-  await page.fill("#message", "I am interested in scaling my ads.");
-  await page.click("#btn-submit");
+    // Click Next
+    await page.getByRole('button', { name: 'Next Step' }).click();
 
-  // Verify success message
-  await expect(page.locator("#wizard-success")).toBeVisible();
-  await expect(page.locator("#wizard-success")).toContainText(
-    "Application Received!",
-  );
+    // Step 3: Review
+    await expect(page.getByText('Review Your Application')).toBeVisible();
+    await expect(page.getByText('Step 3 of 3')).toBeVisible();
+
+    // Verify Review Content
+    await expect(page.getByText('John Doe')).toBeVisible();
+    await expect(page.getByText('john@example.com')).toBeVisible();
+    await expect(page.getByText('My Startup')).toBeVisible();
+    await expect(page.getByText('Tech', { exact: true })).toBeVisible();
+
+    // Submit
+    await page.getByRole('button', { name: 'Submit Application' }).click();
+
+    // Verify Success
+    await expect(page.getByText('Application Received!')).toBeVisible();
+    await expect(page.getByText('Back to Home')).toBeVisible();
+  });
+
+  test('supports back navigation and editing', async ({ page }) => {
+    // Fill Step 1
+    await page.getByPlaceholder('Jane', { exact: true }).fill('John Doe');
+    await page.getByPlaceholder('jane@example.com').fill('john@example.com');
+    await page.getByRole('button', { name: 'Next Step' }).click();
+
+    // Fill Step 2
+    await page.getByPlaceholder('Acme Inc.').fill('My Startup');
+    await page.getByRole('combobox', { name: 'Industry' }).selectOption('Tech');
+    await page.getByRole('button', { name: 'Next Step' }).click();
+
+    // Verify Review Step
+    await expect(page.getByText('Review Your Application')).toBeVisible();
+
+    // Click Edit Contact Info (index 0 implies first edit button)
+    const editbuttons = page.getByRole('button', { name: 'Edit' });
+    await editbuttons.first().click();
+
+    // Verify back at Step 1
+    await expect(page.getByText('Contact Info')).toBeVisible();
+    await expect(page.getByPlaceholder('Jane', { exact: true })).toHaveValue('John Doe');
+
+    // Change Name
+    await page.getByPlaceholder('Jane', { exact: true }).fill('Jane Doe');
+
+    // Go forward to Review (Step 1 -> Next -> Step 2 -> Next -> Review)
+    await page.getByRole('button', { name: 'Next Step' }).click();
+    await page.getByRole('button', { name: 'Next Step' }).click();
+
+    // Verify Updated Name
+    await expect(page.getByText('Jane Doe')).toBeVisible();
+  });
 });
