@@ -9,8 +9,10 @@ export function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
     const { scrollY } = useScroll();
 
+    const SCROLL_THRESHOLD = 10;
+
     useMotionValueEvent(scrollY, "change", (latest) => {
-        const scrolled = latest > 10;
+        const scrolled = latest > SCROLL_THRESHOLD;
         if (scrolled !== isScrolled) {
             setIsScrolled(scrolled);
         }
@@ -20,7 +22,7 @@ export function Header() {
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-                isScrolled && "bg-zinc-950/60 backdrop-blur-md border-white/10"
+                isScrolled && "bg-zinc-950/90 backdrop-blur-md border-white/10"
             )}
         >
             <nav className="container mx-auto px-4 h-16 flex items-center justify-between">

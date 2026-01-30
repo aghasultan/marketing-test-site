@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from './Header';
+import { Header } from './layout/Header';
 import { Footer } from './Footer';
 import { InteractiveBg } from './ui/InteractiveBg';
 
@@ -29,7 +29,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       />
 
       <Header />
-      <main className="content-wrapper" id="main">
+      <main className="content-wrapper pt-16" id="main">
         {children}
       </main>
       <Footer />

@@ -1,63 +1,49 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from '@playwright/test';
 
-test("scale page has correct title", async ({ page }) => {
-  await page.goto("/#/scale");
-  await expect(page).toHaveTitle(
-    "Meta & Google Ads Growth Partner | Agha Sultan Naseer",
-  );
-});
+test.describe('Scale Page Refactor', () => {
 
-test("scale page displays hero section", async ({ page }) => {
-  await page.goto("/#/scale");
-  await expect(
-    page.getByRole("heading", {
-      name: "I Turn Ad Spend into Profit for Brands Ready to Scale",
-    }),
-  ).toBeVisible();
-  await expect(page.getByText("7-figure Meta & Google Ads")).toBeVisible();
-});
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/scale');
+  });
 
-test("scale page displays profit scaling system", async ({ page }) => {
-  await page.goto("/#/scale");
-  await expect(
-    page.getByRole("heading", { name: "Profit Scaling System™" }),
-  ).toBeVisible();
-  await expect(
-    page.getByRole("heading", { name: "The Framework Behind Sustainable" }),
-  ).toBeVisible();
+  test('Hero section renders correctly', async ({ page }) => {
+    await expect(page.locator('h1#scale-hero-title')).toContainText(/Turn Ad Spend into Profit/i);
+    await expect(page.getByRole('link', { name: 'Apply for Strategy Call' }).first()).toBeVisible();
+  });
 
-  // Check for a few list items in the framework
-  await expect(
-    page.getByText("Deep Research & Offer Positioning"),
-  ).toBeVisible();
-  await expect(page.getByText("Tracking & Attribution Setup")).toBeVisible();
-  await expect(page.getByText("Campaign Architecture")).toBeVisible();
-});
+  test('Trust Strip is visible', async ({ page }) => {
+    await expect(page.getByText('Meta Partner')).toBeVisible();
+    await expect(page.getByText('Shopify Plus')).toBeVisible();
+  });
 
-test("scale page displays case studies", async ({ page }) => {
-  await page.goto("/#/scale");
-  await expect(
-    page.getByRole("heading", { name: "Case Studies & Wins" }),
-  ).toBeVisible();
-  await expect(page.getByText("18.1% CTR")).toBeVisible();
-  await expect(page.getByText("15% Lift")).toBeVisible();
-  await expect(page.getByText("37k Views")).toBeVisible();
-});
+  test('Problem section displays list', async ({ page }) => {
+    await expect(page.getByText('The Paid Media Problem')).toBeVisible();
+    await expect(page.getByText('CPMs climb, CPCs spike')).toBeVisible();
+  });
 
-test("cta buttons link to apply page", async ({ page }) => {
-  await page.goto("/#/scale");
+  test('Framework steps are rendered', async ({ page }) => {
+    await expect(page.getByText('Profit Scaling System')).toBeVisible();
+    // Check for step 1
+    await expect(page.getByText('Deep Research & Offer Positioning')).toBeVisible();
+  });
 
-  // Hero CTA
-  await expect(
-    page
-      .locator(".hero-cta")
-      .getByRole("link", { name: "Apply for Strategy Call" }),
-  ).toHaveAttribute("href", "/#/apply");
+  test('Case Studies grid is visible', async ({ page }) => {
+    await expect(page.getByText('18.1% CTR')).toBeVisible();
+    await expect(page.getByText('37k Views')).toBeVisible();
+  });
 
-  // Final CTA
-  await expect(
-    page
-      .locator(".contact-section")
-      .getByRole("link", { name: "Apply for Strategy Call" }),
-  ).toHaveAttribute("href", "/#/apply");
+  test('Final CTA is present', async ({ page }) => {
+    await expect(page.getByRole('heading', { name: 'Ready to Scale Profitably?' })).toBeVisible();
+    await expect(page.getByRole('link', { name: 'Apply for Strategy Call' }).last()).toBeVisible();
+  });
+
+  test('Responsiveness: Grid stacks on mobile', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+    // Check that H1 is still visible and readable
+    await expect(page.locator('h1#scale-hero-title')).toBeVisible();
+    // Check that we can see the "Services" section title stacking
+    await expect(page.locator('#services-title')).toBeVisible();
+    await expect(page.locator('#services-title')).toContainText('Services');
+  });
+
 });

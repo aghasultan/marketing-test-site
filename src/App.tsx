@@ -8,15 +8,15 @@ import { BlogIndex } from '@pages/BlogIndex';
 import { BlogPost } from '@pages/BlogPost';
 import { NotFound } from '@pages/NotFound';
 import { AuditPage } from '@pages/AuditPage';
+import { ResultsGrid } from './features/results/components/ResultsGrid';
 
-import { ReactLenis } from '@studio-freight/react-lenis';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { ErrorBoundary } from '@components/ErrorBoundary';
 
 function App() {
   return (
-    <ReactLenis root>
+    <>
       <SpeedInsights />
       <ErrorBoundary>
         <BrowserRouter>
@@ -24,6 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/audit" element={<AuditPage />} />
+              <Route path="/results" element={<ResultsGrid />} />
               <Route path="/apply" element={<Apply />} />
               <Route path="/scale" element={<Scale />} />
               <Route path="/services" element={<Scale />} />
@@ -34,7 +35,7 @@ function App() {
           </Layout>
         </BrowserRouter>
       </ErrorBoundary>
-    </ReactLenis>
+    </>
   );
 }
 

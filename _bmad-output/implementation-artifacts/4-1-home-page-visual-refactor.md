@@ -22,10 +22,10 @@ The current Home page uses a mix of custom CSS/BEM classes and some inline style
 - Ensure padding and font sizes are legible on small screens.
 
 ## Acceptance Criteria
-- [ ] `Home.tsx` contains NO custom CSS class references (unless defined in base Tailwind layer).
-- [ ] Hero section matches the "Premium Technical" aesthetic.
-- [ ] ROI Calculator inputs look identical to the Apply Form inputs.
-- [ ] Page passes accessibility check (contrast, interactive elements).
+- [x] `Home.tsx` contains NO custom CSS class references (unless defined in base Tailwind layer).
+- [x] Hero section matches the "Premium Technical" aesthetic.
+- [x] ROI Calculator inputs look identical to the Apply Form inputs.
+- [x] Page passes accessibility check (contrast, interactive elements).
 
 ## Technical Implementation
 - Edit `src/pages/Home.tsx`.

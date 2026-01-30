@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
+import React from "react";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader, SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { NAV_LINKS } from "@/lib/constants";
 
 export function MobileNav() {
-    const [open, setOpen] = useState(false);
 
     return (
-        <Sheet open={open} onOpenChange={setOpen}>
+        <Sheet>
             <SheetTrigger asChild>
                 <button
                     className="md:hidden text-zinc-100 p-2"
@@ -30,22 +29,23 @@ export function MobileNav() {
 
                 <div className="flex flex-col p-4 gap-4 mt-4">
                     {NAV_LINKS.map((link) => (
-                        <a
-                            key={link.href}
-                            href={link.href}
-                            className="text-lg text-zinc-400 hover:text-zinc-100 py-3 border-b border-white/5 transition-colors"
-                            onClick={() => setOpen(false)}
-                        >
-                            {link.label}
-                        </a>
+                        <SheetClose key={link.href} asChild>
+                            <a
+                                href={link.href}
+                                className="text-lg text-zinc-400 hover:text-zinc-100 py-3 border-b border-white/5 transition-colors"
+                            >
+                                {link.label}
+                            </a>
+                        </SheetClose>
                     ))}
                     <div className="mt-4">
-                        <Button
-                            className="w-full bg-violet-600 hover:bg-violet-700 text-white text-lg py-6"
-                            onClick={() => setOpen(false)}
-                        >
-                            Apply
-                        </Button>
+                        <SheetClose asChild>
+                            <Button
+                                className="w-full bg-violet-600 hover:bg-violet-700 text-white text-lg py-6"
+                            >
+                                Apply
+                            </Button>
+                        </SheetClose>
                     </div>
                 </div>
             </SheetContent>

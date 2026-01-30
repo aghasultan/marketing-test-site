@@ -104,6 +104,7 @@ body.theme-dark {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Account for sticky header (64px) + breathing room */
   text-size-adjust: 100%;
 }
 

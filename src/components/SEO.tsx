@@ -6,9 +6,10 @@ interface SEOProps {
   description: string;
   canonical?: string;
   image?: string;
+  schema?: string | object;
 }
 
-export const SEO: React.FC<SEOProps> = ({ title, description, canonical, image }) => {
+export const SEO: React.FC<SEOProps> = ({ title, description, canonical, image, schema }) => {
   const siteUrl = 'https://riffat-labs.vercel.app'; // Replace with your actual domain or env var
 
   // Construct dynamic OG image URL if no custom image is provided
@@ -32,6 +33,13 @@ export const SEO: React.FC<SEOProps> = ({ title, description, canonical, image }
       <meta name="twitter:image" content={ogImage} />
 
       {canonical && <link rel="canonical" href={canonical} />}
+
+      {/* JSON-LD Schema */}
+      {schema && (
+        <script type="application/ld+json">
+          {typeof schema === 'string' ? schema : JSON.stringify(schema)}
+        </script>
+      )}
     </Helmet>
   );
 };
