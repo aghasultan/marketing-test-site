@@ -85,16 +85,13 @@ export const Home = () => {
           </div>
           <motion.div className="hero-visual-col" variants={itemVariants}>
             <div className="snapshot-card">
-              <div style={{ marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <div style={{
-                  width: '40px', height: '40px', background: 'var(--primary-soft)', borderRadius: '8px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center'
-                }}>
-                  <span style={{ fontSize: '1.2rem' }}>🚀</span>
+              <div className="mb-4 flex items-center gap-2.5">
+                <div className="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center text-xl">
+                  🚀
                 </div>
                 <div>
-                  <strong style={{ display: 'block', lineHeight: 1.2 }}>Performance Snapshot</strong>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Avg. Client Metrics</span>
+                  <strong className="block leading-tight">Performance Snapshot</strong>
+                  <span className="text-[0.8rem] text-slate-400">Avg. Client Metrics</span>
                 </div>
               </div>
               <div className="snapshot-row">
@@ -119,12 +116,9 @@ export const Home = () => {
       </section>
 
       {/* Logo Bar */}
-      <section className="logo-bar reveal visible" aria-label="Client logos" style={{ paddingBottom: 0 }}>
-        <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-          <p style={{
-            fontSize: '0.9rem', color: 'var(--text-muted)', textTransform: 'uppercase',
-            letterSpacing: '0.1em', fontWeight: 700
-          }}>
+      <section className="logo-bar reveal visible pb-0" aria-label="Client logos">
+        <div className="text-center mb-5">
+          <p className="text-[0.9rem] text-slate-400 uppercase tracking-widest font-bold">
             Brands &amp; Operators I’ve Helped
           </p>
         </div>
@@ -195,7 +189,7 @@ export const Home = () => {
           <div className="bento-item bento-span-2">
             <div>
               <h3 className="bento-title">Paid Media Profit</h3>
-              <p style={{ color: 'var(--text-muted)', maxWidth: '450px' }}>
+              <p className="text-slate-400 max-w-[450px]">
                 We don't just run ads; we build full-funnel acquisition systems. From
                 creative strategy to server-side attribution, every component is
                 engineered for ROI.
@@ -208,13 +202,15 @@ export const Home = () => {
             </div>
           </div>
           <div className="bento-item">
-            <span className="bento-label" style={{ display: 'block', fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '4px' }}>Managed Spend</span>
-            <span className="bento-value" style={{ fontSize: '2.5rem' }}>$5M+</span>
-            <span className="bento-sub" style={{ display: 'block', fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px' }}>Annual Budget Under Management</span>
+            <span className="block text-[0.9rem] text-slate-400 mb-1">Managed Spend</span>
+            <span className="text-[2.5rem] font-bold">
+              $5M+
+            </span>
+            <span className="block text-[0.8rem] text-slate-400 mt-1">Annual Budget Under Management</span>
           </div>
           <div className="bento-item">
             <h3 className="bento-title">Platforms</h3>
-            <div className="bento-badges" style={{ marginTop: '1rem' }}>
+            <div className="bento-badges mt-4">
               <span className="badge">Meta Ads</span>
               <span className="badge">Google Ads</span>
               <span className="badge">TikTok</span>
@@ -223,20 +219,20 @@ export const Home = () => {
           </div>
           <div className="bento-item bento-span-2">
             <h3 className="bento-title">Tracking Architecture</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '1rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--primary)' }}>✓</span>
+            <div className="grid grid-cols-2 gap-3 mt-4">
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✓</span>
                 <span>Google Tag Manager</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--primary)' }}>✓</span>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✓</span>
                 <span>GA4 Server-Side</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--primary)' }}>✓</span> <span>Meta CAPI</span>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✓</span> <span>Meta CAPI</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ color: 'var(--primary)' }}>✓</span>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-500">✓</span>
                 <span>Offline Events</span>
               </div>
             </div>
@@ -259,13 +255,13 @@ export const Home = () => {
             <div className="flex items-start justify-between gap-4 mb-6">
               <div>
                 <h4 className="bento-title">Plug your numbers</h4>
-                <p style={{ color: 'var(--text-muted)', maxWidth: '640px' }}>
+                <p className="text-slate-400 max-w-2xl">
                   Live calculator that blends time saved with media efficiency. The progress bar on the right fills as you uncover more upside (capped at $100k).
                 </p>
               </div>
-              <span className="badge" style={{ background: 'var(--primary-soft)', color: 'var(--primary)' }}>Live</span>
+              <span className="badge bg-emerald-500/10 text-emerald-500">Live</span>
             </div>
-            <form className="contact-form" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }} onSubmit={e => e.preventDefault()}>
+            <form className="contact-form grid grid-cols-2 gap-5" onSubmit={e => e.preventDefault()}>
               <div className="form-group">
                 <label>Monthly Ad Spend ($)</label>
                 <input
@@ -294,7 +290,7 @@ export const Home = () => {
                 />
               </div>
             </form>
-            <div style={{ marginTop: '20px', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+            <div className="mt-5 text-slate-400 text-sm">
               *Calculates efficiency gains + time saved vs hiring an agency.
             </div>
           </div>

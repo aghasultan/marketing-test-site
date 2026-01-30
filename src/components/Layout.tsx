@@ -8,21 +8,25 @@ interface LayoutProps {
 }
 
 import { initAnimatedBackground } from './ui/AnimatedBackground';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const bgRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const cleanup = initAnimatedBackground();
+    const cleanup = initAnimatedBackground(bgRef.current);
     return cleanup;
   }, []);
 
   return (
     <>
       <InteractiveBg />
-      <div id="gradient-bg" aria-hidden="true" className="fixed inset-0 z-0 pointer-events-none" style={{
-        background: 'linear-gradient(120deg, var(--background-subtle), var(--background), var(--background-subtle))',
-        opacity: 1
-      }}></div>
+      <div
+        ref={bgRef}
+        id="gradient-bg"
+        aria-hidden="true"
+        className="fixed inset-0 z-0 pointer-events-none bg-[linear-gradient(120deg,var(--background-subtle),var(--background),var(--background-subtle))]"
+      />
 
       <Header />
       <main className="content-wrapper" id="main">

@@ -12,24 +12,28 @@ import { AuditPage } from '@pages/AuditPage';
 import { ReactLenis } from '@studio-freight/react-lenis';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
+import { ErrorBoundary } from '@components/ErrorBoundary';
+
 function App() {
   return (
     <ReactLenis root>
       <SpeedInsights />
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/audit" element={<AuditPage />} />
-            <Route path="/apply" element={<Apply />} />
-            <Route path="/scale" element={<Scale />} />
-            <Route path="/services" element={<Scale />} />
-            <Route path="/blog" element={<BlogIndex />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
+      <ErrorBoundary>
+        <BrowserRouter>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/audit" element={<AuditPage />} />
+              <Route path="/apply" element={<Apply />} />
+              <Route path="/scale" element={<Scale />} />
+              <Route path="/services" element={<Scale />} />
+              <Route path="/blog" element={<BlogIndex />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </ErrorBoundary>
     </ReactLenis>
   );
 }

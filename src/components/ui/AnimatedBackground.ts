@@ -1,5 +1,5 @@
-export const initAnimatedBackground = () => {
-    const el = document.getElementById("gradient-bg");
+export const initAnimatedBackground = (element: HTMLElement | null) => {
+    const el = element;
     if (!el) return () => { };
 
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -25,10 +25,25 @@ export const initAnimatedBackground = () => {
         return `rgb(${Math.round(lerp(a[0], b[0], t))},${Math.round(lerp(a[1], b[1], t))},${Math.round(lerp(a[2], b[2], t))})`;
     };
 
+    // Performance Optimization: Check DOM state via observer, not in loop
+    let isDark = document.body.classList.contains("theme-dark");
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.type === "attributes" && mutation.attributeName === "class") {
+                isDark = document.body.classList.contains("theme-dark");
+                if (isDark) {
+                    el.style.background = ""; // Clear inline style immediately
+                }
+            }
+        });
+    });
+
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+
     const tick = () => {
-        // Respect Dark Mode: let CSS gradient handle it
-        if (document.body.classList.contains("theme-dark")) {
-            el.style.background = "";
+        if (isDark) {
+            // Do nothing, let CSS handle it
+            // Optimization: Avoid setting style="" repeatedly if already cleared
         } else {
             const c0a = colors[idx[0]];
             const c0b = colors[idx[1]];
@@ -52,7 +67,7 @@ export const initAnimatedBackground = () => {
     };
 
     const animate = () => {
-        if (raf) canceAnimationFrame(raf);
+        if (raf) cancelAnimationFrame(raf);
         if (!reduced) raf = requestAnimationFrame(tick);
     };
 
@@ -74,10 +89,7 @@ export const initAnimatedBackground = () => {
     return () => {
         cancelAnimationFrame(raf);
         media.removeEventListener("change", handleMediaChange);
+        observer.disconnect();
     };
 };
 
-// Shim for canceAnimationFrame typo in my thought, fixed in code: cancelAnimationFrame
-function canceAnimationFrame(id: number) {
-    cancelAnimationFrame(id);
-}
