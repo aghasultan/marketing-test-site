@@ -293,3 +293,56 @@ So that I can correct any mistakes.
 **When** the API call succeeds (mocked for now)
 **Then** I am shown a "Success" message and next steps (e.g., "Book a Call")
 **And** my local storage state is cleared
+
+### Epic 4: Content & SEO Polish
+
+Harmonize the Home and Services pages with the new "Glassmorphism" Design System (Tailwind CSS) established in Epics 2 & 3. Implement comprehensive SEO with JSON-LD schemas to maximize reach for the "Marketing Test Site".
+
+### Story 4.1: Home Page Visual Refactor
+
+As a Visitor,
+I want a visually stunning Home page that matches the Apply Wizard's aesthetic,
+So that I trust the brand's premium positioning.
+
+**Acceptance Criteria:**
+
+**Given** I view the Home page
+**When** the page loads
+**Then** I see "Glassmorphism" cards consistent with the WizardLayout
+**And** custom CSS/BEM classes are replaced with utility-first Tailwind CSS including the ROI Calculator forms
+
+**Given** I am on a mobile device
+**When** I view the page
+**Then** the layout is fully responsive
+
+### Story 4.2: Scale (Services) Page Refactor
+
+As a Technical Buyer,
+I want a clean, readable Services page,
+So that I can easily scan the offer details.
+
+**Acceptance Criteria:**
+
+**Given** I view the Services (Scale) page
+**When** the page loads
+**Then** inline styles are replaced with Tailwind classes
+**And** the typography matches the system (Inter/JetBrains Mono)
+
+**Given** I click an 'Apply' link
+**When** I navigate
+**Then** I am taken correctly to the Apply wizard
+
+### Story 4.3: Advanced SEO & Schema
+
+As a Search Engine,
+I want structured data (JSON-LD),
+So that I can rich-snippet the Case Studies and Organization details.
+
+**Acceptance Criteria:**
+
+**Given** a search crawler visits the site
+**When** it parses the head
+**Then** it finds `Organization` schema on the Home Page
+**And** `Service` schema on the Scale Page
+**And** generic meta tags are correct and present
+

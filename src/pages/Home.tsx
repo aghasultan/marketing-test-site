@@ -365,7 +365,7 @@ export const Home = () => {
                 </div>
 
                 <div className="text-right">
-                  <div className="text-4xl md:text-6xl font-extrabold text-white mb-2 transition-all">
+                  <div data-testid="roi-result" className="text-4xl md:text-6xl font-extrabold text-white mb-2 transition-all">
                     {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(totalUpside)}
                   </div>
                   <div className="flex gap-6 justify-end">

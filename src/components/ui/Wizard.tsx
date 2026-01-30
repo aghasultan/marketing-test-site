@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, UseFormRegisterReturn, FieldError } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { clsx } from 'clsx';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, AlertCircle, ChevronRight, ChevronLeft, Send } from 'lucide-react';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const applicationSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Invalid email"),
@@ -35,8 +36,8 @@ const WizardField = ({
   rows
 }: {
   label: string,
-  register: any,
-  error?: any,
+  register: UseFormRegisterReturn,
+  error?: FieldError,
   type?: "text" | "email" | "url" | "select" | "textarea",
   placeholder?: string,
   isValid?: boolean,
