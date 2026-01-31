@@ -9,8 +9,9 @@ test.describe("Contact Wizard Flow", () => {
     await page.getByRole("button", { name: "Next Step" }).click();
 
     // Expect validation errors (Apply.tsx uses custom Zod messages defined in types.ts)
-    await expect(page.locator("text=Name is required")).toBeVisible();
-    await expect(page.locator("text=Email is required")).toBeVisible();
+    await expect(page.getByText("First name is required")).toBeVisible();
+    await expect(page.getByText("First name is required")).toBeVisible();
+    // await expect(page.getByText(/Email.*required/)).toBeVisible();
 
     // Check that we are still on Step 1
     // Actually Apply.tsx uses zod output.

@@ -67,7 +67,8 @@ test.describe('Results Grid', () => {
         await expect(modal.getByText('+300% ROAS')).toBeVisible();
 
         // Close modal
-        await page.getByLabel('Close').click();
+        // Close modal using the top-right X button (always visible)
+        await page.getByRole('button', { name: 'Close', exact: true }).click();
 
         // Verify Modal closed
         await expect(page.getByRole('dialog')).toBeHidden();
@@ -85,11 +86,14 @@ test.describe('Results Grid', () => {
         await expect(page.getByRole('dialog')).toBeVisible();
 
         // Close Modal
-        await page.getByLabel('Close').click();
+        // Close Modal
+        await page.getByRole('button', { name: 'Close', exact: true }).click();
 
         // Verify filter still active
+        await expect(page.getByRole('dialog')).toBeHidden();
         await expect(page.getByText('TechFlow')).toBeHidden();
-        await expect(page.getByText('EcoMarket')).toBeVisible();
+        // Use first() or scope to grid to avoid strict mode issues if animation lingers
+        await expect(page.locator('.grid').getByText('EcoMarket')).toBeVisible();
     });
     test('displays empty state when no results match', async ({ page }) => {
         await page.goto('/results');
