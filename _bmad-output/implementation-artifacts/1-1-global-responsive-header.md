@@ -10,18 +10,6 @@ As a **Visitor**,
 I want a **sticky navigation bar**,
 so that **I can access key pages from anywhere without scrolling back to the top**.
 
-## Acceptance Criteria
-
-1.  **Sticky Behavior:** The header remains fixed at the top of the viewport when scrolling down.
-2.  **Visual Style:**
-    *   Gains "glassmorphism" effect (blur `backdrop-blur-md` + semi-transparent `bg-zinc-950/60` + border `border-white/10`) on scroll.
-    *   Initial state (at top) may be transparent or solid depending on Hero design (assume consistent specific "Technical Dark Mode" styling).
-    *   Z-index ensures it stays above all content.
-3.  **Desktop Layout (>768px):**
-    *   Displays "Riffat Labs" Logo (left).
-    *   Navigation Links: "Services", "Work", "About".
-    *   Primary Action: "Apply" button (prominent style, Electric Blue/Violet accent).
-4.  **Mobile Layout (<768px):**
     *   Displays Logo (left).
     *   Hamburger Menu Icon (right).
     *   Hidden numeric navigation links.

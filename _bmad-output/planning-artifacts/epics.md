@@ -55,13 +55,25 @@ NFR-06 (Data Persistence): Auto-save mechanism must successfully persist wizard 
 - Project Structure: Feature-First organization (`src/features/wizard`, `src/features/results`).
 - Component Interfaces: Strict TypeScript interfaces for all data models.
 
-**From UX Design:**
-- Aesthetic: "Technical Dark Mode" with "Glassmorphism" (bg-zinc-950/60 backdrop-blur-md).
-- Typography: Inter for UI, JetBrains Mono/Geist Mono for data/pricing.
-- Interactions: Framer Motion for micro-interactions and modal entry.
-- Feedback: Real-time "Auto-saved" toast on every input change.
-- Navigation: Sticky Top Bar, smooth scrolling, mobile hamburger drawer.
-- Results Grid: Instant client-side filtering; "One-Thing-Per-Step" wizard flow with smart defaults.
+**From UX Design (Finalized Spec - Direction B: Glass Heavy):**
+- **Aesthetic:** "Premium Consumer Feel" (Direction B).
+  - Base: `zinc-950` with purple/blue tint hints.
+  - Surface: `backdrop-filter: blur(20px)` with `bg-white/5` to `bg-white/10`.
+  - Borders: `border-white/10` or inner shadows.
+  - Noise Texture: SVG-based noise filter to prevent banding.
+- **Typography:** `Inter` (Sans) with `tracking-tight` for headers.
+- **Motion & Interaction:**
+  - Physics-based `framer-motion` (Glass panes).
+  - Hover: "Glass Lift" (Scale 1.02 + shadow increase) in 200ms.
+  - Modal Open: 400ms spring damping.
+  - Wizard Transitions: Slide in from right (`x: 20`), fade in.
+- **Wizard Experience:**
+  - "Guided Consultation" logic with Branching:
+    - Paid Advertising -> Ad Budget.
+    - Data & Analytics -> Tech Stack (Skip Ad Budget).
+  - Zero-latency auto-save to `localStorage` on *every* input change.
+- **Feedback:** Real-time "Auto-saved" toast on every input change; Active Nav "Pill" slide animation.
+- **Results Grid:** Instant client-side filtering; "One-Thing-Per-Step" wizard flow with smart defaults.
 
 ### FR Coverage Map
 
@@ -85,7 +97,9 @@ FR15: Epic 2 - Type Safety
 
 ### Epic 1: Core Navigation & Responsive Layout
 
-Users can navigate the site effortlessly on any device to find the information they need. This lays the foundation for all other journeys.
+### Epic 1: Core Navigation & Responsive Layout
+
+Establishes the "Glassmorphism" visual foundation (Sticky Header, Mobile Drawer) and ensures 60fps smooth navigation on all devices. This "Glass Heavy" shell is critical for the "Premium Consumer Feel".
 
 ### Story 1.1: Global Responsive Header
 
@@ -151,7 +165,7 @@ So that I understand I am staying on the same page and moving to a new section.
 
 ### Epic 2: Results Engine & Trust Building
 
-Users can instantly find relevant case studies to validate the agency's expertise, and Internal Ops (Developers) can easily manage this data via code.
+Users can instantly find relevant case studies via client-side filtering. High-end "Glass Lift" hover effects and "Instant Results" build trust through perceived speed and visual excellence.
 
 ### Story 2.1: Results Database & Type Safety
 
@@ -225,7 +239,7 @@ So that I can understand *how* the result was achieved.
 
 ### Epic 3: Smart Application Wizard
 
-Users can complete a guided application process that feels like a consultation, with progress saved automatically to preventing data loss.
+Transforms the standard form into a "Guided Consultation". Features conditional branching (Ads vs Analytics), zero-latency auto-save to localStorage, and physics-based transitions to respect user time and intelligence.
 
 ### Story 3.1: Wizard Architecture & State Management
 
@@ -296,7 +310,7 @@ So that I can correct any mistakes.
 
 ### Epic 4: Content & SEO Polish
 
-Harmonize the Home and Services pages with the new "Glassmorphism" Design System (Tailwind CSS) established in Epics 2 & 3. Implement comprehensive SEO with JSON-LD schemas to maximize reach for the "Marketing Test Site".
+Refactor Home and Services pages to match the "Glass Heavy" design system (removing legacy styles). Implement comprehensive JSON-LD schemas to maximize reach.
 
 ### Story 4.1: Home Page Visual Refactor
 

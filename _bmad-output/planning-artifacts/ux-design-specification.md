@@ -9,6 +9,10 @@ stepsCompleted:
   - step-06-design-system
   - step-07-defining-experience
   - step-08-visual-foundation
+  - step-09-motion-and-interaction
+  - step-10-content-strategy
+  - step-11-handoff-and-ready
+
 inputDocuments:
   - /Users/sultan/Desktop/marketing-test-site/_bmad-output/planning-artifacts/prd.md
   - /Users/sultan/Desktop/marketing-test-site/project-context.md
@@ -41,6 +45,53 @@ A high-performance marketing SPA (React 18 + Vite) designed to maximize ad quali
 - **Balancing Premium Visuals vs. Performance:** Implementing "Glassmorphism" and smooth animations without violating the strict LCP < 2.5s requirement.
 - **Conditional Complexity:** managing the branching logic of the "Apply Wizard" without overwhelming the user or losing progress.
 - **Trust at a Glance:** Instantaneously filtering "Results" to show relevance before a user bounces.
+
+## 3. Motion & Interaction Design
+
+### 3.1 Motion Principles: "Weight & Fluidity"
+
+- **Physics-based:** Interactions should feel like moving physical glass panes.
+- **Duration:** 
+  - Micro-interactions (Hover): 200ms ease-out.
+  - Macro-interactions (Modal Open): 400ms spring damping.
+- **Reduced Motion:** All `framer-motion` variants must respect `prefers-reduced-motion` by falling back to simple opacity fades.
+
+### 3.2 Key Interaction Patterns
+
+- **The "Glass Lift":** Hovering over cards (Case Studies) should slightly scale them up (1.02) and increase the shadow opacity, simulating lifting the glass pane closer to the user.
+- **Wizard Transitions:** Steps in the Apply Wizard should slide in from the right (`x: 20`) and fade in, while the previous step slides out to the left (`x: -20`), creating a sense of linear progression.
+- **Navigation Feedback:** The active nav item should have a glowing background "pill" that slides behind the text (LayoutLayout animation) rather than just jumping.
+
+## 4. Content Strategy
+
+### 4.1 Voice & Tone
+
+- **Headline Style:** "Confident, Direct, Engineering-Led."
+  - *Yes:* "Turn ad spend into profit."
+  - *No:* "We help you grow your business."
+- **Microcopy:** Use technical precision. "Initialize Roadmap" instead of "Get Started." "System Ready" instead of "Welcome."
+
+### 4.2 "Code-as-content" Workflow
+
+- **Problem:** Marketing teams break layouts with unoptimized images.
+- **Solution:** Hardcoded content in structured TSX/JSON files for now. Changes require a PR, ensuring a developer reviews the visual impact of new copy/images before deploy.
+
+## 5. Final Handoff & Implementation Guide
+
+### 5.1 Asset Requirements
+
+- **Noise Texture:** SVG-based noise filter (hosted or inline base64) to prevent banding on dark gradients.
+- **Icons:** Lucide React (standardized stroke width 1.5px to match "Fine" aesthetic).
+
+### 5.2 Critical Critical Path
+
+1.  **Theme Setup:** Update `tailwind.config.ts` with the new colors and `glass` utilities.
+2.  **Layout Shell:** Build the sticky header and mobile drawer with the blur effects first to test performance.
+3.  **Wizard State:** Implement the `zustand` store for the Apply Wizard before building the UI.
+
+---
+**Status:** COMPLETED
+**Ready for Implementation:** YES
 
 ### Design Opportunities
 
@@ -189,25 +240,32 @@ We are innovating on the standard "step-wizard" pattern by adding **Local-First 
 
 ## Visual Design Foundation
 
+### Selected Direction: Direction B (Glass Heavy)
+
+**"Premium Consumer Feel."** We have moved away from the strict "Technical/Linear" look (Direction A) in favor of a richer, more accessible "Glass Heavy" aesthetic. This builds trust through high-end visual fidelity rather than just raw data density.
+
 ### Color System
 
-- **Base Theme:** "Technical Dark Mode" using `zinc-950` (Background) to `zinc-900` (Surface/Cards).
-- **Accents:** Sparse use of "Electric Blue" or "Violet" for primary actions only.
-- **Text:** `zinc-100` for primary content, `zinc-400` for secondary. Avoid pure white/black to reduce eye strain.
+- **Base Theme:** Deep, rich darks (`zinc-950` with purple/blue tint hints) rather than sterile gray.
+- **Surfaces:** Heavy reliance on `backdrop-filter: blur(20px)` with `bg-white/5` to `bg-white/10` overlays.
+- **Accents:** Gradient fills for buttons and active states (Blue -> Violet).
+- **Text:** High contrast white (`#fff`) for headers, `zinc-300` for body.
 
 ### Typography System
 
-- **Font Family:** `Inter` (or system-ui) for UI text; `JetBrains Mono` or `Geist Mono` for data/pricing.
-- **Treatment:** Standard headings use `tracking-tight` (-0.02em) for a dense, engineered look.
-- **Hierarchy:** Heavy reliance on font weight and color (Zinc-400 vs 100) rather than size to maintain density.
+- **Font Family:** `Inter` (Sans) is primary.
+- **Headings:** Heavier weights (Semibold/Bold) with tighter tracking `tracking-tight`.
+- **Display:** Large, imposing headers with soft drop shadows or gradient text `bg-clip-text`.
 
 ### Spacing & Layout Foundation
 
-- **Base Unit:** 4px (Tailwind standard).
-- **Density:** Compact "Dashboard" density for the Results Engine; Open, "Editorial" spacing for the Service pages.
-- **Glass Utility:** Standardized `.glass` class: `bg-zinc-950/60 backdrop-blur-md border-white/10`.
+- **Cards:** Highly rounded corners (`rounded-2xl` or `rounded-3xl` for main containers).
+- **Borders:** Subtle, luminous borders `border-white/10` or inner shadows to create depth.
+- **Depth:** Significant usage of drop shadows `shadow-2xl` on floating glass, cards, and modals.
+- **Backgrounds:** use of "noise" textures and subtle gradient globs (blobs) behind glass panels to emphasize the blur effect.
 
 ### Accessibility Considerations
 
-- **Contrast:** Strict checking of `zinc-400` on `zinc-950` to ensure >4.5:1 ratio.
-- **Focus States:** High-visibility focus rings (Blue/Violet) for keyboard navigation, essential for the *Apply Wizard*.
+- **Contrast:** Ensure text on glass panels maintains >4.5:1 ratio against the dynamic background.
+- **Fallbacks:** "Glass" effects must gracefully degrade to solid opaque backgrounds (e.g., `zinc-900`) for browsers without `backdrop-filter` support.
+

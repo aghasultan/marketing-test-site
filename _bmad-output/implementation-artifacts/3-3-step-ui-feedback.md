@@ -26,6 +26,22 @@ The Apply Wizard currently functions logic-wise but lacks polished visual feedba
 - [ ] Ensure focus moves to the top of the form on step change.
 - [ ] Announce step changes to screen readers.
 
+**Acceptance Criteria:**
+
+**Given** I select an option (e.g., "E-commerce")
+**When** the selection is registered
+**Then** I see a subtle "Auto-saved" toast or indicator appear (bottom right or near input)
+**And** the feedback is non-intrusive (doesn't block next action)
+
+**Given** I navigate to a new step
+**When** the new question slides in
+**Then** the input field is automatically focused (keyboard ready)
+**And** the "Next" button state updates based on validation
+
+**Given** I execute a micro-interaction (hover/select)
+**When** the action occurs
+**Then** the UI responds with "Typeform-like" immediacy (no lag)
+
 ## Acceptance Criteria
 - [ ] Changing steps animates the content (slide/fade).
 - [ ] Submit button shows spinner/text change when processing.

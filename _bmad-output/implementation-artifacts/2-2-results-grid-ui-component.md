@@ -10,14 +10,20 @@ So that I can see the breadth of the agency's experience at a glance.
 
 ## Acceptance Criteria
 
-1.  **Grid Layout:**
-    *   **Given** I am on the Results/Work section
-    *   **When** the page loads
-    *   **Then** I see a responsive grid of Case Study cards.
-2.  **Card Content:**
-    *   **And** each card displays: Client Name, Key Metric (e.g., "+300% ROAS"), and Industry Tag.
-3.  **Styling:**
-    *   **And** the cards use the "Glassmorphism" style (border-white/10, backdrop-blur).
+**Given** I am on the Results/Work section
+**When** the page loads
+**Then** I see a responsive grid of Case Study cards
+**And** each card displays: Client Name, Key Metric (e.g., "+300% ROAS"), and Industry Tag
+**And** the cards use the "Glassmorphism" style (border-white/10, backdrop-blur)
+**And** hovering a card triggers the "Glass Lift" effect:
+  - Scale up to 1.02
+  - Increase shadow opacity
+  - Duration: 200ms ease-out
+
+**Given** I view the results grid
+**When** I click a filter button (e.g., "E-commerce")
+**Then** the grid updates *instantly* (client-side) to show only matching items
+**And** the "All" view is hidden without a page reload
 
 ## Tasks / Subtasks
 

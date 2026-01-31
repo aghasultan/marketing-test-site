@@ -10,8 +10,23 @@ As a **Mobile User (Sarah)**,
 I want a **slide-out menu**,
 so that **I can see all navigation options clearly on my small screen**.
 
-## Acceptance Criteria
+## **Acceptance Criteria:**
 
+**Given** I am on a mobile device
+**When** I tap the "Hamburger" icon in the header
+**Then** a side drawer slides in from the right covering part/all of the screen
+**And** the drawer uses the "Glass Heavy" style:
+  - Background: `backdrop-filter: blur(20px)` + `bg-zinc-950/80`
+  - Border: Left border `white/10`
+  - Animation: Spring-based slide-in (duration ~400ms)
+**And** I see large, tappable links for all sections
+
+**Given** the drawer is open
+**When** I click a link
+**Then** the drawer closes automatically and the page navigates to that section
+**And** the "Hamburger" icon transitions to an "X" (and back)
+
+**Given** the drawer is open
 1.  **Drawer Trigger:**
     *   Tapping the "Hamburger" icon in the header opens the drawer.
     *   The icon is only visible on mobile screens (<768px).

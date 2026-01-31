@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { StepIndicator } from './StepIndicator';
+import { useWizardStore } from '../stores/wizardStore';
 
 interface WizardLayoutProps {
     currentStep: number;
@@ -10,6 +11,21 @@ interface WizardLayoutProps {
     children: React.ReactNode;
 }
 
+const variants = {
+    enter: (direction: number) => ({
+        x: direction > 0 ? 20 : -20,
+        opacity: 0,
+    }),
+    center: {
+        x: 0,
+        opacity: 1,
+    },
+    exit: (direction: number) => ({
+        x: direction < 0 ? 20 : -20,
+        opacity: 0,
+    }),
+};
+
 export function WizardLayout({
     currentStep,
     totalSteps,
@@ -17,6 +33,8 @@ export function WizardLayout({
     description,
     children
 }: WizardLayoutProps) {
+    const direction = useWizardStore((state) => state.direction);
+
     return (
         <div className="min-h-screen bg-zinc-950 px-4 py-20 md:px-6">
             <div className="mx-auto max-w-xl">
@@ -40,12 +58,14 @@ export function WizardLayout({
 
                     {/* Step Content with Transition */}
                     <div className="relative mt-8 min-h-[300px]">
-                        <AnimatePresence mode="wait">
+                        <AnimatePresence mode="wait" custom={direction}>
                             <motion.div
                                 key={currentStep}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
+                                custom={direction}
+                                variants={variants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
                                 transition={{ duration: 0.3 }}
                             >
                                 {children}

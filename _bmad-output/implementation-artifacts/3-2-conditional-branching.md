@@ -21,7 +21,7 @@ The Apply Wizard currently allows free navigation between steps without validati
 ### Branching
 - [ ] Add `industry` field to `ApplyFormSchema`.
 - [ ] If `industry` is "Other", show `customIndustry` text input.
-- [ ] `customIndustry` should be required only if `industry` is "Other".
+- [ ] `customIndustry` should be required only if `industry` is "Other`.
 
 ### Data Fields
 - [ ] `firstName`, `email`, `website` (Step 1)
@@ -32,3 +32,17 @@ The Apply Wizard currently allows free navigation between steps without validati
 - [ ] Selecting "Other" in Industry reveals a text input.
 - [ ] Back button preserves form state.
 - [ ] Submitting the form logs valid JSON data including conditional fields.
+
+**Given** I select "Paid Advertising" as my service (Branch A)
+**When** I click Next
+**Then** I am taken to the "Ad Budget" question
+**And** I am NOT asked about Tech Stack initially
+
+**Given** I select "Data & Analytics" as my service (Branch B)
+**When** I click Next
+**Then** I am taken to the "Current Tech Stack" question
+**And** I am NOT asked about Ad Budget (skipped)
+
+**Given** I am on a branch
+**When** I click "Back"
+**Then** I return to the parent question (Service Type) correctlying conditional fields.

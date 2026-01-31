@@ -9,14 +9,17 @@ interface StepIndicatorProps {
 export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
     const steps = Array.from({ length: totalSteps }, (_, i) => i + 1);
 
+    const formattedStep = currentStep + 1;
+    const progressPercentage = Math.round((formattedStep / totalSteps) * 100);
+
     return (
-        <div className="mb-8">
+        <div className="mb-8" data-testid="step-indicator">
             <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-zinc-400">
-                    Step {currentStep} of {totalSteps}
+                <span className="text-sm font-medium text-zinc-400" data-testid="step-text">
+                    Step {formattedStep} of {totalSteps}
                 </span>
-                <span className="text-sm font-medium text-zinc-500">
-                    {Math.round((currentStep / totalSteps) * 100)}% Completed
+                <span className="text-sm font-medium text-zinc-500" data-testid="progress-text">
+                    {progressPercentage}% Completed
                 </span>
             </div>
 
@@ -25,7 +28,7 @@ export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
                 <motion.div
                     className="h-full bg-gradient-to-r from-blue-500 to-emerald-500"
                     initial={{ width: 0 }}
-                    animate={{ width: `${(currentStep / totalSteps) * 100}%` }}
+                    animate={{ width: `${progressPercentage}%` }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
                 />
             </div>
