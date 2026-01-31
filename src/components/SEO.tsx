@@ -37,7 +37,10 @@ export const SEO: React.FC<SEOProps> = ({ title, description, canonical, image, 
       {/* JSON-LD Schema */}
       {schema && (
         <script type="application/ld+json">
-          {typeof schema === 'string' ? schema : JSON.stringify(schema)}
+          {typeof schema === 'string'
+            ? schema.replace(/</g, '\\u003c')
+            : JSON.stringify(schema).replace(/</g, '\\u003c')
+          }
         </script>
       )}
     </Helmet>

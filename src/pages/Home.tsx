@@ -1,8 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { CaseStudyGrid } from '../components/CaseStudyGrid';
-import { motion } from 'framer-motion';
+import { motion, useSpring, useTransform } from 'framer-motion';
+
+// Helper for smooth number counting
+function NumberCounter({ value, currency = false }: { value: number; currency?: boolean }) {
+  const spring = useSpring(value, { mass: 0.8, stiffness: 75, damping: 15 });
+  const display = useTransform(spring, (current) => {
+    if (currency) {
+      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(Math.round(current));
+    }
+    return Math.round(current).toLocaleString();
+  });
+
+  useEffect(() => {
+    spring.set(value);
+  }, [value, spring]);
+
+  return <motion.span>{display}</motion.span>;
+}
+
+const HERO_CONTENT = {
+  title: "We Turn Paid Ads Into Profit Engines.",
+  description: (
+    <>
+      I’m <strong className="text-white font-semibold">Agha Sultan Naseer</strong> — helping brands across the USA,
+      UK & Europe turn <strong className="text-white font-semibold">7‑figure ad budgets</strong> into
+      predictable revenue.
+    </>
+  ),
+  ctaService: "Explore Services",
+  ctaApply: "Book a Strategy Call"
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: [0.25, 0.46, 0.45, 0.94]
+    }
+  }
+};
 
 export const Home = () => {
   // ROI Calculator State
@@ -14,28 +67,7 @@ export const Home = () => {
   const annualROI = Number(spend) > 0 ? (totalUpside / ((Number(spend) || 0) * 12)) * 100 : 0;
   const progressPercent = Math.min((totalUpside / 100000) * 100, 100);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
-  };
 
   return (
     <>
@@ -71,7 +103,7 @@ export const Home = () => {
           initial="hidden"
           animate="visible"
         >
-          <div className="space-y-8">
+          <div className="space-y-8 text-center lg:text-left">
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
                 01 Performance Paid Media
@@ -83,16 +115,14 @@ export const Home = () => {
               className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]"
               variants={itemVariants}
             >
-              We Turn Paid Ads Into Profit Engines.
+              {HERO_CONTENT.title}
             </motion.h1>
 
-            <motion.p className="text-lg sm:text-xl text-zinc-400 max-w-lg leading-relaxed" variants={itemVariants}>
-              I’m <strong className="text-white font-semibold">Agha Sultan Naseer</strong> — helping brands across the USA,
-              UK &amp; Europe turn <strong className="text-white font-semibold">7‑figure ad budgets</strong> into
-              predictable revenue.
+            <motion.p className="text-lg sm:text-xl text-zinc-400 max-w-lg leading-relaxed mx-auto lg:mx-0" variants={itemVariants}>
+              {HERO_CONTENT.description}
             </motion.p>
 
-            <motion.div className="flex flex-col sm:flex-row gap-4" variants={itemVariants}>
+            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" variants={itemVariants}>
               <Link
                 to="/services"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium bg-white text-zinc-950 hover:bg-zinc-200 transition-colors"
@@ -109,7 +139,7 @@ export const Home = () => {
 
             <motion.div className="pt-8 border-t border-white/5" variants={itemVariants}>
               <h4 className="text-sm font-semibold text-white mb-3">Good fit if you:</h4>
-              <ul className="space-y-2 text-sm text-zinc-400">
+              <ul className="space-y-2 text-sm text-zinc-400 inline-block text-left">
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-500 mt-0.5">✓</span>
                   Already running ads &amp; want tighter tracking
@@ -126,7 +156,7 @@ export const Home = () => {
             </motion.div>
           </div>
 
-          <motion.div className="relative" variants={itemVariants}>
+          <motion.div className="relative mt-12 lg:mt-0" variants={itemVariants}>
             <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-2xl blur opacity-20" />
             <div className="relative rounded-2xl border border-white/10 bg-zinc-900/80 backdrop-blur-xl p-8 shadow-2xl">
               <div className="mb-6 flex items-center gap-4">
@@ -191,7 +221,7 @@ export const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Service 1 */}
-            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10">
+            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10">
               <div className="text-emerald-500 font-mono text-sm mb-6 opacity-60 group-hover:opacity-100 transition-opacity">01</div>
               <h3 className="text-xl font-bold mb-4 text-white group-hover:text-emerald-400 transition-colors">Performance Paid Media</h3>
               <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
@@ -200,7 +230,7 @@ export const Home = () => {
             </div>
 
             {/* Service 2 */}
-            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10">
+            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10">
               <div className="text-emerald-500 font-mono text-sm mb-6 opacity-60 group-hover:opacity-100 transition-opacity">02</div>
               <h3 className="text-xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors">Analytics Engineering</h3>
               <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
@@ -209,7 +239,7 @@ export const Home = () => {
             </div>
 
             {/* Service 3 */}
-            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10">
+            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10">
               <div className="text-emerald-500 font-mono text-sm mb-6 opacity-60 group-hover:opacity-100 transition-opacity">03</div>
               <h3 className="text-xl font-bold mb-4 text-white group-hover:text-purple-400 transition-colors">Marketing Automation</h3>
               <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
@@ -232,7 +262,7 @@ export const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Bento Item 1: Span 2 */}
-            <div className="md:col-span-2 rounded-2xl border border-white/5 bg-zinc-900/50 p-8 flex flex-col justify-between hover:border-white/10 transition-colors">
+            <div className="md:col-span-2 rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 flex flex-col justify-between hover:border-white/10 transition-colors">
               <div>
                 <h3 className="text-xl font-bold text-white mb-4">Paid Media Profit</h3>
                 <p className="text-zinc-400 max-w-lg leading-relaxed mb-8">
@@ -251,7 +281,7 @@ export const Home = () => {
             </div>
 
             {/* Bento Item 2: Managed Spend */}
-            <div className="rounded-2xl border border-white/5 bg-zinc-900/50 p-8 flex flex-col justify-center hover:border-white/10 transition-colors">
+            <div className="rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 flex flex-col justify-center hover:border-white/10 transition-colors">
               <span className="block text-sm text-zinc-500 mb-2">Managed Spend</span>
               <span className="text-4xl lg:text-5xl font-bold text-white tracking-tight">
                 $5M+
@@ -260,7 +290,7 @@ export const Home = () => {
             </div>
 
             {/* Bento Item 3: Platforms */}
-            <div className="rounded-2xl border border-white/5 bg-zinc-900/50 p-8 hover:border-white/10 transition-colors">
+            <div className="rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 hover:border-white/10 transition-colors">
               <h3 className="text-xl font-bold text-white mb-6">Platforms</h3>
               <div className="flex flex-wrap gap-2">
                 {['Meta Ads', 'Google Ads', 'TikTok', 'LinkedIn'].map((platform) => (
@@ -272,7 +302,7 @@ export const Home = () => {
             </div>
 
             {/* Bento Item 4: Tracking (Span 2) */}
-            <div className="md:col-span-2 rounded-2xl border border-white/5 bg-zinc-900/50 p-8 hover:border-white/10 transition-colors">
+            <div className="md:col-span-2 rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 hover:border-white/10 transition-colors">
               <h3 className="text-xl font-bold text-white mb-6">Tracking Architecture</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 {['Google Tag Manager', 'GA4 Server-Side', 'Meta CAPI', 'Offline Events'].map((tech) => (
@@ -301,7 +331,7 @@ export const Home = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="md:col-span-2 p-8 rounded-2xl border border-white/5 bg-zinc-900/50">
+            <div className="md:col-span-2 p-8 rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md">
               <div className="flex items-start justify-between gap-4 mb-8">
                 <div>
                   <h4 className="text-xl font-bold text-white mb-2">Plug your numbers</h4>
@@ -320,7 +350,7 @@ export const Home = () => {
                     placeholder="10000"
                     value={spend}
                     onChange={(e) => setSpend(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
-                    className="w-full rounded-md border border-white/10 bg-zinc-800/50 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
+                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors"
                   />
                 </div>
                 <div className="space-y-2">
@@ -330,7 +360,7 @@ export const Home = () => {
                     placeholder="10"
                     value={hours}
                     onChange={(e) => setHours(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
-                    className="w-full rounded-md border border-white/10 bg-zinc-800/50 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
+                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors"
                   />
                 </div>
                 <div className="space-y-2 sm:col-span-2">
@@ -340,7 +370,7 @@ export const Home = () => {
                     placeholder="100"
                     value={rate}
                     onChange={(e) => setRate(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
-                    className="w-full rounded-md border border-white/10 bg-zinc-800/50 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
+                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors"
                   />
                 </div>
               </form>
@@ -351,7 +381,7 @@ export const Home = () => {
             </div>
 
             {/* ROI Result Card with gamified progress */}
-            <div className="md:col-span-2 relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-zinc-900/80 p-8">
+            <div className="md:col-span-2 relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-zinc-900/80 backdrop-blur-md p-8">
               <div
                 className="absolute bottom-0 left-0 h-1 bg-emerald-500 transition-all duration-1000 ease-out"
                 style={{ width: `${progressPercent}%`, opacity: 0.5 }}
@@ -366,7 +396,7 @@ export const Home = () => {
 
                 <div className="text-right">
                   <div data-testid="roi-result" className="text-4xl md:text-6xl font-extrabold text-white mb-2 transition-all">
-                    {new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(totalUpside)}
+                    <NumberCounter value={totalUpside} currency />
                   </div>
                   <div className="flex gap-6 justify-end">
                     <div>
@@ -400,11 +430,11 @@ export const Home = () => {
                 We don't just run ads; we build systems that scale.
               </p>
               <div className="grid grid-cols-2 gap-8">
-                <div className="p-6 rounded-xl bg-white/5 border border-white/5">
+                <div className="p-6 rounded-xl bg-white/5 border border-white/5 backdrop-blur-sm">
                   <div className="text-3xl font-bold text-white mb-2">$50M+</div>
                   <div className="text-sm text-zinc-500">Ad Spend Managed</div>
                 </div>
-                <div className="p-6 rounded-xl bg-white/5 border border-white/5">
+                <div className="p-6 rounded-xl bg-white/5 border border-white/5 backdrop-blur-sm">
                   <div className="text-3xl font-bold text-white mb-2">10x</div>
                   <div className="text-sm text-zinc-500">Average ROI</div>
                 </div>

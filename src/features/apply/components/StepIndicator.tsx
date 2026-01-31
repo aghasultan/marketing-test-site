@@ -15,7 +15,7 @@ export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
     return (
         <div className="mb-8" data-testid="step-indicator">
             <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-zinc-400" data-testid="step-text">
+                <span className="text-sm font-medium text-zinc-400" data-testid="step-text" aria-live="polite">
                     Step {formattedStep} of {totalSteps}
                 </span>
                 <span className="text-sm font-medium text-zinc-500" data-testid="progress-text">
@@ -33,15 +33,40 @@ export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
                 />
             </div>
 
-            {/* Optional: Step Dots (Mobile friendly visual) */}
-            <div className="mt-4 flex justify-between px-1">
-                {steps.map((step) => (
-                    <div
-                        key={step}
-                        className={`flex h-2 w-2 items-center justify-center rounded-full transition-colors duration-300 ${step <= currentStep ? 'bg-zinc-200' : 'bg-zinc-800'
-                            }`}
-                    />
-                ))}
+            {/* Enhanced Step Dots */}
+            <div className="mt-4 flex justify-between px-1" role="list">
+                {steps.map((step) => {
+                    const isCompleted = step < currentStep;
+                    const isCurrent = step === currentStep;
+
+                    return (
+                        <div
+                            key={step}
+                            className="flex flex-col items-center"
+                            role="listitem"
+                            aria-current={isCurrent ? 'step' : undefined}
+                        >
+                            <motion.div
+                                className={`flex h-8 w-8 items-center justify-center rounded-full border-2 transition-colors duration-300 ${isCompleted
+                                        ? 'border-emerald-500 bg-emerald-500 text-white'
+                                        : isCurrent
+                                            ? 'border-emerald-500 text-emerald-500' // Current
+                                            : 'border-zinc-700 bg-zinc-800 text-zinc-500'
+                                    }`}
+                                animate={isCurrent ? { scale: [1, 1.1, 1] } : { scale: 1 }}
+                                transition={{ duration: 0.5, repeat: isCurrent ? Infinity : 0, repeatDelay: 2 }}
+                            >
+                                {isCompleted ? (
+                                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                    </svg>
+                                ) : (
+                                    <span className="text-xs font-semibold">{step}</span>
+                                )}
+                            </motion.div>
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

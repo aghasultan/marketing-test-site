@@ -27,6 +27,36 @@ The current Home page uses a mix of custom CSS/BEM classes and some inline style
 - [x] ROI Calculator inputs look identical to the Apply Form inputs.
 - [x] Page passes accessibility check (contrast, interactive elements).
 
-## Technical Implementation
-- Edit `src/pages/Home.tsx`.
-- Potentially clean up `src/index.css` if custom classes are no longer used.
+## Tasks/Subtasks
+    - [ ] Update typography to use `font-sans` and `font-mono` correctly.
+    - [ ] Remove unused custom classes from `index.css`.
+- [ ] **Task 2: ROI Calculator Polish**
+    - [ ] Update `tests/home.spec.ts` to test ROI calculator interactions.
+    - [ ] Style ROI inputs to match Apply Wizard (bg-zinc-800, border-white/10).
+    - [ ] Implement smooth animation for result updates.
+- [ ] **Task 3: Mobile Responsiveness**
+    - [ ] Add mobile responsiveness tests to `tests/home.spec.ts`.
+    - [ ] Adjust `hero-grid` and padding for mobile devices.
+    - [ ] Verify font sizes on small screens.
+
+## Dev Notes
+- **Architecture:** Use Tailwind generic utilities. Avoid creating new custom classes in `index.css`.
+- **Styling:** Refer to `Wizard.tsx` for input field styles to ensure consistency.
+- **Animation:** Use `framer-motion` for the ROI calculator updates if possible, or standard CSS transitions.
+
+## Dev Agent Record
+
+### File List
+- `src/pages/Home.tsx`
+- `src/index.css`
+- `tests/home.spec.ts`
+
+### Status
+
+### Code Review (AI)
+- **Reviewer**: Auto-Fixer
+- **Date**: 2026-01-31
+- **Status**: Details
+    - **Fixed**: Moved animation variants outside component for performance.
+    - **Fixed**: Extracted hardcoded Hero text to constants for maintainability.
+    - **Outcome**: 2 Medium issues resolved. Tests passed.

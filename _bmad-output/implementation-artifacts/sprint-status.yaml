@@ -56,16 +56,16 @@ development_status:
   epic-2-retrospective: optional
 
   # Epic 3: Smart Application Wizard
-  epic-3: in-progress
+  epic-3: done
   3-1-multi-step-form-structure: done
   3-2-conditional-branching: done
-  3-3-step-ui-feedback: ready-for-dev
-  3-4-review-submission: ready-for-dev
-  epic-3-retrospective: optional
+  3-3-step-ui-feedback: done
+  3-4-review-submission: done
+  epic-3-retrospective: done
 
   # Epic 4: Content & SEO Polish
   epic-4: backlog
-  4-1-home-page-visual-refactor: ready-for-dev
-  4-2-scale-page-refactor: ready-for-dev
-  4-3-advanced-seo: ready-for-dev
+  4-1-home-page-visual-refactor: done
+  4-2-scale-page-refactor: done
+  4-3-advanced-seo: done
   epic-4-retrospective: optional

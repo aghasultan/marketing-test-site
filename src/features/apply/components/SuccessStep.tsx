@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export function SuccessStep() {
     return (
@@ -49,12 +50,12 @@ export function SuccessStep() {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.5 }}
             >
-                <a
-                    href="/"
+                <Link
+                    to="/"
                     className="rounded-lg bg-white px-6 py-2 text-sm font-medium text-zinc-950 transition-colors hover:bg-zinc-200"
                 >
                     Back to Home
-                </a>
+                </Link>
             </motion.div>
         </div>
     );

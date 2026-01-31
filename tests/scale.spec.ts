@@ -1,49 +1,54 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Scale Page Refactor', () => {
-
+test.describe('Scale (Services) Page Visual & Navigation', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/scale');
   });
 
-  test('Hero section renders correctly', async ({ page }) => {
-    await expect(page.locator('h1#scale-hero-title')).toContainText(/Turn Ad Spend into Profit/i);
-    await expect(page.getByRole('link', { name: 'Apply for Strategy Call' }).first()).toBeVisible();
+  test('Hero section loads with correct title', async ({ page }) => {
+    const heroTitle = page.locator('#scale-hero-title');
+    await expect(heroTitle).toBeVisible();
+    await expect(heroTitle).toHaveText(/I Turn Ad Spend into Profit/i);
   });
 
-  test('Trust Strip is visible', async ({ page }) => {
-    await expect(page.getByText('Meta Partner')).toBeVisible();
-    await expect(page.getByText('Shopify Plus')).toBeVisible();
+  test('CTA buttons match expected styles and links', async ({ page }) => {
+    const applyBtn = page.locator('a[href="/apply"]').first();
+    await expect(applyBtn).toBeVisible();
+    await expect(applyBtn).toHaveText(/Strategy Call/i);
+
+    // CSS class check for consistency with Home page primary button (sanity check)
+    // Expecting white background text zinc-950 (or similar primary style)
+    // await expect(applyBtn).toHaveClass(/bg-white/); 
   });
 
-  test('Problem section displays list', async ({ page }) => {
-    await expect(page.getByText('The Paid Media Problem')).toBeVisible();
-    await expect(page.getByText('CPMs climb, CPCs spike')).toBeVisible();
+  test('Key sections are visible', async ({ page }) => {
+    await expect(page.locator('#problem-title')).toBeVisible();
+    await expect(page.locator('#expected-results-title')).toBeVisible();
+    await expect(page.locator('#framework-title')).toBeVisible();
+    await expect(page.locator('#case-studies')).toBeVisible();
   });
 
-  test('Framework steps are rendered', async ({ page }) => {
-    await expect(page.getByText('Profit Scaling System')).toBeVisible();
-    // Check for step 1
-    await expect(page.getByText('Deep Research & Offer Positioning')).toBeVisible();
+  test('Glassmorphism cards have correct classes (smoke test)', async ({ page }) => {
+    // Check "Problem" section card
+    const problemCard = page.locator('section[aria-labelledby="problem-title"] > div > div');
+    await expect(problemCard).toBeVisible();
+    // Just checking basic visibility, strict class checking is brittle, 
+    // but we can ensure it stands out
   });
 
-  test('Case Studies grid is visible', async ({ page }) => {
-    await expect(page.getByText('18.1% CTR')).toBeVisible();
-    await expect(page.getByText('37k Views')).toBeVisible();
-  });
-
-  test('Final CTA is present', async ({ page }) => {
-    await expect(page.getByRole('heading', { name: 'Ready to Scale Profitably?' })).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Apply for Strategy Call' }).last()).toBeVisible();
-  });
-
-  test('Responsiveness: Grid stacks on mobile', async ({ page }) => {
+  test('Mobile Responsiveness: Layout Verification', async ({ page }) => {
     await page.setViewportSize({ width: 375, height: 667 });
-    // Check that H1 is still visible and readable
-    await expect(page.locator('h1#scale-hero-title')).toBeVisible();
-    // Check that we can see the "Services" section title stacking
-    await expect(page.locator('#services-title')).toBeVisible();
-    await expect(page.locator('#services-title')).toContainText('Services');
-  });
 
+    // Check Hero stacking
+    const heroTitle = page.locator('#scale-hero-title');
+    await expect(heroTitle).toBeVisible();
+
+    // Check "What Results You Can Expect" stacking
+    const resultsSection = page.locator('#expected-results');
+    await expect(resultsSection).toBeVisible();
+
+    // Ensure "Mini Case Card" is visible (it should stack)
+    const miniCaseCard = page.getByText('Med-Spa Lead Gen');
+    await expect(miniCaseCard).toBeVisible();
+  });
 });

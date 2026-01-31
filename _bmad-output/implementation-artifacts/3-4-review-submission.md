@@ -24,14 +24,38 @@ The Apply Wizard collects user data across multiple steps. The final step must a
 - "Back to Home" button.
 
 ## Acceptance Criteria
-- [ ] User can view all entered data in the Review step.
-- [ ] Clicking "Edit" on a section takes the user to that specific step.
-- [ ] User can navigate back to "Review" from an edit step (using Next/Back buttons).
-- [ ] Clicking "Submit" shows a loading state.
-- [ ] Successful submission shows the Success view.
-- [ ] Form data is logged to console (mock submission).
+- [x] User can view all entered data in the Review step.
+- [x] Clicking "Edit" on a section takes the user to that specific step.
+- [x] User can navigate back to "Review" from an edit step (using Next/Back buttons).
+- [x] Clicking "Submit" shows a loading state.
+- [x] Successful submission shows the Success view.
+- [x] Form data is logged to console (mock submission).
 
-## Technical Implementation
-- Create `src/features/apply/components/ReviewStep.tsx`.
-- Update `src/pages/Apply.tsx` to include `ReviewStep` and handle `isSuccess` state.
-- Ensure `useWizard` hooks `goToStep` is utilized for the Edit buttons.
+## Dev Agent Record
+
+### Implementation Notes
+- Refactored `SuccessStep.tsx` to use `react-router-dom`'s `Link` for client-side navigation to Home.
+- Verified `ReviewStep.tsx` correctly displays all form fields and handles edit navigation.
+- Created `tests/review-submission.spec.ts` covering:
+    - Data verification in Review step.
+    - Edit flow (Step 1 -> Review) and data persistence.
+    - Submission flow (Loading -> Success).
+    - Navigation back to Home.
+- Verified regression suite `tests/wizard.spec.ts`.
+
+## File List
+- src/features/apply/components/SuccessStep.tsx
+- src/features/apply/components/ReviewStep.tsx (Verified)
+- tests/review-submission.spec.ts (New)
+- tests/wizard.spec.ts (Ran regression)
+
+## Status
+done
+
+## Senior Developer Review (AI)
+- **Date:** 2026-01-31
+- **Outcome:** Approved with fixes
+- **Findings:**
+    - Untracked test file `tests/review-submission.spec.ts` (Fixed)
+    - Verified `SuccessStep` refactor and functionality.
+- **Status:** Validated and ready for merge.

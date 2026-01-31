@@ -42,9 +42,14 @@ export function Apply() {
     }
   }, [industry, form]);
 
-  // Scroll to top on step change and success
+  // Scroll to top and focus first input on step change
   useEffect(() => {
     topRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Focus the first input/select/textarea in the form after a small delay to allow animation
+    setTimeout(() => {
+      const firstInput = document.querySelector<HTMLElement>('form input:not([type="hidden"]), form select, form textarea');
+      firstInput?.focus();
+    }, 400); // Wait for exit animation
   }, [currentStep, isSuccess]);
 
   const onSubmit = async (data: ApplyFormValues) => {
@@ -125,8 +130,9 @@ export function Apply() {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-white">Contact Info</h2>
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-400">First Name</label>
+                <label htmlFor="firstName" className="mb-2 block text-sm font-medium text-zinc-400">First Name</label>
                 <input
+                  id="firstName"
                   {...form.register('firstName')}
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.firstName
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
@@ -135,13 +141,19 @@ export function Apply() {
                   placeholder="Jane"
                 />
                 {errors.firstName && (
-                  <p className="mt-1 text-sm text-red-400">{errors.firstName.message}</p>
+                  <div className="mt-1 flex items-center gap-1 text-sm text-red-400">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{errors.firstName.message}</span>
+                  </div>
                 )}
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-400">Email</label>
+                <label htmlFor="email" className="mb-2 block text-sm font-medium text-zinc-400">Email</label>
                 <input
+                  id="email"
                   {...form.register('email')}
                   type="email"
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.email
@@ -151,19 +163,30 @@ export function Apply() {
                   placeholder="jane@example.com"
                 />
                 {errors.email && (
-                  <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>
+                  <div className="mt-1 flex items-center gap-1 text-sm text-red-400">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{errors.email.message}</span>
+                  </div>
                 )}
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-400">Website (Optional)</label>
+                <label htmlFor="website" className="mb-2 block text-sm font-medium text-zinc-400">Website (Optional)</label>
                 <input
+                  id="website"
                   {...form.register('website')}
                   className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                   placeholder="https://example.com"
                 />
                 {errors.website && (
-                  <p className="mt-1 text-sm text-red-400">{errors.website.message}</p>
+                  <div className="mt-1 flex items-center gap-1 text-sm text-red-400">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{errors.website.message}</span>
+                  </div>
                 )}
               </div>
             </div>
@@ -173,8 +196,9 @@ export function Apply() {
             <div className="space-y-4">
               <h2 className="text-xl font-semibold text-white">Business Details</h2>
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-400">Company Name</label>
+                <label htmlFor="companyName" className="mb-2 block text-sm font-medium text-zinc-400">Company Name</label>
                 <input
+                  id="companyName"
                   {...form.register('companyName')}
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.companyName
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
@@ -183,13 +207,19 @@ export function Apply() {
                   placeholder="Acme Inc."
                 />
                 {errors.companyName && (
-                  <p className="mt-1 text-sm text-red-400">{errors.companyName.message}</p>
+                  <div className="mt-1 flex items-center gap-1 text-sm text-red-400">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{errors.companyName.message}</span>
+                  </div>
                 )}
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-400">Industry</label>
+                <label htmlFor="industry" className="mb-2 block text-sm font-medium text-zinc-400">Industry</label>
                 <select
+                  id="industry"
                   {...form.register('industry')}
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.industry
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
@@ -204,27 +234,42 @@ export function Apply() {
                   <option value="Other">Other</option>
                 </select>
                 {errors.industry && (
-                  <p className="mt-1 text-sm text-red-400">{errors.industry.message}</p>
+                  <div className="mt-1 flex items-center gap-1 text-sm text-red-400">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{errors.industry.message}</span>
+                  </div>
                 )}
               </div>
 
               {industry === 'Other' && (
                 <div>
-                  <label className="mb-2 block text-sm font-medium text-zinc-400">Please Specify</label>
+                  <label htmlFor="customIndustry" className="mb-2 block text-sm font-medium text-zinc-400">Please Specify</label>
                   <input
+                    id="customIndustry"
                     {...form.register('customIndustry')}
-                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.customIndustry
+                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                      : 'border-white/10 focus:border-emerald-500 focus:ring-emerald-500'
+                      }`}
                     placeholder="e.g. Non-profit"
                   />
                   {errors.customIndustry && (
-                    <p className="mt-1 text-sm text-red-400">{errors.customIndustry.message}</p>
+                    <div className="mt-1 flex items-center gap-1 text-sm text-red-400">
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span>{errors.customIndustry.message}</span>
+                    </div>
                   )}
                 </div>
               )}
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-400">Revenue Range</label>
+                <label htmlFor="revenueRange" className="mb-2 block text-sm font-medium text-zinc-400">Revenue Range</label>
                 <select
+                  id="revenueRange"
                   {...form.register('revenueRange')}
                   className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 >
@@ -236,8 +281,9 @@ export function Apply() {
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-400">Service Needed</label>
+                <label htmlFor="serviceType" className="mb-2 block text-sm font-medium text-zinc-400">Service Needed</label>
                 <select
+                  id="serviceType"
                   {...form.register('serviceType')}
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.serviceType
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
@@ -249,13 +295,19 @@ export function Apply() {
                   <option value={SERVICE_TYPES.DATA_ANALYTICS}>Data & Analytics</option>
                 </select>
                 {errors.serviceType && (
-                  <p className="mt-1 text-sm text-red-400">{errors.serviceType.message}</p>
+                  <div className="mt-1 flex items-center gap-1 text-sm text-red-400">
+                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{errors.serviceType.message}</span>
+                  </div>
                 )}
               </div>
 
               <div>
-                <label className="mb-2 block text-sm font-medium text-zinc-400">Goals (Optional)</label>
+                <label htmlFor="goals" className="mb-2 block text-sm font-medium text-zinc-400">Goals (Optional)</label>
                 <textarea
+                  id="goals"
                   {...form.register('goals')}
                   className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                   placeholder="What are you hoping to achieve?"
@@ -272,8 +324,9 @@ export function Apply() {
               {form.watch('serviceType') === SERVICE_TYPES.PAID_ADVERTISING && (
                 <>
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-zinc-400">Monthly Ad Budget</label>
+                    <label htmlFor="monthlyBudget" className="mb-2 block text-sm font-medium text-zinc-400">Monthly Ad Budget</label>
                     <select
+                      id="monthlyBudget"
                       {...form.register('monthlyBudget')}
                       className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                     >
@@ -283,8 +336,9 @@ export function Apply() {
                     </select>
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-zinc-400">Target ROAS (Optional)</label>
+                    <label htmlFor="targetRoas" className="mb-2 block text-sm font-medium text-zinc-400">Target ROAS (Optional)</label>
                     <input
+                      id="targetRoas"
                       {...form.register('targetRoas')}
                       className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                       placeholder="e.g. 3.5x"
@@ -296,16 +350,18 @@ export function Apply() {
               {form.watch('serviceType') === SERVICE_TYPES.DATA_ANALYTICS && (
                 <>
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-zinc-400">Current Tech Stack (Optional)</label>
+                    <label htmlFor="techStack" className="mb-2 block text-sm font-medium text-zinc-400">Current Tech Stack (Optional)</label>
                     <input
+                      id="techStack"
                       {...form.register('techStack')}
                       className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                       placeholder="e.g. GA4, HubSpot, Shopify"
                     />
                   </div>
                   <div>
-                    <label className="mb-2 block text-sm font-medium text-zinc-400">Tracking Issues (Optional)</label>
+                    <label htmlFor="trackingIssues" className="mb-2 block text-sm font-medium text-zinc-400">Tracking Issues (Optional)</label>
                     <textarea
+                      id="trackingIssues"
                       {...form.register('trackingIssues')}
                       className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                       placeholder="Describe any current tracking or data issues..."
