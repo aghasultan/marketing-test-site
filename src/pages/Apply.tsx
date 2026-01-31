@@ -28,6 +28,7 @@ export function Apply() {
   const industry = form.watch('industry');
 
   const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isValidating, setIsValidating] = React.useState(false);
   const topRef = React.useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -54,6 +55,8 @@ export function Apply() {
   };
 
   const handleNext = async () => {
+    if (isValidating) return;
+    setIsValidating(true);
     let fieldsToValidate: (keyof ApplyFormValues)[] = [];
 
     if (currentStep === 1) {
@@ -67,6 +70,7 @@ export function Apply() {
             type: 'manual',
             message: 'Please specify your industry'
           });
+          setIsValidating(false);
           return;
         }
         fieldsToValidate.push('customIndustry');
@@ -74,6 +78,7 @@ export function Apply() {
     }
 
     const isValid = await form.trigger(fieldsToValidate);
+    setIsValidating(false);
 
     if (isValid) {
       nextStep();
@@ -114,7 +119,7 @@ export function Apply() {
                   {...form.register('firstName')}
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.firstName
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                    : 'border-white/10 focus:border-blue-500 focus:ring-blue-500'
+                    : 'border-white/10 focus:border-emerald-500 focus:ring-emerald-500'
                     }`}
                   placeholder="Jane"
                 />
@@ -130,7 +135,7 @@ export function Apply() {
                   type="email"
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.email
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                    : 'border-white/10 focus:border-blue-500 focus:ring-blue-500'
+                    : 'border-white/10 focus:border-emerald-500 focus:ring-emerald-500'
                     }`}
                   placeholder="jane@example.com"
                 />
@@ -143,7 +148,7 @@ export function Apply() {
                 <label className="mb-2 block text-sm font-medium text-zinc-400">Website (Optional)</label>
                 <input
                   {...form.register('website')}
-                  className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                   placeholder="https://example.com"
                 />
                 {errors.website && (
@@ -162,7 +167,7 @@ export function Apply() {
                   {...form.register('companyName')}
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.companyName
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                    : 'border-white/10 focus:border-blue-500 focus:ring-blue-500'
+                    : 'border-white/10 focus:border-emerald-500 focus:ring-emerald-500'
                     }`}
                   placeholder="Acme Inc."
                 />
@@ -177,7 +182,7 @@ export function Apply() {
                   {...form.register('industry')}
                   className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.industry
                     ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                    : 'border-white/10 focus:border-blue-500 focus:ring-blue-500'
+                    : 'border-white/10 focus:border-emerald-500 focus:ring-emerald-500'
                     }`}
                 >
                   <option value="">Select an industry</option>
@@ -197,7 +202,7 @@ export function Apply() {
                   <label className="mb-2 block text-sm font-medium text-zinc-400">Please Specify</label>
                   <input
                     {...form.register('customIndustry')}
-                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                     placeholder="e.g. Non-profit"
                   />
                   {errors.customIndustry && (
@@ -210,7 +215,7 @@ export function Apply() {
                 <label className="mb-2 block text-sm font-medium text-zinc-400">Revenue Range</label>
                 <select
                   {...form.register('revenueRange')}
-                  className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                 >
                   <option value="<10k">&lt;10k</option>
                   <option value="10k-50k">10k-50k</option>
@@ -223,7 +228,7 @@ export function Apply() {
                 <label className="mb-2 block text-sm font-medium text-zinc-400">Goals (Optional)</label>
                 <textarea
                   {...form.register('goals')}
-                  className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                  className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
                   placeholder="What are you hoping to achieve?"
                   rows={3}
                 />
@@ -255,7 +260,7 @@ export function Apply() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`flex items-center gap-2 rounded-lg bg-blue-600 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-500 ${isSubmitting ? 'cursor-not-allowed opacity-50' : ''
+                className={`flex items-center gap-2 rounded-lg bg-emerald-600 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-500 ${isSubmitting ? 'cursor-not-allowed opacity-50' : ''
                   }`}
               >
                 {isSubmitting && (
@@ -270,9 +275,10 @@ export function Apply() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="rounded-lg bg-white px-6 py-2 text-sm font-medium text-zinc-950 transition-colors hover:bg-zinc-200"
+                disabled={isValidating}
+                className={`rounded-lg bg-emerald-600 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-500 ${isValidating ? 'cursor-wait opacity-70' : ''}`}
               >
-                Next Step
+                {isValidating ? 'Checking...' : 'Next Step'}
               </button>
             )}
           </div>

@@ -319,7 +319,7 @@ export const Home = () => {
                     type="number"
                     placeholder="10000"
                     value={spend}
-                    onChange={(e) => setSpend(e.target.value === '' ? '' : parseFloat(e.target.value))}
+                    onChange={(e) => setSpend(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
                     className="w-full rounded-md border border-white/10 bg-zinc-800/50 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
                   />
                 </div>
@@ -329,7 +329,7 @@ export const Home = () => {
                     type="number"
                     placeholder="10"
                     value={hours}
-                    onChange={(e) => setHours(e.target.value === '' ? '' : parseFloat(e.target.value))}
+                    onChange={(e) => setHours(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
                     className="w-full rounded-md border border-white/10 bg-zinc-800/50 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
                   />
                 </div>
@@ -339,7 +339,7 @@ export const Home = () => {
                     type="number"
                     placeholder="100"
                     value={rate}
-                    onChange={(e) => setRate(e.target.value === '' ? '' : parseFloat(e.target.value))}
+                    onChange={(e) => setRate(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
                     className="w-full rounded-md border border-white/10 bg-zinc-800/50 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 transition-colors"
                   />
                 </div>

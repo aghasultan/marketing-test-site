@@ -68,7 +68,7 @@ export function ResultsGrid() {
                                     </p>
                                     <button
                                         onClick={() => setFilter('All')}
-                                        className="mt-4 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                                        className="mt-4 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
                                     >
                                         View all results
                                     </button>
