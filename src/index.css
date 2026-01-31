@@ -798,11 +798,31 @@ a {
     position: static;
     background: #fff;
   }
-
-  a {
-    text-decoration: underline;
-  }
 }
+
+/* ==========================================================
+   Utilities
+   ========================================================== */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.mask-fade-sides {
+  mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20px, black calc(100% - 20px), transparent);
+}
+
+a {
+  text-decoration: underline;
+}
+
 
 /* Layout Utilities */
 .shell {

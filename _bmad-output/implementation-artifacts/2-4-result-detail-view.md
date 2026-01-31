@@ -21,22 +21,31 @@ So that I can understand *how* the result was achieved.
 
 ## Tasks / Subtasks
 
-- [ ] Component Implementation
-    - [ ] Create `src/features/results/components/ResultModal.tsx`.
-    - [ ] Use `@radix-ui/react-dialog` for accessibility + Framer Motion for animations.
-- [ ] Integration
-    - [ ] Add state `selectedId` to `ResultsGrid`.
-    - [ ] Pass `onSelect` to `CaseStudyCard`.
-    - [ ] Render `ResultModal` when `selectedId` is present.
-- [ ] Verification
-    - [ ] Test: Click Card -> Check Modal Visible.
-    - [ ] Test: Close Modal -> Check Modal Hidden & Filters Preserved.
+- [x] Component Implementation
+    - [x] Create `src/features/results/components/ResultModal.tsx`.
+    - [x] Use `@radix-ui/react-dialog` for accessibility + Framer Motion for animations.
+- [x] Integration
+    - [x] Add state `selectedId` to `ResultsGrid`.
+    - [x] Pass `onSelect` to `CaseStudyCard`.
+    - [x] Render `ResultModal` when `selectedId` is present.
+- [x] Verification
+    - [x] Test: Click Card -> Check Modal Visible.
+    - [x] Test: Close Modal -> Check Modal Hidden & Filters Preserved.
 
 ## Dev Notes
 
 - **Radix UI:** We have `@radix-ui/react-dialog` installed. Use it for the modal primitives (Overlay, Content, Portal).
-- **Styling:** Match "Glassmorphism" — Backdrop should be `backdrop-blur-sm bg-black/60`. Content `bg-zinc-900 border border-white/10`.
-- **Content:** Display `summary` plus potentially generic "How we did it" text if not in data model (AC mentions it). We might need to add a `details` field to `CaseStudy` or just use `summary` for MVP. *Self-correction:* AC says "full summary and 'How we did it' text". We should probably add a rich text field or keep it simple for now. I'll stick to displaying the `summary` prominently.
+- **Styling:** Match "Glassmorphism" — Backdrop should be `backdrop-blur-sm bg-black/60`. Content `bg-surface-elevated border border-white/10`.
+- **Content:** AC requires "How we did it" text. Currently, we display the `summary` under the "The Challenge & Solution" header. In the future, we should add a dedicated `details` field to the `CaseStudy` type for richer content.
 
 ## References
 - Epic 2: [epics.md](../planning-artifacts/epics.md)
+
+## Dev Agent Record
+
+### File List
+- `src/features/results/components/ResultModal.tsx`
+- `src/features/results/components/ResultsGrid.tsx`
+- `src/features/results/components/CaseStudyCard.tsx`
+- `tests/results.spec.ts`
+- `src/features/results/types.ts`

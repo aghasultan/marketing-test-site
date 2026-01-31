@@ -11,8 +11,8 @@ export const ServiceTypeSchema = z.nativeEnum(SERVICE_TYPES);
 
 export const ApplyFormSchema = z.object({
     // Step 1: Contact
-    firstName: z.string().min(2, "Name is required"),
-    email: z.string().email("Invalid email address"),
+    firstName: z.string().min(2, "First name is required"),
+    email: z.string().min(1, "Email is required").email("Invalid email address"),
     website: z.string().url("Invalid URL").optional().or(z.literal('')),
 
     // Step 2: Business Details

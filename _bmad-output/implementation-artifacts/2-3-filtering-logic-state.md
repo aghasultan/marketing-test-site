@@ -23,18 +23,26 @@ So that I can see proof that matches my specific business context.
 
 ## Tasks / Subtasks
 
-- [ ] Logic Implementation
-    - [ ] Create `src/features/results/hooks/useResultsFilter.ts`.
-    - [ ] Implement state checking against `CaseStudy` fields.
-- [ ] UI Implementation
-    - [ ] Create `src/features/results/components/FilterBar.tsx`.
-    - [ ] Add filter buttons for Industries (dynamic from types?).
-- [ ] Integration
-    - [ ] Update `ResultsGrid` to use the hook.
-    - [ ] Insert `FilterBar` above the grid.
-    - [ ] Implement Empty State view.
-- [ ] Verification
-    - [ ] Automated Test: Click filter -> Verify count decreases -> Click All -> Verify count restores.
+- [x] Logic Implementation
+    - [x] Create `src/features/results/hooks/useResultsFilter.ts`.
+    - [x] Implement state checking against `CaseStudy` fields.
+- [x] UI Implementation
+    - [x] Create `src/features/results/components/FilterBar.tsx`.
+    - [x] Add filter buttons for Industries (dynamic from types?).
+- [x] Integration
+    - [x] Update `ResultsGrid` to use the hook.
+    - [x] Insert `FilterBar` above the grid.
+    - [x] Implement Empty State view.
+- [x] Verification
+    - [x] Automated Test: Click filter -> Verify count decreases -> Click All -> Verify count restores.
+    - [x] Empty State Test: Verify "No exact matches" message appears for empty results.
+
+## File List
+
+- src/features/results/hooks/useResultsFilter.ts (New)
+- src/features/results/components/FilterBar.tsx (New)
+- src/features/results/components/ResultsGrid.tsx (Modified)
+- tests/results.spec.ts (Modified - enabled tests)
 
 ## Dev Notes
 

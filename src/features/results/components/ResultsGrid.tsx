@@ -1,88 +1,100 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { caseStudies } from '../../../data/results';
+import { caseStudies as defaultCaseStudies } from '../../../data/results';
 import { CaseStudy } from '../types';
 import { CaseStudyCard } from './CaseStudyCard';
 import { useResultsFilter } from '../hooks/useResultsFilter';
 import { FilterBar } from './FilterBar';
 import { ResultModal } from './ResultModal';
 
-export function ResultsGrid() {
-    const { filteredStudies, activeFilter, setFilter, industries } = useResultsFilter(caseStudies);
-    const [selectedStudy, setSelectedStudy] = useState<CaseStudy | null>(null);
+interface ResultsGridProps {
+    caseStudies?: CaseStudy[];
+}
+
+export function ResultsGrid({ caseStudies = defaultCaseStudies }: ResultsGridProps) {
+    // Hook handles filtering logic
+    const { filteredResults, activeFilter, setFilter, availableIndustries } = useResultsFilter(caseStudies);
+    const [selectedId, setSelectedId] = useState<string | null>(null);
+
+    const selectedStudy = caseStudies.find(s => s.id === selectedId) || null;
+
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
 
     const item = {
-        hidden: { opacity: 0, scale: 0.9 },
-        show: { opacity: 1, scale: 1 },
-        exit: { opacity: 0, scale: 0.9 }
+        hidden: { opacity: 0, y: 20 },
+        show: { opacity: 1, y: 0 },
+        exit: { opacity: 0, scale: 0.95 }
     };
 
     return (
-        <section className="py-24">
-            <div className="container px-4 md:px-6">
-                <div className="mb-12 text-center">
-                    <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                        Recent Results
-                    </h2>
-                    <p className="mt-4 text-zinc-400">
-                        Real outcomes from recent client partnerships.
-                    </p>
-                </div>
-
-                <FilterBar
-                    industries={industries}
-                    activeFilter={activeFilter}
-                    onFilterChange={setFilter}
-                />
-
-                <motion.div
-                    layout
-                    className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 min-h-[400px]"
-                >
-                    <AnimatePresence mode="popLayout">
-                        {filteredStudies.length > 0 ? (
-                            filteredStudies.map((study) => (
-                                <motion.div
-                                    key={study.id}
-                                    variants={item}
-                                    initial="hidden"
-                                    animate="show"
-                                    exit="exit"
-                                    layout
-                                >
-                                    <CaseStudyCard
-                                        caseStudy={study}
-                                        onClick={() => setSelectedStudy(study)}
-                                    />
-                                </motion.div>
-                            ))
-                        ) : (
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="col-span-full py-12 text-center"
-                            >
-                                <div className="inline-block rounded-full bg-zinc-900/50 px-6 py-4 backdrop-blur-md border border-white/5">
-                                    <p className="text-zinc-400">
-                                        No exact matches for <span className="text-white font-medium">{activeFilter}</span> yet.
-                                    </p>
-                                    <button
-                                        onClick={() => setFilter('All')}
-                                        className="mt-4 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
-                                    >
-                                        View all results
-                                    </button>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </motion.div>
+        <section className="py-24 px-4 container mx-auto" id="results">
+            <div className="mb-16 text-center">
+                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+                    Recent Results
+                </h1>
+                <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
+                    See how we've helped brands scale their revenue through data-driven performance marketing.
+                </p>
             </div>
 
+            <FilterBar
+                industries={availableIndustries}
+                activeFilter={activeFilter}
+                onFilterChange={setFilter}
+            />
+
+            <AnimatePresence mode="wait">
+                {filteredResults.length > 0 ? (
+                    <motion.div
+                        key={activeFilter} // Re-trigger stagger animation on filter change
+                        variants={container}
+                        initial="hidden"
+                        animate="show"
+                        exit="hidden"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                    >
+                        {filteredResults.map((study) => (
+                            <motion.div key={study.id} variants={item} layout>
+                                <CaseStudyCard
+                                    caseStudy={study}
+                                    onClick={() => {
+                                        setSelectedId(study.id);
+                                    }}
+                                />
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                ) : (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        className="text-center py-20"
+                    >
+                        <p className="text-xl text-zinc-500">
+                            No exact matches found for this filter.
+                        </p>
+                        <button
+                            onClick={() => setFilter('All')}
+                            className="mt-4 text-blue-400 hover:text-blue-300 font-medium"
+                        >
+                            Clear all filters
+                        </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <ResultModal
-                isOpen={!!selectedStudy}
-                study={selectedStudy}
-                onClose={() => setSelectedStudy(null)}
+                caseStudy={selectedStudy}
+                isOpen={!!selectedId}
+                onClose={() => setSelectedId(null)}
             />
         </section>
     );

@@ -1,34 +1,32 @@
 import { useState, useMemo } from 'react';
-import { CaseStudy, Industry } from '../types';
+import { CaseStudy, Industry, INDUSTRIES } from '../types';
+
+export type FilterOption = Industry | 'All';
 
 interface UseResultsFilterReturn {
-    filteredStudies: CaseStudy[];
-    activeFilter: Industry | 'All';
-    setFilter: (industry: Industry | 'All') => void;
-    industries: (Industry | 'All')[];
+    activeFilter: FilterOption;
+    setFilter: (filter: FilterOption) => void;
+    filteredResults: CaseStudy[];
+    availableIndustries: Industry[];
 }
 
 export function useResultsFilter(caseStudies: CaseStudy[]): UseResultsFilterReturn {
-    const [activeFilter, setFilter] = useState<Industry | 'All'>('All');
+    const [activeFilter, setActiveFilter] = useState<FilterOption>('All');
 
-    // Derive unique industries from data (or use fixed list if preferred, but dynamic is safer)
-    // We explicitly add 'All' to the start.
-    const industries = useMemo(() => {
-        const uniqueIndustries = Array.from(new Set(caseStudies.map(study => study.industry)));
-        return ['All', ...uniqueIndustries] as (Industry | 'All')[];
-    }, [caseStudies]);
-
-    const filteredStudies = useMemo(() => {
+    const filteredResults = useMemo(() => {
         if (activeFilter === 'All') {
             return caseStudies;
         }
-        return caseStudies.filter((study) => study.industry === activeFilter);
+        return caseStudies.filter(study => study.industry === activeFilter);
     }, [caseStudies, activeFilter]);
 
+    // Return all defined industries to allow filtering even if no current results (good for empty state testing)
+    const availableIndustries = INDUSTRIES;
+
     return {
-        filteredStudies,
         activeFilter,
-        setFilter,
-        industries
+        setFilter: setActiveFilter,
+        filteredResults,
+        availableIndustries
     };
 }

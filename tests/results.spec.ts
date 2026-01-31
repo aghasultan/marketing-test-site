@@ -91,4 +91,27 @@ test.describe('Results Grid', () => {
         await expect(page.getByText('TechFlow')).toBeHidden();
         await expect(page.getByText('EcoMarket')).toBeVisible();
     });
+    test('displays empty state when no results match', async ({ page }) => {
+        await page.goto('/results');
+
+        // Use a filter that has no matching case studies in default data (e.g. B2B)
+        // B2B is in INDUSTRIES but no case study has industry: 'B2B' (TechFlow has tag 'B2B' but industry 'SaaS')
+        const emptyFilterButton = page.getByRole('button', { name: 'B2B', exact: true });
+
+        // Ensure it exists in the DOM
+        await expect(emptyFilterButton).toHaveCount(1);
+
+        // Force click
+        await emptyFilterButton.click({ force: true });
+
+        // Verify empty state message
+        await expect(page.getByText('No exact matches found for this filter.')).toBeVisible();
+        await expect(page.getByRole('button', { name: 'Clear all filters' })).toBeVisible();
+
+        // Click Clear Filter
+        await page.getByRole('button', { name: 'Clear all filters' }).click();
+
+        // Verify items came back
+        await expect(page.getByText('EcoMarket')).toBeVisible();
+    });
 });

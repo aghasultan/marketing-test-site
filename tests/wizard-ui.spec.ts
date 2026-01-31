@@ -58,7 +58,7 @@ test.describe('Wizard UI & Feedback', () => {
         await page.getByRole('button', { name: 'Next Step' }).click();
 
         // Check for error on First Name
-        const nameError = page.locator('text=String must contain at least 2 character(s)');
+        const nameError = page.locator('text=First name is required');
         await expect(nameError).toBeVisible();
         // Check if it has red color class (tailwind text-red-400 or similar)
         await expect(nameError).toHaveClass(/text-red-400/);

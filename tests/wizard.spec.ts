@@ -10,7 +10,7 @@ test.describe("Contact Wizard Flow", () => {
 
     // Expect validation errors (Apply.tsx uses custom Zod messages defined in types.ts)
     await expect(page.locator("text=Name is required")).toBeVisible();
-    await expect(page.locator("text=Invalid email address")).toBeVisible();
+    await expect(page.locator("text=Email is required")).toBeVisible();
 
     // Check that we are still on Step 1
     // Actually Apply.tsx uses zod output.

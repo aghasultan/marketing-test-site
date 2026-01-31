@@ -1,39 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Industry } from '../types';
+import { FilterOption } from '../hooks/useResultsFilter';
 
 interface FilterBarProps {
-    industries: (Industry | 'All')[];
-    activeFilter: Industry | 'All';
-    onFilterChange: (filter: Industry | 'All') => void;
+    industries: Industry[];
+    activeFilter: FilterOption;
+    onFilterChange: (filter: FilterOption) => void;
 }
 
 export function FilterBar({ industries, activeFilter, onFilterChange }: FilterBarProps) {
-    return (
-        <div className="mb-12 flex flex-wrap justify-center gap-3">
-            {industries.map((industry) => {
-                const isActive = activeFilter === industry;
+    const filters: FilterOption[] = ['All', ...industries];
 
-                return (
-                    <button
-                        key={industry}
-                        onClick={() => onFilterChange(industry)}
-                        className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${isActive
-                                ? 'text-zinc-950'
-                                : 'text-zinc-400 hover:text-zinc-200'
-                            }`}
-                    >
-                        {isActive && (
-                            <motion.div
-                                layoutId="activeFilter"
-                                className="absolute inset-0 rounded-full bg-white"
-                                transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
-                            />
-                        )}
-                        <span className="relative z-10">{industry}</span>
-                    </button>
-                );
-            })}
+    return (
+        <div className="flex justify-center mb-12">
+            <div className="flex overflow-x-auto pb-4 md:pb-0 gap-2 no-scrollbar max-w-full px-4 mask-fade-sides">
+                {filters.map((filter) => {
+                    const isActive = activeFilter === filter;
+                    return (
+                        <button
+                            key={filter}
+                            onClick={() => onFilterChange(filter)}
+                            className={`
+                                relative px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 whitespace-nowrap
+                                ${isActive
+                                    ? 'text-white bg-primary/20 ring-1 ring-primary/50 shadow-[0_0_15px_rgba(0,168,107,0.2)]'
+                                    : 'text-zinc-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-white/10'
+                                }
+                            `}
+                        >
+                            {isActive && (
+                                <motion.div
+                                    layoutId="activeFilter"
+                                    className="absolute inset-0 rounded-full bg-primary/10"
+                                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                />
+                            )}
+                            {filter}
+                        </button>
+                    );
+                })}
+            </div>
         </div>
     );
 }
