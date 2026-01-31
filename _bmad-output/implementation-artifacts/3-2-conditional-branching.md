@@ -15,23 +15,23 @@ The Apply Wizard currently allows free navigation between steps without validati
 ## Requirements
 
 ### Validation
-- [ ] specific fields must be validated before calling `nextStep()`.
-- [ ] Visual error feedback must be shown if validation fails.
+- [x] specific fields must be validated before calling `nextStep()`.
+- [x] Visual error feedback must be shown if validation fails.
 
 ### Branching
-- [ ] Add `industry` field to `ApplyFormSchema`.
-- [ ] If `industry` is "Other", show `customIndustry` text input.
-- [ ] `customIndustry` should be required only if `industry` is "Other`.
+- [x] Add `industry` field to `ApplyFormSchema`.
+- [x] If `industry` is "Other", show `customIndustry` text input.
+- [x] `customIndustry` should be required only if `industry` is "Other`.
 
 ### Data Fields
-- [ ] `firstName`, `email`, `website` (Step 1)
-- [ ] `companyName`, `industry`, `revenueRange`, `goals` (Step 2)
+- [x] `firstName`, `email`, `website` (Step 1)
+- [x] `companyName`, `industry`, `revenueRange`, `goals` (Step 2)
 
 ## Acceptance Criteria
-- [ ] User cannot click "Next" on Step 1 if Email is invalid.
-- [ ] Selecting "Other" in Industry reveals a text input.
-- [ ] Back button preserves form state.
-- [ ] Submitting the form logs valid JSON data including conditional fields.
+- [x] User cannot click "Next" on Step 1 if Email is invalid.
+- [x] Selecting "Other" in Industry reveals a text input.
+- [x] Back button preserves form state.
+- [x] Submitting the form logs valid JSON data including conditional fields.
 
 **Given** I select "Paid Advertising" as my service (Branch A)
 **When** I click Next
@@ -46,3 +46,41 @@ The Apply Wizard currently allows free navigation between steps without validati
 **Given** I am on a branch
 **When** I click "Back"
 **Then** I return to the parent question (Service Type) correctlying conditional fields.
+
+## Dev Agent Record
+
+### Implementation Notes (2026-01-31)
+- Implemented `serviceType` selection in Step 2 and created conditional Step 3 ("Service Details").
+- Updated `ApplyFormSchema` in `types.ts` to include all required fields and stricter validation checks.
+- Refactored `Apply.tsx` to support 4 steps and dynamic rendering of fields based on `serviceType`.
+- Updated `ReviewStep.tsx` to display the new conditional fields.
+- Fixed `StepIndicator.tsx` to correctly display the current step (1-based index).
+- Updated `wizard.spec.ts` to test the full flow including the new branching logic and validation.
+- Fixed TypeScript errors in existing tests caused by schema changes (renamed `name` to `firstName`).
+
+## File List
+- src/features/apply/types.ts
+- src/features/apply/stores/wizardStore.ts
+- src/features/apply/components/StepIndicator.tsx
+- src/features/apply/components/ReviewStep.tsx
+- src/pages/Apply.tsx
+- tests/wizard.spec.ts
+- src/features/apply/hooks/useApplyForm.test.tsx
+- src/features/apply/stores/wizardStore.test.ts
+- src/features/apply/hooks/useApplyForm.ts
+
+### Code Review Fixes (2026-01-31)
+- Added  enum and  constant to  to replace hardcoded strings/magic numbers.
+- Refactored  and  to use these constants.
+- Updated  to include tests for:
+    - Back button state preservation (Critical finding fixed).
+    - Data & Analytics branch flow (Medium finding fixed).
+- Verified all tests pass.
+
+### Code Review Fixes (2026-01-31)
+- Added `SERVICE_TYPES` enum and `TOTAL_STEPS` constant to `types.ts` to replace hardcoded strings/magic numbers.
+- Refactored `Apply.tsx` and `ReviewStep.tsx` to use these constants.
+- Updated `wizard.spec.ts` to include tests for:
+    - Back button state preservation (Critical finding fixed).
+    - Data & Analytics branch flow (Medium finding fixed).
+- Verified all tests pass.

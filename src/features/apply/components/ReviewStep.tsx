@@ -1,5 +1,5 @@
 import React from 'react';
-import { ApplyFormValues } from '../types';
+import { ApplyFormValues, SERVICE_TYPES } from '../types';
 
 interface ReviewStepProps {
     values: ApplyFormValues;
@@ -76,6 +76,61 @@ export function ReviewStep({ values, onEdit }: ReviewStepProps) {
                             <p className="text-sm text-zinc-500">Goals</p>
                             <p className="text-white whitespace-pre-wrap">{values.goals}</p>
                         </div>
+                    )}
+                </div>
+            </div>
+
+            {/* Service Details */}
+            <div className="rounded-xl border border-white/5 bg-zinc-800/50 p-6">
+                <div className="mb-4 flex items-center justify-between">
+                    <h3 className="text-lg font-medium text-white">Service Details</h3>
+                    <button
+                        type="button"
+                        onClick={() => onEdit(3)}
+                        className="text-sm font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                    >
+                        Edit
+                    </button>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                        <p className="text-sm text-zinc-500">Service Needed</p>
+                        <p className="text-white">
+                            {values.serviceType === SERVICE_TYPES.PAID_ADVERTISING ? 'Paid Advertising' :
+                                values.serviceType === SERVICE_TYPES.DATA_ANALYTICS ? 'Data & Analytics' : '-'}
+                        </p>
+                    </div>
+
+                    {values.serviceType === SERVICE_TYPES.PAID_ADVERTISING && (
+                        <>
+                            <div>
+                                <p className="text-sm text-zinc-500">Monthly Budget</p>
+                                <p className="text-white">{values.monthlyBudget}</p>
+                            </div>
+                            {values.targetRoas && (
+                                <div>
+                                    <p className="text-sm text-zinc-500">Target ROAS</p>
+                                    <p className="text-white">{values.targetRoas}</p>
+                                </div>
+                            )}
+                        </>
+                    )}
+
+                    {values.serviceType === SERVICE_TYPES.DATA_ANALYTICS && (
+                        <>
+                            {values.techStack && (
+                                <div>
+                                    <p className="text-sm text-zinc-500">Tech Stack</p>
+                                    <p className="text-white">{values.techStack}</p>
+                                </div>
+                            )}
+                            {values.trackingIssues && (
+                                <div className="sm:col-span-2">
+                                    <p className="text-sm text-zinc-500">Tracking Issues</p>
+                                    <p className="text-white whitespace-pre-wrap">{values.trackingIssues}</p>
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
             </div>

@@ -1,30 +1,45 @@
 import { z } from 'zod';
 
-export const ServiceTypeSchema = z.enum(['paid-advertising', 'data-analytics']);
+export const SERVICE_TYPES = {
+    PAID_ADVERTISING: 'paid-advertising',
+    DATA_ANALYTICS: 'data-analytics'
+} as const;
+
+export const TOTAL_STEPS = 4;
+
+export const ServiceTypeSchema = z.nativeEnum(SERVICE_TYPES);
 
 export const ApplyFormSchema = z.object({
-    serviceType: ServiceTypeSchema.optional(),
+    // Step 1: Contact
+    firstName: z.string().min(2, "Name is required"),
+    email: z.string().email("Invalid email address"),
+    website: z.string().url("Invalid URL").optional().or(z.literal('')),
 
+    // Step 2: Business Details
+    companyName: z.string().min(2, "Company name is required"),
+    industry: z.enum(['Tech', 'Finance', 'Health', 'Retail', 'Other']),
+    customIndustry: z.string().optional(),
+    revenueRange: z.enum(['<10k', '10k-50k', '50k-200k', '200k+']),
+    goals: z.string().optional(),
+    serviceType: ServiceTypeSchema,
+
+    // Step 3: Branch Logic
     // Branch A: Paid Advertising
     monthlyBudget: z.enum(['<10k', '10k-50k', '50k+']).optional(),
     targetRoas: z.string().optional(),
 
     // Branch B: Data & Analytics
     techStack: z.string().optional(),
-    trackingIssues: z.string().optional(), // Text area input usually
-
-    // Common Contact Info (Final Step)
-    name: z.string().min(2, "Name is required").optional(),
-    email: z.string().email("Invalid email address").optional(),
-    companyWebsite: z.string().url("Invalid URL").optional().or(z.literal('')),
+    trackingIssues: z.string().optional(),
 });
 
 export type ApplyFormData = z.infer<typeof ApplyFormSchema>;
+export type ApplyFormValues = ApplyFormData; // Alias for consistency
 
 export interface WizardState {
     currentStep: number;
     totalSteps: number;
-    formData: ApplyFormData;
+    formData: Partial<ApplyFormData>;
     history: number[]; // Stack for back navigation
     direction: number; // 1 for forward, -1 for backward
 

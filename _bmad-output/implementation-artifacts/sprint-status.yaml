@@ -58,7 +58,7 @@ development_status:
   # Epic 3: Smart Application Wizard
   epic-3: in-progress
   3-1-multi-step-form-structure: done
-  3-2-conditional-branching: ready-for-dev
+  3-2-conditional-branching: done
   3-3-step-ui-feedback: ready-for-dev
   3-4-review-submission: ready-for-dev
   epic-3-retrospective: optional

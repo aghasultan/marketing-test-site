@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ApplyFormSchema, ApplyFormValues } from '../features/apply/types';
+import { ApplyFormSchema, ApplyFormValues, TOTAL_STEPS, SERVICE_TYPES } from '../features/apply/types';
 import { useWizard } from '../features/apply/hooks/useWizard';
 import { WizardLayout } from '../features/apply/components/WizardLayout';
 import { ReviewStep } from '../features/apply/components/ReviewStep';
 import { SuccessStep } from '../features/apply/components/SuccessStep';
 
 export function Apply() {
-  const { currentStep, nextStep, prevStep, totalSteps, isFirstStep, isLastStep, goToStep } = useWizard(3);
+  const { currentStep, nextStep, prevStep, totalSteps, isFirstStep, isLastStep, goToStep } = useWizard(TOTAL_STEPS);
   const [isSuccess, setIsSuccess] = React.useState(false);
 
   const form = useForm<ApplyFormValues>({
@@ -20,6 +20,11 @@ export function Apply() {
       companyName: '',
       industry: undefined,
       revenueRange: '<10k', // Default
+      serviceType: undefined,
+      monthlyBudget: '<10k',
+      targetRoas: '',
+      techStack: '',
+      trackingIssues: '',
     }
   });
 
@@ -62,7 +67,7 @@ export function Apply() {
     if (currentStep === 1) {
       fieldsToValidate = ['firstName', 'email', 'website'];
     } else if (currentStep === 2) {
-      fieldsToValidate = ['companyName', 'industry', 'revenueRange', 'goals'];
+      fieldsToValidate = ['companyName', 'industry', 'revenueRange', 'goals', 'serviceType'];
       if (industry === 'Other') {
         const customIndustry = form.getValues('customIndustry');
         if (!customIndustry || customIndustry.trim() === '') {
@@ -75,6 +80,12 @@ export function Apply() {
         }
         fieldsToValidate.push('customIndustry');
       }
+    } else if (currentStep === 3) {
+      const serviceType = form.getValues('serviceType');
+      if (serviceType === SERVICE_TYPES.PAID_ADVERTISING) {
+        fieldsToValidate = ['monthlyBudget'];
+      }
+      // Data analytics fields are optional, so no mandatory validation needed unless requirement changes
     }
 
     const isValid = await form.trigger(fieldsToValidate);
@@ -225,6 +236,24 @@ export function Apply() {
               </div>
 
               <div>
+                <label className="mb-2 block text-sm font-medium text-zinc-400">Service Needed</label>
+                <select
+                  {...form.register('serviceType')}
+                  className={`w-full rounded-md border bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:outline-none focus:ring-1 ${errors.serviceType
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                    : 'border-white/10 focus:border-emerald-500 focus:ring-emerald-500'
+                    }`}
+                >
+                  <option value="">Select a service</option>
+                  <option value={SERVICE_TYPES.PAID_ADVERTISING}>Paid Advertising</option>
+                  <option value={SERVICE_TYPES.DATA_ANALYTICS}>Data & Analytics</option>
+                </select>
+                {errors.serviceType && (
+                  <p className="mt-1 text-sm text-red-400">{errors.serviceType.message}</p>
+                )}
+              </div>
+
+              <div>
                 <label className="mb-2 block text-sm font-medium text-zinc-400">Goals (Optional)</label>
                 <textarea
                   {...form.register('goals')}
@@ -237,6 +266,58 @@ export function Apply() {
           )}
 
           {currentStep === 3 && (
+            <div className="space-y-4">
+              <h2 className="text-xl font-semibold text-white">Service Details</h2>
+
+              {form.watch('serviceType') === SERVICE_TYPES.PAID_ADVERTISING && (
+                <>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-zinc-400">Monthly Ad Budget</label>
+                    <select
+                      {...form.register('monthlyBudget')}
+                      className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                    >
+                      <option value="<10k">&lt;10k</option>
+                      <option value="10k-50k">10k-50k</option>
+                      <option value="50k+">50k+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-zinc-400">Target ROAS (Optional)</label>
+                    <input
+                      {...form.register('targetRoas')}
+                      className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      placeholder="e.g. 3.5x"
+                    />
+                  </div>
+                </>
+              )}
+
+              {form.watch('serviceType') === SERVICE_TYPES.DATA_ANALYTICS && (
+                <>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-zinc-400">Current Tech Stack (Optional)</label>
+                    <input
+                      {...form.register('techStack')}
+                      className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      placeholder="e.g. GA4, HubSpot, Shopify"
+                    />
+                  </div>
+                  <div>
+                    <label className="mb-2 block text-sm font-medium text-zinc-400">Tracking Issues (Optional)</label>
+                    <textarea
+                      {...form.register('trackingIssues')}
+                      className="w-full rounded-md border border-white/10 bg-zinc-800 px-4 py-2 text-white placeholder-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      placeholder="Describe any current tracking or data issues..."
+                      rows={3}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+
+          {currentStep === 4 && (
             <ReviewStep
               values={form.getValues()}
               onEdit={goToStep}

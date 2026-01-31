@@ -39,11 +39,11 @@ describe('useApplyForm', () => {
 
     it('initializes form with store data', () => {
         // Pre-populate store
-        useWizardStore.getState().updateFormData({ name: 'John Doe' });
+        useWizardStore.getState().updateFormData({ firstName: 'John Doe' });
 
         const { result } = renderHook(() => useApplyForm());
 
-        expect(result.current.getValues('name')).toBe('John Doe');
+        expect(result.current.getValues('firstName')).toBe('John Doe');
     });
 
     it('updates store on form change', async () => {

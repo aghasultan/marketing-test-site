@@ -9,8 +9,8 @@ interface StepIndicatorProps {
 export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
     const steps = Array.from({ length: totalSteps }, (_, i) => i + 1);
 
-    const formattedStep = currentStep + 1;
-    const progressPercentage = Math.round((formattedStep / totalSteps) * 100);
+    const formattedStep = currentStep;
+    const progressPercentage = Math.round((currentStep / totalSteps) * 100);
 
     return (
         <div className="mb-8" data-testid="step-indicator">

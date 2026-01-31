@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { WizardState, ApplyFormData } from '../types';
+import { WizardState } from '../types';
 
 export const useWizardStore = create<WizardState>()(
     persist(

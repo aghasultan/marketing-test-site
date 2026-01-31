@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useForm, UseFormReturn } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useWizardStore } from '../stores/wizardStore';
 import { ApplyFormSchema, ApplyFormData } from '../types';

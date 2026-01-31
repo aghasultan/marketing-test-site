@@ -1,5 +1,5 @@
 // @vitest-environment happy-dom
-import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { useWizardStore } from './wizardStore';
 
 // Manual Mock for consistent testing
@@ -93,7 +93,7 @@ describe('useWizardStore', () => {
     });
 
     it('resetWizard clears all state', () => {
-        useWizardStore.getState().updateFormData({ serviceType: 'analytics' });
+        useWizardStore.getState().updateFormData({ serviceType: 'data-analytics' });
         useWizardStore.getState().setStep(2);
 
         useWizardStore.getState().resetWizard();
