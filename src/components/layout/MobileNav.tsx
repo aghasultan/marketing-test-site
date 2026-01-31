@@ -41,7 +41,7 @@ export function MobileNav() {
                     <div className="mt-4">
                         <SheetClose asChild>
                             <Button
-                                className="w-full bg-violet-600 hover:bg-violet-700 text-white text-lg py-6"
+                                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-lg py-6"
                             >
                                 Apply
                             </Button>

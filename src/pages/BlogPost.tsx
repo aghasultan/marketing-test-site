@@ -18,6 +18,7 @@ export const BlogPost = () => {
       <SEO
         title={`${post.title} | Agha Sultan Naseer`}
         description={post.description}
+        canonical={`https://aghasultan.com/blog/${slug}`}
       />
 
       <div className="max-w-3xl mx-auto">

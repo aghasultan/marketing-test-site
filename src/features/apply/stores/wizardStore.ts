@@ -1,12 +1,12 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { WizardState } from '../types';
+import { WizardState, TOTAL_STEPS } from '../types';
 
 export const useWizardStore = create<WizardState>()(
     persist(
         (set) => ({
             currentStep: 1, // Start at step 1
-            totalSteps: 5, // Default/Placeholder, dynamic logic might be needed if steps vary by branch
+            totalSteps: TOTAL_STEPS,
             formData: {},
             history: [],
             direction: 0,

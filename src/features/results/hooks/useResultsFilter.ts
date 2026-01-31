@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useDeferredValue } from 'react';
 import { CaseStudy, Industry, INDUSTRIES } from '../types';
 
 export type FilterOption = Industry | 'All';
@@ -12,13 +12,14 @@ interface UseResultsFilterReturn {
 
 export function useResultsFilter(caseStudies: CaseStudy[]): UseResultsFilterReturn {
     const [activeFilter, setActiveFilter] = useState<FilterOption>('All');
+    const deferredFilter = useDeferredValue(activeFilter);
 
     const filteredResults = useMemo(() => {
-        if (activeFilter === 'All') {
+        if (deferredFilter === 'All') {
             return caseStudies;
         }
-        return caseStudies.filter(study => study.industry === activeFilter);
-    }, [caseStudies, activeFilter]);
+        return caseStudies.filter(study => study.industry === deferredFilter);
+    }, [caseStudies, deferredFilter]);
 
     // Return all defined industries to allow filtering even if no current results (good for empty state testing)
     const availableIndustries = INDUSTRIES;

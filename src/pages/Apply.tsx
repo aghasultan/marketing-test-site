@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { trackEvent } from '../lib/tracking';
 import { ApplyFormSchema, ApplyFormValues, TOTAL_STEPS, SERVICE_TYPES } from '../features/apply/types';
 import { useWizardStore } from '../features/apply/stores/wizardStore';
 import { WizardLayout } from '../features/apply/components/WizardLayout';
@@ -74,9 +75,17 @@ export function Apply() {
     }, 400); // Wait for exit animation
   }, [currentStep, isSuccess]);
 
+
   const onSubmit = async (data: ApplyFormValues) => {
     setIsSubmitting(true);
     console.log('Form Submitted:', data);
+
+    // Track event
+    trackEvent('form_submit', {
+      form_name: 'apply_wizard',
+      service_type: data.serviceType,
+      industry: data.industry,
+    });
 
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));

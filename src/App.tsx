@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout } from '@components/Layout';
 import { Home } from '@pages/Home';
 import { Apply } from '@pages/Apply';
@@ -14,26 +14,28 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 
 import { ErrorBoundary } from '@components/ErrorBoundary';
 
+import { usePageTracking } from './lib/tracking';
+
 function App() {
+  usePageTracking();
+
   return (
     <>
       <SpeedInsights />
       <ErrorBoundary>
-        <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/audit" element={<AuditPage />} />
-              <Route path="/results" element={<ResultsGrid />} />
-              <Route path="/apply" element={<Apply />} />
-              <Route path="/scale" element={<Scale />} />
-              <Route path="/services" element={<Scale />} />
-              <Route path="/blog" element={<BlogIndex />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
-        </BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/audit" element={<AuditPage />} />
+            <Route path="/results" element={<ResultsGrid />} />
+            <Route path="/apply" element={<Apply />} />
+            <Route path="/scale" element={<Scale />} />
+            <Route path="/services" element={<Scale />} />
+            <Route path="/blog" element={<BlogIndex />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Layout>
       </ErrorBoundary>
     </>
   );
