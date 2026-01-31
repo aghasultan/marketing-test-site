@@ -2,13 +2,35 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ApplyFormSchema, ApplyFormValues, TOTAL_STEPS, SERVICE_TYPES } from '../features/apply/types';
-import { useWizard } from '../features/apply/hooks/useWizard';
+import { useWizardStore } from '../features/apply/stores/wizardStore';
 import { WizardLayout } from '../features/apply/components/WizardLayout';
 import { ReviewStep } from '../features/apply/components/ReviewStep';
 import { SuccessStep } from '../features/apply/components/SuccessStep';
 
 export function Apply() {
-  const { currentStep, nextStep, prevStep, totalSteps, isFirstStep, isLastStep, goToStep } = useWizard(TOTAL_STEPS);
+  const currentStep = useWizardStore((state) => state.currentStep);
+  const setStep = useWizardStore((state) => state.setStep);
+  const goBack = useWizardStore((state) => state.goBack);
+
+  // Computed
+  const isFirstStep = currentStep === 1;
+  const isLastStep = currentStep === TOTAL_STEPS;
+  const totalSteps = TOTAL_STEPS;
+
+  const nextStep = () => setStep(currentStep + 1);
+  const prevStep = () => goBack();
+  const goToStep = (step: number) => setStep(step);
+
+  useEffect(() => {
+    // Optional: Reset on mount if we want fresh state every time we visit /apply
+    // For "preserve state" test, verifying layout persistence is key.
+    // However, if the store persists to localStorage, "fresh state" might break "resume" feature.
+    // But since the test expects fresh state on new browser context (it's new context),
+    // localStorage is empty. So it defaults to 1.
+    // If we navigate away and back, we might want to resume.
+    // So let's NOT search reset here unless needed.
+  }, []);
+
   const [isSuccess, setIsSuccess] = React.useState(false);
 
   const form = useForm<ApplyFormValues>({

@@ -2,30 +2,33 @@
    Theme tokens
    ========================================================== */
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  /* Colors */
-  --background: #f7f9fc;
-  --background-subtle: #eef3f9;
-  --surface: #ffffff;
-  --surface-elevated: #f2f5fc;
-  --surface-glass: rgba(255, 255, 255, 0.8);
+  /* Colors - Dark Mode Default */
+  /* Zinc-950 Base */
+  --background: #09090b;
+  --background-subtle: #18181b;
+  --surface: #18181b;
+  --surface-elevated: #27272a;
+  --surface-glass: rgba(24, 24, 27, 0.85);
 
-  --text: #0b1021;
-  --text-muted: #5d667a;
+  --text: #f4f4f5;
+  /* Zinc-100 */
+  --text-muted: #a1a1aa;
+  /* Zinc-400 */
   --text-on-primary: #ffffff;
 
   --primary: #00a86b;
   --primary-dark: #00965f;
   --primary-light: #2fd29d;
-  --primary-soft: rgba(0, 168, 107, 0.14);
+  --primary-soft: rgba(0, 168, 107, 0.22);
 
-  --border: rgba(12, 26, 75, 0.12);
-  --border-light: rgba(12, 26, 75, 0.06);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.05);
 
   --success: #00a86b;
   --error: #d32f2f;
-  --error-bg: #ffebee;
+  --error-bg: rgba(211, 47, 47, 0.1);
 
   /* Typography */
   --font-sans:
@@ -52,10 +55,10 @@
   --radius-full: 999px;
 
   /* Effects */
-  --shadow-sm: 0 2px 8px rgba(12, 26, 75, 0.04);
-  --shadow-md: 0 12px 36px rgba(12, 26, 75, 0.08);
-  --shadow-lg: 0 18px 60px rgba(12, 26, 75, 0.14);
-  --glow-primary: 0 0 18px rgba(0, 168, 107, 0.45);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 18px 70px rgba(0, 0, 0, 0.5);
+  --glow-primary: 0 0 20px rgba(0, 168, 107, 0.35);
 
   /* Animation */
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
@@ -67,32 +70,31 @@
   /* default */
 }
 
-body.theme-dark {
-  color-scheme: dark;
-  /* Zinc-950 Base */
-  --background: #09090b;
-  --background-subtle: #18181b;
-  --surface: #18181b;
-  --surface-elevated: #27272a;
-  --surface-glass: rgba(24, 24, 27, 0.85);
+body.theme-light {
+  color-scheme: light;
 
-  --text: #f4f4f5;
-  /* Zinc-100 */
-  --text-muted: #a1a1aa;
-  /* Zinc-400 */
+  /* Colors - Light Mode Override */
+  --background: #f7f9fc;
+  --background-subtle: #eef3f9;
+  --surface: #ffffff;
+  --surface-elevated: #f2f5fc;
+  --surface-glass: rgba(255, 255, 255, 0.8);
 
+  --text: #0b1021;
+  --text-muted: #5d667a;
+  
   --primary: #00a86b;
   --primary-dark: #00965f;
   --primary-light: #2fd29d;
-  --primary-soft: rgba(0, 168, 107, 0.22);
+  --primary-soft: rgba(0, 168, 107, 0.14);
 
-  --border: rgba(255, 255, 255, 0.1);
-  --border-light: rgba(255, 255, 255, 0.05);
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 18px 70px rgba(0, 0, 0, 0.5);
-  --glow-primary: 0 0 20px rgba(0, 168, 107, 0.35);
+  --border: rgba(12, 26, 75, 0.12);
+  --border-light: rgba(12, 26, 75, 0.06);
+  
+  --shadow-sm: 0 2px 8px rgba(12, 26, 75, 0.04);
+  --shadow-md: 0 12px 36px rgba(12, 26, 75, 0.08);
+  --shadow-lg: 0 18px 60px rgba(12, 26, 75, 0.14);
+  --glow-primary: 0 0 18px rgba(0, 168, 107, 0.45);
 }
 
 /* ==========================================================

@@ -5,7 +5,7 @@ import { WizardState } from '../types';
 export const useWizardStore = create<WizardState>()(
     persist(
         (set) => ({
-            currentStep: 0, // Start at step 0
+            currentStep: 1, // Start at step 1
             totalSteps: 5, // Default/Placeholder, dynamic logic might be needed if steps vary by branch
             formData: {},
             history: [],

@@ -66,7 +66,7 @@ export function WizardLayout({
                                 initial="enter"
                                 animate="center"
                                 exit="exit"
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.01 }}
                             >
                                 {children}
                             </motion.div>
