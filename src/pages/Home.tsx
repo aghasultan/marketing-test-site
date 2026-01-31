@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { CaseStudyGrid } from '../components/CaseStudyGrid';
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { motion, useSpring, useTransform, Variants } from 'framer-motion';
+
 
 // Helper for smooth number counting
 function NumberCounter({ value, currency = false }: { value: number; currency?: boolean }) {
@@ -34,7 +35,8 @@ const HERO_CONTENT = {
   ctaApply: "Book a Strategy Call"
 };
 
-const containerVariants = {
+
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -45,14 +47,14 @@ const containerVariants = {
   }
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: [0.25, 0.46, 0.45, 0.94]
+      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number]
     }
   }
 };
