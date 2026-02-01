@@ -17,6 +17,10 @@ export const useBlog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Filtering State
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
   useEffect(() => {
     const loadPosts = async () => {
       const loadedPosts: BlogPost[] = [];
@@ -52,9 +56,33 @@ export const useBlog = () => {
     loadPosts();
   }, []);
 
+  // Derived State: Categories
+  const categories = Array.from(new Set(posts.map(p => p.category))).sort();
+
+  // Derived State: Filtered Posts
+  const filteredPosts = posts.filter(post => {
+    const matchesCategory = selectedCategory ? post.category === selectedCategory : true;
+    const matchesSearch = searchQuery
+      ? post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.description.toLowerCase().includes(searchQuery.toLowerCase())
+      : true;
+
+    return matchesCategory && matchesSearch;
+  });
+
   const getPostBySlug = (slug: string) => {
     return posts.find((p) => p.slug === slug);
   };
 
-  return { posts, loading, getPostBySlug };
+  return {
+    posts: filteredPosts, // Return filtered posts by default for the list
+    allPosts: posts,      // Expose all if needed
+    loading,
+    getPostBySlug,
+    categories,
+    searchQuery,
+    setSearchQuery,
+    selectedCategory,
+    setSelectedCategory
+  };
 };

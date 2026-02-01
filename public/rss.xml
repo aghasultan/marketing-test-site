@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Digital Garden | Agha Sultan Naseer</title>
+    <link>https://aghasultan.com</link>
+    <description>Field notes on Meta Ads, Google performance, and full-funnel tracking.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Feb 2026 13:38:54 GMT</lastBuildDate>
+    <atom:link href="https://aghasultan.com/rss.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+        <title><![CDATA[The Profit Scaling System™: A Primer]]></title>
+        <link>https://aghasultan.com/blog/hello-world</link>
+        <guid isPermaLink="true">https://aghasultan.com/blog/hello-world</guid>
+        <pubDate>Mon, 27 Oct 2025 00:00:00 GMT</pubDate>
+        <description><![CDATA[Why most brands hit a ceiling at $50k/mo ad spend and how to break through using server-side data and creative testing.]]></description>
+        <category>Strategy</category>
+    </item>
+    
+</channel>
+</rss>

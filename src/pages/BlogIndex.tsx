@@ -4,7 +4,15 @@ import { useBlog } from '@hooks/useBlog';
 import { SEO } from '@/components/seo/Head';
 
 export const BlogIndex = () => {
-  const { posts, loading } = useBlog();
+  const {
+    posts,
+    loading,
+    searchQuery,
+    setSearchQuery,
+    selectedCategory,
+    setSelectedCategory,
+    categories
+  } = useBlog();
 
   if (loading) {
     return (
@@ -22,11 +30,57 @@ export const BlogIndex = () => {
       />
 
       <div className="max-w-7xl mx-auto">
-        <div className="mb-16 fade-in">
-          <h1 className="text-5xl font-bold mb-4 text-white">Digital Garden</h1>
-          <p className="text-xl text-slate-400 max-w-2xl">
-            Strategies, case studies, and tutorials on scaling paid media.
-          </p>
+        <div className="mb-16 fade-in space-y-8">
+          <div>
+            <h1 className="text-5xl font-bold mb-4 text-white">Digital Garden</h1>
+            <p className="text-xl text-slate-400 max-w-2xl">
+              Strategies, case studies, and tutorials on scaling paid media.
+            </p>
+          </div>
+
+          {/* Search & Filter */}
+          <div className="flex flex-col md:flex-row gap-6 justify-between items-start md:items-center">
+            {/* Search */}
+            <div className="relative w-full md:w-96">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
+                <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Search articles..."
+                className="w-full bg-zinc-900/50 border border-zinc-700 text-white rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all placeholder:text-zinc-600"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+
+            {/* Categories */}
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedCategory(null)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === null
+                  ? 'bg-emerald-500 text-white'
+                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'
+                  }`}
+              >
+                All
+              </button>
+              {categories.map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === cat
+                    ? 'bg-emerald-500 text-white'
+                    : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'
+                    }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 reveal-stagger">

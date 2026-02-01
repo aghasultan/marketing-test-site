@@ -9,7 +9,6 @@ test.describe('Results Grid', () => {
         await expect(page.getByRole('heading', { name: 'Verified Performance' })).toBeVisible();
 
         // Verify at least the 4 known cards are present
-        const cards = page.locator('.group').filter({ hasText: /Verified/ });
         // Note: Class 'group' is used in CaseStudyCard. 
         // We can look for the article titles.
 
