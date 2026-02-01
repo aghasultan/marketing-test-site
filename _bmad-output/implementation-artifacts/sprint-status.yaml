@@ -89,3 +89,7 @@ development_status:
   6-2-lead-capture-crm-sync: done
   6-3-automation-flow-triggers: done
   epic-6-retrospective: optional
+
+  # Epic 7: Visual Personalization
+  epic-7: in-progress
+  7-1-theme-toggle-implementation: in-progress

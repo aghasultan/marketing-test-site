@@ -24,10 +24,14 @@ import { initTracking } from '@/lib/tracking';
 // Initialize tracking
 initTracking();
 
+import { ThemeProvider } from '@/components/theme-provider';
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <HelmetProvider>
-      <App />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <App />
+      </ThemeProvider>
     </HelmetProvider>
   </React.StrictMode>,
 )

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { MobileNav } from "./MobileNav";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { NAV_LINKS } from "@/lib/constants";
 
 export function Header() {
@@ -44,6 +45,7 @@ export function Header() {
                         </Link>
                     ))}
 
+                    <ThemeToggle />
                     <Link to="/apply">
                         <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow">
                             Start Audit
