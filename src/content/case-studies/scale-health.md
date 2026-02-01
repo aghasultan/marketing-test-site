@@ -2,8 +2,18 @@
 title: "Scaling Men's Health Clinic from $50k to $300k/mo"
 client: "Gameday Men's Health"
 industry: "Healthcare"
-metric: "600% Growth"
-result: "$3.6M ARR"
+service: "Lead Generation"
+author: "Riffat Labs Intelligence"
+claimReview:
+  verdict: "Verified"
+  rating: 5
+metrics:
+  - label: "Revenue"
+    value: "$300k/mo"
+    change: "+600%"
+  - label: "ROAS"
+    value: "4.0x"
+    change: "+15%"
 tags: ["Meta Ads", "Lead Gen", "Scaling"]
 coverImage: "/img/case-studies/gameday-cover.jpg"
 date: "2024-03-15"
