@@ -60,7 +60,22 @@ export const ROICalculator = ({ roas, onBack }: ROICalculatorProps) => {
                 </div>
             </div>
 
-            <Button className="w-full mt-6 bg-primary font-bold hover:bg-primary/90">
+            <Button
+                className="w-full mt-6 bg-primary font-bold hover:bg-primary/90"
+                onClick={() => {
+                    // Dispatch a custom event to open the wizard, since they are in different trees?
+                    // Or simple separation: just log for now?
+                    // Ideally, we should use a global state (Zustand/Context) to toggle the Wizard modal.
+                    // For this task, let's assume `window.dispatchEvent` or similar if simpler, 
+                    // BUT we haven't built the global trigger yet.
+                    // Let's at least add an ID that the wizard container might listen to,
+                    // OR import the WizardContext? No, WizardContext is inside the Container usually.
+                    // Let's add an id="open-wizard-trigger" and we can hook it up.
+
+                    // Actually, easiest way is to use a simple custom event for this MVP integration:
+                    window.dispatchEvent(new Event('open-wizard'));
+                }}
+            >
                 Book Strategy Call
             </Button>
         </motion.div>

@@ -23,21 +23,21 @@ so that I can move forward with Riffat Labs (or find an alternative).
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Implement Partner Referral Step**
-    - [ ] Create `src/features/wizard/steps/PartnerReferralStep.tsx`.
-    - [ ] UI: "Good news, we have a path for you...".
-    - [ ] Action: Download PDF stub.
+- [x] **Task 1: Implement Partner Referral Step**
+    - [x] Create `src/features/wizard/steps/PartnerReferralStep.tsx`.
+    - [x] UI: "Good news, we have a path for you...".
+    - [x] Action: Download PDF stub.
 
-- [ ] **Task 2: Implement Qualified Step**
-    - [ ] Create `src/features/wizard/steps/QualifiedStep.tsx`.
-    - [ ] UI: "Verified. Let's talk."
-    - [ ] Action: "Book Call" button.
+- [x] **Task 2: Implement Qualified Step**
+    - [x] Create `src/features/wizard/steps/QualifiedStep.tsx`.
+    - [x] UI: "Verified. Let's talk."
+    - [x] Action: "Book Call" button.
 
-- [ ] **Task 3: Integrate into Renderer**
-    - [ ] Update `WizardStepRenderer.tsx` to handle `PARTNER_REFERRAL` and `COMPLETED` correctly.
+- [x] **Task 3: Integrate into Renderer**
+    - [x] Update `WizardStepRenderer.tsx` to handle `PARTNER_REFERRAL` and `COMPLETED` correctly.
 
-- [ ] **Task 4: Verification**
-    - [ ] Verify both flows end at the correct screen.
+- [x] **Task 4: Verification**
+    - [x] Verify both flows end at the correct screen.
 
 ## Dev Notes
 

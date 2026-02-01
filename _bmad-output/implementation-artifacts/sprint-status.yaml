@@ -67,10 +67,10 @@ development_status:
   epic-3-retrospective: done
 
   # Epic 4: Smart Qualification Wizard
-  epic-4: in-progress
+  epic-4: done
   4-1-wizard-state-machine: done
   4-2-conditional-branching-logic: done
   4-3-revenue-metrics-inputs: done
   4-4-local-persistence-layer: done
-  4-5-outcome-generation-pdf-booking: in-progress
-  epic-4-retrospective: optional
+  4-5-outcome-generation-pdf-booking: done
+  epic-4-retrospective: done
