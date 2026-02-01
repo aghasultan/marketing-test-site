@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, ShieldCheck } from 'lucide-react';
 import { CaseStudy } from '@/lib/content';
 import { cn } from '@/lib/utils';
-
+import { VerificationTooltip } from './VerificationTooltip';
 
 interface CaseStudyCardProps {
     study: CaseStudy;
@@ -39,10 +39,12 @@ export const CaseStudyCard = ({ study, variant = 'standard', className }: CaseSt
                 </div>
 
                 {study.claimReview.verdict === 'Verified' && (
-                    <div className="bg-emerald-500/10 text-emerald-500 px-2 py-1 rounded-full text-xs font-medium flex items-center border border-emerald-500/20">
-                        <ShieldCheck className="w-3 h-3 mr-1" />
-                        Verified
-                    </div>
+                    <VerificationTooltip claim={study.claimReview} date={study.date}>
+                        <div className="bg-emerald-500/10 text-emerald-500 px-2 py-1 rounded-full text-xs font-medium flex items-center border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors">
+                            <ShieldCheck className="w-3 h-3 mr-1" />
+                            Verified
+                        </div>
+                    </VerificationTooltip>
                 )}
             </div>
 
