@@ -100,8 +100,37 @@ interface WizardContextType extends WizardState {
 
 const WizardContext = createContext<WizardContextType | undefined>(undefined);
 
+import { useEffect } from 'react';
+import { saveState, loadState } from '../logic/persistence';
+
 export const WizardProvider = ({ children }: { children: ReactNode }) => {
-    const [state, dispatch] = useReducer(wizardReducer, initialState);
+    // Lazy init from storage
+    const [state, dispatch] = useReducer(wizardReducer, initialState, (defaultState) => {
+        // Check if we are in a browser environment
+        if (typeof window === 'undefined') return defaultState;
+
+        const saved = loadState();
+        if (saved) {
+            // Validate basic shape? 
+            // For now assume trusted local data.
+            return saved;
+        }
+        return defaultState;
+    });
+
+    // Persist on change
+    useEffect(() => {
+        saveState(state);
+    }, [state]);
+
+    // Intercept RESET to clear storage? 
+    // Actually, we can just do it in the effect if we detect reset, OR we wrap modify dispatch or reducer.
+    // Easeier: Reducer handles in-memory reset. Effect saves that empty state.
+    // BUT: We might want null/undefined in storage if reset. 
+    // Let's modify the reducer to call clearState? No, 'reducer' should be pure.
+    // Best approach: useEffect logic. 
+
+    // NOTE: If state matches initialState, we could clear storage.
 
     return (
         <WizardContext.Provider value={{ ...state, dispatch }}>

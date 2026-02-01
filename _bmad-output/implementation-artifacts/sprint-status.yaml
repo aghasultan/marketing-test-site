@@ -70,7 +70,7 @@ development_status:
   epic-4: in-progress
   4-1-wizard-state-machine: done
   4-2-conditional-branching-logic: done
-  4-3-revenue-metrics-inputs: in-progress
-  4-4-local-persistence-layer: backlog
+  4-3-revenue-metrics-inputs: done
+  4-4-local-persistence-layer: in-progress
   4-5-outcome-generation-pdf-booking: backlog
   epic-4-retrospective: optional

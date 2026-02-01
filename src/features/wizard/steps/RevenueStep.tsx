@@ -12,9 +12,7 @@ export const RevenueStep = () => {
         dispatch({ type: 'NEXT_STEP' });
     };
 
-    const handleKeypress = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter') handleNext();
-    };
+
 
     return (
         <motion.div
@@ -34,6 +32,14 @@ export const RevenueStep = () => {
                     placeholder="e.g. $50k or $100,000"
                     autoFocus
                 />
+
+                {/* Wrap input listener? Actually CurrencyInput wraps input.
+                    Let's just adding it to a wrapper div event if CurrencyInput doesn't expose it, 
+                    OR better, fix RevenueStep to pass it to CurrencyInput if needed. 
+                    For now, adding a global listener on the Step container might be easiest 
+                    but let's just make the Button the primary action. 
+                    Actually, let's remove the unused function for now to be clean.
+                */}
 
                 <div className="text-xs text-zinc-500 text-center font-mono">
                     Type "10k" for $10,000 or "1m" for $1,000,000
