@@ -6,6 +6,7 @@ import React, { createContext, useContext, useReducer, ReactNode } from 'react';
 export type WizardStep =
     | 'WELCOME'
     | 'REVENUE'
+    | 'PARTNER_REFERRAL'
     | 'GOALS'
     | 'CONTACT'
     | 'COMPLETED';
@@ -13,6 +14,7 @@ export type WizardStep =
 export const WIZARD_STEPS: WizardStep[] = [
     'WELCOME',
     'REVENUE',
+    'PARTNER_REFERRAL',
     'GOALS',
     'CONTACT',
     'COMPLETED'
@@ -32,9 +34,12 @@ export type WizardAction =
     | { type: 'SET_DATA'; payload: Partial<WizardData> }
     | { type: 'RESET' };
 
-interface WizardState {
+import { getNextStep } from '../logic/routing';
+
+export interface WizardState {
     currentStep: WizardStep;
-    stepIndex: number;
+    // stepIndex: number; // Deprecated in favor of history stack length
+    history: WizardStep[];
     data: WizardData;
     isSubmitting: boolean;
 }
@@ -43,7 +48,7 @@ interface WizardState {
 
 const initialState: WizardState = {
     currentStep: 'WELCOME',
-    stepIndex: 0,
+    history: ['WELCOME'],
     data: {},
     isSubmitting: false,
 };
@@ -51,21 +56,25 @@ const initialState: WizardState = {
 export function wizardReducer(state: WizardState, action: WizardAction): WizardState {
     switch (action.type) {
         case 'NEXT_STEP': {
-            const nextIndex = state.stepIndex + 1;
-            if (nextIndex >= WIZARD_STEPS.length) return state;
+            const nextStep = getNextStep(state.currentStep, state.data);
+            if (nextStep === state.currentStep) return state; // No movement
+
             return {
                 ...state,
-                stepIndex: nextIndex,
-                currentStep: WIZARD_STEPS[nextIndex],
+                currentStep: nextStep,
+                history: [...state.history, nextStep],
             };
         }
         case 'PREV_STEP': {
-            const prevIndex = state.stepIndex - 1;
-            if (prevIndex < 0) return state;
+            if (state.history.length <= 1) return state; // Can't go back from start
+
+            const newHistory = state.history.slice(0, -1);
+            const prevStep = newHistory[newHistory.length - 1];
+
             return {
                 ...state,
-                stepIndex: prevIndex,
-                currentStep: WIZARD_STEPS[prevIndex],
+                history: newHistory,
+                currentStep: prevStep,
             };
         }
         case 'SET_DATA': {

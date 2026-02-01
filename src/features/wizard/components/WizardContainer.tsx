@@ -1,16 +1,16 @@
 
 import React from 'react';
 import { WizardProvider, useWizard } from '../context/WizardContext';
-import { motion, AnimatePresence } from 'framer-motion';
+
 
 // Placeholder components for debugging visualization
 const StepDebug = () => {
-    const { currentStep, stepIndex, dispatch, data } = useWizard();
+    const { currentStep, history, dispatch, data } = useWizard();
 
     return (
         <div className="p-8 text-white max-w-md mx-auto bg-zinc-900 rounded-xl border border-zinc-800">
             <div className="mb-4 text-xs text-zinc-500 uppercase tracking-widest font-mono">
-                Step {stepIndex + 1}: {currentStep}
+                Step {history.length}: {currentStep}
             </div>
 
             <div className="h-40 flex items-center justify-center bg-zinc-950 rounded-lg mb-6 border border-zinc-800">
@@ -21,7 +21,7 @@ const StepDebug = () => {
                 <button
                     onClick={() => dispatch({ type: 'PREV_STEP' })}
                     className="px-4 py-2 bg-zinc-800 rounded hover:bg-zinc-700 transition-colors text-sm"
-                    disabled={stepIndex === 0}
+                    disabled={history.length <= 1}
                 >
                     Back
                 </button>
