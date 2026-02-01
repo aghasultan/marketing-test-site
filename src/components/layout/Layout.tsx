@@ -16,7 +16,7 @@ export function Layout({ children }: LayoutProps) {
             <div
                 id="gradient-bg"
                 aria-hidden="true"
-                className="fixed inset-0 z-0 pointer-events-none bg-zinc-950"
+                className="fixed inset-0 z-0 pointer-events-none bg-white dark:bg-zinc-950 transition-colors duration-300"
             />
 
             <Header />

@@ -45,11 +45,16 @@ export const Home = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            <img src="/img/clients/epic-resource-group.svg" alt="Epic Resource Group" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
-            <img src="/img/clients/gameday-mens-health.svg" alt="Gameday Men’s Health" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
-            <img src="/img/clients/man-with-a-pram.svg" alt="Man With A Pram" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
-            <img src="/img/clients/title-vertical.svg" alt="Wedding Realm" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
-            <img src="/img/clients/peres-siding.svg" alt="Peres Siding" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
+            {/* Logo 1: Wedding Realm */}
+            <img src="/img/clients/new-logo-1.png" alt="Wedding Realm" width="160" height="60" className="h-12 md:h-14 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            {/* Logo 2: Dignity Memorial */}
+            <img src="/img/clients/new-logo-2.png" alt="Dignity Memorial" width="160" height="60" className="h-10 md:h-12 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            {/* Logo 3: FPL */}
+            <img src="/img/clients/new-logo-5.png" alt="FPL" width="140" height="50" className="h-12 md:h-16 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            {/* Logo 4: Yellow House */}
+            <img src="/img/clients/new-logo-4.png" alt="Real Estate" width="160" height="60" className="h-12 md:h-16 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            {/* Logo 5: Blank/Other */}
+            <img src="/img/clients/new-logo-3.png" alt="Client Partner" width="140" height="50" className="h-10 md:h-14 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
           </div>
         </div>
       </section>

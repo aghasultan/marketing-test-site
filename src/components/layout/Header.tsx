@@ -29,8 +29,8 @@ export function Header() {
         >
             <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
                 {/* Logo */}
-                <Link to="/" className="font-bold text-xl font-sans tracking-tight text-white hover:text-emerald-400 transition-colors">
-                    Riffat <span className="text-emerald-500">Labs</span>
+                <Link to="/" className="font-bold text-xl font-sans tracking-tight text-zinc-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">
+                    Riffat <span className="text-emerald-600 dark:text-emerald-500">Labs</span>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -39,7 +39,7 @@ export function Header() {
                         <Link
                             key={link.href}
                             to={link.href}
-                            className="text-zinc-400 hover:text-white transition-colors font-medium text-sm"
+                            className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors font-medium text-sm"
                         >
                             {link.label}
                         </Link>
