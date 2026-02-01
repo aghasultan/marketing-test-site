@@ -1,10 +1,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { CaseStudy } from '@/lib/content';
 import { cn } from '@/lib/utils';
-import { VerificationTooltip } from './VerificationTooltip';
+import { VerifiedBadge } from './VerifiedBadge';
 
 interface CaseStudyCardProps {
     study: CaseStudy;
@@ -38,14 +38,7 @@ export const CaseStudyCard = ({ study, variant = 'standard', className }: CaseSt
                     <p className="text-zinc-400 mt-1">{study.client}</p>
                 </div>
 
-                {study.claimReview.verdict === 'Verified' && (
-                    <VerificationTooltip claim={study.claimReview} date={study.date}>
-                        <div className="bg-emerald-500/10 text-emerald-500 px-2 py-1 rounded-full text-xs font-medium flex items-center border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors">
-                            <ShieldCheck className="w-3 h-3 mr-1" />
-                            Verified
-                        </div>
-                    </VerificationTooltip>
-                )}
+                <VerifiedBadge claim={study.claimReview} date={study.date} />
             </div>
 
             <div className={cn("grid gap-4 mt-auto relative z-10", variant === 'featured' ? "grid-cols-3" : "grid-cols-2")}>
