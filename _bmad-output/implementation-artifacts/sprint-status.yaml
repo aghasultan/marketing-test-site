@@ -51,7 +51,7 @@ development_status:
 
   # Epic 2: The No-Click Audit Engine
   epic-2: in-progress
-  2-1-serverless-audit-proxy-setup: ready-for-dev
+  2-1-serverless-audit-proxy-setup: in-progress
   2-2-audit-analysis-logic: backlog
   2-3-interactive-audit-scanner-ui: backlog
   2-4-instant-results-teaser: backlog
