@@ -45,11 +45,11 @@ export const Home = () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            <img src="/img/clients/epic-resource-group.svg" alt="Epic Resource Group" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
-            <img src="/img/clients/gameday-mens-health.svg" alt="Gameday Men’s Health" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
-            <img src="/img/clients/man-with-a-pram.svg" alt="Man With A Pram" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
-            <img src="/img/clients/title-vertical.svg" alt="Wedding Realm" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
-            <img src="/img/clients/peres-siding.svg" alt="Peres Siding" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
+            <img src="/img/clients/epic-resource-group.svg" alt="Epic Resource Group" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
+            <img src="/img/clients/gameday-mens-health.svg" alt="Gameday Men’s Health" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
+            <img src="/img/clients/man-with-a-pram.svg" alt="Man With A Pram" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
+            <img src="/img/clients/title-vertical.svg" alt="Wedding Realm" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
+            <img src="/img/clients/peres-siding.svg" alt="Peres Siding" width="120" height="40" className="h-8 md:h-10 w-auto brightness-0 invert" loading="lazy" />
           </div>
         </div>
       </section>

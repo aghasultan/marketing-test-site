@@ -70,6 +70,8 @@
     @apply bg-background text-foreground font-sans antialiased;
     background-color: #09090b;
     /* Force dark background */
+    content-visibility: auto;
+    /* Boost rendering performance */
   }
 }
 

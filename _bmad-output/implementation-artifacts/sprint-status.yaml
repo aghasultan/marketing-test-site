@@ -79,5 +79,5 @@ development_status:
   epic-5: in-progress
   5-1-ui-polish-visual-stability: done
   5-2-content-authority-engine: done
-  5-3-advanced-analytics-observation: in-progress
-  5-4-performance-maximization: backlog
+  5-3-advanced-analytics-observation: done
+  5-4-performance-maximization: in-progress
