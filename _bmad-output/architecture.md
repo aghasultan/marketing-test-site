@@ -34,6 +34,7 @@ Data access is decoupled from UI components via service modules.
 ### 4. Routing
 **Client-side routing** is handled by `react-router-dom`. Routes are defined in `src/App.tsx` and mapped to top-level `Page` components. These Page components act as the composition root for the Features.
 
+
 ## Data Flow
 1.  **User Action:** User interacts with a specific Feature Component (e.g., "Submit URL").
 2.  **Handler:** Component calls a Service function (e.g., `auditService.analyzeUrl`).
@@ -42,6 +43,24 @@ Data access is decoupled from UI components via service modules.
     *   Result is stored in a Feature Store (Zustand) if needed globally.
     *   Or returned directly to the component for local rendering.
 5.  **UI Update:** React re-renders based on the new state.
+
+### Content Discovery Flow
+*   **Source:** Markdown files in `src/content/blog/*.md` with YAML frontmatter.
+*   **Ingestion:** `vite.glob` imports files at build/runtime.
+*   **Processing:** parsed by `gray-matter`, sorted by date in `useBlog`.
+*   **Syndication:** `scripts/generate-rss.ts` runs at build time to output `public/rss.xml`.
+
+## Observability & Analytics
+*   **Layer:** `src/lib/tracking.ts` acts as the single abstraction.
+*   **Transport:** events are pushed to `window.dataLayer` for GTM/GA4.
+*   **Dev Mode:** Events are logged to the console for easy debugging.
+*   **Taxonomy:** Typed events (e.g., `wizard_step_view`) ensure consistency.
+
+## Performance Strategy
+*   **Core Web Vitals:** targeted 100/100.
+*   **Rendering:** `content-visibility: auto` used to skip off-screen rendering.
+*   **Layout Stability:** All images have explicit `width`/`height` to prevent CLS.
+*   **Lazy Loading:** Strict policy for all non-hero assets.
 
 ## Testing Strategy
 *   **E2E (Playwright):** Critical user flows (Wizard completion, Audit generation) are tested end-to-end to ensure business value is delivered.
