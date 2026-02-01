@@ -76,8 +76,15 @@ development_status:
   epic-4-retrospective: done
 
   # Epic 5: Authority, Analytics & Optimization
-  epic-5: in-progress
+  epic-5: done
   5-1-ui-polish-visual-stability: done
   5-2-content-authority-engine: done
   5-3-advanced-analytics-observation: done
-  5-4-performance-maximization: in-progress
+  5-4-performance-maximization: done
+  epic-5-retrospective: optional
+
+  # Epic 6: Marketing Automation & CRM Integration
+  epic-6: backlog
+  6-1-email-api-integration: backlog
+  6-2-lead-capture-crm-sync: backlog
+  6-3-automation-flow-triggers: backlog
