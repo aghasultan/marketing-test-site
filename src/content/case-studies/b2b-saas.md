@@ -1,4 +1,3 @@
-
 ---
 title: "B2B SaaS Lead Gen Explosion"
 client: "DataFlow Systems"
@@ -16,6 +15,8 @@ metrics:
   - label: "SQLs"
     value: "150/mo"
     change: "+300%"
+metric: "+300% SQLs"
+result: "3x Lead Volume"
 tags: ["Google Ads", "B2B"]
 ---
 

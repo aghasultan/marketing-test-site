@@ -37,5 +37,7 @@ export const getCaseStudies = async (): Promise<CaseStudy[]> => {
         });
     }
 
-    return caseStudies.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+    return caseStudies
+        .filter(study => study.title !== 'Untitled')
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };

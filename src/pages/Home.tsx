@@ -1,36 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NebulaBackground } from '@/components/ui/NebulaBackground';
 import { Hero } from '@/components/layout/Hero';
 import { SEO } from '@/components/seo/Head';
 import { CaseStudyGrid } from '../components/CaseStudyGrid';
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { MediaBuyingCalculator } from '@/features/results/components/MediaBuyingCalculator';
 
-// Helper for smooth number counting
-function NumberCounter({ value, currency = false }: { value: number; currency?: boolean }) {
-  const spring = useSpring(value, { mass: 0.8, stiffness: 75, damping: 15 });
-  const display = useTransform(spring, (current) => {
-    if (currency) {
-      return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(Math.round(current));
-    }
-    return Math.round(current).toLocaleString();
-  });
 
-  useEffect(() => {
-    spring.set(value);
-  }, [value, spring]);
-
-  return <motion.span>{display}</motion.span>;
-}
 
 export const Home = () => {
-  // ROI Calculator State
-  const [spend, setSpend] = useState<number | ''>(10000);
-  const [hours, setHours] = useState<number | ''>(10);
-  const [rate, setRate] = useState<number | ''>(100);
-
-  const totalUpside = ((Number(hours) || 0) * (Number(rate) || 0) * 52) + ((Number(spend) || 0) * 0.2 * 12);
-  const annualROI = Number(spend) > 0 ? (totalUpside / ((Number(spend) || 0) * 12)) * 100 : 0;
-  const progressPercent = Math.min((totalUpside / 100000) * 100, 100);
 
 
 
@@ -196,88 +173,7 @@ export const Home = () => {
             <h3 className="text-3xl md:text-4xl font-bold text-white">Estimate Your Upside</h3>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="md:col-span-2 p-8 rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md">
-              <div className="flex items-start justify-between gap-4 mb-8">
-                <div>
-                  <h4 className="text-xl font-bold text-white mb-2">Plug your numbers</h4>
-                  <p className="text-zinc-400 max-w-2xl text-sm leading-relaxed">
-                    Live calculator that blends time saved with media efficiency. The progress bar on the right fills as you uncover more upside (capped at $100k).
-                  </p>
-                </div>
-                <span className="px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">Live</span>
-              </div>
-
-              <form className="grid sm:grid-cols-2 gap-6" onSubmit={e => e.preventDefault()}>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-zinc-300">Monthly Ad Spend ($)</label>
-                  <input
-                    type="number"
-                    placeholder="10000"
-                    value={spend}
-                    onChange={(e) => setSpend(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
-                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium text-zinc-300">Hours Managing Ads (Per Week)</label>
-                  <input
-                    type="number"
-                    placeholder="10"
-                    value={hours}
-                    onChange={(e) => setHours(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
-                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors"
-                  />
-                </div>
-                <div className="space-y-2 sm:col-span-2">
-                  <label className="text-sm font-medium text-zinc-300">Your Hourly Rate ($)</label>
-                  <input
-                    type="number"
-                    placeholder="100"
-                    value={rate}
-                    onChange={(e) => setRate(e.target.value === '' ? '' : Math.max(0, parseFloat(e.target.value)))}
-                    className="w-full rounded-md border border-white/10 bg-zinc-800 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 transition-colors"
-                  />
-                </div>
-              </form>
-
-              <div className="mt-6 text-zinc-500 text-xs italic">
-                *Calculates efficiency gains + time saved vs hiring an agency.
-              </div>
-            </div>
-
-            {/* ROI Result Card with gamified progress */}
-            <div className="md:col-span-2 relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-zinc-900/80 backdrop-blur-md p-8">
-              <div
-                className="absolute bottom-0 left-0 h-1 bg-emerald-500 transition-all duration-1000 ease-out"
-                style={{ width: `${progressPercent}%`, opacity: 0.5 }}
-              />
-              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8">
-                <div>
-                  <h3 className="text-lg font-bold text-emerald-500 mb-2">Projected Annual Value</h3>
-                  <p className="text-sm text-zinc-400 max-w-sm">
-                    Progress fills while you type. We cap the visual at $100k to keep expectations grounded.
-                  </p>
-                </div>
-
-                <div className="text-right">
-                  <div data-testid="roi-result" className="text-4xl md:text-6xl font-extrabold text-white mb-2 transition-all">
-                    <NumberCounter value={totalUpside} currency />
-                  </div>
-                  <div className="flex gap-6 justify-end">
-                    <div>
-                      <div className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Implied ROI</div>
-                      <div className="text-lg font-mono font-semibold text-white">{annualROI.toFixed(0)}%</div>
-                    </div>
-                    <div>
-                      <div className="text-xs text-zinc-500 uppercase tracking-wider mb-1">Progress to $100k</div>
-                      <div className="text-lg font-mono font-semibold text-white">{progressPercent.toFixed(0)}%</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <MediaBuyingCalculator />
         </div>
       </section>
 

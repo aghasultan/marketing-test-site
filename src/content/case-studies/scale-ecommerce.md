@@ -1,4 +1,3 @@
-
 ---
 title: "Scaling E-commerce to $1M/mo"
 client: "FashionNovaClone"
@@ -16,6 +15,8 @@ metrics:
   - label: "Revenue"
     value: "$1.2M"
     change: "+85%"
+metric: "4.5x ROAS"
+result: "$1.2M Revenue"
 tags: ["TikTok Ads", "Scale"]
 ---
 

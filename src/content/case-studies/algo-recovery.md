@@ -1,4 +1,3 @@
-
 ---
 title: "Algorithm Recovery Protocol"
 client: "HealthTech Inc"
@@ -16,6 +15,8 @@ metrics:
   - label: "CAC"
     value: "$28"
     change: "-15%"
+metric: "+45% Conv. Rate"
+result: "Immediate Recovery"
 tags: ["CRO", "Health"]
 ---
 

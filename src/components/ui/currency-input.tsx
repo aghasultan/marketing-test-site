@@ -39,6 +39,7 @@ export const CurrencyInput = ({
                 setDisplayValue(formatted);
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
 
     const parseCurrency = (input: string): number => {
