@@ -50,16 +50,16 @@ development_status:
   epic-1-retrospective: done
 
   # Epic 2: The No-Click Audit Engine
-  epic-2: in-progress
+  epic-2: done
   2-1-serverless-audit-proxy-setup: done
   2-2-audit-analysis-logic: done
   2-3-interactive-audit-scanner-ui: done
-  2-4-instant-results-teaser: in-progress
-  epic-2-retrospective: optional
+  2-4-instant-results-teaser: done
+  epic-2-retrospective: done
 
   # Epic 3: Verification & Results System
-  epic-3: backlog
-  3-1-markdown-content-architecture: backlog
+  epic-3: in-progress
+  3-1-markdown-content-architecture: in-progress
   3-2-bento-grid-layout-engine: backlog
   3-3-schema-verification-tooltip: backlog
   3-4-verified-badge-logic: backlog
