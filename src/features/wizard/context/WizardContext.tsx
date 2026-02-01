@@ -104,6 +104,7 @@ import { useEffect } from 'react';
 import { saveState, loadState } from '../logic/persistence';
 import { trackEvent } from '@/lib/tracking';
 import { sendLeadNotification } from '@/services/emailService';
+import { syncWizardLead } from '@/services/crmService';
 
 export const WizardProvider = ({ children }: { children: ReactNode }) => {
     // Lazy init from storage
@@ -153,6 +154,13 @@ export const WizardProvider = ({ children }: { children: ReactNode }) => {
             sendLeadNotification({
                 ...state.data,
                 revenueRange: state.data.revenueRange || `$${state.data.revenue}`, // Fallback
+                outcome
+            });
+
+            // 3. CRM Sync (Fire & Forget)
+            syncWizardLead({
+                ...state.data,
+                revenueRange: state.data.revenueRange || `$${state.data.revenue}`,
                 outcome
             });
         }
