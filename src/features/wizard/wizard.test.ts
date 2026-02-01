@@ -1,7 +1,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { wizardReducer } from './context/WizardContext';
-import { WizardStep, WizardState } from './context/WizardContext';
+import { WizardState } from './context/WizardContext';
 
 describe('Wizard State Machine', () => {
     const initialState: WizardState = {

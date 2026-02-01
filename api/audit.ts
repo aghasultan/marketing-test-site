@@ -39,7 +39,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
         const { data, headers: responseHeaders, status } = await axios.get(url, {
             headers: { 'User-Agent': USER_AGENT },
             timeout: MAX_TIMEOUT,
-            // @ts-ignore - signal is valid in newer axios but types might lag or conflict
+            // @ts-expect-error - signal is valid in newer axios but types might lag or conflict
             signal: controller.signal,
             maxContentLength: 5 * 1024 * 1024, // Limit to 5MB
         });
@@ -68,14 +68,16 @@ export default async function handler(request: VercelRequest, response: VercelRe
             }
         });
 
-    } catch (error: any) {
-        console.error('Audit Error:', error.message);
-        if (error.code === 'ECONNABORTED' || error.name === 'AbortError') {
+    } catch (error: unknown) {
+        const err = error as Error; // Basic type assertion for safety
+        console.error('Audit Error:', err.message);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        if ((err as any).code === 'ECONNABORTED' || err.name === 'AbortError') {
             return response.status(504).json({ error: 'Target URL timed out' });
         }
         return response.status(502).json({
             error: 'Failed to fetch target URL',
-            details: error.message
+            details: err.message
         });
     }
 }

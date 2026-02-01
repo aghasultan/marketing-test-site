@@ -37,7 +37,7 @@ test.describe('Wizard UI & Feedback', () => {
         // For now, let's assume we add a data-testid="step-indicator-item-1" and check if it has a checked state.
         // Or simpler: check if the dot for step 1 changes color or has an icon.
         // The implementation plan says "Add checkmark icons".
-        const step1Indicator = page.locator('[data-testid="step-indicator"] .bg-emerald-500').first(); // Hypothetical class for completed step
+        // const step1Indicator = page.locator('[data-testid="step-indicator"] .bg-emerald-500').first(); 
         // We will need to update the test once we implement the specific DOM structure.
         // For 'Red' phase, let's expect a specific aria-label or status.
 

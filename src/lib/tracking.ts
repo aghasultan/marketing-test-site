@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 // Extend window interface to include dataLayer
 declare global {
     interface Window {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         dataLayer: any[];
     }
 }
@@ -13,6 +14,7 @@ declare global {
  * @param eventName - The name of the event (e.g., 'page_view', 'form_submit')
  * @param eventData - Additional data to send with the event
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const trackEvent = (eventName: string, eventData: Record<string, any> = {}) => {
     if (typeof window !== 'undefined') {
         window.dataLayer = window.dataLayer || [];

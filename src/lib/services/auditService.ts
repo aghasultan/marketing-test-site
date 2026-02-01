@@ -54,7 +54,7 @@ export const checkMetaPixel = (html: string): AuditCheck => {
 /**
  * Checks SEO Basics
  */
-export const checkSEO = (html: string, meta: { title: string; description: string }): AuditCheck => {
+export const checkSEO = (_html: string, meta: { title: string; description: string }): AuditCheck => {
     const { title, description } = meta;
     const titleLength = title.length;
     const descLength = description.length;
@@ -145,6 +145,7 @@ export const analyzeUrl = async (url: string): Promise<AuditResult> => {
             overallScore
         };
 
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         console.error('Analysis failed:', error);
         // Return a failed result structure instead of throwing, so UI can show "Failed"

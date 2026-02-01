@@ -42,9 +42,9 @@ describe('Content Architecture', () => {
         });
 
         it('fails when metrics are missing', () => {
-            const invalid = { ...validCaseStudy, metrics: [] };
             // Actually empty array is valid in Zod by default unless .min(1)
             // Let's test missing metrics array entirely
+            // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { metrics, ...missingMetrics } = validCaseStudy;
             const result = CaseStudySchema.safeParse(missingMetrics);
             expect(result.success).toBe(false);

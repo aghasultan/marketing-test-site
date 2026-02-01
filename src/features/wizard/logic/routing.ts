@@ -6,7 +6,7 @@ export const getNextStep = (currentStep: WizardStep, data: WizardData): WizardSt
         case 'WELCOME':
             return 'REVENUE';
 
-        case 'REVENUE':
+        case 'REVENUE': {
             // Branching Logic
             // Threshold: $50k/mo
             const revenue = data.revenue || 0;
@@ -14,6 +14,7 @@ export const getNextStep = (currentStep: WizardStep, data: WizardData): WizardSt
                 return 'PARTNER_REFERRAL'; // Too small for us
             }
             return 'GOALS'; // Big enough
+        }
 
         case 'PARTNER_REFERRAL':
             // Maybe they can restart? Or it's a dead end?
