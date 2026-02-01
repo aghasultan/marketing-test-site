@@ -44,7 +44,7 @@ test.describe('Advanced SEO & Schema Validation', () => {
         await page.goto('/');
 
         // Title
-        await expect(page).toHaveTitle(/Agha Sultan Naseer/);
+        await expect(page).toHaveTitle(/Meta & Google Ads Strategist | Riffat Labs/);
 
         // Description
         const description = page.locator('meta[name="description"]');

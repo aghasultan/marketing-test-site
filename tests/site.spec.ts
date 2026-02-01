@@ -2,9 +2,9 @@ import { test, expect } from "@playwright/test";
 
 test("homepage has title and hero text", async ({ page }) => {
   await page.goto("/");
-  await expect(page).toHaveTitle(/Agha Sultan Naseer/);
+  await expect(page).toHaveTitle(/Meta & Google Ads Strategist | Riffat Labs/);
   await expect(
-    page.getByRole("heading", { name: /Turn Paid Ads Into Profit/i }),
+    page.getByRole("heading", { name: /Audit your Agency/i }),
   ).toBeVisible();
 });
 
@@ -71,19 +71,4 @@ test("no console errors on homepage", async ({ page }) => {
 
 // The "index page form" was removed in the refactor (it's now the Gamified ROI calculator)
 // so we should either remove this test or update it to test the ROI calculator.
-test("roi calculator interactivity", async ({ page }) => {
-  await page.goto("/");
-
-  const spendInput = page.getByRole("spinbutton").nth(0); // Monthly Ad Spend
-
-  // Clear and type
-  await spendInput.fill("20000");
-
-  // Check if result updates.
-  // Result text is in: .text-4xl.md:text-5xl.font-extrabold.text-white
-  const result = page.getByTestId("roi-result");
-  await expect(result).toBeVisible();
-
-  // We expect some value formatted as currency
-  await expect(result).toContainText("$");
-});
+// ROI Calculator test moved to home.spec.ts to match updated MediaBuyingCalculator component

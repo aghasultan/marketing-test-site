@@ -27,7 +27,7 @@ export const Hero = () => {
     };
 
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
+        <section id="hero" aria-labelledby="hero-title" className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
             <div className="absolute inset-0 pointer-events-none -z-10">
                 {/* Fallback gradient if Nebula fails to load */}
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-500/10 blur-[120px]" />
@@ -49,6 +49,7 @@ export const Hero = () => {
 
                 {/* H1 - Inter Tight - Critical LCP Element */}
                 <motion.h1
+                    id="hero-title"
                     variants={itemVariants}
                     className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]"
                 >

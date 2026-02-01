@@ -12,7 +12,7 @@ test.describe('Scale (Services) Page Visual & Navigation', () => {
   });
 
   test('CTA buttons match expected styles and links', async ({ page }) => {
-    const applyBtn = page.locator('a[href="/apply"]').first();
+    const applyBtn = page.locator('#hero a[href="/apply"]').first();
     await expect(applyBtn).toBeVisible();
     await expect(applyBtn).toHaveText(/Strategy Call/i);
 

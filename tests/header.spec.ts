@@ -60,10 +60,11 @@ test.describe('Global Responsive Header', () => {
         await expect(drawer).toBeVisible();
 
         // Check Drawer Links
-        await expect(drawer.getByRole('link', { name: 'Services', exact: true })).toBeVisible();
-        await expect(drawer.getByRole('link', { name: 'Work', exact: true })).toBeVisible();
-        await expect(drawer.getByRole('link', { name: 'About', exact: true })).toBeVisible();
-        await expect(drawer.getByRole('button', { name: 'Apply' })).toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Product', exact: true })).toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Case Studies', exact: true })).toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Pricing', exact: true })).toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Resources', exact: true })).toBeVisible();
+        await expect(drawer.getByRole('button', { name: 'Start Audit' })).toBeVisible();
 
         // Verify Drawer is Closed (or removed from DOM)
         // Click a link to trigger the close

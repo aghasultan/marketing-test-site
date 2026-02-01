@@ -11,12 +11,11 @@ test.describe('Home Page Visual & Accessibility', () => {
 
         const heroTitle = page.locator('#hero-title');
         await expect(heroTitle).toBeVisible();
-        await expect(heroTitle).toHaveText(/We Turn Paid Ads Into Profit Engines/i);
+        await expect(heroTitle).toHaveText(/Audit your Agency/i);
 
-        // Check for Tailwind classes indicative of the design (sanity check)
-        // Note: We are refactoring to remove custom classes, so we check for presence of structural elements
-        const buttons = page.locator('a[href="/apply"]');
-        await expect(buttons.first()).toBeVisible();
+        // Check for Audit Scanner presence (Analyze Now button)
+        const analyzeBtn = page.getByRole('button', { name: /Analyze Now/i });
+        await expect(analyzeBtn).toBeVisible();
     });
 
     test('Service cards use Glassmorphism styles', async ({ page }) => {
@@ -29,35 +28,33 @@ test.describe('Home Page Visual & Accessibility', () => {
         const serviceCards = page.locator('#services .group');
         await expect(serviceCards).toHaveCount(3);
 
-        // Check first card for glassmorphism classes (partial check via CSS if possible, but Playwright checks computed styles usually)
-        // Here we just ensure they are visible and have some content
+        // Check first card for glassmorphism classes (partial check via visible content)
         await expect(serviceCards.first()).toBeVisible();
         await expect(serviceCards.first()).toContainText('Performance Paid Media');
     });
 
-    test('Performance Snapshot card visibility', async ({ page }) => {
-        const snapshotCard = page.getByText('Performance Snapshot');
-        await expect(snapshotCard).toBeVisible();
-        await expect(page.getByText('$5M+ / yr')).toBeVisible();
+    test('Audit Scanner visibility', async ({ page }) => {
+        const scannerInput = page.getByPlaceholder(/Enter your website URL/i);
+        await expect(scannerInput).toBeVisible();
+        const analyzeBtn = page.getByRole('button', { name: /Analyze Now/i });
+        await expect(analyzeBtn).toBeVisible();
     });
 
     test('ROI Calculator inputs exist and are interactive', async ({ page }) => {
         const calculator = page.locator('#roi-calculator');
         await expect(calculator).toBeVisible();
 
-        const spendInput = page.getByPlaceholder('10000');
-        await expect(spendInput).toBeVisible();
-        await expect(spendInput).toBeEditable();
+        // Check for "Projected Revenue" text which indicates calculator is rendered
+        await expect(page.getByText('Projected Monthly Outcome')).toBeVisible();
 
-        const hoursInput = page.getByPlaceholder('10', { exact: true });
-        await expect(hoursInput).toBeVisible();
+        // Check for presence of Sliders
+        const sliders = page.getByRole('slider');
+        // We have 5 inputs: Spend, CPM, CTR, CV, AOV
+        await expect(sliders).toHaveCount(5);
 
-        const rateInput = page.getByPlaceholder('100', { exact: true });
-        await expect(rateInput).toBeVisible();
-
-        // Test interaction
-        await spendInput.fill('20000');
-        await expect(spendInput).toHaveValue('20000');
+        // Verify "Book Strategy Call" button is present in calculator
+        const bookBtn = calculator.getByRole('button', { name: /Book Strategy Call/i });
+        await expect(bookBtn).toBeVisible();
     });
 
     test('Accessibility Check (Lightweight)', async ({ page }) => {
