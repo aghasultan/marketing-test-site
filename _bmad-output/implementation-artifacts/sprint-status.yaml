@@ -91,6 +91,7 @@ development_status:
   epic-6-retrospective: optional
 
   # Epic 7: Visual Personalization
-  epic-7: in-progress
+  epic-7: done
   7-1-theme-toggle-implementation: done
   7-2-visual-polish-animation-fixes: done
+  epic-7-retrospective: done
