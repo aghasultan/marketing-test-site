@@ -65,19 +65,23 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    background-color: #09090b;
+    /* Force dark background */
   }
 }
 
 @layer utilities {
+
   /* Glassmorphism System */
   .glass {
     @apply bg-white/5 backdrop-blur-xl border border-white/10;
   }
-  
+
   .glass-panel {
-      @apply glass rounded-xl shadow-2xl;
+    @apply glass rounded-xl shadow-2xl;
   }
 
   .glass-hover {
@@ -85,15 +89,16 @@
   }
 
   .glass-input {
-      @apply bg-white/5 border border-white/10 text-white placeholder:text-zinc-500 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 backdrop-blur-sm transition-all duration-200;
+    @apply bg-white/5 border border-white/10 text-white placeholder:text-zinc-500 focus:ring-2 focus:ring-primary/50 focus:border-primary/50 backdrop-blur-sm transition-all duration-200;
   }
 
   /* Verified Badge Pulse */
   .verified-pulse {
-      @apply relative;
+    @apply relative;
   }
+
   .verified-pulse::after {
-      content: '';
-      @apply absolute inset-0 rounded-full border border-verified/50 animate-pulse;
+    content: '';
+    @apply absolute inset-0 rounded-full border border-verified/50 animate-pulse;
   }
 }

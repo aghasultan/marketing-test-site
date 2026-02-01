@@ -17,9 +17,9 @@ interface Particle {
 }
 
 const COLORS = [
-    'rgba(59, 130, 246, 0.15)',  // Blue-500 low opacity
-    'rgba(16, 185, 129, 0.1)',   // Emerald-500 low opacity
-    'rgba(147, 51, 234, 0.1)',   // Purple-600 low opacity
+    'rgba(59, 130, 246, 0.05)',  // Blue-500 very low opacity
+    'rgba(16, 185, 129, 0.03)',   // Emerald-500 very low opacity
+    'rgba(147, 51, 234, 0.03)',   // Purple-600 very low opacity
 ];
 
 export const NebulaBackground: React.FC<NebulaBackgroundProps> = ({ className }) => {
