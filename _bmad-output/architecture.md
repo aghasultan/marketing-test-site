@@ -62,6 +62,13 @@ Data access is decoupled from UI components via service modules.
 *   **Layout Stability:** All images have explicit `width`/`height` to prevent CLS.
 *   **Lazy Loading:** Strict policy for all non-hero assets.
 
+## Automation & CRM Layer
+*   **Email Service:** `src/services/emailService.ts` handles transactional emails.
+    *   **Templates:** Content-aware templates based on lead outcome (Qualified vs Partner).
+*   **CRM Service:** `src/services/crmService.ts` handles data synchronization.
+    *   **Mapping:** `WizardData` is flattened and enriched into `CrmLead` objects.
+*   **Trigger Logic:** The `WizardContext` acts as the orchestration point, firing Analytics, Email, and CRM events in parallel upon completion.
+
 ## Testing Strategy
 *   **E2E (Playwright):** Critical user flows (Wizard completion, Audit generation) are tested end-to-end to ensure business value is delivered.
 *   **Unit/Integration:** (Inferred) Component testing via React Testing Library would validate individual behaviors.
