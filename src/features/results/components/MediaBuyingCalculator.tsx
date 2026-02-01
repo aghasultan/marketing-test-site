@@ -1,5 +1,6 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { trackEvent } from '@/lib/tracking';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Calculator, ArrowRight } from 'lucide-react';
@@ -27,6 +28,22 @@ export const MediaBuyingCalculator = () => {
 
     // ROAS = Revenue / Spend
     const roas = revenue / spend[0];
+
+    // State for debounce
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            trackEvent('calculator_interaction', {
+                spend: spend[0],
+                cpm: cpm[0],
+                ctr: ctr[0],
+                cv: cv[0],
+                aov: aov[0],
+                projected_roas: revenue / spend[0]
+            });
+        }, 1000); // 1s debounce
+
+        return () => clearTimeout(timer);
+    }, [spend, cpm, ctr, cv, aov, revenue]);
 
     return (
         <div className="md:col-span-2 grid md:grid-cols-2 gap-8">

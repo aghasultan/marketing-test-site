@@ -102,6 +102,7 @@ const WizardContext = createContext<WizardContextType | undefined>(undefined);
 
 import { useEffect } from 'react';
 import { saveState, loadState } from '../logic/persistence';
+import { trackEvent } from '@/lib/tracking';
 
 export const WizardProvider = ({ children }: { children: ReactNode }) => {
     // Lazy init from storage
@@ -123,14 +124,30 @@ export const WizardProvider = ({ children }: { children: ReactNode }) => {
         saveState(state);
     }, [state]);
 
-    // Intercept RESET to clear storage? 
-    // Actually, we can just do it in the effect if we detect reset, OR we wrap modify dispatch or reducer.
-    // Easeier: Reducer handles in-memory reset. Effect saves that empty state.
-    // BUT: We might want null/undefined in storage if reset. 
-    // Let's modify the reducer to call clearState? No, 'reducer' should be pure.
-    // Best approach: useEffect logic. 
+    // Analytics: Track Step Views
+    useEffect(() => {
+        // Track Start
+        if (state.currentStep === 'WELCOME' && state.history.length === 1) {
+            trackEvent('wizard_start');
+        }
 
-    // NOTE: If state matches initialState, we could clear storage.
+        // Track Steps (excluding Welcome re-visits if possible, but basic view tracking is fine)
+        trackEvent('wizard_step_view', {
+            step_name: state.currentStep,
+            step_index: state.history.length
+        });
+
+        // Track Completion
+        if (state.currentStep === 'COMPLETED' || state.currentStep === 'PARTNER_REFERRAL') {
+            // Determine outcome based on final step
+            const outcome = state.currentStep === 'PARTNER_REFERRAL' ? 'partner_network' : 'qualified_lead';
+            trackEvent('wizard_complete', {
+                outcome,
+                revenue: state.data.revenue
+            });
+        }
+
+    }, [state.currentStep, state.history.length, state.data.revenue]); // Track on dependencies
 
     return (
         <WizardContext.Provider value={{ ...state, dispatch }}>

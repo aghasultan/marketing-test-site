@@ -78,6 +78,6 @@ development_status:
   # Epic 5: Authority, Analytics & Optimization
   epic-5: in-progress
   5-1-ui-polish-visual-stability: done
-  5-2-content-authority-engine: in-progress
-  5-3-advanced-analytics-observation: backlog
+  5-2-content-authority-engine: done
+  5-3-advanced-analytics-observation: in-progress
   5-4-performance-maximization: backlog

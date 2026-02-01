@@ -9,20 +9,40 @@ declare global {
     }
 }
 
+// Analytics Event Types
+export type AnalyticsEvent =
+    | 'page_view'
+    | 'wizard_start'
+    | 'wizard_step_view'
+    | 'wizard_complete'
+    | 'calculator_interaction'
+    | 'audit_scan_start'
+    | 'audit_scan_complete';
+
 /**
  * Push an event to the dataLayer
  * @param eventName - The name of the event (e.g., 'page_view', 'form_submit')
  * @param eventData - Additional data to send with the event
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const trackEvent = (eventName: string, eventData: Record<string, any> = {}) => {
+export const trackEvent = (eventName: AnalyticsEvent | string, eventData: Record<string, any> = {}) => {
     if (typeof window !== 'undefined') {
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
+
+        const payload = {
             event: eventName,
             ...eventData,
             timestamp: new Date().toISOString(),
-        });
+        };
+
+        window.dataLayer.push(payload);
+
+        // Dev Logging
+        if (import.meta.env.DEV) {
+            console.groupCollapsed(`📊 Analytics: ${eventName}`);
+            console.log(payload);
+            console.groupEnd();
+        }
     }
 };
 
