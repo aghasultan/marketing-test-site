@@ -46,19 +46,40 @@ export const sendLeadNotification = async (leadData: WizardData & { outcome?: st
     });
 
     // Send confirmation to user
+    // Send confirmation to user based on outcome
     if (leadData.email) {
-        await emailService.send({
-            to: leadData.email,
-            subject: 'We received your application - Riffat Labs',
-            html: `
-                <h1>Application Received</h1>
-                <p>Hi ${leadData.name},</p>
-                <p>Thanks for applying to work with Riffat Labs. We've received your details and are reviewing your audit request.</p>
-                <p>We'll get back to you within 24 hours.</p>
-                <br>
-                <p>Best,</p>
-                <p>Agha Sultan</p>
-            `
-        });
+        if (leadData.outcome === 'partner_network') {
+            // Partner Referral Flow
+            await emailService.send({
+                to: leadData.email,
+                subject: 'Riffat Labs - Partner Network Introduction',
+                html: `
+                    <h1>Thanks for your interest</h1>
+                    <p>Hi ${leadData.name},</p>
+                    <p>Thanks for sharing your details. Based on your current revenue stage, we believe you would get the best results from one of our certified agency partners.</p>
+                    <p>We will review your profile and make an introduction if we find a good match.</p>
+                    <br>
+                    <p>Best,</p>
+                    <p>Agha Sultan</p>
+                `
+            });
+        } else {
+            // Qualified Lead Flow
+            await emailService.send({
+                to: leadData.email,
+                subject: 'Audit Request Received - Next Steps',
+                html: `
+                    <h1>Application Received</h1>
+                    <p>Hi ${leadData.name},</p>
+                    <p>Thanks for applying to work with Riffat Labs. Your revenue profile matches our ideal client criteria.</p>
+                    <p>I am personally reviewing your audit request. Expect a personalized video breakdown of your ad account potential within 24 hours.</p>
+                    <br>
+                    <p>In the meantime, feel free to allowlist this email address.</p>
+                    <br>
+                    <p>Best,</p>
+                    <p>Agha Sultan</p>
+                `
+            });
+        }
     }
 };
