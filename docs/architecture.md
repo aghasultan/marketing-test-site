@@ -1,42 +1,35 @@
 # Architecture Documentation
 
 ## Executive Summary
-The Riffat Labs Marketing Site is a client-side Single Page Application (SPA) designed for performance and interactivity. It leverages a modern React stack to deliver a distinct "premium" feel through animations and responsive design.
+This project is a high-performance **React Web Application** built with **Vite**. It features a "Glassmorphism" UI design system (Nebula theme) and provides interactive tools for marketing agency audits. It follows a **Monolithic SPA** architecture.
+
+## Technology Stack
+
+| Category | Technology | Version | Justification |
+|----------|------------|---------|---------------|
+| **Core** | React | 18.3.1 | Component-based UI library |
+| **Language** | TypeScript | 5.x | Type safety and scalability |
+| **Build** | Vite | 5.3.1 | Fast HMR and bundling |
+| **Styling** | Tailwind CSS | 3.4 | Utility-first styling |
+| **Animation**| Framer Motion| 12.x | Complex UI transitions |
+| **State** | Zustand | 5.x | Lightweight global state |
+| **Routing** | React Router | 7.x | Client-side routing |
+| **Testing** | Playwright | 1.49 | End-to-End testing |
 
 ## Architecture Pattern
-**Component-Based SPA** (React)
-- **Presentation Layer**: React Components + TailwindCSS
-- **State Management**: React Context + Local State (minimal global state)
-- **Routing**: React Router DOM (Client-side routing)
-- **Data Layer**: Service abstraction (Internal Mocks + Local Content)
+**Single Page Application (SPA)** using Client-Side Rendering (CSR).
+- **Presentation Layer**: React Components (`src/components`, `src/features`)
+- **Domain Layer**: Feature modules (`src/features/apply`, `src/features/wizard`)
+- **Data Layer**: Service modules (`src/lib/services`) calling external APIs.
 
-## Key Subsystems
+## Data Flow
+1.  **User Interaction**: User fills out Audit forms (Wizard).
+2.  **State Management**: `Zustand` stores (implied) or local React state manages form progress.
+3.  **Service Call**: `auditService.ts` calls `/api/audit`.
+4.  **Display**: Results are rendered via `AuditResults.tsx`.
 
-### 1. Results Engine (`src/features/results`)
-- **Purpose**: Showcase portfolio/case studies.
-- **Implementation**: Filters local markdown content (loaded via `ContentService`) based on user-selected criteria (Industry, Spend).
-- **Architecture**:
-  - `ContentService`: Loads/Parses Markdown.
-  - `useResults` Hook: Manages filtering logic.
-  - `CaseStudyGrid`: Presentation of results.
-
-### 2. Apply Wizard (`src/features/apply`)
-- **Purpose**: Qualify potential clients.
-- **Implementation**: Zod-validated multi-step form.
-- **Architecture**:
-  - `ApplyFormSchema`: Central validation logic.
-  - `StepIndicator`: Visual progress tracking.
-  - `Wizard` Component: Generic step orchestration.
-
-### 3. Audit Tool (`src/services/auditService`)
-- **Purpose**: Lead magnet / Engagement tool.
-- **Implementation**: Mock async service simulating analysis.
-
-## Decision Record
-- **Why Vite?** For fast dev loop and ES module support.
-- **Why Tailwind?** For rapid styling and design system consistency (via Shadcn tokens).
-- **Why Client-Side Content?** To minimize backend complexity for the initial "marketing site" phase. Content is embedded/loaded at build time or runtime via glob imports.
-
-## Testing Strategy
-- **E2E**: Playwright (Primary verification method).
-- **Focus**: User flows (Wizard completion, Filter interaction).
+## Key Features
+- **Agency Audit**: Analyzes URLs for Pixel, SEO, and Speed metics.
+- **Wizard Flow**: Multi-step application process for potential clients.
+- **Content System**: Markdown-based Blog and Case Studies.
+- **Responsive Design**: Mobile-first approach with custom Tailwind breakpoints.

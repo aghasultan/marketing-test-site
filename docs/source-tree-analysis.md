@@ -4,49 +4,55 @@
 
 ```
 marketing-test-site/
-├── .agent/                  # BMad agent configurations
-├── _bmad/                   # BMad core engine and workflows
-├── _bmad-output/            # Workflow artifacts and reports
-├── docs/                    # Project documentation (Auto-generated)
-├── public/                  # Static assets (favicon, robots.txt)
-├── src/                     # Source code root
-│   ├── api/                 # API handlers (e.g., OpenGraph)
-│   ├── components/          # React components
-│   │   ├── layout/          # Structural components (Header, Footer)
-│   │   └── ui/              # Reusable UI library (Button, Sheet)
-│   ├── content/             # Markdown content (Case Studies)
-│   ├── features/            # Feature modules
-│   │   ├── apply/           # Application Wizard feature
-│   │   └── results/         # Results Engine feature
-│   ├── hooks/               # Custom React hooks
-│   ├── lib/                 # Utilities and helpers
-│   ├── locales/             # i18n translation files
-│   ├── pages/               # Route components
-│   ├── services/            # Internal services (Audit, Content)
-│   ├── App.tsx              # Main App component
-│   └── main.tsx             # Entry point
-├── tests/                   # Playwright E2E tests
-├── components.json          # Shadcn UI configuration
-├── package.json             # Project dependencies and scripts
-├── tailwind.config.js       # Tailwind CSS configuration
-├── tsconfig.json            # TypeScript configuration
-└── vite.config.ts           # Vite build configuration
+├── public/              # Static assets (images, RSS)
+├── src/
+│   ├── app/             # Application entry and routing
+│   │   ├── main.tsx     # Entry point (Vite/React)
+│   │   ├── globals.css  # Global styles (Tailwind)
+│   │   └── router.tsx   # React Router configuration
+│   ├── components/      # Shared UI components
+│   │   ├── layout/      # App shell (Header, Footer)
+│   │   ├── ui/          # Core primitives (Button, Input)
+│   │   └── seo/         # Meta tag management
+│   ├── content/         # Markdown content (Blog, Case Studies)
+│   ├── data/            # Static data files
+│   ├── features/        # Feature-based modules
+│   │   ├── apply/       # Application wizard logic
+│   │   ├── audit/       # Agency audit tool
+│   │   ├── results/     # Results calculation
+│   │   └── wizard/      # Multi-step wizard engine
+│   ├── lib/             # Utilities and core services
+│   │   ├── services/    # API and business logic services
+│   │   └── utils.ts     # Helper functions
+│   └── scripts/         # Build scripts (RSS generation)
+├── docs/                # Project documentation
+├── tests/               # Playwright E2E tests
+├── tailwind.config.ts   # Styling configuration
+└── vite.config.ts       # Build configuration
 ```
 
 ## Critical Directories
 
-- **src/features/**: Contains the core business logic domains (`apply` and `results`). This modular structure isolates feature-specific code.
-- **src/components/ui/**: Hosts the design system primitives. Changes here affect the global look and feel.
-- **src/services/**: Abstracts data fetching and business logic from UI components, even for mock/internal data.
-- **src/content/**: functions as a flat-file CMS for the site.
+### `src/app/`
+**Purpose**: Bootstrapping and Global State.
+- `main.tsx`: Mounts the React app.
+- `globals.css`: Defines the design system tokens (colors, animations).
+
+### `src/features/`
+**Purpose**: Domain Logic.
+The application is structured into vertical slices:
+- **Wizard**: Handles the multi-step form flow state.
+- **Results**: Logic for calculating and displaying audit outcomes.
+
+### `src/lib/`
+**Purpose**: Shared Logic.
+- `design-system.ts`: Typings/constants for the UI.
+- `services/`: Encapsulates external interactions (API, storage).
+
+### `content/`
+**Purpose**: CMS-like content.
+Uses markdown files for "Case Studies" and "Blog", processed via `gray-matter`.
 
 ## Entry Points
-
-- **Application Entry**: `src/main.tsx` - Bootstraps React and global providers (Helmet, Router).
-- **API Entry**: `src/api/og.tsx` - Edge function for generating OpenGraph images.
-
-## Integration
-
-As a monolith, integration is primarily internal via module imports.
-- **Features** integrate via `src/pages` importing `features/*`.
-- **Pages** depend on `components/layout` and `services`.
+- **Web**: `src/app/main.tsx`
+- **Routing**: `src/app/router.tsx` defines the navigation map.

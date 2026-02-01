@@ -1,56 +1,50 @@
 # Development Guide
 
 ## Prerequisites
-- **Node.js**: v18+ (Recommended)
-- **Package Manager**: npm
-- **Vercel CLI**: Optional, for deployment testing
+- **Node.js**: v18+ (Recommended for Vite/React)
+- **Package Manager**: NPM (via `package.json`)
 
-## Installation
+## installation
 
 ```bash
-# Clone the repository
-git clone <repository-url>
-
 # Install dependencies
 npm install
+
+# Install Playwright browsers (for testing)
+npx playwright install
 ```
 
-## Available Scripts
+## Local Development
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start local development server (Vite) |
-| `npm run build` | Type-check and build for production |
-| `npm run preview` | Preview production build locally |
-| `npm run lint` | Run ESLint for code quality |
-| `npm run test` | Run Playwright E2E tests |
-| `npm run format` | Format code with Prettier |
+```bash
+# Start development server
+npm run dev
+```
+Runs Vite dev server, typically at `http://localhost:5173`.
+
+## Build
+
+```bash
+# Production build
+npm run build
+```
+Builds the app to `dist/`. Includes TypeScript compilation (`tsc`) and RSS generation.
 
 ## Testing
 
-The project uses **Playwright** for End-to-End testing.
-
 ```bash
-# Run all tests
-npm run test
-
-# Run tests with UI
-npm run test -- --ui
+# Run End-to-End Tests
+npm test
+# OR
+npx playwright test
 ```
 
-**Key Test Files:**
-- `tests/site.spec.ts`: General site functionality
-- `tests/wizard.spec.ts`: Application wizard flow
-- `tests/results.spec.ts`: Results engine verification
+## Project configuration
+- **Vite**: Configured in `vite.config.ts`. Sets base path `/` and build aliases (`@/` -> `src/`).
+- **Tailwind**: Configured in `tailwind.config.ts`. Defines the custom theme colors/fonts.
+- **Linting**: ESLint configured (`.eslintrc.cjs` assumed or similar).
 
-## Deployment (Vercel)
-
-The project is configured for deployment on Vercel.
-
-**Configuration:** `vercel.json`
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
-- **Framework Preset**: Vite
-
-**Deploying:**
-Push to `main` branch triggers automatic deployment via Vercel Git Integration.
+## Contribution Guidelines
+1.  Use `npm run format` to format code with Prettier before committing.
+2.  Ensure tests pass (`npm test`) for any functional changes.
+3.  Design updates should follow the Glassmorphism patterns in `src/app/globals.css`.

@@ -1,39 +1,35 @@
 # Project Documentation Index
 
-## Project Overview
-- **Type**: Monolith (web-app)
-- **Primary Language**: TypeScript
-- **Architecture**: Component-Based SPA
+### Project Overview
 
-## Quick Reference
-- **Tech Stack**: React, Vite, TailwindCSS, Shadcn/UI
-- **Entry Point**: `src/main.tsx`
-- **Architecture Pattern**: Component-Based SPA
+- **Type**: Monolith Web Application
+- **Primary Language**: TypeScript (React)
+- **Architecture**: Single Page Application (SPA)
 
-## Generated Documentation
+### Quick Reference
+
+- **Tech Stack**: React 18, Vite, Tailwind CSS, Zustand, Playwright
+- **Entry Point**: `src/app/main.tsx`
+- **Architecture Pattern**: Component-Based Monolith
+
+### Generated Documentation
 
 - [Project Overview](./project-overview.md)
 - [Architecture](./architecture.md)
 - [Source Tree Analysis](./source-tree-analysis.md)
-- [Component Inventory](./ui-component-inventory-web-app.md)
+- [Component Inventory](./ui-component-inventory.md)
 - [Development Guide](./development-guide.md)
-- [Data Models](./data-models-web-app.md)
-- [API Contracts](./api-contracts-web-app.md)
+- [Deployment Guide](./deployment-guide.md)
+- [API Contracts](./api-contracts.md)
+- [Data Models](./data-models.md)
 
-## Existing Documentation
-- [README.md](../README.md) - Project root readme
+### Existing Documentation
 
-## Getting Started
+- None inventoried in this scan (files created in `docs/` overwrite previous context).
 
-1. **Install Dependencies**:
-   ```bash
-   npm install
-   ```
+### Getting Started
 
-2. **Run Local Server**:
-   ```bash
-   npm run dev
-   ```
-
-3. **Explore Architecture**:
-   Start with the [Project Overview](./project-overview.md) to understand the system design.
+1.  **Clone the repo**: `git clone ...`
+2.  **Install dependencies**: `npm install`
+3.  **Run locally**: `npm run dev`
+4.  **View docs**: Start with [Project Overview](./project-overview.md) to understand the system.
