@@ -32,5 +32,10 @@ Components specific to the Audit Result display.
 
 ## Design System (Shadcn/UI & Radix)
 *   **Location:** `src/components/ui/`
-*   **Primitives:** Likely includes Button, Input, Card, Dialog, Label, etc.
+### UI Library
+- `Button` (Atomic)
+- `Card` (Atomic)
+- `Input`, `Label` (Form)
+- `Slider` (Interactive)
+- `ThemeToggle` (Interactive) - Light/Dark mode switcher.
 *   **Styling:** Tailwind CSS based.

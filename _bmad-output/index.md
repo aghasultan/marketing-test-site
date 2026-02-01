@@ -34,6 +34,7 @@ Riffat Labs Marketing Site is a Single Page Application (SPA) built with React 1
 ### Developer Guides
 
 - [Development Guide](./development-guide.md) - Instructions for setup, building, testing, and deployment.
+- [Deployment Guide](../deployment.md) - Production deployment steps for Vercel/Netlify.
 
 ## Getting Started
 
