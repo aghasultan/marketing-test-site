@@ -1,49 +1,64 @@
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CaseStudy } from '../types';
+import { ArrowUpRight, ShieldCheck } from 'lucide-react';
+import { CaseStudy } from '@/lib/content';
+import { cn } from '@/lib/utils';
+
 
 interface CaseStudyCardProps {
-    caseStudy: CaseStudy;
-    onClick?: () => void;
+    study: CaseStudy;
+    variant?: 'standard' | 'featured';
+    className?: string;
 }
 
-export function CaseStudyCard({ caseStudy, onClick }: CaseStudyCardProps) {
+export const CaseStudyCard = ({ study, variant = 'standard', className }: CaseStudyCardProps) => {
     return (
         <motion.div
-            onClick={onClick}
-            whileHover={{ scale: 1.02, boxShadow: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)' }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
-            className={`group relative flex flex-col justify-between overflow-hidden rounded-xl border border-white/10 bg-zinc-900/50 p-6 backdrop-blur-md transition-colors hover:bg-zinc-900/70 hover:border-white/20 ${onClick ? 'cursor-pointer' : ''}`}
+            whileHover={{ y: -5 }}
+            className={cn(
+                "glass-panel p-6 rounded-2xl relative overflow-hidden group border border-white/10 hover:border-primary/50 transition-colors",
+                variant === 'featured' ? 'md:col-span-2 md:row-span-2 flex flex-col justify-between' : 'flex flex-col',
+                className
+            )}
         >
-            <div>
-                <div className="flex items-center justify-between mb-4">
-                    <span className="text-xs font-medium uppercase tracking-wider text-blue-400">
-                        {caseStudy.industry}
+            {/* Background Glow for Featured */}
+            {variant === 'featured' && (
+                <div className="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-primary/20 blur-[100px] rounded-full pointer-events-none" />
+            )}
+
+            <div className="flex justify-between items-start mb-6 relative z-10">
+                <div>
+                    <span className="text-xs font-mono text-primary mb-2 block uppercase tracking-wider">
+                        {study.industry} • {study.service}
                     </span>
-                    <span className="rounded-full bg-white/5 px-2 py-1 text-xs text-zinc-400">
-                        {caseStudy.spend}
-                    </span>
+                    <h3 className={cn("font-bold text-white", variant === 'featured' ? "text-3xl md:text-4xl" : "text-xl")}>
+                        {study.title}
+                    </h3>
+                    <p className="text-zinc-400 mt-1">{study.client}</p>
                 </div>
 
-                <h3 className="mb-2 text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                    {caseStudy.clientName}
-                </h3>
-
-                <p className="mb-6 text-sm text-zinc-400 line-clamp-3">
-                    {caseStudy.summary}
-                </p>
+                {study.claimReview.verdict === 'Verified' && (
+                    <div className="bg-emerald-500/10 text-emerald-500 px-2 py-1 rounded-full text-xs font-medium flex items-center border border-emerald-500/20">
+                        <ShieldCheck className="w-3 h-3 mr-1" />
+                        Verified
+                    </div>
+                )}
             </div>
 
-            <div className="mt-auto pt-4 border-t border-white/10">
-                <p className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                    {caseStudy.resultMetric}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                    {caseStudy.tags.map(tag => (
-                        <span key={tag} className="text-xs text-zinc-500">#{tag}</span>
-                    ))}
-                </div>
+            <div className={cn("grid gap-4 mt-auto relative z-10", variant === 'featured' ? "grid-cols-3" : "grid-cols-2")}>
+                {study.metrics.map((metric, i) => (
+                    <div key={i} className="bg-white/5 rounded-lg p-3 border border-white/5">
+                        <div className="text-zinc-400 text-xs uppercase tracking-wide mb-1">{metric.label}</div>
+                        <div className="text-white font-bold text-xl sm:text-2xl">{metric.value}</div>
+                        <div className="text-emerald-400 text-xs font-mono mt-1">{metric.change}</div>
+                    </div>
+                ))}
+            </div>
+
+            <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+                <ArrowUpRight className="w-6 h-6 text-white" />
             </div>
         </motion.div>
     );
-}
+};

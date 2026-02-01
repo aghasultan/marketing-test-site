@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { caseStudies as defaultCaseStudies } from '../../../data/results';
-import { CaseStudy } from '../types';
+
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { CaseStudy, getAllCaseStudies } from '@/lib/content';
 import { CaseStudyCard } from './CaseStudyCard';
-import { useResultsFilter } from '../hooks/useResultsFilter';
-import { FilterBar } from './FilterBar';
-import { ResultModal } from './ResultModal';
 
-interface ResultsGridProps {
-    caseStudies?: CaseStudy[];
-}
+export const ResultsGrid = () => {
+    const [studies, setStudies] = useState<CaseStudy[]>([]);
+    const [loading, setLoading] = useState(true);
 
-export function ResultsGrid({ caseStudies = defaultCaseStudies }: ResultsGridProps) {
-    // Hook handles filtering logic
-    const { filteredResults, activeFilter, setFilter, availableIndustries } = useResultsFilter(caseStudies);
-    const [selectedId, setSelectedId] = useState<string | null>(null);
+    useEffect(() => {
+        const load = async () => {
+            const data = await getAllCaseStudies();
+            setStudies(data);
+            setLoading(false);
+        };
+        load();
+    }, []);
 
-    const selectedStudy = caseStudies.find(s => s.id === selectedId) || null;
-
-    const container = {
+    const containerVariants = {
         hidden: { opacity: 0 },
         show: {
             opacity: 1,
@@ -28,74 +27,51 @@ export function ResultsGrid({ caseStudies = defaultCaseStudies }: ResultsGridPro
         }
     };
 
-    const item = {
+    const itemVariants = {
         hidden: { opacity: 0, y: 20 },
-        show: { opacity: 1, y: 0 },
-        exit: { opacity: 0, scale: 0.95 }
+        show: { opacity: 1, y: 0 }
     };
 
+    if (loading) {
+        return <div className="min-h-[50vh] flex items-center justify-center text-zinc-500">Loading Intelligence...</div>;
+    }
+
     return (
-        <section className="py-24 px-4 container mx-auto" id="results">
-            <div className="mb-16 text-center">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-                    Recent Results
-                </h1>
-                <p className="text-xl text-zinc-400 max-w-2xl mx-auto">
-                    See how we've helped brands scale their revenue through data-driven performance marketing.
+        <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div className="mb-12 text-center">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Verified Performance</h2>
+                <p className="text-zinc-400 max-w-2xl mx-auto">
+                    Real results from our "Transparency First" database. Every metric is verified by our internal audit protocol.
                 </p>
             </div>
 
-            <FilterBar
-                industries={availableIndustries}
-                activeFilter={activeFilter}
-                onFilterChange={setFilter}
-            />
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-max"
+            >
+                {studies.map((study, index) => {
+                    // Logic: First item is featured (large). 
+                    // Can be more complex (e.g., every 4th item).
+                    const isFeatured = index === 0;
 
-            <AnimatePresence mode="wait">
-                {filteredResults.length > 0 ? (
-                    <motion.div
-                        key={activeFilter} // Re-trigger stagger animation on filter change
-                        variants={container}
-                        initial="hidden"
-                        animate="show"
-                        exit="hidden"
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                    >
-                        {filteredResults.map((study) => (
-                            <motion.div key={study.id} variants={item} layout>
-                                <CaseStudyCard
-                                    caseStudy={study}
-                                    onClick={() => {
-                                        setSelectedId(study.id);
-                                    }}
-                                />
-                            </motion.div>
-                        ))}
-                    </motion.div>
-                ) : (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className="text-center py-20"
-                    >
-                        <p className="text-xl text-zinc-500">
-                            No exact matches found for this filter.
-                        </p>
-                        <button
-                            onClick={() => setFilter('All')}
-                            className="mt-4 text-blue-400 hover:text-blue-300 font-medium"
+                    return (
+                        <motion.div
+                            key={study.slug}
+                            variants={itemVariants}
+                            className={isFeatured ? "md:col-span-2 md:row-span-2" : ""}
                         >
-                            Clear all filters
-                        </button>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            <ResultModal
-                caseStudy={selectedStudy}
-                isOpen={!!selectedId}
-                onClose={() => setSelectedId(null)}
-            />
+                            <CaseStudyCard
+                                study={study}
+                                variant={isFeatured ? 'featured' : 'standard'}
+                                className="h-full"
+                            />
+                        </motion.div>
+                    );
+                })}
+            </motion.div>
         </section>
     );
-}
+};
