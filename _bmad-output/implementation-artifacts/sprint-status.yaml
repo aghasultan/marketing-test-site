@@ -42,8 +42,8 @@ story_location: _bmad-output/implementation-artifacts
 development_status:
   # Epic 1: High-Performance Foundation & Branding
   epic-1: in-progress
-  1-1-project-initialization-architecture: ready-for-dev
-  1-2-glassmorphism-design-system-setup: backlog
+  1-1-project-initialization-architecture: done
+  1-2-glassmorphism-design-system-setup: done
   1-3-responsive-layout-shell: backlog
   1-4-landing-page-hero-implementation: backlog
   1-5-seo-metadata-system: backlog

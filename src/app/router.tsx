@@ -14,6 +14,7 @@ const BlogPost = lazy(() => import('@pages/BlogPost').then(m => ({ default: m.Bl
 const NotFound = lazy(() => import('@pages/NotFound').then(m => ({ default: m.NotFound })));
 const AuditPage = lazy(() => import('@pages/AuditPage').then(m => ({ default: m.AuditPage })));
 const ResultsGrid = lazy(() => import('@/features/results/components/ResultsGrid').then(m => ({ default: m.ResultsGrid })));
+const DesignSystem = lazy(() => import('@pages/DesignSystem').then(m => ({ default: m.DesignSystem })));
 
 function Root() {
     usePageTracking();
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
             {
                 path: "blog/:slug",
                 element: <BlogPost />,
+            },
+            {
+                path: "design-system",
+                element: <DesignSystem />,
             },
             {
                 path: "*",
