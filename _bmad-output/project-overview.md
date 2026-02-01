@@ -1,49 +1,43 @@
 # Project Overview
 
-**Project Name:** Riffat Labs (Marketing Site)
-**Version:** 0.0.0 (Pre-release)
-**Classification:** Monolith Web Application (Single Page Application)
+**Project Name:** riffat-labs
+**Version:** 0.0.0
+**Generated:** 2026-02-01
 
 ## Executive Summary
+Riffat Labs is a high-performance marketing audit and lead generation web application. It features a "No-Click Audit Engine" that analyzes ad agency performance, a Qualification Wizard for potential clients, and a rich, interactive UI built with Glassmorphism aesthetics. The project is designed for speed, SEO optimization, and high conversion rates.
 
-The Riffat Labs Marketing Site is a high-performance Single Page Application (SPA) built to showcase the agency's performance marketing capabilities. It serves as both a marketing brochure and a functional demonstration of the tracking and conversion technologies (CAPI, Server-Side Tracking) that the agency implements for clients.
+## Technology Stack
 
-Key features include an interactive ROI Calculator, a multi-step Apply Wizard for lead qualification, and a markdown-based blog system. The application emphasizes Core Web Vitals performance and SEO readiness.
-
-## Technology Stack Summary
-
-| Category | Technology | Version | Purpose |
+| Category | Technology | Version | Justification |
 | :--- | :--- | :--- | :--- |
-| **Framework** | React | 18.3.1 | Core UI Library |
-| **Language** | TypeScript | 5.x | Static Typing |
-| **Build Tool** | Vite | 5.3.1 | Development & Bundling |
-| **Styling** | Tailwind CSS | 3.4.16 | Utility-first Styling |
-| **UI Library** | Radix UI | 1.x | Headless UI Components |
-| **Animations** | Framer Motion | 11.18.2 | Fluid Interactions |
-| **Routing** | React Router DOM | 7.0.2 | Client-side Routing |
-| **State Management** | Zustand | 5.0.10 | Global State (Wizard/Auth) |
-| **Validation** | Zod | 3.23.8 | Schema Validation |
-| **Forms** | React Hook Form | 7.53.2 | Form Handling |
-| **Testing** | Playwright | 1.49.0 | E2E Testing |
+| **Framework** | React | 18.3.1 | Component-based UI library |
+| **Bundler** | Vite | 5.3.1 | Fast build tool and dev server |
+| **Language** | TypeScript | 5.9.3 | Static typing for reliability |
+| **Styling** | Tailwind CSS | 3.4.16 | Utility-first CSS framework |
+| **Animation** | Framer Motion | 12.29.2 | Complex declarative animations |
+| **State Management** | Zustand | 5.0.10 | Lightweight global state |
+| **Forms** | React Hook Form | 7.71.1 | Performance-focused form validation |
+| **Validation** | Zod | 3.25.76 | Schema validation |
+| **Testing** | Playwright | 1.49.0 | E2E testing |
+| **Testing** | Vitest | 4.0.18 | Unit testing |
+| **UI Primitives** | Radix UI | Latest | Accessible unstyled components |
 
-## Architecture Type
-
-**Pattern:** Feature-based Single Page Application (SPA)
-**Description:** The application routes request client-side, consuming mock/local services for data. It uses a "Feature-first" folder structure where domain logic (Apply, Results) is encapsulated within `src/features`, while shared UI elements reside in `src/components`.
+## Architecture Classification
+**Type:** Monolith Web Application
+**Architecture Pattern:** Component-Based SPA (Single Page Application) with Modular Feature Folder Structure (`src/features/*`).
 
 ## Repository Structure
+The project follows a standard Vite/React structure with feature-based encapsulation.
 
-The project is structured as a **Monolith**, containing all frontend code in a single repository root.
+- `src/features/`: Core business logic domains (Wizard, Audit, Results)
+- `src/components/ui/`: Reusable atomic UI components (Design System)
+- `src/components/layout/`: Global layout blocks (Hero, Footer)
+- `src/pages/`: Routing views
+- `public/`: Static assets
 
-- **Root:** `/`
-- **Source:** `/src`
-- **Output:** `/dist` (Build artifacts)
-
-## Documentation Index
-
-- [Source Tree Analysis](./source-tree-analysis.md) - Detailed directory breakdown
-- [Architecture](./architecture.md) - Technical design and patterns
-- [Component Inventory](./component-inventory.md) - UI Library and Feature components
-- [Development Guide](./development-guide.md) - Setup, Build, and Test instructions
-- [API Contracts](./api-contracts.md) - Service interfaces (Validation/Audit)
-- [Data Models](./data-models.md) - Type definitions and Schemas
+## Key Documentation Links
+- [Source Tree Analysis](./source-tree-analysis.md)
+- [Component Inventory](./component-inventory.md)
+- [Development Guide](./development-guide.md)
+- [Sprint Status](./implementation-artifacts/sprint-status.yaml)

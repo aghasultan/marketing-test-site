@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { InteractiveBg } from "@/components/ui/InteractiveBg";
 import { initAnimatedBackground } from "@/components/ui/AnimatedBackground";
 
 interface LayoutProps {
@@ -13,9 +12,6 @@ export function Layout({ children }: LayoutProps) {
 
     useEffect(() => {
         // Initialize animated background if needed (or move to Hero component later)
-        // For now, keeping it to maintain existing behavior if any, but properly imported.
-        // Wait, initAnimatedBackground is from the old file.
-        // Let's check if it's compatible.
         if (typeof initAnimatedBackground === 'function') {
             const cleanup = initAnimatedBackground(bgRef.current);
             return cleanup;
@@ -25,7 +21,6 @@ export function Layout({ children }: LayoutProps) {
     return (
         <div className="flex min-h-screen flex-col bg-background font-sans antialiased text-foreground selection:bg-primary/20 relative">
             {/* Background Layers */}
-            <InteractiveBg />
             <div
                 ref={bgRef}
                 id="gradient-bg"

@@ -64,8 +64,8 @@ export const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Service 1 */}
-            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10">
-              <div className="text-emerald-500 font-mono text-sm mb-6 opacity-60 group-hover:opacity-100 transition-opacity">01</div>
+            <div className="group relative rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/90 hover:border-emerald-500/30 hover:shadow-2xl hover:shadow-emerald-500/10">
+              <div className="text-emerald-500 font-mono text-sm mb-6 opacity-100 group-hover:scale-105 transition-all">01</div>
               <h3 className="text-xl font-bold mb-4 text-white group-hover:text-emerald-400 transition-colors">Performance Paid Media</h3>
               <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
                 Meta, Google, and TikTok ads managed with algorithmic precision. We focus on contribution margin, not just ROAS.
@@ -73,8 +73,8 @@ export const Home = () => {
             </div>
 
             {/* Service 2 */}
-            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10">
-              <div className="text-emerald-500 font-mono text-sm mb-6 opacity-60 group-hover:opacity-100 transition-opacity">02</div>
+            <div className="group relative rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/90 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10">
+              <div className="text-emerald-500 font-mono text-sm mb-6 opacity-100 group-hover:scale-105 transition-all">02</div>
               <h3 className="text-xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors">Analytics Engineering</h3>
               <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
                 Server-side tracking (CAPI), attribution modeling, and custom dashboards. Know exactly where every dollar goes.
@@ -82,8 +82,8 @@ export const Home = () => {
             </div>
 
             {/* Service 3 */}
-            <div className="group relative rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/80 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10">
-              <div className="text-emerald-500 font-mono text-sm mb-6 opacity-60 group-hover:opacity-100 transition-opacity">03</div>
+            <div className="group relative rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 transition-all duration-300 hover:bg-zinc-800/90 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10">
+              <div className="text-emerald-500 font-mono text-sm mb-6 opacity-100 group-hover:scale-105 transition-all">03</div>
               <h3 className="text-xl font-bold mb-4 text-white group-hover:text-purple-400 transition-colors">Marketing Automation</h3>
               <p className="text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
                 Email & SMS flows that print money while you sleep. Lifecycle marketing designed to maximize LTV.
@@ -105,7 +105,7 @@ export const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Bento Item 1: Span 2 */}
-            <div className="md:col-span-2 rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md p-8 flex flex-col justify-between hover:border-white/10 transition-colors">
+            <div className="md:col-span-2 rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 flex flex-col justify-between hover:border-white/20 transition-colors">
               <div>
                 <h3 className="text-xl font-bold text-white mb-4">Paid Media Profit</h3>
                 <p className="text-zinc-400 max-w-lg leading-relaxed mb-8">
@@ -187,7 +187,7 @@ export const Home = () => {
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <p className="text-zinc-400 mb-8 text-lg leading-relaxed">
+              <p className="text-zinc-300 mb-8 text-lg leading-relaxed">
                 We are a team of data scientists, engineers, and marketers obsessed with growth.
                 We don't just run ads; we build systems that scale.
               </p>
@@ -204,8 +204,8 @@ export const Home = () => {
             </div>
             <div className="relative">
               {/* TODO: Add about image */}
-              <div className="aspect-video bg-zinc-800 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden">
-                <div className="text-zinc-600 font-mono text-sm">About Image Placeholder</div>
+              <div className="aspect-video bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden">
+                <div className="text-zinc-500 font-mono text-sm">Riffat Labs Team</div>
               </div>
             </div>
           </div>

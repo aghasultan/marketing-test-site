@@ -1,34 +1,12 @@
-# API Contracts (Service Layer)
+# API Contracts
 
-Currently, the application uses **Mock Services** to simulate backend interactions. These contracts define the interface between the UI and the Data Layer.
+**Status:** No internal API layer detected.
 
-## Audit Service (`src/services/auditService.ts`)
+## Overview
+The application appears to be a client-side Single Page Application (SPA).
+- **Internal APIs:** None detected in `src/api` or `src/server`.
+- **External Integrations:** Likely uses direct calls to external services or mock data for the Audit Engine.
 
-### `analyzeUrl(url: string)`
-
-Analyzes a provided URL for marketing performance metrics.
-
-**Request:**
-- `url` (string): The landing page URL to audit.
-
-**Response (Promise<AuditResult>):**
-```typescript
-interface AuditResult {
-  score: number; // 0-100
-  grade: 'A' | 'B' | 'C' | 'D' | 'F';
-  analysis: {
-    headlines: string;
-    descriptions: string;
-    keywords: string;
-  };
-  recommendations: string[];
-}
-```
-
-**Behavior:**
-- Simulates network latency (1.5s - 3.5s).
-- Returns mocked data for demonstration purposes.
-
----
-
-*(Note: Future real API integration should adhere to these TypeScript interfaces to ensure frontend compatibility.)*
+## Recommendations
+- If backend services are added (e.g. via Next.js API routes or Express), document them here.
+- If using 3rd party APIs (e.g., Stripe, CMS), list their integration points here.

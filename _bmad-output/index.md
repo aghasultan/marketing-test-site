@@ -1,47 +1,36 @@
-# Riffat Labs Marketing Site - Documentation
-
-**Generated:** 2026-01-31
-**Project Type:** Web (Monolith)
+# Project Documentation Index
 
 ## Project Overview
 
-Riffat Labs Marketing Site is a Single Page Application (SPA) built with React 18, Vite, and Tailwind CSS. It serves as a high-performance demonstration of the agency's marketing technology capabilities (CAPI, Tracking, Upside Analysis).
-
-- **Primary Language:** TypeScript
-- **Architecture:** Feature-based SPA
-- **Framework:** React + Vite
+- **Project:** riffat-labs
+- **Type:** Monolith Web Application
+- **Stack:** React, Vite, TypeScript, Tailwind CSS
+- **Architecture:** Feature-Based SPA
 
 ## Quick Reference
-
 - **Entry Point:** `src/main.tsx`
-- **Routing:** `src/App.tsx` (Client-side via `react-router-dom`)
-- **Key Features:** Apply Wizard (`src/features/apply`), Audit Tool (`src/features/results`)
+- **Tests:** Playwright (E2E)
+- **Status:** **Active Development** (See [Sprint Status](./implementation-artifacts/sprint-status.yaml))
 
-## Documentation Index
+## Generated Documentation
 
-### Core Documentation
+### Core Docs
+- [Project Overview](./project-overview.md)
+- [Source Tree Analysis](./source-tree-analysis.md)
+- [Component Inventory](./component-inventory.md)
+- [Development Guide](./development-guide.md)
+- [API Contracts](./api-contracts.md)
 
-- [Project Overview](./project-overview.md) - Executive summary and high-level details.
-- [Architecture](./architecture.md) - Analysis of the Feature-based design pattern and data flow.
-- [Source Tree Analysis](./source-tree-analysis.md) - Detailed breakdown of the project structure and critical directories.
-
-### Technical Reference
-
-- [Component Inventory](./component-inventory.md) - Catalog of reusable UI components and feature-specific specific widgets.
-- [API Contracts](./api-contracts.md) - Definitions of service interfaces (Mock Audit Service).
-- [Data Models](./data-models.md) - Key TypeScript interfaces and domain objects.
-
-### Developer Guides
-
-- [Development Guide](./development-guide.md) - Instructions for setup, building, testing, and deployment.
-- [Deployment Guide](../deployment.md) - Production deployment steps for Vercel/Netlify.
+### Requirements & Planning (Archived)
+- [Product Requirements (PRD)](./planning-artifacts/prd.md)
+- [Epics & Stories](./planning-artifacts/epics.md)
+- [Architecture Plan](./planning-artifacts/architecture.md)
+- [UX Design Specs](./planning-artifacts/ux-design-specification.md)
 
 ## Getting Started
 
-To start developing locally:
+1. **Install:** `npm install`
+2. **Run:** `npm run dev`
+3. **Test:** `npx playwright test`
 
-1.  **Install dependencies:** `npm install`
-2.  **Start Dev Server:** `npm run dev`
-3.  **Run Tests:** `npm run test`
-
-See the [Development Guide](./development-guide.md) for full details.
+See [Development Guide](./development-guide.md) for full details.

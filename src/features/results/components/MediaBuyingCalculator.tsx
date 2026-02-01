@@ -66,7 +66,9 @@ export const MediaBuyingCalculator = () => {
                     <div>
                         <div className="flex justify-between text-sm mb-2">
                             <span className="text-zinc-300">Monthly Ad Spend</span>
-                            <span className="text-white font-mono">${spend[0].toLocaleString()}</span>
+                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
+                                <span className="text-white font-mono">${spend[0].toLocaleString()}</span>
+                            </div>
                         </div>
                         <Slider
                             value={spend}
@@ -82,7 +84,9 @@ export const MediaBuyingCalculator = () => {
                     <div>
                         <div className="flex justify-between text-sm mb-2">
                             <span className="text-zinc-300">CPM (Cost per 1k views)</span>
-                            <span className="text-white font-mono">${cpm[0].toFixed(2)}</span>
+                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
+                                <span className="text-white font-mono">${cpm[0].toFixed(2)}</span>
+                            </div>
                         </div>
                         <Slider
                             value={cpm}
@@ -98,7 +102,9 @@ export const MediaBuyingCalculator = () => {
                     <div>
                         <div className="flex justify-between text-sm mb-2">
                             <span className="text-zinc-300">Click-Through Rate (CTR)</span>
-                            <span className="text-white font-mono">{ctr[0].toFixed(1)}%</span>
+                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
+                                <span className="text-white font-mono">{ctr[0].toFixed(1)}%</span>
+                            </div>
                         </div>
                         <Slider
                             value={ctr}
@@ -114,7 +120,9 @@ export const MediaBuyingCalculator = () => {
                     <div>
                         <div className="flex justify-between text-sm mb-2">
                             <span className="text-zinc-300">Funnel Conversion Rate</span>
-                            <span className="text-white font-mono">{cv[0].toFixed(1)}%</span>
+                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
+                                <span className="text-white font-mono">{cv[0].toFixed(1)}%</span>
+                            </div>
                         </div>
                         <Slider
                             value={cv}
@@ -124,13 +132,15 @@ export const MediaBuyingCalculator = () => {
                             onValueChange={setCv}
                             className="py-2"
                         />
-                    </div>
+                    </div >
 
                     {/* AOV */}
                     <div>
                         <div className="flex justify-between text-sm mb-2">
                             <span className="text-zinc-300">Average Order Value (AOV)</span>
-                            <span className="text-white font-mono">${aov[0].toFixed(0)}</span>
+                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
+                                <span className="text-white font-mono">${aov[0].toFixed(0)}</span>
+                            </div>
                         </div>
                         <Slider
                             value={aov}
@@ -140,17 +150,17 @@ export const MediaBuyingCalculator = () => {
                             onValueChange={setAov}
                             className="py-2"
                         />
-                    </div>
-                </div>
-            </div>
+                    </div >
+                </div >
+            </div >
 
             {/* Results Panel */}
-            <div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-zinc-900/80 backdrop-blur-md p-8 flex flex-col justify-between">
+            < div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-zinc-900/80 backdrop-blur-md p-8 flex flex-col justify-between" >
 
                 {/* Visual Background Graph/Effect */}
-                <div className="absolute inset-0 pointer-events-none opacity-20">
+                < div className="absolute inset-0 pointer-events-none opacity-20" >
                     <div className="absolute bottom-0 right-0 w-64 h-64 bg-primary/40 blur-[80px] rounded-full" />
-                </div>
+                </div >
 
                 <div>
                     <h3 className="text-lg font-bold text-primary mb-6 uppercase tracking-wider text-xs">Projected Monthly Outcome</h3>
@@ -197,7 +207,7 @@ export const MediaBuyingCalculator = () => {
 
                 <div className="mt-8">
                     <Button
-                        className="w-full h-12 text-lg font-bold bg-primary hover:bg-primary/90 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all"
+                        className="w-full h-12 text-lg font-bold bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all"
                         onClick={() => window.dispatchEvent(new Event('open-wizard'))}
                     >
                         Book Strategy Call <ArrowRight className="w-5 h-5 ml-2" />
@@ -206,7 +216,7 @@ export const MediaBuyingCalculator = () => {
                         Inputs based on industry benchmarks. Apply to get a custom forecast.
                     </p>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };

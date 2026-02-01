@@ -1,70 +1,73 @@
 # Development Guide
 
 ## Prerequisites
+- **Node.js**: v18+ (Required for Vite/React)
+- **npm**: v9+ (or pnpm/yarn)
 
-- **Node.js**: Version 18+ recommended (LTS)
-- **Package Manager**: npm (v9+)
-- **Git**: For version control
+## Installation
+```bash
+# Clone repository
+git clone <repo-url>
 
-## Initial Setup
+# Install dependencies
+npm install
+```
 
-1.  **Clone the repository:**
-    ```bash
-    git clone https://github.com/aghasultan/marketing-test-site.git
-    cd marketing-test-site
-    ```
+## Environment Setup
+Duplicate `.env.example` to `.env` (if applicable) and configure variables.
+_Note: No `.env` template found in root scan._
 
-2.  **Install dependencies:**
-    ```bash
-    npm install
-    ```
+## Development Commands
 
-3.  **Setup Environment:**
-    Copy `.env.example` to `.env` (if applicable) and configure variables.
-
-## Running Locally
-
-To start the development server with HMR (Hot Module Replacement):
-
+### Start Dev Server
 ```bash
 npm run dev
+# Runs Vite dev server at http://localhost:5173
 ```
 
-Visit `http://localhost:5173` (or the port shown in terminal).
-
-## Build for Production
-
-To create a production-ready build:
-
+### Build for Production
 ```bash
 npm run build
+# 1. Generates RSS feed (`scripts/generate-rss.ts`)
+# 2. Runs Type Check (`tsc`)
+# 3. Builds assets via Vite
 ```
 
-This runs `tsc` (TypeScript Compiler) for type checking and `vite build` to bundle assets into `dist/`.
-
-## Testing
-
-This project uses **Playwright** for End-to-End (E2E) testing.
-
-**Run all tests:**
+### Preview Build
 ```bash
-npm run test
+npm run preview
+# Serves the `dist/` folder locally
 ```
-(This executes `playwright test`)
 
-**Run tests in UI mode:**
+### Linting & Formatting
 ```bash
-npx playwright test --ui
+npm run lint
+# ESLint check
 ```
 
-## Linting & Formatting
+```bash
+npm run format
+# Prettier write
+```
 
-- **Lint:** `npm run lint` (ESLint)
-- **Format:** `npm run format` (Prettier)
+## Testing Strategy
 
-## Deployment
+### E2E Testing (Playwright)
+```bash
+npx playwright test
+# Runs all E2E specs in `tests/`
+```
 
-The application is configured for deployment on **Vercel**. Pushing to the `main` branch usually triggers a deployment.
+### Unit Testing (Vitest)
+_Scripts not explicitly listed in package.json but `vitest` dependency exists._
+Check `vite.config.ts` for test configuration.
 
-- **Build Output Directory:** `dist`
-- **Framework Preset:** Vite
+## Project Structure
+- **UI Components**: `src/components/ui` (Radix + Tailwind)
+- **Features**: `src/features/*` (Domain Logic)
+- **Routing**: `src/pages/*` + `react-router-dom`
+
+## Contribution Guidelines
+1. Create a feature branch.
+2. Ensure `npm run lint` and `npx playwright test` pass.
+3. Submit PR.

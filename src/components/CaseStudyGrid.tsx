@@ -16,9 +16,9 @@ export const CaseStudyGrid = () => {
 
     return (
         <section className="section shell reveal visible" id="work">
-            <div className="section-header">
-                <h2 className="section-eyebrow"><span>04</span>Recent Work</h2>
-                <h3>Proven Results</h3>
+            <div className="mb-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 className="text-emerald-500 font-mono text-sm tracking-wider uppercase mb-3">04 Recent Work</h2>
+                <h3 className="text-3xl md:text-4xl font-bold text-white">Proven Results</h3>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
@@ -31,11 +31,13 @@ export const CaseStudyGrid = () => {
                         transition={{ delay: index * 0.1 }}
                         className="group relative bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-colors"
                     >
-                        <div className="aspect-video bg-slate-800 relative overflow-hidden">
-                            {/* Fallback pattern if no image */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900" />
+                        <div className="aspect-video bg-zinc-800 relative overflow-hidden group-hover:scale-105 transition-transform duration-700">
+                            {/* Gradient Placeholder */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/20 to-zinc-900" />
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <span className="text-4xl">📈</span>
+                                <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 backdrop-blur-sm">
+                                    <span className="text-2xl">⚡️</span>
+                                </div>
                             </div>
                         </div>
 
@@ -55,7 +57,7 @@ export const CaseStudyGrid = () => {
 
                             <div className="flex gap-2 mb-6">
                                 {study.tags.slice(0, 3).map(tag => (
-                                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-slate-800 text-slate-300 border border-slate-700">
+                                    <span key={tag} className="text-xs px-3 py-1 rounded-full bg-zinc-800 text-zinc-300 border border-white/10 group-hover:border-emerald-500/30 transition-colors">
                                         {tag}
                                     </span>
                                 ))}
