@@ -46,8 +46,8 @@ development_status:
   1-2-glassmorphism-design-system-setup: done
   1-3-responsive-layout-shell: done
   1-4-landing-page-hero-implementation: done
-  1-5-seo-metadata-system: backlog
-  epic-1-retrospective: optional
+  1-5-seo-metadata-system: done
+  epic-1-retrospective: ready-for-dev
 
   # Epic 2: The No-Click Audit Engine
   epic-2: backlog

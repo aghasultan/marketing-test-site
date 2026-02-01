@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SEO } from '../components/SEO';
+import { SEO } from '@/components/seo/Head';
 import { AuditForm } from '../components/AuditForm';
 import { AuditResults } from '../components/AuditResults';
 import { AuditResult } from '../services/auditService';

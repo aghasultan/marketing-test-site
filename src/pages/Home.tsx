@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NebulaBackground } from '@/components/ui/NebulaBackground';
 import { Hero } from '@/components/layout/Hero';
-import { SEO } from '../components/SEO';
+import { SEO } from '@/components/seo/Head';
 import { CaseStudyGrid } from '../components/CaseStudyGrid';
 import { motion, useSpring, useTransform } from 'framer-motion';
 
@@ -37,7 +37,7 @@ export const Home = () => {
   return (
     <>
       <SEO
-        title="Agha Sultan Naseer | Meta & Google Ads Strategist"
+        title="Meta & Google Ads Strategist"
         description="Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe."
         canonical="https://aghasultan.com/"
         image="/img/riffat-labs-transparent.svg"

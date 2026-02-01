@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
+import { SEO } from '@/components/seo/Head';
+
 export const DesignSystem = () => {
     return (
         <div className="min-h-screen bg-background p-10 space-y-12">
+            <SEO title="Design System" noindex />
             <h1 className="text-4xl font-sans font-bold text-white mb-8">Glassmorphism Design System</h1>
 
             {/* Colors */}

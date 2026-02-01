@@ -16,10 +16,12 @@ const AuditPage = lazy(() => import('@pages/AuditPage').then(m => ({ default: m.
 const ResultsGrid = lazy(() => import('@/features/results/components/ResultsGrid').then(m => ({ default: m.ResultsGrid })));
 const DesignSystem = lazy(() => import('@pages/DesignSystem').then(m => ({ default: m.DesignSystem })));
 
+import { HelmetProvider } from 'react-helmet-async';
+
 function Root() {
     usePageTracking();
     return (
-        <>
+        <HelmetProvider>
             <SpeedInsights />
             <ErrorBoundary>
                 <Layout>
@@ -29,7 +31,7 @@ function Root() {
                     </Suspense>
                 </Layout>
             </ErrorBoundary>
-        </>
+        </HelmetProvider>
     );
 }
 

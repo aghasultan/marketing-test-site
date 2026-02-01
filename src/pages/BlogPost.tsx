@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import { useBlog } from '@hooks/useBlog';
-import { SEO } from '@components/SEO';
+import { SEO } from '@/components/seo/Head';
 import { NotFound } from '@pages/NotFound';
 
 export const BlogPost = () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useBlog } from '@hooks/useBlog';
-import { SEO } from '@components/SEO';
+import { SEO } from '@/components/seo/Head';
 
 export const BlogIndex = () => {
   const { posts, loading } = useBlog();
