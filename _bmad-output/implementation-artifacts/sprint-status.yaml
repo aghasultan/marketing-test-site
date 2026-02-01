@@ -58,17 +58,17 @@ development_status:
   epic-2-retrospective: done
 
   # Epic 3: Verification & Results System
-  epic-3: in-progress
+  epic-3: done
   3-1-markdown-content-architecture: done
   3-2-bento-grid-layout-engine: done
   3-3-schema-verification-tooltip: done
   3-4-verified-badge-logic: done
-  3-5-roi-calculator-component: in-progress
-  epic-3-retrospective: optional
+  3-5-roi-calculator-component: done
+  epic-3-retrospective: done
 
   # Epic 4: Smart Qualification Wizard
-  epic-4: backlog
-  4-1-wizard-state-machine: backlog
+  epic-4: in-progress
+  4-1-wizard-state-machine: in-progress
   4-2-conditional-branching-logic: backlog
   4-3-revenue-metrics-inputs: backlog
   4-4-local-persistence-layer: backlog
