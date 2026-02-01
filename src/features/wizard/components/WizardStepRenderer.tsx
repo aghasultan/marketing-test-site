@@ -1,9 +1,11 @@
-
 import React from 'react';
 import { useWizard } from '../context/WizardContext';
 import { WelcomeStep } from '../steps/WelcomeStep';
 import { RevenueStep } from '../steps/RevenueStep';
-// Import other steps as created...
+import { PartnerReferralStep } from '../steps/PartnerReferralStep';
+import { GoalsStep } from '../steps/GoalsStep';
+import { ContactStep } from '../steps/ContactStep';
+import { QualifiedStep } from '../steps/QualifiedStep';
 
 export const WizardStepRenderer = () => {
     const { currentStep } = useWizard();
@@ -14,13 +16,13 @@ export const WizardStepRenderer = () => {
         case 'REVENUE':
             return <RevenueStep />;
         case 'PARTNER_REFERRAL':
-            return <div className="text-white text-center">Referral Logic (To Be Implemented)</div>;
+            return <PartnerReferralStep />;
         case 'GOALS':
-            return <div className="text-white text-center">Goals Step (To Be Implemented)</div>;
+            return <GoalsStep />;
         case 'CONTACT':
-            return <div className="text-white text-center">Contact Step (To Be Implemented)</div>;
+            return <ContactStep />;
         case 'COMPLETED':
-            return <div className="text-white text-center">Completed!</div>;
+            return <QualifiedStep />;
         default:
             return <div className="text-red-500">Unknown Step: {currentStep}</div>;
     }

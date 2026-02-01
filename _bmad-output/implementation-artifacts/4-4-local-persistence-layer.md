@@ -25,18 +25,18 @@ so that I don't have to re-type 10 fields of data.
 
 ## Tasks / Subtasks
 
-- [ ] **Task 1: Create Persistence Hook/Utility**
-    - [ ] Create `src/features/wizard/logic/persistence.ts`.
-    - [ ] Functions: `saveState(state)`, `loadState()`, `clearState()`.
-    - [ ] Key: `riffat-labs-wizard-state`.
+- [x] **Task 1: Create Persistence Hook/Utility**
+    - [x] Create `src/features/wizard/logic/persistence.ts`.
+    - [x] Functions: `saveState(state)`, `loadState()`, `clearState()`.
+    - [x] Key: `riffat-labs-wizard-state`.
 
-- [ ] **Task 2: Integrate into Provider**
-    - [ ] Update `WizardProvider` to load initial state from localStorage.
-    - [ ] Update `WizardProvider` to subscribe to state changes and save (using `useEffect`).
-    - [ ] Handle `RESET` action to call `clearState`.
+- [x] **Task 2: Integrate into Provider**
+    - [x] Update `WizardProvider` to load initial state from localStorage.
+    - [x] Update `WizardProvider` to subscribe to state changes and save (using `useEffect`).
+    - [x] Handle `RESET` action to call `clearState`.
 
-- [ ] **Task 3: Verification**
-    - [ ] Manual verification (since unit tests in Node environment might be tricky without mocks, or use JSDOM).
+- [x] **Task 3: Verification**
+    - [x] Manual verification (since unit tests in Node environment might be tricky without mocks, or use JSDOM).
 
 ## Dev Notes
 
