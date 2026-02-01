@@ -84,7 +84,7 @@ development_status:
   epic-5-retrospective: optional
 
   # Epic 6: Marketing Automation & CRM Integration
-  epic-6: backlog
-  6-1-email-api-integration: backlog
+  epic-6: in-progress
+  6-1-email-api-integration: in-progress
   6-2-lead-capture-crm-sync: backlog
   6-3-automation-flow-triggers: backlog

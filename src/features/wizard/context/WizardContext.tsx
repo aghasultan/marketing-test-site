@@ -103,6 +103,7 @@ const WizardContext = createContext<WizardContextType | undefined>(undefined);
 import { useEffect } from 'react';
 import { saveState, loadState } from '../logic/persistence';
 import { trackEvent } from '@/lib/tracking';
+import { sendLeadNotification } from '@/services/emailService';
 
 export const WizardProvider = ({ children }: { children: ReactNode }) => {
     // Lazy init from storage
@@ -137,17 +138,25 @@ export const WizardProvider = ({ children }: { children: ReactNode }) => {
             step_index: state.history.length
         });
 
-        // Track Completion
+        // Track Completion & Send Email
         if (state.currentStep === 'COMPLETED' || state.currentStep === 'PARTNER_REFERRAL') {
             // Determine outcome based on final step
             const outcome = state.currentStep === 'PARTNER_REFERRAL' ? 'partner_network' : 'qualified_lead';
+
+            // 1. Analytics
             trackEvent('wizard_complete', {
                 outcome,
                 revenue: state.data.revenue
             });
-        }
 
-    }, [state.currentStep, state.history.length, state.data.revenue]); // Track on dependencies
+            // 2. Email Notification (Fire & Forget)
+            sendLeadNotification({
+                ...state.data,
+                revenueRange: state.data.revenueRange || `$${state.data.revenue}`, // Fallback
+                outcome
+            });
+        }
+    }, [state.currentStep, state.history.length, state.data.revenue, state.data]); // Track on dependencies
 
     return (
         <WizardContext.Provider value={{ ...state, dispatch }}>
