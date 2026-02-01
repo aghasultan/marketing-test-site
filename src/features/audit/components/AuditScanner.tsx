@@ -4,11 +4,12 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ArrowRight, AlertCircle, CheckCircle } from 'lucide-react';
+import { Search, ArrowRight, AlertCircle } from 'lucide-react';
 import { analyzeUrl, AuditResult } from '@/lib/services/auditService';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { ResultCard } from './ResultCard';
 
 const auditSchema = z.object({
     url: z.string().url({ message: "Please enter a valid URL (e.g., https://example.com)" }),
@@ -27,7 +28,7 @@ const SCAN_MESSAGES = [
 export const AuditScanner = () => {
     const [isScanning, setIsScanning] = useState(false);
     const [scanMessage, setScanMessage] = useState(SCAN_MESSAGES[0]);
-    const [result, setResult] = useState<AuditResult | null>(null); // For Story 2.4 integration
+    const [result, setResult] = useState<AuditResult | null>(null);
     const { toast } = useToast();
 
     const form = useForm<AuditFormValues>({
@@ -46,7 +47,7 @@ export const AuditScanner = () => {
             } else {
                 clearInterval(interval);
             }
-        }, 700); // 700ms per message -> ~3.5s total "fake" time minimum
+        }, 700);
         return interval;
     };
 
@@ -58,7 +59,6 @@ export const AuditScanner = () => {
         try {
             const auditResult = await analyzeUrl(data.url);
 
-            // Artificial delay to let the "magic" animation play out if the audit was too fast
             await new Promise(resolve => setTimeout(resolve, 2000));
 
             clearInterval(animInterval);
@@ -163,14 +163,34 @@ export const AuditScanner = () => {
                         key="complete-state"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="glass-panel p-6 rounded-2xl text-center z-20"
+                        className="glass-panel p-6 rounded-2xl z-20"
                     >
-                        <div className="flex flex-col items-center gap-4">
-                            <CheckCircle className="w-16 h-16 text-green-500" />
-                            <h3 className="text-2xl font-bold text-white">Scan Complete!</h3>
-                            <p className="text-muted-foreground">Score: {result?.overallScore}/100</p>
-                            <Button variant="outline" onClick={() => setResult(null)}>Scan Another</Button>
+                        <div className="flex items-center justify-between mb-6">
+                            <div className="text-left">
+                                <h3 className="text-2xl font-bold text-white">Audit Result</h3>
+                                <p className="text-zinc-400 text-sm">Target: {result?.url}</p>
+                            </div>
+                            <div className="text-right">
+                                <span className="block text-3xl font-bold text-white tracking-tight">
+                                    {result?.overallScore}/100
+                                </span>
+                                <span className="text-xs text-zinc-500 uppercase tracking-wider font-semibold">Score</span>
+                            </div>
                         </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                            {result?.checks.map((check, index) => (
+                                <ResultCard key={check.id} check={check} delay={index * 0.1} />
+                            ))}
+                        </div>
+
+                        <Button
+                            variant="outline"
+                            onClick={() => setResult(null)}
+                            className="w-full border-white/10 hover:bg-white/5 text-zinc-300"
+                        >
+                            Scan Another URL
+                        </Button>
                     </motion.div>
                 )}
             </AnimatePresence>

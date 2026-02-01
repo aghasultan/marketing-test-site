@@ -53,8 +53,8 @@ development_status:
   epic-2: in-progress
   2-1-serverless-audit-proxy-setup: done
   2-2-audit-analysis-logic: done
-  2-3-interactive-audit-scanner-ui: in-progress
-  2-4-instant-results-teaser: backlog
+  2-3-interactive-audit-scanner-ui: done
+  2-4-instant-results-teaser: in-progress
   epic-2-retrospective: optional
 
   # Epic 3: Verification & Results System
