@@ -13,9 +13,9 @@ import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/jetbrains-mono/500.css';
 
 import App from './App.tsx'
-import './globals.css'
 import '../../style.css'
 import '../../animations.css'
+import './globals.css'
 import '../i18n';
 
 

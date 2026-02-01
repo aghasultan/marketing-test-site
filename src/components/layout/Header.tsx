@@ -29,17 +29,17 @@ export function Header() {
         >
             <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
                 {/* Logo */}
-                <Link to="/" className="font-bold text-xl font-sans tracking-tight text-foreground hover:text-primary transition-colors">
-                    Riffat <span className="text-primary">Labs</span>
+                <Link to="/" className="font-bold text-xl font-sans tracking-tight text-white hover:text-emerald-400 transition-colors">
+                    Riffat <span className="text-emerald-500">Labs</span>
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="flex max-md:hidden items-center gap-8">
                     {NAV_LINKS.map((link) => (
                         <Link
                             key={link.href}
                             to={link.href}
-                            className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
+                            className="text-zinc-400 hover:text-white transition-colors font-medium text-sm"
                         >
                             {link.label}
                         </Link>

@@ -70,32 +70,7 @@
   /* default */
 }
 
-body.theme-light {
-  color-scheme: light;
-
-  /* Colors - Light Mode Override */
-  --background: #f7f9fc;
-  --background-subtle: #eef3f9;
-  --surface: #ffffff;
-  --surface-elevated: #f2f5fc;
-  --surface-glass: rgba(255, 255, 255, 0.8);
-
-  --text: #0b1021;
-  --text-muted: #5d667a;
-  
-  --primary: #00a86b;
-  --primary-dark: #00965f;
-  --primary-light: #2fd29d;
-  --primary-soft: rgba(0, 168, 107, 0.14);
-
-  --border: rgba(12, 26, 75, 0.12);
-  --border-light: rgba(12, 26, 75, 0.06);
-  
-  --shadow-sm: 0 2px 8px rgba(12, 26, 75, 0.04);
-  --shadow-md: 0 12px 36px rgba(12, 26, 75, 0.08);
-  --shadow-lg: 0 18px 60px rgba(12, 26, 75, 0.14);
-  --glow-primary: 0 0 18px rgba(0, 168, 107, 0.45);
-}
+/* Light Theme Removed to enforce Dark Brand Theme */
 
 /* ==========================================================
    Base / reset
@@ -106,21 +81,12 @@ body.theme-light {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px; /* Account for sticky header (64px) + breathing room */
+  scroll-padding-top: 80px;
+  /* Account for sticky header (64px) + breathing room */
   text-size-adjust: 100%;
 }
 
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--text);
-  font-family: var(--font-sans);
-  line-height: 1.5;
-  overflow-x: hidden;
-  transition:
-    background-color 0.35s ease,
-    color 0.35s ease;
-}
+/* Body rules removed to let Tailwind control layout */
 
 .skip-link {
   position: absolute;

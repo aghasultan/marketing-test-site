@@ -4,7 +4,50 @@
 
 @layer base {
   :root {
-    /* --- Light Mode (Default) --- */
+    /* --- Dark Mode (Default for Brand) --- */
+    /* Core: Zinc-950 #09090b -> 240 10% 3.9% */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    /* Cards: Lighter Zinc */
+    --card: 240 10% 6.9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 6.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary: Emerald-500 (Brand) */
+    --primary: 158 64% 52%;
+    --primary-foreground: 144 64% 4%;
+
+    /* Secondary: Zinc-800 */
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted: Zinc-500/Zinc-800 mix */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    /* Accent: Used for hover states */
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Destructive: Red-500 */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders & Inputs */
+    --border: 240 3.7% 20%;
+    --input: 240 3.7% 20%;
+    --ring: 158 64% 52%;
+
+    --radius: 0.5rem;
+
+    --verified: 38 92% 50%;
+  }
+
+  .light {
+    /* --- Light Mode (Optional Override) --- */
     /* Background: Zinc-50 */
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -37,49 +80,6 @@
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
-
-    --radius: 0.5rem;
-
-    --verified: 38 92% 50%;
-  }
-
-  .dark {
-    /* --- Dark Mode (Previous Defaults) --- */
-    /* Core: Zinc-950 #09090b -> 240 10% 4% */
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    /* Cards: Lighter Zinc */
-    --card: 240 10% 6.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 6.9%;
-    --popover-foreground: 0 0% 98%;
-
-    /* Primary: Blue-500 #3b82f6 -> 217 91% 60% */
-    --primary: 217 91% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    /* Secondary: Zinc-800 */
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    /* Muted: Zinc-500/Zinc-800 mix */
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    /* Accent: Used for hover states */
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    /* Destructive: Red-500 */
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    /* Borders & Inputs */
-    --border: 240 3.7% 20%;
-    --input: 240 3.7% 20%;
-    --ring: 217 91% 60%;
 
     --verified: 38 92% 50%;
   }
