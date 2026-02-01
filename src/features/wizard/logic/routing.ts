@@ -8,7 +8,9 @@ export const getNextStep = (currentStep: WizardStep, data: WizardData): WizardSt
 
         case 'REVENUE':
             // Branching Logic
-            if (data.revenueRange === '0-10k' || data.revenueRange === '10k-50k') {
+            // Threshold: $50k/mo
+            const revenue = data.revenue || 0;
+            if (revenue < 50000) {
                 return 'PARTNER_REFERRAL'; // Too small for us
             }
             return 'GOALS'; // Big enough

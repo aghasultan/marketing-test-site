@@ -22,7 +22,8 @@ export const WIZARD_STEPS: WizardStep[] = [
 
 export interface WizardData {
     website?: string;
-    revenueRange?: string; // e.g. "0-10k", "10k-50k", "50k+"
+    revenue?: number; // Exact monthly revenue
+    revenueRange?: string; // Keep for backward compat if needed, or remove. Let's keep for now but derived.
     goals?: string[];
     name?: string;
     email?: string;
