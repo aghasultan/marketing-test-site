@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NebulaBackground } from '@/components/ui/NebulaBackground';
+import { Hero } from '@/components/layout/Hero';
 import { SEO } from '../components/SEO';
 import { CaseStudyGrid } from '../components/CaseStudyGrid';
-import { motion, useSpring, useTransform, Variants } from 'framer-motion';
-
+import { motion, useSpring, useTransform } from 'framer-motion';
 
 // Helper for smooth number counting
 function NumberCounter({ value, currency = false }: { value: number; currency?: boolean }) {
@@ -21,43 +21,6 @@ function NumberCounter({ value, currency = false }: { value: number; currency?: 
 
   return <motion.span>{display}</motion.span>;
 }
-
-const HERO_CONTENT = {
-  title: "We Turn Paid Ads Into Profit Engines.",
-  description: (
-    <>
-      I’m <strong className="text-white font-semibold">Agha Sultan Naseer</strong> — helping brands across the USA,
-      UK & Europe turn <strong className="text-white font-semibold">7‑figure ad budgets</strong> into
-      predictable revenue.
-    </>
-  ),
-  ctaService: "Explore Services",
-  ctaApply: "Book a Strategy Call"
-};
-
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number]
-    }
-  }
-};
 
 export const Home = () => {
   // ROI Calculator State
@@ -92,107 +55,8 @@ export const Home = () => {
       />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center pt-32 pb-20 px-4 sm:px-6 lg:px-8" id="hero" aria-labelledby="hero-title">
-        {/* Background Gradients */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl opacity-30 animate-pulse" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl opacity-30" />
-        </div>
-
-        <motion.div
-          className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="space-y-8 text-center lg:text-left">
-            <motion.div variants={itemVariants}>
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
-                01 Performance Paid Media
-              </span>
-            </motion.div>
-
-            <motion.h1
-              id="hero-title"
-              className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1]"
-              variants={itemVariants}
-            >
-              {HERO_CONTENT.title}
-            </motion.h1>
-
-            <motion.p className="text-lg sm:text-xl text-zinc-400 max-w-lg leading-relaxed mx-auto lg:mx-0" variants={itemVariants}>
-              {HERO_CONTENT.description}
-            </motion.p>
-
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" variants={itemVariants}>
-              <Link
-                to="/services"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium bg-white text-zinc-950 hover:bg-zinc-200 transition-colors"
-              >
-                Explore Services
-              </Link>
-              <Link
-                to="/apply"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-medium border border-white/10 bg-white/5 text-white hover:bg-white/10 transition-colors backdrop-blur-sm"
-              >
-                Book a Strategy Call
-              </Link>
-            </motion.div>
-
-            <motion.div className="pt-8 border-t border-white/5" variants={itemVariants}>
-              <h4 className="text-sm font-semibold text-white mb-3">Good fit if you:</h4>
-              <ul className="space-y-2 text-sm text-zinc-400 inline-block text-left">
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-500 mt-0.5">✓</span>
-                  Already running ads &amp; want tighter tracking
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-500 mt-0.5">✓</span>
-                  Have proven offers &amp; want scale
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-500 mt-0.5">✓</span>
-                  Want clear dashboards &amp; reporting
-                </li>
-              </ul>
-            </motion.div>
-          </div>
-
-          <motion.div className="relative mt-12 lg:mt-0" variants={itemVariants}>
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-2xl blur opacity-20" />
-            <div className="relative rounded-2xl border border-white/10 bg-zinc-900/80 backdrop-blur-xl p-8 shadow-2xl">
-              <div className="mb-6 flex items-center gap-4">
-                <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center text-2xl border border-emerald-500/20">
-                  🚀
-                </div>
-                <div>
-                  <strong className="block text-white text-lg font-semibold">Performance Snapshot</strong>
-                  <span className="text-sm text-zinc-500">Avg. Client Metrics</span>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-3 border-b border-white/5">
-                  <span className="text-sm text-zinc-400">Managed Spend</span>
-                  <span className="text-sm font-mono font-medium text-emerald-400">$5M+ / yr</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-white/5">
-                  <span className="text-sm text-zinc-400">Avg. ROAS</span>
-                  <span className="text-sm font-mono font-medium text-white">3.5x – 5.0x</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-white/5">
-                  <span className="text-sm text-zinc-400">Tracking</span>
-                  <span className="text-sm font-mono font-medium text-white">Server-Side (CAPI)</span>
-                </div>
-                <div className="flex justify-between items-center pt-2">
-                  <span className="text-sm text-zinc-400">Retention</span>
-                  <span className="text-sm font-mono font-medium text-emerald-400">90% +</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
+      <NebulaBackground />
+      <Hero />
 
       {/* Logo Bar */}
       <section className="py-12 border-y border-white/5 bg-zinc-900/50 backdrop-blur-sm" aria-label="Client logos">
