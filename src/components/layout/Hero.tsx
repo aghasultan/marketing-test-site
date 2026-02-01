@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { AuditScanner } from '@/features/audit/components/AuditScanner';
 
 export const Hero = () => {
     const containerVariants = {
@@ -66,23 +67,9 @@ export const Hero = () => {
                     See what the algorithms see in <span className="text-white font-medium">real-time</span>.
                 </motion.p>
 
-                {/* Placeholder Input Area (GlassPanel) */}
-                <motion.div variants={itemVariants} className="w-full max-w-xl mx-auto mt-12">
-                    <div className="relative group">
-                        <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-xl opacity-20 group-hover:opacity-40 transition duration-500 blur"></div>
-                        <div className="relative glass-panel p-2 flex items-center justify-between">
-                            <div className="flex-1 bg-white/5 rounded-lg h-12 flex items-center px-4 text-zinc-500 border border-white/5 mx-1">
-                                <span className="mr-2 text-zinc-400">https://</span>
-                                <span className="font-mono text-zinc-500">example.com</span>
-                            </div>
-                            <button className="bg-primary hover:bg-primary/90 text-white px-6 h-12 rounded-lg font-medium transition-colors shadow-lg shadow-primary/20 ml-2 whitespace-nowrap">
-                                Start Audit
-                            </button>
-                        </div>
-                    </div>
-                    <p className="text-xs text-zinc-500 mt-4 text-center">
-                        (Interactive Audit Tool coming in Epic 2)
-                    </p>
+                {/* Audit Scanner Feature */}
+                <motion.div variants={itemVariants} className="w-full mt-12">
+                    <AuditScanner />
                 </motion.div>
 
                 {/* Trust Signals */}

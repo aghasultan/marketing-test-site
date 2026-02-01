@@ -18,11 +18,14 @@ const DesignSystem = lazy(() => import('@pages/DesignSystem').then(m => ({ defau
 
 import { HelmetProvider } from 'react-helmet-async';
 
+import { Toaster } from "@/components/ui/toaster";
+
 function Root() {
     usePageTracking();
     return (
         <HelmetProvider>
             <SpeedInsights />
+            <Toaster />
             <ErrorBoundary>
                 <Layout>
                     {/* Suspense fallback can be a spinner or skeleton, using simple div for now */}
