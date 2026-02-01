@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useScroll, useMotionValueEvent } from "framer-motion";
@@ -21,35 +22,39 @@ export function Header() {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent",
-                isScrolled && "bg-zinc-950/90 backdrop-blur-md border-white/10"
+                "sticky top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent w-full",
+                isScrolled && "glass border-white/10"
             )}
         >
             <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
                 {/* Logo */}
-                <div className="font-bold text-xl text-zinc-100">
-                    Riffat Labs
-                </div>
+                <Link to="/" className="font-bold text-xl font-sans tracking-tight text-foreground hover:text-primary transition-colors">
+                    Riffat <span className="text-primary">Labs</span>
+                </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-6">
+                <div className="hidden md:flex items-center gap-8">
                     {NAV_LINKS.map((link) => (
-                        <a
+                        <Link
                             key={link.href}
-                            href={link.href}
-                            className="text-zinc-400 hover:text-zinc-100 transition-colors"
+                            to={link.href}
+                            className="text-muted-foreground hover:text-foreground transition-colors font-medium text-sm"
                         >
                             {link.label}
-                        </a>
+                        </Link>
                     ))}
 
-                    <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
-                        Apply
-                    </Button>
+                    <Link to="/apply">
+                        <Button className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-glow">
+                            Start Audit
+                        </Button>
+                    </Link>
                 </div>
 
                 {/* Mobile Nav Trigger */}
-                <MobileNav />
+                <div className="md:hidden">
+                    <MobileNav />
+                </div>
             </nav>
         </header>
     );

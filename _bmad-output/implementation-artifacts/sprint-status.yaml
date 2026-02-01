@@ -44,7 +44,7 @@ development_status:
   epic-1: in-progress
   1-1-project-initialization-architecture: done
   1-2-glassmorphism-design-system-setup: done
-  1-3-responsive-layout-shell: backlog
+  1-3-responsive-layout-shell: done
   1-4-landing-page-hero-implementation: backlog
   1-5-seo-metadata-system: backlog
   epic-1-retrospective: optional
