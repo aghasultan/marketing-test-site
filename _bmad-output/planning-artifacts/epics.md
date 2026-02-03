@@ -16,8 +16,8 @@ This document provides the complete epic and story breakdown for marketing-test-
 
 ### Functional Requirements
 
-FR1: User can view a filterable grid of Case Studies by Industry and Ad Spend.
-FR2: User can see a "Verified" badge on Case Studies that meet ClaimReview criteria.
+FR1: User can view a grid of Case Studies filtering by Industry and Ad Spend.
+FR2: User can see a "Verified" badge on Case Studies that meet `ClaimReview` criteria.
 FR3: User can view 'ClaimReview' verification data via a tooltip interaction.
 FR4: User can navigate to the ROI Calculator directly from a relevant Case Study.
 FR5: User can input a target URL in the Hero section for instant analysis.
@@ -30,349 +30,373 @@ FR11: System can conditionally route users to a "Partner Network" path if Revenu
 FR12: System can conditionally route users to a "Booking Calendar" path if Revenue > $1M.
 FR13: User can download a "Growth Roadmap" PDF if disqualified (Soft Landing).
 FR14: Internal User can publish Case Studies via Markdown files.
-FR15: System can automatically generate ClaimReview JSON-LD from Markdown frontmatter.
+FR15: System can automatically generate `ClaimReview` JSON-LD from Markdown frontmatter.
 FR16: System can validate Schema integrity at build time and fail the build if invalid.
 FR17: System can render unique Meta Titles/Descriptions for every dynamic route.
 FR18: System can lazy-load non-critical assets to prioritize LCP.
 
 ### NonFunctional Requirements
 
-NFR1: Largest Contentful Paint (LCP) must be < 0.8 seconds on 4G networks.
-NFR2: Interaction to Next Paint (INP) must be < 200ms.
-NFR3: Initial JS payload must not exceed 100KB (gzipped).
-NFR4: System must pass automated WCAG 2.1 AA scans (zero critical violations).
-NFR5: All interactive elements (Wizard inputs, Tooltips) must be fully navigable via keyboard.
-NFR6: UI must respect prefers-reduced-motion media queries.
-NFR7: 100% of "Case Study" pages must pass Google's Rich Results Test for ClaimReview.
-NFR8: Social preview images (OG:Image) must generate dynamically for shared Audit results.
-NFR9: The "No-Click Audit" service must have 99.9% uptime (with Serverless fallback strategy).
+NFR1 (Load Time): Largest Contentful Paint (LCP) must be < 0.8 seconds on 4G networks.
+NFR2 (Responsiveness): Interaction to Next Paint (INP) must be < 200ms to ensure the Wizard feels "app-like".
+NFR3 (Bundle Budget): Initial JS payload must not exceed 100KB (gzipped).
+NFR4 (Standards): System must pass automated WCAG 2.1 AA scans (zero critical violations).
+NFR5 (Keyboard): All interactive elements (Wizard inputs, Tooltips) must be fully navigable via keyboard.
+NFR6 (Motion): UI must respect `prefers-reduced-motion` media queries.
+NFR7 (Schema Validity): 100% of "Case Study" pages must pass Google's Rich Results Test for `ClaimReview`.
+NFR8 (Meta Accuracy): Social preview images (OG:Image) must generate dynamically for shared Audit results.
+NFR9 (Audit Availability): The "No-Click Audit" service must have 99.9% uptime (with Serverless fallback strategy).
 
 ### Additional Requirements
 
-- Architecture: Starter Template: `npm create vite@latest marketing-test-site -- --template react-ts`
-- Architecture: Tech Stack: React 18, React Router 7, Vite, Tailwind CSS, Framer Motion 12, TanStack Query v5, Zod v3
-- Architecture: API Pattern: Serverless Proxy for Audit Tool (to bypass CORS)
-- Architecture: Project Structure: Feature-Based Architecture (`src/features/...`)
-- Architecture: Data Strategy: Markdown files + Zod validation
-- UX: Aesthetic: Glassmorphism 3.0 (Dark Mode `zinc-950`)
-- UX: Core Component: `<AuditHero />` with real-time scan animation
-- UX: Core Component: `<BentoGrid />` responsive layout engine
-- UX: Core Component: `<SmartWizard />` with conditional logic (xstate/reducer)
-- UX: Responsiveness: Mobile-First (Portrait Default), Tablet (Sidebar), Desktop (Dashboard)
-- UX: Accessibility: Contrast 4.5:1 on glass backgrounds, Focus rings `ring-blue-500`
-- UX: Testing: Playwright + axe-core for automated a11y testing
+**Architecture Constraints:**
+- **Starter Template**: `npm create vite@latest marketing-test-site -- --template react-ts` (Clean Slate).
+- **Core Stack**: React 18, Vite, React Router v7.13, Framer Motion 12.
+- **Styling**: Tailwind CSS configured with "Glassmorphism" utility classes and `zinc-950` dark theme.
+- **Data Strategy**: Local Markdown Files (`src/content/`) with Zod schema validation.
+- **API Architecture**: Serverless Proxy (Vercel Functions) for "No-Click Audit" to bypass CORS.
+- **State Management**: React Context for UI, TanStack Query v5 for server data, xstate/useReducer for Wizard logic.
+- **Deployment**: Vercel with GitHub Actions CI/CD.
+
+**UX & Design Requirements:**
+- **Aesthetic**: "Deep Glass" Theme (Dark Mode #09090b, Blue/Gold accents, heavy backdrop-blur).
+- **Primary Interaction**: "No-Click Audit" visualization (1.5s scan animation loop).
+- **Layout**: Mobile-First "Thumb-Zone" design; "Bento Grid" for desktop case studies.
+- **Typography**: Inter Tight (Headlines) + JetBrains Mono (Data/Technical).
+- **Accessibility**: High contrast white text on glass; clear focus rings (blue-500); graceful degradation for reduced motion.
+- **Component System**: Custom Shadcn UI implementation (manually installed to avoid bloat).
 
 ### FR Coverage Map
 
-FR1: Epic 3 - Filterable Case Study Grid
+FR1: Epic 3 - Case Study Grid Visualization
 FR2: Epic 3 - Verified Badges
 FR3: Epic 3 - Schema Tooltips
-FR4: Epic 3 - ROI Calculator
-FR5: Epic 2 - Audit Input
-FR6: Epic 2 - Real-time Checks
-FR7: Epic 2 - Instant Feedback
-FR8: Epic 2 - Caching Strategy
-FR9: Epic 4 - Wizard Metrics Input
-FR10: Epic 4 - Local Persistence
-FR11: Epic 4 - Routing (Partner)
-FR12: Epic 4 - Routing (Booking)
+FR4: Epic 3 - ROI Calculator Link
+FR5: Epic 2 - Audit Input & Hook
+FR6: Epic 2 - Real-time Analysis Logic
+FR7: Epic 2 - Immediate Feedback UI
+FR8: Epic 2 - Result Caching
+FR9: Epic 4 - Wizard Input Steps
+FR10: Epic 4 - Progress Persistence
+FR11: Epic 4 - Logic Routing (Disqualification)
+FR12: Epic 4 - Logic Routing (Qualification)
 FR13: Epic 4 - PDF Download
-FR14: Epic 3 - Markdown Publishing
-FR15: Epic 3 - Auto-Schema Generation
-FR16: Epic 3 - Build-time Validation
-FR17: Epic 1 - Dynamic SEO
-FR18: Epic 1 - Lazy Loading / LCP Optimization
+FR14: Epic 3 - Content Publication Flow
+FR15: Epic 3 - JSON-LD Generation
+FR16: Epic 3 - Schema Validation
+FR17: Epic 1 - Dynamic Metadata
+FR18: Epic 1 - Lazy Loading Foundation
 
 ## Epic List
 
 ### Epic 1: High-Performance Foundation & Branding
-Establish the "Glassmorphism" design system, project infrastructure, and high-performance landing page to prove technical competence immediately upon load.
+Establish the "Deep Glass" aesthetic, project structure, and core layout so that all future features have a polished home.
 **FRs covered:** FR17, FR18, NFR1-6
 
-### Story 1.1: Project Initialization & Architecture
-
-As a Developer,
-I want to initialize the project with Vite, TypeScript, and the defined folder structure,
-So that development can proceed on a clean, architectural-compliant foundation.
-
-**Acceptance Criteria:**
-
-**Given** a clean working directory
-**When** I run the initialization commands
-**Then** a Vite + React + TS project is created
-**And** the folder structure matches the `src/features` architecture defined in `architecture.md`
-**And** `react-router-dom` and `framer-motion` are installed
-**And** `npm run dev` starts the server without errors
-
-### Story 1.2: Glassmorphism Design System Setup
-
-As a Designer,
-I want to configure Tailwind CSS with specific colors and utility classes,
-So that I can easily apply the "Glassmorphism" aesthetic across the app.
-
-**Acceptance Criteria:**
-
-**Given** the Tailwind configuration file
-**When** I define the `zinc-950` colors and extend the theme
-**Then** I can use `bg-zinc-950` and `text-zinc-50` classes
-**And** I can use a custom `.glass` utility class that applies `backdrop-blur` and border
-**And** the `Inter` and `JetBrains Mono` fonts are loaded via `@font-source` and applied correctly
-
-### Story 1.3: Responsive Layout Shell
-
-As a User,
-I want to see a consistent Header and Footer across all pages,
-So that I can navigate the site easily and feel grounded in the brand.
-
-**Acceptance Criteria:**
-
-**Given** I am on any page of the site
-**When** I scroll down
-**Then** the Header should remain sticky with a glass background
-**And** the Footer should communicate the brand links at the bottom
-**And** on Mobile, the navigation should collapse into a usable menu (Sheet/Hamburger)
-
-### Story 1.4: Landing Page Hero Implementation
-
-As a Skeptical User,
-I want to see a high-performance Hero section with the "Nebula" background,
-So that I am immediately impressed by the site's quality and speed.
-
-**Acceptance Criteria:**
-
-**Given** I visit the root URL `/`
-**When** the page loads
-**Then** the Hero Text (H1) should be visible in < 0.8s (LCP)
-**And** the "Nebula" background animation should play smoothly (unless reduced motion is on)
-**And** the CTA button should focus clearly with keyboard navigation
-
-### Story 1.5: SEO & Metadata System
-
-As a Marketing Manager,
-I want each page to have unique Title and Meta descriptions,
-So that our site ranks well and looks good when shared on social media.
-
-**Acceptance Criteria:**
-
-**Given** I navigate between different routes
-**When** I inspect the `<head>` tag
-**Then** the `<title>` should update dynamically
-**And** `react-helmet-async` should handle the meta tag injection
-**And** a default OG:Image should be present for social sharing
-
-### Epic 2: The No-Click Audit Engine
-
-Implement the real-time agency audit tool that sits in the Hero section, providing instant value and demonstrating the "Show, Don't Tell" philosophy.
+### Epic 2: No-Click Audit Engine
+Build the immediate value delivery system that analyzes user URLs and hooks them into the funnel.
 **FRs covered:** FR5, FR6, FR7, FR8, NFR9
 
-### Story 2.1: Serverless Audit Proxy Setup
+### Epic 3: Verification & Results System
+Convert the "Hooked" user into a "Believer" by showing verified proofs via Case Studies and Claims.
+**FRs covered:** FR1, FR2, FR3, FR4, FR14, FR15, FR16, NFR7
+
+### Epic 4: Smart Qualification Wizard
+Capture high-intent leads that pass the trust threshold using advanced conditional logic.
+**FRs covered:** FR9, FR10, FR11, FR12, FR13, NFR2
+
+{{epics_list}}
+
+## Epic 1: High-Performance Foundation & Branding
+
+Establish the "Deep Glass" aesthetic, project structure, and core layout so that all future features have a polished home.
+
+### Story 1.1: Project Initialization & Architecture Setup
 
 As a Developer,
-I want to create a secure API proxy that bypasses CORS,
-So that I can fetch external website metadata from the client-side without browser errors.
+I want to initialize the project with Vite, React 18, and Tailwind,
+So that I have a clean, high-performance foundation.
 
 **Acceptance Criteria:**
 
-**Given** a POST request to `/api/audit` with a target URL
-**When** the server function executes
-**Then** it should fetch the HTML head of the target URL
-**And** it should return the headers and partial HTML body
-**And** it should handle timeouts and invalid URLs gracefully
+**Given** a clean directory
+**When** I run the initialization commands
+**Then** a React 18 + TypeScript + Vite project is created
+**And** the file structure matches the Architectural Decision (`src/features`, `src/content`)
+**And** `pnpm dev` starts the server without errors
 
-### Story 2.2: Audit Analysis Logic
+### Story 1.2: Design System & Glassmorphism Implementation
 
-As a User,
-I want the system to analyze my site for technical marketing signals,
-So that I get an objective score on my setup.
-
-**Acceptance Criteria:**
-
-**Given** the raw HTML from the proxy
-**When** the `auditService` runs
-**Then** it should detect if a Meta Pixel is present
-**And** it should calculate the server response time (TTFB equivalent)
-**And** it should validate the length of the Title Tag
-**And** it should return a boolean Pass/Fail for each check
-
-### Story 2.3: Interactive Audit Scanner UI
-
-As a User,
-I want to see a visual indication that work is happening,
-So that I feel the "Magic" of the AI tool analyzing my site.
+As a Designer,
+I want to implement the "Deep Glass" theme tokens and atomic components,
+So that the UI looks premium and consistent.
 
 **Acceptance Criteria:**
 
-**Given** I have typed a URL
-**When** I press Enter
-**Then** the input field should lock
-**And** a progress bar/pulse animation should play for ~1.5s
-**And** the text should cycle through "Connecting...", "Analyzing...", "Done"
+**Given** the Tailwind configuration
+**When** I load the app
+**Then** the background is `zinc-950` (#09090b)
+**And** I can use the `.glass` utility class to see `backdrop-blur-xl` and `bg-white/5`
+**And** Shadcn UI components (Button, Input) use the custom dark theme
 
-### Story 2.4: Instant Results Teaser
+### Story 1.3: Core Layout & Navigation
 
 As a User,
-I want to see the key results of the audit immediately,
-So that I am hooked by the value without needing to refresh or sign up yet.
+I want to navigate between pages using a responsive layout,
+So that I can access the site on Mobile and Desktop.
+
+**Acceptance Criteria:**
+
+**Given** I am on the Homepage
+**When** I resize the window to Mobile width (<640px)
+**Then** the Header navigation collapses into a "Sheet" or Hamburger menu
+**And** I can navigate to `/audit` and `/case-studies` using React Router 7
+**And** the Layout wrapper persists across route changes
+
+### Story 1.4: SEO & Performance Foundations
+
+As a Developer,
+I want to implement dynamic meta tags and lazy loading,
+So that the site ranks well and loads fast.
+
+**Acceptance Criteria:**
+
+**Given** I navigate to a new route
+**When** I inspect the `<head>`
+**Then** the `<title>` and `<meta name="description">` update dynamically
+**And** non-critical routes are code-split (verified via Network tab)
+
+## Epic 2: The No-Click Audit Engine
+
+Build the immediate value delivery system that analyzes user URLs and hooks them into the funnel.
+
+### Story 2.1: Audit API Proxy Service
+
+As a Developer,
+I want to create a secure API proxy,
+So that I can fetch external website data without CORS errors.
+
+**Acceptance Criteria:**
+
+**Given** the serverless function template
+**When** I make a `GET /api/audit?url=example.com` request
+**Then** the server fetches the HTML of the target URL
+**And** the response returns JSON including status 200 and html content
+**And** it handles invalid URLs with a 400 Bad Request
+
+### Story 2.2: Audit Analysis Logic & Caching
+
+As a Developer,
+I want to implement the logic to detect Pixels, Speed, and SEO tags,
+So that I can return a Pass/Fail score.
+
+**Acceptance Criteria:**
+
+**Given** I have the HTML content of a target site
+**When** the analysis function runs
+**Then** it detects if `fbq` (Meta Pixel) exists
+**And** it checks if `<title>` and `<meta description>` exist
+**And** it reports the TTFB (speed)
+**And** the result is cached for the same URL (via TanStack Query or server cache)
+
+### Story 2.3: Audit Hero Component & Input
+
+As a User,
+I want to enter my URL in a high-vis input field,
+So that I can start the audit.
+
+**Acceptance Criteria:**
+
+**Given** I am on the Hero section
+**When** I type a valid URL and click "Scan Now"
+**Then** the input state changes to "Processing"
+**And** a loading animation (Glass/Scanning) is triggered
+**And** the API request is fired
+
+### Story 2.4: Audit Results Visualization
+
+As a User,
+I want to see my results in an interactive card,
+So that I understand where I'm failing.
 
 **Acceptance Criteria:**
 
 **Given** the audit is complete
-**When** the results are ready
-**Then** 3 distinct cards should appear below the input (Speed, Pixel, SEO)
-**And** they should flip/animate into view
-**And** each card should show a clear Pass (Green check) or Fail (Red X) icon
+**When** the results are returned
+**Then** 3 cards appear (Pixel, Speed, SEO)
+**And** they show "Pass" (Green) or "Fail" (Red) status
+**And** a generic "Unlock Full Report" button appears below
 
+## Epic 3: Verification & Results System
 
-### Epic 3: Verification & Results System
+Convert the "Hooked" user into a "Believer" by showing verified proofs via Case Studies and Claims.
 
-Build the "Trust Engine" allowing users to filter case studies and verify their authenticity through interactive Schema tooltips and "Verified" badges.
-**FRs covered:** FR1, FR2, FR3, FR4, FR14, FR15, FR16, NFR7
-
-### Story 3.1: Markdown Content Architecture
+### Story 3.1: Markown Content System & Zod Schema
 
 As a Developer,
-I want a type-safe system for loading Case Studies from Markdown,
-So that I can ensure all content meets the strict Schema.org requirements before deployment.
+I want to configure the Content Collections for Case Studies,
+So that I can write content in Markdown with type safety.
 
 **Acceptance Criteria:**
 
-**Given** a markdown file in `src/content/case-studies`
-**When** the build runs
-**Then** Zod should validate the frontmatter against the `CaseStudySchema`
-**And** it should enforce required fields like `claimReview`, `author`, and `metrics`
-**And** any invalid file should cause the build to fail
+**Given** a new markdown file in `src/content/case-studies`
+**When** I run the validation script or build
+**Then** Zod ensures the frontmatter matches the `CaseStudy` schema (title, stats, verificationData)
+**And** it throws an error if required fields are missing
 
-### Story 3.2: Bento Grid Layout Engine
+### Story 3.2: Case Study Bento Grid UI
 
 As a User,
-I want to view case studies in an organized, responsive grid,
-So that I can quickly scan for relevant results without being overwhelmed.
+I want to browse case studies in a responsive grid,
+So that I can find examples relevant to me.
 
 **Acceptance Criteria:**
 
-**Given** I am browsing the Case Studies section
-**When** I resize the window
-**Then** the grid should adapt from a single column (Mobile) to a 3-column "Bento" layout (Desktop)
-**And** "Featured" case studies should span 2 columns/rows
-**And** the cards should use the glassmorphism aesthetic (backdrop-blur)
+**Given** a list of case studies
+**When** I view the Case Studies section
+**Then** they are displayed in a "Bento" style grid (varying sizes)
+**And** I can filter them by Industry or Ad Spend
+**And** the layout adapts to Mobile (vertical stack)
 
-### Story 3.3: Schema Verification Tooltip
-
-As a Skeptical User,
-I want to inspect the source of a claim,
-So that I can trust that the metrics aren't made up.
-
-**Acceptance Criteria:**
-
-**Given** I hover over a "Verified" badge
-**When** the tooltip appears
-**Then** it should show the raw `ClaimReview` data (Date, Author, Verification Method)
-**And** it should look like a technical "Code Block" to signal engineering rigour
-**And** it should remain accessible via keyboard focus
-
-### Story 3.4: Verified Badge Logic
+### Story 3.3: Verified Badge & Schema Tooltip
 
 As a User,
-I want to easily distinguish verified case studies from unverified ones,
-So that I know which results are guaranteed by the agency.
+I want to see verification proof for claimed results,
+So that I trust the data.
 
 **Acceptance Criteria:**
 
-**Given** a case study card is rendering
-**When** the component checks the frontmatter
-**Then** IF `claimReview` is present AND valid, display the Golden "Verified" Badge
-**And** IF schema is missing, do NOT show the badge
-**And** the badge should pulse slightly to attract attention
+**Given** a Case Study card
+**When** I hover over the "Verified" badge
+**Then** a tooltip appears showing the raw `claimReview` data (Date, Location, Validator)
+**And** the badge glows (Gold/Green) to indicate trust
 
-### Story 3.5: ROI Calculator Component
+### Story 3.4: JSON-LD Schema Generation Injection
 
-As a Lead,
-I want to project my potential returns based on the case study metrics,
-So that I can rationalize the investment to my stakeholders.
+As a System,
+I want to inject `ClaimReview` schema into the page head,
+So that Google recognizes the verified data.
 
 **Acceptance Criteria:**
 
-**Given** I am viewing a successful case study
-**When** I interact with the ROI Calculator slider
-**Then** the "Potential Revenue" number should update in real-time based on the Case Study's ROAS
-**And** a "Book Strategy" button should appear near the result
+**Given** a case study page load
+**When** the page renders
+**Then** a `<script type="application/ld+json">` tag exists in the head
+**And** it contains valid `ClaimReview` structure matching the content
+**And** the Google Rich Results Test passes
 
+## Epic 4: Smart Qualification Wizard
 
-### Epic 4: Smart Qualification Wizard
+Capture high-intent leads that pass the trust threshold using advanced conditional logic.
 
-Develop the persistence-enabled, multi-step application form that uses conditional logic to route leads to the appropriate offer based on revenue.
-**FRs covered:** FR9, FR10, FR11, FR12, FR13
-
-### Story 4.1: Wizard State Machine
+### Story 4.1: Wizard State Machine & Persistence
 
 As a Developer,
-I want a centralized state machine to manage the wizard's logic,
-So that I can handle complex validation, navigation, and branching without "prop drilling" chaos.
+I want to manage the multi-step form state locally,
+So that users don't lose progress if they refresh.
 
 **Acceptance Criteria:**
 
-**Given** the user is in the wizard
-**When** they click "Next"
-**Then** the state machine should validate the current step's data
-**And** transition to the next step defined in the `machineConfig`
-**And** prevent transition if validation fails
-
-### Story 4.2: Conditional Branching Logic
-
-As a Business Owner,
-I want to filter out leads that are too small for our services,
-So that my sales team focuses only on high-value prospects.
-
-**Acceptance Criteria:**
-
-**Given** the user is on the "Revenue" step
-**When** they select "< $1M ARR"
-**Then** the wizard should immediately branch to the "Partner Network" outcome
-**And** they should NOT be asked about Budget or Timeline
-**And** IF they select "> $1M ARR", they proceed to "Deep Discovery"
-
-### Story 4.3: Revenue & Metrics Inputs
-
-As a User,
-I want easy-to-use inputs for my financial data,
-So that I can enter accurate numbers without formatting frustration.
-
-**Acceptance Criteria:**
-
-**Given** the "Metrics" step
-**When** I type into the Revenue field
-**Then** it should auto-format as currency (e.g., "$1,000,000")
-**And** it should allow shorthand typing (e.g., "1m" converts to 1,000,000)
-**And** adequate "Smart Defaults" should be suggested
-
-### Story 4.4: Local Persistence Layer
-
-As a User,
-I want my progress saved if I accidentally refresh,
-So that I don't have to re-type 10 fields of data.
-
-**Acceptance Criteria:**
-
-**Given** I have filled out 3 steps
+**Given** I am on step 2 of the form
 **When** I refresh the page
-**Then** the wizard should reload at Step 3
-**And** all my previously entered data should be pre-filled
-**And** the data should be cleared upon successful submission
+**Then** I return to step 2 with my data intact
+**And** the state is managed via `useWizard` hook
 
-### Story 4.5: Outcome Generation (PDF/Booking)
+### Story 4.2: Step Logic & Branching System
 
-As a User,
-I want to receive the appropriate next steps based on my qualification,
-So that I can move forward with Riffat Labs (or find an alternative).
+As a System,
+I want to route users based on their inputs,
+So that I filter unqualified leads.
 
 **Acceptance Criteria:**
 
-**Given** I am a Disqualified User (<$1M)
-**When** I complete the flow
-**Then** I should be offered a "Growth Roadmap" PDF download
-**And** I should NOT see the Calendar booking link
+**Given** I am on the "Revenue" step
+**When** I select "< $1M" and click Next
+**Then** I am routed to the "Partner Network" (Disqualification) path
+**And** If I select "> $1M", I am routed to the "Booking" path
 
-**Given** I am a Qualified User (>$1M)
-**When** I complete the flow
-**Then** I should see the Calendly embed to book a strategy call immediately
+### Story 4.3: Wizard UI & Transitions
 
+As a User,
+I want to fill out forms with smooth transitions,
+So that the experience feels like an app.
+
+**Acceptance Criteria:**
+
+**Given** I click "Next"
+**When** the step changes
+**Then** the old step slides out and the new step slides in (AnimatePresence)
+**And** the input field is automatically focused
+
+### Story 4.4: Submission Handlers & PDF Generation
+
+As a User,
+I want to receive a roadmap even if I'm disqualified,
+So that I leave with value.
+
+**Acceptance Criteria:**
+
+**Given** I reach the "Partner Network" end screen
+**When** I click "Download Roadmap"
+**Then** a PDF is generated (or link opened) customized to my inputs
+**And** If I am "Qualified", I am redirected to the Calendly booking page
+
+## Epic 5: Production Readiness & Optimization
+
+Ensure the site meets all Non-Functional Requirements (Performance, Accessibility, SEO) and is ready for public traffic.
+
+### Story 5.1: Performance Optimization (LCP & CLS)
+
+As a Developer,
+I want to optimize assets and loading strategies,
+So that the site scores 90+ on Lighthouse Performance.
+
+**Acceptance Criteria:**
+
+**Given** I run a Lighthouse audit
+**When** the report finishes
+**Then** the Performance score is > 90
+**And** LCP is < 2.5s on Mobile
+**And** Images use modern formats (WebP/AVIF) and explicit dimensions
+
+### Story 5.2: Accessibility & SEO Finalization
+
+As a Developer,
+I want to ensure the site is accessible and crawlable,
+So that I don't exclude users or search engines.
+
+**Acceptance Criteria:**
+
+**Given** I run an Accessibility scan
+**When** validation completes
+**Then** there are zero critical WCAG violations
+**And** `sitemap.xml` and `robots.txt` are present and valid
+**And** All images have alt text
+
+### Story 5.3: Error Handling & Fallbacks
+
+As a User,
+I want to see graceful error pages,
+So that I'm not stuck if something breaks.
+
+**Acceptance Criteria:**
+
+**Given** I navigate to a non-existent route
+**When** the page loads
+**Then** I see a branded 404 page
+**And** I can navigate back to Home
+**And** API failures triggers a discrete toast notification instead of crashing
+
+### Story 5.4: Deployment Pipeline & Documentation
+
+As a DevOps Engineer,
+I want to finalize the build settings and documentation,
+So that the project is maintainable.
+
+**Acceptance Criteria:**
+
+**Given** the codebase
+**When** I run `npm run build`
+**Then** it completes without type errors
+**And** A README provides setup instructions
+**And** The site is deployed to Vercel (Production)

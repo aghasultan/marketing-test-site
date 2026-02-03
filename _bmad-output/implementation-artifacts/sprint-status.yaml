@@ -1,4 +1,4 @@
-# generated: 2026-02-01
+# generated: 2026-02-02
 # project: marketing-test-site
 # project_key: NOKEY
 # tracking_system: file-system
@@ -12,8 +12,8 @@
 #   - done: All stories in epic completed
 #
 # Epic Status Transitions:
-#   - backlog → in-progress: Automatically when first story is created (via create-story)
-#   - in-progress → done: Manually when all stories reach 'done' status
+#   - backlog -> in-progress: Automatically when first story is created (via create-story)
+#   - in-progress -> done: Manually when all stories reach 'done' status
 #
 # Story Status:
 #   - backlog: Story only exists in epic file
@@ -33,65 +33,44 @@
 # - SM typically creates next story after previous one is 'done' to incorporate learnings
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
-generated: 2026-02-01
+generated: 2026-02-02
 project: marketing-test-site
 project_key: NOKEY
 tracking_system: file-system
 story_location: _bmad-output/implementation-artifacts
 
 development_status:
-  # Epic 1: High-Performance Foundation & Branding
-  epic-1: in-progress
-  1-1-project-initialization-architecture: done
-  1-2-glassmorphism-design-system-setup: done
-  1-3-responsive-layout-shell: done
-  1-4-landing-page-hero-implementation: done
-  1-5-seo-metadata-system: done
-  epic-1-retrospective: done
+  epic-1: done
+  1-1-project-initialization-and-architecture-setup: done
+  1-2-design-system-and-glassmorphism-implementation: done
+  1-3-core-layout-and-navigation: done
+  1-4-seo-and-performance-foundations: done
+  epic-1-retrospective: optional
 
-  # Epic 2: The No-Click Audit Engine
   epic-2: done
-  2-1-serverless-audit-proxy-setup: done
-  2-2-audit-analysis-logic: done
-  2-3-interactive-audit-scanner-ui: done
-  2-4-instant-results-teaser: done
-  epic-2-retrospective: done
+  2-1-audit-api-proxy-service: done
+  2-2-audit-analysis-logic-and-caching: done
+  2-3-audit-hero-component-and-input: done
+  2-4-audit-results-visualization: done
+  epic-2-retrospective: optional
 
-  # Epic 3: Verification & Results System
   epic-3: done
-  3-1-markdown-content-architecture: done
-  3-2-bento-grid-layout-engine: done
-  3-3-schema-verification-tooltip: done
-  3-4-verified-badge-logic: done
-  3-5-roi-calculator-component: done
-  epic-3-retrospective: done
+  3-1-markown-content-system-and-zod-schema: done
+  3-2-case-study-bento-grid-ui: done
+  3-3-verified-badge-and-schema-tooltip: done
+  3-4-json-ld-schema-generation-injection: done
+  epic-3-retrospective: optional
 
-  # Epic 4: Smart Qualification Wizard
   epic-4: done
-  4-1-wizard-state-machine: done
-  4-2-conditional-branching-logic: done
-  4-3-revenue-metrics-inputs: done
-  4-4-local-persistence-layer: done
-  4-5-outcome-generation-pdf-booking: done
-  epic-4-retrospective: done
+  4-1-wizard-state-machine-and-persistence: done
+  4-2-step-logic-and-branching-system: done
+  4-3-wizard-ui-and-transitions: done
+  4-4-submission-handlers-and-pdf-generation: done
+  epic-4-retrospective: optional
 
-  # Epic 5: Authority, Analytics & Optimization
   epic-5: done
-  5-1-ui-polish-visual-stability: done
-  5-2-content-authority-engine: done
-  5-3-advanced-analytics-observation: done
-  5-4-performance-maximization: done
+  5-1-performance-optimization-lcp-cls: done
+  5-2-accessibility-and-seo-finalization: done
+  5-3-error-handling-and-fallbacks: done
+  5-4-deployment-pipeline-and-documentation: done
   epic-5-retrospective: optional
-
-  # Epic 6: Marketing Automation & CRM Integration
-  epic-6: done
-  6-1-email-api-integration: done
-  6-2-lead-capture-crm-sync: done
-  6-3-automation-flow-triggers: done
-  epic-6-retrospective: optional
-
-  # Epic 7: Visual Personalization
-  epic-7: done
-  7-1-theme-toggle-implementation: done
-  7-2-visual-polish-animation-fixes: done
-  epic-7-retrospective: done

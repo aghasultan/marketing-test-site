@@ -24,18 +24,18 @@ export class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white p-4">
-          <div className="text-center max-w-md">
-            <h1 className="text-2xl font-bold mb-4 text-emerald-500">Something went wrong</h1>
-            <p className="text-slate-400 mb-6">
-              We encountered an unexpected error. Please verify your connection and try refreshing the page.
+        <div className="min-h-screen flex items-center justify-center bg-zinc-950 text-white p-4">
+          <div className="text-center max-w-md p-8 border border-white/10 rounded-2xl bg-zinc-900/50 backdrop-blur-xl">
+            <h1 className="text-2xl font-bold mb-4 text-emerald-500 font-mono tracking-tight">System Malfunction</h1>
+            <p className="text-zinc-400 mb-6">
+              The application encountered an unexpected state. Our engineers have been notified.
             </p>
             <button
               autoFocus
-              className="px-6 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors border border-slate-700"
+              className="px-6 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg transition-colors font-medium shadow-lg shadow-emerald-900/20"
               onClick={() => window.location.reload()}
             >
-              Reload Page
+              Reinitialize System
             </button>
           </div>
         </div>

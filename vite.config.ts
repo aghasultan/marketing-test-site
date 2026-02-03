@@ -21,9 +21,9 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'framer-motion', 'react-router-dom'],
-        },
+        // manualChunks: {
+        //   vendor: ['react', 'react-dom', 'framer-motion', 'react-router-dom'],
+        // },
       },
     },
     target: 'esnext',

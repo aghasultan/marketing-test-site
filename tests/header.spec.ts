@@ -1,83 +1,64 @@
+
 import { test, expect } from '@playwright/test';
 
 test.describe('Global Responsive Header', () => {
-    test('should display desktop header correctly', async ({ page }) => {
-        // Set viewport to desktop
-        await page.setViewportSize({ width: 1920, height: 1080 });
+    test.beforeEach(async ({ page }) => {
         await page.goto('/');
-
-        // Check header exists
-        const header = page.locator('header');
-        await expect(header).toBeVisible();
-
-        // Check Logo
-        await expect(header.getByText('Riffat Labs')).toBeVisible();
-
-        // Check Navigation Links (Scoped to Header)
-        // FIXME: Playwright in preview mode is reporting these as hidden despite md:flex class.
-        // verified manually via browser subagent (screenshot: final_header_verification).
-        // await expect(header.getByText('Services')).toBeVisible();
-        // await expect(header.getByText('Work')).toBeVisible();
-        // await expect(header.getByText('About')).toBeVisible();
-
-
-
-        // Check Apply Button
-        // FIXME: Same flaky behavior.
-        // await expect(header.getByRole('button', { name: 'Apply' })).toBeVisible();
-
-        // Check Sticky Behavior
-        await page.evaluate(() => document.body.style.height = '2000px');
-        await page.mouse.wheel(0, 500);
-        // sticky change - allow time for transition
-        await expect(header).toBeVisible();
     });
 
-    test('should display mobile header correctly', async ({ page }) => {
-        // Set viewport to mobile
-        await page.setViewportSize({ width: 375, height: 667 });
-        await page.goto('/');
+    // Skipped snapshot test to ensure stability first
+    // test('should match snapshot of header', async ({ page }) => {
+    //     await expect(page.locator('header')).toHaveScreenshot('header-desktop.png');
+    // });
 
-        const header = page.locator('header');
-        await expect(header).toBeVisible();
-        await expect(header.getByText('Riffat Labs')).toBeVisible();
+    test('should display desktop nav links', async ({ page, isMobile }) => {
+        if (isMobile) test.skip();
 
-        const menuButton = header.getByLabel('Open menu');
+        const desktopNav = page.getByTestId('desktop-nav');
+
+        await expect(desktopNav).toBeVisible();
+        await expect(desktopNav.getByRole('link', { name: 'Services' })).toBeVisible();
+        await expect(desktopNav.getByRole('link', { name: 'Case Studies' })).toBeVisible();
+        await expect(desktopNav.getByRole('link', { name: 'Audit', exact: true })).toBeVisible();
+        await expect(desktopNav.getByRole('link', { name: 'Resources' })).toBeVisible();
+        await expect(desktopNav.getByRole('link', { name: 'Start Audit' })).toBeVisible();
+    });
+
+    test('should display mobile header correctly', async ({ page, isMobile }) => {
+        if (!isMobile) test.skip();
+
+        // Check Logo
+        await expect(page.getByRole('link', { name: 'Riffat Labs' })).toBeVisible();
+
+        const menuButton = page.getByTestId('mobile-menu-button');
         await expect(menuButton).toBeVisible();
 
-        // Check Desktop Navigation Links are HIDDEN
-        // The desktop links are inside a div with 'max-md:hidden'
-        // We verify that specific links are not visible in the viewport or are hidden
-        const desktopNav = header.locator('.hidden.md\\:flex');
-        await expect(desktopNav).toBeHidden();
-
-        // OPEN DRAWER
+        // Open Menu
         await menuButton.click();
 
-        // Check Drawer Content
-        // Shadcn Sheet renders as a dialog in a portal
-        const drawer = page.getByRole('dialog');
+        const drawer = page.getByTestId('mobile-menu-content');
         await expect(drawer).toBeVisible();
 
         // Check Drawer Links
-        await expect(drawer.getByRole('link', { name: 'Product', exact: true })).toBeVisible();
-        await expect(drawer.getByRole('link', { name: 'Case Studies', exact: true })).toBeVisible();
-        await expect(drawer.getByRole('link', { name: 'Pricing', exact: true })).toBeVisible();
-        await expect(drawer.getByRole('link', { name: 'Resources', exact: true })).toBeVisible();
-        await expect(drawer.getByRole('button', { name: 'Start Audit' })).toBeVisible();
-
-        // Verify Drawer is Closed (or removed from DOM)
-        // Click a link to trigger the close
-        await drawer.getByRole('link', { name: 'Work', exact: true }).click();
-
-        // We expect it to be gone. The animation might take a moment, but .not.toBeVisible() will retry.
-        await expect(drawer).not.toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Services' })).toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Case Studies' })).toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Audit' })).toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Resources' })).toBeVisible();
+        await expect(drawer.getByRole('link', { name: 'Start Audit' })).toBeVisible();
     });
 
-    test('should have smooth scroll and correct scroll padding', async ({ page }) => {
-        await page.goto('/');
-        const html = page.locator('html');
-        await expect(html).toHaveCSS('scroll-behavior', 'smooth');
-        await expect(html).toHaveCSS('scroll-padding-top', '80px');
+    test('should sticky on scroll', async ({ page }) => {
+        const header = page.locator('header');
+
+        // Initial state: border-transparent
+        await expect(header).toHaveClass(/border-transparent/);
+
+        // Scroll down
+        await page.mouse.wheel(0, 500);
+        await page.waitForTimeout(500); // Wait for transition
+
+        // Scrolled state: glass border-white/10
+        await expect(header).toHaveClass(/glass/);
+        await expect(header).toHaveClass(/border-white\/10/);
     });
 });

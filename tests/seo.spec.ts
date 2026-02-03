@@ -15,10 +15,10 @@ test.describe('Advanced SEO & Schema Validation', () => {
 
         expect(schema['@context']).toBe('https://schema.org');
         expect(schema['@type']).toBe('Organization');
-        expect(schema.name).toBe('Agha Sultan Naseer');
-        expect(schema.url).toBe('https://aghasultan.com');
+        expect(schema.name).toBe('Riffat Labs');
+        expect(schema.url).toBe('https://riffatlabs.com');
         expect(schema.logo).toContain('riffat-labs-transparent.svg');
-        expect(schema.sameAs).toContain('https://www.linkedin.com/in/aghasultan');
+        expect(schema.sameAs).toContain('https://www.linkedin.com/company/riffatlabs');
     });
 
     test('Scale Page: Should contain valid Service schema', async ({ page }) => {
@@ -36,7 +36,7 @@ test.describe('Advanced SEO & Schema Validation', () => {
         expect(schema['@type']).toBe('Service');
         expect(schema.serviceType).toBe('Performance Paid Media');
         expect(schema.provider['@type']).toBe('Organization');
-        expect(schema.provider.name).toBe('Agha Sultan Naseer');
+        expect(schema.provider.name).toBe('Riffat Labs');
         expect(schema.areaServed).toEqual(expect.arrayContaining(['US', 'UK', 'Europe']));
     });
 
@@ -51,7 +51,7 @@ test.describe('Advanced SEO & Schema Validation', () => {
         await expect(description).toHaveAttribute('content', /Media Buyer/i);
 
         // Open Graph
-        await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', /Agha Sultan Naseer/);
+        await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', /Riffat Labs/);
         await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /riffat-labs-transparent.svg/);
     });
 

@@ -9,6 +9,7 @@ describe('Wizard State Machine', () => {
         history: ['WELCOME'], // Initial history
         data: {},
         isSubmitting: false,
+        isOpen: false
     };
 
     it('should initialize correctly', () => {

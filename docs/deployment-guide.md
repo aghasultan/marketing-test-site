@@ -1,22 +1,37 @@
 # Deployment Guide
 
 ## Infrastructure
-- **Platform**: Vercel (Recommended/Implied)
-- **Runtime**: Static / Edge (for Vite SPA)
+- **Platform**: Vercel
+- **Framework**: Vite (React)
+- **Functions**: Vercel Serverless Functions (Node.js) for `/api` routes (e.g., Audit Proxy).
 
-## Configuration
-- **Vite Config**: `base: '/'` ensures correct asset paths on Vercel.
-- **Build Output**: `dist/` directory is the deployment artifact.
+## Build Pipeline
+The build command has been updated to generate all static assets and verify types.
 
-## Pipeline
-1.  **Trigger**: Git push to `main` branch.
-2.  **Build**: `npm run build`
-    - Generates RSS feeds (`scripts/generate-rss.ts`)
-    - Compiles TypeScript
-    - Bundles via Vite
-3.  **Deploy**: Static files from `dist/` served via Vercel CDN.
+```bash
+npm run build
+```
+**Steps Executed:**
+1.  `npm run build:rss` -> Generates `public/rss.xml` from Markdown blog posts.
+2.  `npm run build:sitemap` -> Generates `public/sitemap.xml` for SEO.
+3.  `tsc` -> Type checking.
+4.  `vite build` -> Bundles application to `dist/`.
+
+## Vercel Configuration (`vercel.json`)
+The project includes a `vercel.json` file that handles:
+- **Security Headers**: HSTS, X-Frame-Options, X-Content-Type-Options.
+- **Caching**: Immutable caching for hashed assets in `/assets/`, no-cache for HTML.
+- **Rewrites**: SPA fallback to `index.html`.
+- **Functions**: Memory optimization for API routes.
 
 ## Environment Variables
-Ensure the following variables are set in the deployment environment:
-- `VITE_API_URL` (if applicable for external API)
-- `NEXT_PUBLIC_ANALYTICS_ID` (if using Vercel Analytics)
+Ensure these variables are set in Vercel Project Settings:
+
+| Variable | Description | Required | try Defaults |
+|----------|-------------|----------|--------------|
+| `VITE_API_URL` | Base URL for API calls | No | `/api` |
+| `admin_email` | For Wizard lead notifications (future) | No | - |
+
+## DNS & Domains
+- **Production**: `riffatlabs.com`
+- **Redirects**: Ensure `www` redirects to root (handled by Vercel default).

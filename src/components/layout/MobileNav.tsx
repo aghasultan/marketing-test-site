@@ -9,11 +9,11 @@ export function MobileNav() {
     return (
         <Sheet>
             <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="md:hidden text-foreground hover:bg-white/5" aria-label="Open menu">
+                <Button variant="ghost" size="icon" className="md:hidden text-foreground hover:bg-white/5" aria-label="Open menu" data-testid="mobile-menu-button">
                     <Menu className="w-6 h-6" />
                 </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full sm:max-w-md glass border-l border-white/10 p-0">
+            <SheetContent side="right" className="w-full sm:max-w-md glass border-l border-white/10 p-0" data-testid="mobile-menu-content">
                 <SheetHeader className="p-6 border-b border-white/10 text-left">
                     <SheetTitle className="text-xl font-bold font-sans text-foreground">
                         Riffat Labs

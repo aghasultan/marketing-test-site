@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { NebulaBackground } from '@/components/ui/NebulaBackground';
 import { Hero } from '@/components/layout/Hero';
 import { SEO } from '@/components/seo/Head';
-import { CaseStudyGrid } from '../components/CaseStudyGrid';
-import { MediaBuyingCalculator } from '@/features/results/components/MediaBuyingCalculator';
 
+// Lazy load heavy sections below the fold
+const CaseStudyGrid = React.lazy(() => import('../components/CaseStudyGrid').then(module => ({ default: module.CaseStudyGrid })));
+const MediaBuyingCalculator = React.lazy(() => import('@/features/results/components/MediaBuyingCalculator').then(module => ({ default: module.MediaBuyingCalculator })));
 
+// Loading Skeleton
+const SectionSkeleton = () => (
+  <div className="w-full h-96 animate-pulse bg-white/5 rounded-2xl mx-auto max-w-7xl my-12" />
+);
 
 export const Home = () => {
-
-
-
+  // ... existing render ...
   return (
     <>
       <SEO
+        // ... props ... (keep existing)
         title="Meta & Google Ads Strategist"
         description="Lahore-based media buyer turning ad spend into profit with 7‑figure Meta & Google Ads budgets across the USA, UK & Europe."
         canonical="https://aghasultan.com/"
@@ -21,21 +25,21 @@ export const Home = () => {
         schema={{
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "Agha Sultan Naseer",
-          "url": "https://aghasultan.com",
-          "logo": "https://aghasultan.com/img/riffat-labs-transparent.svg",
+          "name": "Riffat Labs",
+          "url": "https://riffatlabs.com",
+          "logo": "https://riffatlabs.com/img/riffat-labs-transparent.svg",
           "sameAs": [
-            "https://www.linkedin.com/in/aghasultan",
-            "https://twitter.com/aghasultan"
+            "https://www.linkedin.com/company/riffatlabs",
+            "https://twitter.com/riffatlabs"
           ]
         }}
       />
 
-      {/* Hero Section */}
+      {/* Hero Section - Critical (Eager) */}
       <NebulaBackground />
       <Hero />
 
-      {/* Logo Bar */}
+      {/* Logo Bar - Critical (Eager) */}
       <section className="py-12 border-y border-zinc-200 dark:border-white/5 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm" aria-label="Client logos">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
@@ -59,7 +63,7 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - Eager (High up) */}
       <section className="py-24 relative" id="services">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
@@ -98,7 +102,7 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Skills */}
+      {/* Skills Section - Eager */}
       <section className="py-24 bg-zinc-50/50 dark:bg-zinc-900/30 border-y border-zinc-200 dark:border-white/5" id="skills" aria-labelledby="skills-title">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
@@ -109,7 +113,7 @@ export const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Bento Item 1: Span 2 */}
+            {/* ... Bento Items (Keeping unchanged inline for speed, or could lazy load if heavy, but HTML is cheap) ... */}
             <div className="md:col-span-2 rounded-2xl border border-zinc-200 dark:border-white/10 bg-white dark:bg-zinc-900/70 backdrop-blur-md p-8 flex flex-col justify-between hover:border-zinc-300 dark:hover:border-white/20 transition-colors shadow-sm dark:shadow-none">
               <div>
                 <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-4">Paid Media Profit</h3>
@@ -128,7 +132,6 @@ export const Home = () => {
               </div>
             </div>
 
-            {/* Bento Item 2: Managed Spend */}
             <div className="rounded-2xl border border-zinc-200 dark:border-white/5 bg-white dark:bg-zinc-900/50 backdrop-blur-md p-8 flex flex-col justify-center hover:border-zinc-300 dark:hover:border-white/10 transition-colors shadow-sm dark:shadow-none">
               <span className="block text-sm text-zinc-500 mb-2">Managed Spend</span>
               <span className="text-4xl lg:text-5xl font-bold text-zinc-900 dark:text-white tracking-tight">
@@ -137,7 +140,6 @@ export const Home = () => {
               <span className="block text-xs text-zinc-500 mt-2">Annual Budget Under Management</span>
             </div>
 
-            {/* Bento Item 3: Platforms */}
             <div className="rounded-2xl border border-zinc-200 dark:border-white/5 bg-white dark:bg-zinc-900/50 backdrop-blur-md p-8 hover:border-zinc-300 dark:hover:border-white/10 transition-colors shadow-sm dark:shadow-none">
               <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-6">Platforms</h3>
               <div className="flex flex-wrap gap-2">
@@ -149,7 +151,6 @@ export const Home = () => {
               </div>
             </div>
 
-            {/* Bento Item 4: Tracking (Span 2) */}
             <div className="md:col-span-2 rounded-2xl border border-zinc-200 dark:border-white/5 bg-white dark:bg-zinc-900/50 backdrop-blur-md p-8 hover:border-zinc-300 dark:hover:border-white/10 transition-colors shadow-sm dark:shadow-none">
               <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-6">Tracking Architecture</h3>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -167,18 +168,21 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Case Studies */}
-      <CaseStudyGrid />
+      {/* Case Studies - Delayed */}
+      <Suspense fallback={<SectionSkeleton />}>
+        <CaseStudyGrid />
+      </Suspense>
 
-      {/* ROI Calculator */}
+      {/* ROI Calculator - Delayed */}
       <section className="py-24 relative" id="roi-calculator">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
             <h2 className="text-emerald-600 dark:text-emerald-500 font-mono text-sm tracking-wider uppercase mb-3">05 Value Engineering</h2>
             <h3 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">Estimate Your Upside</h3>
           </div>
-
-          <MediaBuyingCalculator />
+          <Suspense fallback={<SectionSkeleton />}>
+            <MediaBuyingCalculator />
+          </Suspense>
         </div>
       </section>
 
@@ -208,7 +212,6 @@ export const Home = () => {
               </div>
             </div>
             <div className="relative">
-              {/* TODO: Add about image */}
               <div className="aspect-video bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 rounded-2xl border border-zinc-200 dark:border-white/10 flex items-center justify-center overflow-hidden">
                 <div className="text-zinc-400 dark:text-zinc-500 font-mono text-sm">Riffat Labs Team</div>
               </div>

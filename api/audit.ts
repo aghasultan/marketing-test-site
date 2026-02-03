@@ -69,12 +69,25 @@ export default async function handler(request: VercelRequest, response: VercelRe
         });
 
     } catch (error: unknown) {
-        const err = error as Error; // Basic type assertion for safety
-        console.error('Audit Error:', err.message);
+        // Manual type guard
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if ((err as any).code === 'ECONNABORTED' || err.name === 'AbortError') {
-            return response.status(504).json({ error: 'Target URL timed out' });
+        const isAxiosError = (err: any): boolean => {
+            return err && typeof err === 'object' && 'isAxiosError' in err;
+        };
+
+        if (isAxiosError(error)) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            const axiosErr = error as any;
+            if (axiosErr.code === 'ECONNABORTED' || axiosErr.name === 'AbortError') {
+                return response.status(504).json({ error: 'Target URL timed out' });
+            }
+            return response.status(502).json({
+                error: 'Failed to fetch target URL',
+                details: axiosErr.message
+            });
         }
+
+        const err = error as Error;
         return response.status(502).json({
             error: 'Failed to fetch target URL',
             details: err.message

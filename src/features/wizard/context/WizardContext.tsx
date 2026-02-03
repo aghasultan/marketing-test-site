@@ -33,7 +33,9 @@ export type WizardAction =
     | { type: 'NEXT_STEP' }
     | { type: 'PREV_STEP' }
     | { type: 'SET_DATA'; payload: Partial<WizardData> }
-    | { type: 'RESET' };
+    | { type: 'RESET' }
+    | { type: 'OPEN_WIZARD' }
+    | { type: 'CLOSE_WIZARD' };
 
 import { getNextStep } from '../logic/routing';
 
@@ -43,6 +45,7 @@ export interface WizardState {
     history: WizardStep[];
     data: WizardData;
     isSubmitting: boolean;
+    isOpen: boolean;
 }
 
 // --- Reducer ---
@@ -52,6 +55,7 @@ const initialState: WizardState = {
     history: ['WELCOME'],
     data: {},
     isSubmitting: false,
+    isOpen: false,
 };
 
 export function wizardReducer(state: WizardState, action: WizardAction): WizardState {
@@ -87,6 +91,12 @@ export function wizardReducer(state: WizardState, action: WizardAction): WizardS
         case 'RESET': {
             return initialState;
         }
+        case 'OPEN_WIZARD': {
+            return { ...state, isOpen: true };
+        }
+        case 'CLOSE_WIZARD': {
+            return { ...state, isOpen: false };
+        }
         default:
             return state;
     }
@@ -96,6 +106,8 @@ export function wizardReducer(state: WizardState, action: WizardAction): WizardS
 
 interface WizardContextType extends WizardState {
     dispatch: React.Dispatch<WizardAction>;
+    openWizard: () => void;
+    closeWizard: () => void;
 }
 
 const WizardContext = createContext<WizardContextType | undefined>(undefined);
@@ -116,7 +128,8 @@ export const WizardProvider = ({ children }: { children: ReactNode }) => {
         if (saved) {
             // Validate basic shape? 
             // For now assume trusted local data.
-            return saved;
+            // Ensure isOpen is false on reload
+            return { ...saved, isOpen: false };
         }
         return defaultState;
     });
@@ -129,15 +142,17 @@ export const WizardProvider = ({ children }: { children: ReactNode }) => {
     // Analytics: Track Step Views
     useEffect(() => {
         // Track Start
-        if (state.currentStep === 'WELCOME' && state.history.length === 1) {
+        if (state.currentStep === 'WELCOME' && state.history.length === 1 && state.isOpen) {
             trackEvent('wizard_start');
         }
 
-        // Track Steps (excluding Welcome re-visits if possible, but basic view tracking is fine)
-        trackEvent('wizard_step_view', {
-            step_name: state.currentStep,
-            step_index: state.history.length
-        });
+        if (state.isOpen) {
+            // Track Steps (excluding Welcome re-visits if possible, but basic view tracking is fine)
+            trackEvent('wizard_step_view', {
+                step_name: state.currentStep,
+                step_index: state.history.length
+            });
+        }
 
         // Track Completion & Send Email
         if (state.currentStep === 'COMPLETED' || state.currentStep === 'PARTNER_REFERRAL') {
@@ -164,10 +179,13 @@ export const WizardProvider = ({ children }: { children: ReactNode }) => {
                 outcome
             });
         }
-    }, [state.currentStep, state.history.length, state.data.revenue, state.data]); // Track on dependencies
+    }, [state.currentStep, state.history.length, state.data.revenue, state.data, state.isOpen]); // Track on dependencies
+
+    const openWizard = () => dispatch({ type: 'OPEN_WIZARD' });
+    const closeWizard = () => dispatch({ type: 'CLOSE_WIZARD' });
 
     return (
-        <WizardContext.Provider value={{ ...state, dispatch }}>
+        <WizardContext.Provider value={{ ...state, dispatch, openWizard, closeWizard }}>
             {children}
         </WizardContext.Provider>
     );

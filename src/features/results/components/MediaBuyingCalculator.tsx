@@ -4,8 +4,10 @@ import { trackEvent } from '@/lib/tracking';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Calculator, ArrowRight } from 'lucide-react';
+import { useWizard } from '@/features/wizard/context/WizardContext';
 
 export const MediaBuyingCalculator = () => {
+    const { openWizard } = useWizard();
     // Inputs (State)
     const [spend, setSpend] = useState([10000]);
     const [cpm, setCpm] = useState([25]);      // $25 CPM
@@ -208,7 +210,7 @@ export const MediaBuyingCalculator = () => {
                 <div className="mt-8">
                     <Button
                         className="w-full h-12 text-lg font-bold bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all"
-                        onClick={() => window.dispatchEvent(new Event('open-wizard'))}
+                        onClick={openWizard}
                     >
                         Book Strategy Call <ArrowRight className="w-5 h-5 ml-2" />
                     </Button>

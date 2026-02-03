@@ -21,40 +21,16 @@ import { HelmetProvider } from 'react-helmet-async';
 
 import { Toaster } from "@/components/ui/toaster";
 
+// useState, useEffect removed
 import { WizardContainer } from '@/features/wizard/components/WizardContainer';
-import { useState, useEffect } from 'react';
 
 function Root() {
     usePageTracking();
-    const [wizardOpen, setWizardOpen] = useState(false);
-
-    useEffect(() => {
-        const handleOpen = () => setWizardOpen(true);
-        window.addEventListener('open-wizard', handleOpen);
-        return () => window.removeEventListener('open-wizard', handleOpen);
-    }, []);
-
     return (
         <HelmetProvider>
             <SpeedInsights />
             <Toaster />
-            {wizardOpen && (
-                <div className="relative z-[100]">
-                    {/* Hacky close handling for now: clicking outside handled by Container usually? 
-                        Or pass onClose prop? Container doesn't support onClose yet. 
-                        Let's just mount it. It covers screen.
-                    */}
-                    <div style={{ position: 'fixed', inset: 0, zIndex: 100 }}>
-                        <WizardContainer />
-                        <button
-                            onClick={() => setWizardOpen(false)}
-                            className="absolute top-4 right-4 text-white z-[101] bg-black/50 p-2 rounded-full hover:bg-black/80"
-                        >
-                            ✕
-                        </button>
-                    </div>
-                </div>
-            )}
+            <WizardContainer />
             <ErrorBoundary>
                 <Layout>
                     {/* Suspense fallback can be a spinner or skeleton, using simple div for now */}

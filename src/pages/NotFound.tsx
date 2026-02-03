@@ -2,30 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SEO } from '@/components/seo/Head';
 
+import { Button } from '@/components/ui/button';
+import { NebulaBackground } from '@/components/ui/NebulaBackground';
+
 export const NotFound = () => {
   return (
-    <div className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 relative z-10">
+    <div className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 relative z-10 overflow-hidden">
       <SEO
-        title="Page Not Found | Agha Sultan Naseer"
+        title="Page Not Found | Riffat Labs"
         description="The page you are looking for does not exist."
       />
+      <NebulaBackground />
 
-      <div className="fade-in">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white text-shadow-glow">
+      <div className="fade-in relative z-20">
+        <h1 className="text-5xl md:text-9xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-br from-white to-zinc-500">
           404
         </h1>
-        <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-slate-200">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-zinc-200">
           Page Not Found
         </h2>
-        <p className="text-slate-400 text-lg max-w-md mx-auto mb-10 slide-up" style={{ '--a-delay': '100ms' } as React.CSSProperties}>
+        <p className="text-zinc-400 text-lg max-w-md mx-auto mb-10">
           The page you are looking for might have been moved, deleted, or possibly never existed.
         </p>
 
-        <Link
-          to="/"
-          className="btn btn-primary hover-glow inline-flex items-center gap-2 px-8 py-3"
-        >
-          <span>Return Home</span>
+        <Link to="/">
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white shadow-glow">
+            Return Home
+          </Button>
         </Link>
       </div>
     </div>

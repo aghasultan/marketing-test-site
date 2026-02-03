@@ -117,17 +117,17 @@ export const Scale = () => {
   return (
     <>
       <SEO
-        title="Meta & Google Ads Growth Partner | Agha Sultan Naseer"
-        description="Partner with Agha Sultan Naseer to architect full-funnel Meta & Google Ads systems that turn ad spend into profit."
-        canonical="https://aghasultan.com/scale"
+        title="Meta & Google Ads Growth Partner | Riffat Labs"
+        description="Partner with Riffat Labs to architect full-funnel Meta & Google Ads systems that turn ad spend into profit."
+        canonical="https://riffatlabs.com/scale"
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",
           "serviceType": "Performance Paid Media",
           "provider": {
             "@type": "Organization",
-            "name": "Agha Sultan Naseer",
-            "url": "https://aghasultan.com"
+            "name": "Riffat Labs",
+            "url": "https://riffatlabs.com"
           },
           "areaServed": ["US", "UK", "Europe"],
           "hasOfferCatalog": {
