@@ -37,7 +37,7 @@ test.describe('Audit: Wizard Integration', () => {
         await expect(page.getByRole('heading', { name: 'Qualify for Exponential Growth' })).toBeVisible({ timeout: 5000 });
 
         // 5. Close it
-        await page.getByRole('button', { name: '✕' }).click();
+        await page.getByRole('button', { name: 'Close Wizard' }).click();
         await expect(page.getByRole('heading', { name: 'Qualify for Exponential Growth' })).not.toBeVisible();
     });
 });

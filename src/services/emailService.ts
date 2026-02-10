@@ -30,7 +30,7 @@ import { WizardData } from '@/features/wizard/context/WizardContext';
 
 // Business Logic Wrappers
 export const sendLeadNotification = async (leadData: WizardData & { outcome?: string }) => {
-    const adminEmail = 'admin@riffatlabs.com'; // TODO: Env var
+    const adminEmail = import.meta.env.VITE_ADMIN_EMAIL || 'admin@riffatlabs.com';
 
     await emailService.send({
         to: adminEmail,

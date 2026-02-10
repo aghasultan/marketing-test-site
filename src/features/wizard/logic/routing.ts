@@ -9,7 +9,18 @@ export const getNextStep = (currentStep: WizardStep, data: WizardData): WizardSt
         case 'REVENUE': {
             // Branching Logic
             // Threshold: $50k/mo
-            const revenue = data.revenue || 0;
+            let revenue = data.revenue || 0;
+
+            // Fallback: parse revenueRange string (e.g. '50k+', '100k-500k')
+            if (!revenue && data.revenueRange) {
+                const match = data.revenueRange.match(/(\d+)/);
+                if (match) {
+                    const num = parseInt(match[1], 10);
+                    // Assume 'k' suffix means thousands
+                    revenue = data.revenueRange.toLowerCase().includes('k') ? num * 1000 : num;
+                }
+            }
+
             if (revenue < 50000) {
                 return 'PARTNER_REFERRAL'; // Too small for us
             }

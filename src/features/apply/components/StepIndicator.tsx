@@ -9,8 +9,8 @@ interface StepIndicatorProps {
 export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
     const steps = Array.from({ length: totalSteps }, (_, i) => i + 1);
 
-    const formattedStep = currentStep;
-    const progressPercentage = Math.round((currentStep / totalSteps) * 100);
+    const formattedStep = currentStep + 1;
+    const progressPercentage = Math.round(((currentStep + 1) / totalSteps) * 100);
 
     return (
         <div className="mb-8" data-testid="step-indicator">
@@ -48,10 +48,10 @@ export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
                         >
                             <motion.div
                                 className={`flex h-8 w-8 items-center justify-center rounded-full border-2 transition-colors duration-300 ${isCompleted
-                                        ? 'border-emerald-500 bg-emerald-500 text-white'
-                                        : isCurrent
-                                            ? 'border-emerald-500 text-emerald-500' // Current
-                                            : 'border-zinc-700 bg-zinc-800 text-zinc-500'
+                                    ? 'border-emerald-500 bg-emerald-500 text-white'
+                                    : isCurrent
+                                        ? 'border-emerald-500 text-emerald-500' // Current
+                                        : 'border-zinc-700 bg-zinc-800 text-zinc-500'
                                     }`}
                                 animate={isCurrent ? { scale: [1, 1.1, 1] } : { scale: 1 }}
                                 transition={{ duration: 0.5, repeat: isCurrent ? Infinity : 0, repeatDelay: 2 }}
