@@ -5,7 +5,7 @@ import { Github, Twitter, Linkedin } from "lucide-react";
 
 export function Footer() {
     return (
-        <footer className="w-full border-t border-white/5 bg-zinc-950/40 backdrop-blur-sm mt-auto">
+        <footer className="w-full border-t border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-zinc-950/40 backdrop-blur-sm mt-auto">
             <div className="container mx-auto px-4 py-8 md:py-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     {/* Brand */}
@@ -60,7 +60,7 @@ export function Footer() {
                     </div>
                 </div>
 
-                <div className="mt-8 md:mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
+                <div className="mt-8 md:mt-12 pt-8 border-t border-zinc-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
                     <p>© {new Date().getFullYear()} Riffat Labs. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link to="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>

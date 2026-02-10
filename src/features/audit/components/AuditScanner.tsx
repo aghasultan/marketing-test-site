@@ -153,7 +153,7 @@ export const AuditScanner = () => {
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -10 }}
-                            className="text-xl font-medium text-white"
+                            className="text-xl font-medium text-foreground"
                         >
                             {scanMessage}
                         </motion.p>
@@ -167,14 +167,14 @@ export const AuditScanner = () => {
                     >
                         <div className="flex items-center justify-between mb-6">
                             <div className="text-left">
-                                <h3 className="text-2xl font-bold text-white">Audit Result</h3>
-                                <p className="text-zinc-400 text-sm">Target: {result?.url}</p>
+                                <h3 className="text-2xl font-bold text-foreground">Audit Result</h3>
+                                <p className="text-muted-foreground text-sm">Target: {result?.url}</p>
                             </div>
                             <div className="text-right">
-                                <span className="block text-3xl font-bold text-white tracking-tight">
+                                <span className="block text-3xl font-bold text-foreground tracking-tight">
                                     {result?.overallScore}/100
                                 </span>
-                                <span className="text-xs text-zinc-500 uppercase tracking-wider font-semibold">Score</span>
+                                <span className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">Score</span>
                             </div>
                         </div>
 
@@ -187,7 +187,7 @@ export const AuditScanner = () => {
                         <Button
                             variant="outline"
                             onClick={() => setResult(null)}
-                            className="w-full border-white/10 hover:bg-white/5 text-zinc-300"
+                            className="w-full border-zinc-200 dark:border-white/10 hover:bg-zinc-100 dark:hover:bg-white/5 text-zinc-700 dark:text-zinc-300"
                         >
                             Scan Another URL
                         </Button>

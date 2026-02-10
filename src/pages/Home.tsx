@@ -9,7 +9,7 @@ const MediaBuyingCalculator = React.lazy(() => import('@/features/results/compon
 
 // Loading Skeleton
 const SectionSkeleton = () => (
-  <div className="w-full h-96 animate-pulse bg-white/5 rounded-2xl mx-auto max-w-7xl my-12" />
+  <div className="w-full h-96 animate-pulse bg-zinc-100 dark:bg-white/5 rounded-2xl mx-auto max-w-7xl my-12" />
 );
 
 export const Home = () => {
@@ -50,15 +50,15 @@ export const Home = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center opacity-75 dark:opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
             {/* Logo 1: Wedding Realm */}
-            <img src="/img/clients/new-logo-1.png" alt="Wedding Realm" width="160" height="60" className="h-12 md:h-14 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            <img src="/img/clients/new-logo-1.png" alt="Wedding Realm" width="160" height="60" className="h-12 md:h-14 w-auto brightness-0 dark:brightness-0 dark:invert transition-all" loading="lazy" />
             {/* Logo 2: Dignity Memorial */}
-            <img src="/img/clients/new-logo-2.png" alt="Dignity Memorial" width="160" height="60" className="h-10 md:h-12 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            <img src="/img/clients/new-logo-2.png" alt="Dignity Memorial" width="160" height="60" className="h-10 md:h-12 w-auto brightness-0 dark:brightness-0 dark:invert transition-all" loading="lazy" />
             {/* Logo 3: FPL */}
-            <img src="/img/clients/new-logo-5.png" alt="FPL" width="140" height="50" className="h-12 md:h-16 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            <img src="/img/clients/new-logo-5.png" alt="FPL" width="140" height="50" className="h-12 md:h-16 w-auto brightness-0 dark:brightness-0 dark:invert transition-all" loading="lazy" />
             {/* Logo 4: Yellow House */}
-            <img src="/img/clients/new-logo-4.png" alt="Real Estate" width="160" height="60" className="h-12 md:h-16 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            <img src="/img/clients/new-logo-4.png" alt="Real Estate" width="160" height="60" className="h-12 md:h-16 w-auto brightness-0 dark:brightness-0 dark:invert transition-all" loading="lazy" />
             {/* Logo 5: Blank/Other */}
-            <img src="/img/clients/new-logo-3.png" alt="Client Partner" width="140" height="50" className="h-10 md:h-14 w-auto dark:brightness-0 dark:invert transition-all" loading="lazy" />
+            <img src="/img/clients/new-logo-3.png" alt="Client Partner" width="140" height="50" className="h-10 md:h-14 w-auto brightness-0 dark:brightness-0 dark:invert transition-all" loading="lazy" />
           </div>
         </div>
       </section>

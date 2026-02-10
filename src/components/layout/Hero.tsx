@@ -42,7 +42,7 @@ export const Hero = () => {
             >
                 {/* Badge */}
                 <motion.div variants={itemVariants} className="flex justify-center">
-                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-mono tracking-wide backdrop-blur-sm">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 font-mono tracking-wide backdrop-blur-sm">
                         AI-DRIVEN AUDIT ENGINE
                     </span>
                 </motion.div>
@@ -51,10 +51,10 @@ export const Hero = () => {
                 <motion.h1
                     id="hero-title"
                     variants={itemVariants}
-                    className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] drop-shadow-sm"
+                    className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-zinc-900 dark:text-white leading-[1.1] drop-shadow-sm"
                 >
                     Audit your Agency <br className="hidden sm:block" />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400 drop-shadow-sm">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-blue-400 dark:to-emerald-400 drop-shadow-sm">
                         AI Readiness
                     </span>
                 </motion.h1>
@@ -62,10 +62,10 @@ export const Hero = () => {
                 {/* Subheadline */}
                 <motion.p
                     variants={itemVariants}
-                    className="text-lg sm:text-xl text-zinc-300 max-w-2xl mx-auto leading-relaxed drop-shadow-sm"
+                    className="text-lg sm:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto leading-relaxed drop-shadow-sm"
                 >
                     Instant analysis of your ad stack, tracking infrastructure, and creative scalability.
-                    See what the algorithms see in <span className="text-white font-medium">real-time</span>.
+                    See what the algorithms see in <span className="text-zinc-900 dark:text-white font-medium">real-time</span>.
                 </motion.p>
 
                 {/* Audit Scanner Feature */}
@@ -75,7 +75,7 @@ export const Hero = () => {
 
                 {/* Trust Signals */}
                 <motion.div variants={itemVariants} className="pt-16 flex flex-col items-center gap-4 opacity-100">
-                    <div className="text-xs font-mono text-zinc-500 font-medium uppercase tracking-widest drop-shadow-sm">Powered by Riffat Labs Intelligence</div>
+                    <div className="text-xs font-mono text-zinc-400 dark:text-zinc-500 font-medium uppercase tracking-widest drop-shadow-sm">Powered by Riffat Labs Intelligence</div>
                 </motion.div>
 
             </motion.div>

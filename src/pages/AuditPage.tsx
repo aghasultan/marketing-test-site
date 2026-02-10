@@ -17,8 +17,8 @@ export const AuditPage = () => {
                 <div className="max-w-5xl mx-auto">
                     <div className="text-center mb-16">
                         <span className="text-emerald-500 font-bold tracking-wider text-sm uppercase mb-4 block">Free Tool</span>
-                        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white">AI Ad Performance Audit</h1>
-                        <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-6 text-zinc-900 dark:text-white">AI Ad Performance Audit</h1>
+                        <p className="text-zinc-600 dark:text-slate-400 text-lg max-w-2xl mx-auto">
                             Paste your landing page URL below. Our AI mocks an analysis of your copy, keywords, and conversion triggers to give you an estimated quality score.
                         </p>
                     </div>

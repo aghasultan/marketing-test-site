@@ -50,14 +50,14 @@ export const MediaBuyingCalculator = () => {
     return (
         <div className="md:col-span-2 grid md:grid-cols-2 gap-8">
             {/* Input Panel */}
-            <div className="p-8 rounded-2xl border border-white/5 bg-zinc-900/50 backdrop-blur-md">
+            <div className="p-8 rounded-2xl border border-zinc-200 dark:border-white/5 bg-white dark:bg-zinc-900/50 backdrop-blur-md shadow-sm dark:shadow-none">
                 <div className="flex items-start justify-between gap-4 mb-8">
                     <div>
-                        <h4 className="text-xl font-bold text-white mb-2 flex items-center gap-2">
+                        <h4 className="text-xl font-bold text-zinc-900 dark:text-white mb-2 flex items-center gap-2">
                             <Calculator className="w-5 h-5 text-primary" />
                             Projection Engine
                         </h4>
-                        <p className="text-zinc-400 text-sm leading-relaxed">
+                        <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
                             Adjust the levers of growth to see your potential revenue.
                         </p>
                     </div>
@@ -67,9 +67,9 @@ export const MediaBuyingCalculator = () => {
                     {/* Monthly Spend */}
                     <div>
                         <div className="flex justify-between text-sm mb-2">
-                            <span className="text-zinc-300">Monthly Ad Spend</span>
-                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
-                                <span className="text-white font-mono">${spend[0].toLocaleString()}</span>
+                            <span className="text-zinc-600 dark:text-zinc-300">Monthly Ad Spend</span>
+                            <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-white/10 rounded px-2 py-1">
+                                <span className="text-zinc-900 dark:text-white font-mono">${spend[0].toLocaleString()}</span>
                             </div>
                         </div>
                         <Slider
@@ -85,9 +85,9 @@ export const MediaBuyingCalculator = () => {
                     {/* CPM */}
                     <div>
                         <div className="flex justify-between text-sm mb-2">
-                            <span className="text-zinc-300">CPM (Cost per 1k views)</span>
-                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
-                                <span className="text-white font-mono">${cpm[0].toFixed(2)}</span>
+                            <span className="text-zinc-600 dark:text-zinc-300">CPM (Cost per 1k views)</span>
+                            <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-white/10 rounded px-2 py-1">
+                                <span className="text-zinc-900 dark:text-white font-mono">${cpm[0].toFixed(2)}</span>
                             </div>
                         </div>
                         <Slider
@@ -103,9 +103,9 @@ export const MediaBuyingCalculator = () => {
                     {/* CTR */}
                     <div>
                         <div className="flex justify-between text-sm mb-2">
-                            <span className="text-zinc-300">Click-Through Rate (CTR)</span>
-                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
-                                <span className="text-white font-mono">{ctr[0].toFixed(1)}%</span>
+                            <span className="text-zinc-600 dark:text-zinc-300">Click-Through Rate (CTR)</span>
+                            <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-white/10 rounded px-2 py-1">
+                                <span className="text-zinc-900 dark:text-white font-mono">{ctr[0].toFixed(1)}%</span>
                             </div>
                         </div>
                         <Slider
@@ -121,9 +121,9 @@ export const MediaBuyingCalculator = () => {
                     {/* Funnel Conversion Rate */}
                     <div>
                         <div className="flex justify-between text-sm mb-2">
-                            <span className="text-zinc-300">Funnel Conversion Rate</span>
-                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
-                                <span className="text-white font-mono">{cv[0].toFixed(1)}%</span>
+                            <span className="text-zinc-600 dark:text-zinc-300">Funnel Conversion Rate</span>
+                            <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-white/10 rounded px-2 py-1">
+                                <span className="text-zinc-900 dark:text-white font-mono">{cv[0].toFixed(1)}%</span>
                             </div>
                         </div>
                         <Slider
@@ -139,9 +139,9 @@ export const MediaBuyingCalculator = () => {
                     {/* AOV */}
                     <div>
                         <div className="flex justify-between text-sm mb-2">
-                            <span className="text-zinc-300">Average Order Value (AOV)</span>
-                            <div className="bg-zinc-800 border border-white/10 rounded px-2 py-1">
-                                <span className="text-white font-mono">${aov[0].toFixed(0)}</span>
+                            <span className="text-zinc-600 dark:text-zinc-300">Average Order Value (AOV)</span>
+                            <div className="bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-white/10 rounded px-2 py-1">
+                                <span className="text-zinc-900 dark:text-white font-mono">${aov[0].toFixed(0)}</span>
                             </div>
                         </div>
                         <Slider
@@ -157,7 +157,7 @@ export const MediaBuyingCalculator = () => {
             </div >
 
             {/* Results Panel */}
-            < div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-zinc-900/80 backdrop-blur-md p-8 flex flex-col justify-between" >
+            < div className="relative overflow-hidden rounded-2xl border border-primary/20 bg-zinc-50 dark:bg-zinc-900/80 backdrop-blur-md p-8 flex flex-col justify-between shadow-sm dark:shadow-none" >
 
                 {/* Visual Background Graph/Effect */}
                 < div className="absolute inset-0 pointer-events-none opacity-20" >
@@ -170,12 +170,12 @@ export const MediaBuyingCalculator = () => {
                     <div className="space-y-6">
                         <div>
                             <span className="text-zinc-500 text-sm block mb-1">Projected Revenue</span>
-                            <span className="text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                            <span className="text-4xl md:text-5xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
                                 ${Math.round(revenue).toLocaleString()}
                             </span>
                         </div>
 
-                        <div className="grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+                        <div className="grid grid-cols-2 gap-4 border-t border-zinc-200 dark:border-white/10 pt-6">
                             <div>
                                 <span className="text-zinc-500 text-xs uppercase tracking-wider block mb-1">Target ROAS</span>
                                 <span className={`text-2xl font-mono font-bold ${roas < 1 ? 'text-red-400' : 'text-emerald-400'}`}>
@@ -184,7 +184,7 @@ export const MediaBuyingCalculator = () => {
                             </div>
                             <div>
                                 <span className="text-zinc-500 text-xs uppercase tracking-wider block mb-1">Conversions</span>
-                                <span className="text-2xl font-mono font-bold text-white">
+                                <span className="text-2xl font-mono font-bold text-zinc-900 dark:text-white">
                                     {Math.round(conversions).toLocaleString()}
                                 </span>
                             </div>
@@ -193,13 +193,13 @@ export const MediaBuyingCalculator = () => {
                         <div className="grid grid-cols-2 gap-4 pt-2">
                             <div>
                                 <span className="text-zinc-500 text-xs uppercase tracking-wider block mb-1">Traffic (Clicks)</span>
-                                <span className="text-lg font-mono text-zinc-300">
+                                <span className="text-lg font-mono text-zinc-700 dark:text-zinc-300">
                                     {Math.round(clicks).toLocaleString()}
                                 </span>
                             </div>
                             <div>
                                 <span className="text-zinc-500 text-xs uppercase tracking-wider block mb-1">Impressions</span>
-                                <span className="text-lg font-mono text-zinc-300">
+                                <span className="text-lg font-mono text-zinc-700 dark:text-zinc-300">
                                     {(impressions > 1000000) ? (impressions / 1000000).toFixed(1) + 'M' : Math.round(impressions).toLocaleString()}
                                 </span>
                             </div>

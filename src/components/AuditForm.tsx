@@ -40,12 +40,12 @@ export const AuditForm: React.FC<AuditFormProps> = ({ onResult }) => {
                         placeholder="https://yourwebsite.com"
                         value={url}
                         onChange={(e) => setUrl(e.target.value)}
-                        className="w-full px-6 py-4 bg-slate-900/50 border border-slate-700 rounded-lg focus:outline-none focus:border-emerald-500 text-white placeholder-slate-500 transition-colors"
+                        className="w-full px-6 py-4 bg-zinc-50 dark:bg-slate-900/50 border border-zinc-300 dark:border-slate-700 rounded-lg focus:outline-none focus:border-emerald-500 text-foreground placeholder-zinc-400 dark:placeholder-slate-500 transition-colors"
                         disabled={loading}
                     />
                     <button
                         type="submit"
-                        className={`btn btn-primary px-8 whitespace-nowrap ${loading ? 'opacity-75 cursor-wait' : ''}`}
+                        className={`px-8 py-4 rounded-lg font-semibold whitespace-nowrap bg-primary text-primary-foreground hover:bg-primary/90 transition-colors shadow-md ${loading ? 'opacity-75 cursor-wait' : ''}`}
                         disabled={loading}
                     >
                         {loading ? 'Analyzing...' : 'Audit Now'}

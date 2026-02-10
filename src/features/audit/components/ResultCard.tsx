@@ -43,7 +43,7 @@ export const ResultCard = ({ check, delay }: ResultCardProps) => {
                 {getIcon(check.id, check.status)}
             </div>
 
-            <h4 className="font-semibold text-white text-sm mb-1">{check.label}</h4>
+            <h4 className="font-semibold text-foreground text-sm mb-1">{check.label}</h4>
 
             {/* Status Text (e.g. "Fast", "Missing") */}
             <p className={cn(
@@ -52,7 +52,7 @@ export const ResultCard = ({ check, delay }: ResultCardProps) => {
                 {check.status === 'pass' ? 'PASSED' : 'FAILED'}
             </p>
 
-            <span className="text-xs text-zinc-400 leading-tight block max-w-[140px]">
+            <span className="text-xs text-muted-foreground leading-tight block max-w-[140px]">
                 {check.message}
             </span>
         </motion.div>

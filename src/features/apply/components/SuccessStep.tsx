@@ -31,7 +31,7 @@ export function SuccessStep() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="mb-3 text-2xl font-bold text-white"
+                className="mb-3 text-2xl font-bold text-foreground"
             >
                 Application Received!
             </motion.h2>
@@ -40,7 +40,7 @@ export function SuccessStep() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="mb-8 text-zinc-400 max-w-sm"
+                className="mb-8 text-muted-foreground max-w-sm"
             >
                 Thanks for applying. We'll review your details and get back to you within 24 hours.
             </motion.p>

@@ -80,8 +80,8 @@ export const ResultsGrid = () => {
                 schema={schemaData}
             />
             <div className="mb-12 text-center">
-                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Verified Performance</h2>
-                <p className="text-zinc-400 max-w-2xl mx-auto mb-8">
+                <h2 className="text-3xl sm:text-4xl font-bold text-zinc-900 dark:text-white mb-4">Verified Performance</h2>
+                <p className="text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto mb-8">
                     Real results from our "Transparency First" database. Every metric is verified by our internal audit protocol.
                 </p>
 
@@ -92,8 +92,8 @@ export const ResultsGrid = () => {
                             key={cat}
                             onClick={() => setFilter(cat)}
                             className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filter === cat
-                                ? 'bg-white/10 text-white border border-primary/50 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
-                                : 'bg-transparent text-zinc-400 border border-transparent hover:bg-white/5 hover:text-zinc-200'
+                                ? 'bg-zinc-200 dark:bg-white/10 text-zinc-900 dark:text-white border border-primary/50 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
+                                : 'bg-transparent text-zinc-500 dark:text-zinc-400 border border-transparent hover:bg-zinc-100 dark:hover:bg-white/5 hover:text-zinc-700 dark:hover:text-zinc-200'
                                 }`}
                         >
                             {cat}

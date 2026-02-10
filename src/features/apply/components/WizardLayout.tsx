@@ -36,23 +36,23 @@ export function WizardLayout({
     const direction = useWizardStore((state) => state.direction);
 
     return (
-        <div className="min-h-screen bg-zinc-950 px-4 py-20 md:px-6">
+        <div className="min-h-screen bg-white dark:bg-zinc-950 px-4 py-20 md:px-6">
             <div className="mx-auto max-w-xl">
 
                 {/* Header */}
                 <div className="mb-8 text-center">
-                    <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+                    <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                         {title}
                     </h1>
                     {description && (
-                        <p className="mt-2 text-zinc-400">
+                        <p className="mt-2 text-zinc-600 dark:text-zinc-400">
                             {description}
                         </p>
                     )}
                 </div>
 
                 {/* Card */}
-                <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-zinc-900/50 p-6 shadow-2xl backdrop-blur-md md:p-8">
+                <div className="relative overflow-hidden rounded-2xl border border-zinc-200 dark:border-white/5 bg-white dark:bg-zinc-900/50 p-6 shadow-xl dark:shadow-2xl backdrop-blur-md md:p-8">
 
                     <StepIndicator currentStep={currentStep} totalSteps={totalSteps} />
 

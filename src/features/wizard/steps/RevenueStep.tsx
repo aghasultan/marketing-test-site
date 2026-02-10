@@ -21,8 +21,8 @@ export const RevenueStep = () => {
             className="space-y-6 max-w-lg mx-auto w-full"
         >
             <div className="text-center space-y-2">
-                <h2 className="text-3xl font-bold text-white">What is your current monthly revenue?</h2>
-                <p className="text-zinc-400">This helps us recommend the right growth strategy.</p>
+                <h2 className="text-3xl font-bold text-foreground">What is your current monthly revenue?</h2>
+                <p className="text-muted-foreground">This helps us recommend the right growth strategy.</p>
             </div>
 
             <div className="space-y-4">

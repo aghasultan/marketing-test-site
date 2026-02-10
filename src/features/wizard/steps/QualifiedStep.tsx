@@ -25,15 +25,15 @@ export const QualifiedStep = () => {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-3xl font-bold text-white">You Qualify for Dedicated Growth</h2>
-                <p className="text-zinc-400">
+                <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">You Qualify for Dedicated Growth</h2>
+                <p className="text-zinc-500 dark:text-zinc-400">
                     Your revenue and business model are a perfect match for our <strong>Accelerator Program</strong>. Let's build your custom scaling plan.
                 </p>
             </div>
 
             <div className="bg-emerald-900/10 border border-emerald-500/20 rounded-xl p-6 space-y-2">
                 <div className="text-emerald-400 text-sm font-bold uppercase tracking-wider">Next Step</div>
-                <div className="text-white text-lg font-semibold">
+                <div className="text-zinc-900 dark:text-white text-lg font-semibold">
                     15-Minute Strategy Session
                 </div>
                 <div className="text-zinc-500 text-sm">

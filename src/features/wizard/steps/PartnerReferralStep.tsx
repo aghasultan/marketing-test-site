@@ -26,18 +26,18 @@ export const PartnerReferralStep = () => {
             </div>
 
             <div className="space-y-4">
-                <h2 className="text-3xl font-bold text-white">Your Growth Roadmap is Ready</h2>
-                <p className="text-zinc-400">
+                <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">Your Growth Roadmap is Ready</h2>
+                <p className="text-zinc-500 dark:text-zinc-400">
                     Based on your current stage, our <strong>Partner Network</strong> and <strong>Self-Serve Resources</strong> are the best fit to help you reach $50k/mo.
                 </p>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-xl p-6 text-left space-y-4">
-                <h3 className="text-white font-semibold flex items-center">
+            <div className="bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10 rounded-xl p-6 text-left space-y-4">
+                <h3 className="text-zinc-900 dark:text-white font-semibold flex items-center">
                     <span className="bg-blue-500 w-2 h-2 rounded-full mr-2" />
                     Recommended Strategy: Foundation Building
                 </h3>
-                <p className="text-sm text-zinc-400">
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">
                     Focus on organic content loops and high-leverage partnerships before scaling paid ads. We've prepared a guide just for this phase.
                 </p>
             </div>
@@ -51,7 +51,7 @@ export const PartnerReferralStep = () => {
 
             <button
                 onClick={() => dispatch({ type: 'PREV_STEP' })}
-                className="text-sm text-zinc-500 hover:text-white transition-colors underline"
+                className="text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors underline"
             >
                 Go back and edit
             </button>

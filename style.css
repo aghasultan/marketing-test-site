@@ -70,7 +70,37 @@
   /* default */
 }
 
-/* Light Theme Removed to enforce Dark Brand Theme */
+/* Light Theme Overrides */
+.light {
+  color-scheme: light;
+
+  --background: #ffffff;
+  --background-subtle: #f4f4f5;
+  --surface: #f4f4f5;
+  --surface-elevated: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.85);
+
+  --text: #18181b;
+  --text-muted: #71717a;
+  --text-on-primary: #ffffff;
+
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #60a5fa;
+  --primary-soft: rgba(37, 99, 235, 0.12);
+
+  --border: rgba(0, 0, 0, 0.1);
+  --border-light: rgba(0, 0, 0, 0.05);
+
+  --success: #16a34a;
+  --error: #dc2626;
+  --error-bg: rgba(220, 38, 38, 0.08);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 18px 70px rgba(0, 0, 0, 0.1);
+  --glow-primary: 0 0 20px rgba(37, 99, 235, 0.15);
+}
 
 /* ==========================================================
    Base / reset

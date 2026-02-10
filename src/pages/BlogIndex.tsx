@@ -17,7 +17,7 @@ export const BlogIndex = () => {
   if (loading) {
     return (
       <div className="min-h-screen pt-32 pb-20 px-6 flex items-center justify-center">
-        <div className="text-slate-400">Loading insights...</div>
+        <div className="text-muted-foreground">Loading insights...</div>
       </div>
     );
   }
@@ -32,8 +32,8 @@ export const BlogIndex = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 fade-in space-y-8">
           <div>
-            <h1 className="text-5xl font-bold mb-4 text-white">Digital Garden</h1>
-            <p className="text-xl text-slate-400 max-w-2xl">
+            <h1 className="text-5xl font-bold mb-4 text-zinc-900 dark:text-white">Digital Garden</h1>
+            <p className="text-xl text-zinc-600 dark:text-slate-400 max-w-2xl">
               Strategies, case studies, and tutorials on scaling paid media.
             </p>
           </div>
@@ -50,7 +50,7 @@ export const BlogIndex = () => {
               <input
                 type="text"
                 placeholder="Search articles..."
-                className="w-full bg-zinc-900/50 border border-zinc-700 text-white rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all placeholder:text-zinc-600"
+                className="w-full bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-300 dark:border-zinc-700 text-foreground rounded-lg pl-10 pr-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 transition-all placeholder:text-zinc-400 dark:placeholder:text-zinc-600"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -62,7 +62,7 @@ export const BlogIndex = () => {
                 onClick={() => setSelectedCategory(null)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === null
                   ? 'bg-emerald-500 text-white'
-                  : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'
+                  : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white'
                   }`}
               >
                 All
@@ -73,7 +73,7 @@ export const BlogIndex = () => {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategory === cat
                     ? 'bg-emerald-500 text-white'
-                    : 'bg-zinc-800 text-zinc-400 hover:bg-zinc-700 hover:text-white'
+                    : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-300 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white'
                     }`}
                 >
                   {cat}
@@ -88,22 +88,22 @@ export const BlogIndex = () => {
             <Link
               key={post.slug}
               to={`/blog/${post.slug}`}
-              className="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all hover:-translate-y-1 group flex flex-col h-full"
+              className="bg-zinc-50 dark:bg-slate-800/50 border border-zinc-200 dark:border-slate-700 rounded-xl p-6 hover:border-emerald-500/50 transition-all hover:-translate-y-1 group flex flex-col h-full"
             >
               <div className="flex justify-between items-start mb-4">
                 <span className="text-xs font-bold uppercase tracking-wider text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">
                   {post.category}
                 </span>
-                <span className="text-xs text-slate-500">
+                <span className="text-xs text-zinc-500 dark:text-slate-500">
                   {new Date(post.date).toLocaleDateString()}
                 </span>
               </div>
 
-              <h3 className="text-xl font-bold mb-3 text-slate-100 group-hover:text-emerald-400 transition-colors">
+              <h3 className="text-xl font-bold mb-3 text-zinc-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                 {post.title}
               </h3>
 
-              <p className="text-slate-400 text-sm line-clamp-3 mb-6 flex-grow">
+              <p className="text-zinc-600 dark:text-slate-400 text-sm line-clamp-3 mb-6 flex-grow">
                 {post.description}
               </p>
 

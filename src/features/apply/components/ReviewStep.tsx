@@ -10,14 +10,14 @@ export function ReviewStep({ values, onEdit }: ReviewStepProps) {
     return (
         <div className="space-y-8">
             <div className="space-y-4">
-                <h2 className="text-xl font-semibold text-white">Review Your Application</h2>
-                <p className="text-zinc-400">Please verify your details before submitting.</p>
+                <h2 className="text-xl font-semibold text-foreground">Review Your Application</h2>
+                <p className="text-muted-foreground">Please verify your details before submitting.</p>
             </div>
 
             {/* Contact Info */}
-            <div className="rounded-xl border border-white/5 bg-zinc-800/50 p-6">
+            <div className="rounded-xl border border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-zinc-800/50 p-6">
                 <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-medium text-white">Contact Info</h3>
+                    <h3 className="text-lg font-medium text-foreground">Contact Info</h3>
                     <button
                         type="button"
                         onClick={() => onEdit(1)}
@@ -29,25 +29,25 @@ export function ReviewStep({ values, onEdit }: ReviewStepProps) {
                 <div className="grid gap-4 sm:grid-cols-2">
                     <div>
                         <p className="text-sm text-zinc-500">First Name</p>
-                        <p className="text-white">{values.firstName}</p>
+                        <p className="text-foreground">{values.firstName}</p>
                     </div>
                     <div>
                         <p className="text-sm text-zinc-500">Email</p>
-                        <p className="text-white">{values.email}</p>
+                        <p className="text-foreground">{values.email}</p>
                     </div>
                     {values.website && (
                         <div className="sm:col-span-2">
                             <p className="text-sm text-zinc-500">Website</p>
-                            <p className="text-white">{values.website}</p>
+                            <p className="text-foreground">{values.website}</p>
                         </div>
                     )}
                 </div>
             </div>
 
             {/* Business Details */}
-            <div className="rounded-xl border border-white/5 bg-zinc-800/50 p-6">
+            <div className="rounded-xl border border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-zinc-800/50 p-6">
                 <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-medium text-white">Business Details</h3>
+                    <h3 className="text-lg font-medium text-foreground">Business Details</h3>
                     <button
                         type="button"
                         onClick={() => onEdit(2)}
@@ -59,31 +59,31 @@ export function ReviewStep({ values, onEdit }: ReviewStepProps) {
                 <div className="grid gap-4 sm:grid-cols-2">
                     <div>
                         <p className="text-sm text-zinc-500">Company Name</p>
-                        <p className="text-white">{values.companyName}</p>
+                        <p className="text-foreground">{values.companyName}</p>
                     </div>
                     <div>
                         <p className="text-sm text-zinc-500">Industry</p>
-                        <p className="text-white">
+                        <p className="text-foreground">
                             {values.industry === 'Other' ? values.customIndustry : values.industry}
                         </p>
                     </div>
                     <div>
                         <p className="text-sm text-zinc-500">Revenue Range</p>
-                        <p className="text-white">{values.revenueRange}</p>
+                        <p className="text-foreground">{values.revenueRange}</p>
                     </div>
                     {values.goals && (
                         <div className="sm:col-span-2">
                             <p className="text-sm text-zinc-500">Goals</p>
-                            <p className="text-white whitespace-pre-wrap">{values.goals}</p>
+                            <p className="text-foreground whitespace-pre-wrap">{values.goals}</p>
                         </div>
                     )}
                 </div>
             </div>
 
             {/* Service Details */}
-            <div className="rounded-xl border border-white/5 bg-zinc-800/50 p-6">
+            <div className="rounded-xl border border-zinc-200 dark:border-white/5 bg-zinc-50 dark:bg-zinc-800/50 p-6">
                 <div className="mb-4 flex items-center justify-between">
-                    <h3 className="text-lg font-medium text-white">Service Details</h3>
+                    <h3 className="text-lg font-medium text-foreground">Service Details</h3>
                     <button
                         type="button"
                         onClick={() => onEdit(3)}

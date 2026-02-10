@@ -15,7 +15,7 @@ export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
     return (
         <div className="mb-8" data-testid="step-indicator">
             <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-zinc-400" data-testid="step-text" aria-live="polite">
+                <span className="text-sm font-medium text-muted-foreground" data-testid="step-text" aria-live="polite">
                     Step {formattedStep} of {totalSteps}
                 </span>
                 <span className="text-sm font-medium text-zinc-500" data-testid="progress-text">
@@ -24,7 +24,7 @@ export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
             </div>
 
             {/* Progress Bar Container */}
-            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-zinc-800">
+            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800">
                 <motion.div
                     className="h-full bg-gradient-to-r from-blue-500 to-emerald-500"
                     initial={{ width: 0 }}
@@ -51,7 +51,7 @@ export function StepIndicator({ currentStep, totalSteps }: StepIndicatorProps) {
                                     ? 'border-emerald-500 bg-emerald-500 text-white'
                                     : isCurrent
                                         ? 'border-emerald-500 text-emerald-500' // Current
-                                        : 'border-zinc-700 bg-zinc-800 text-zinc-500'
+                                        : 'border-zinc-300 dark:border-zinc-700 bg-zinc-200 dark:bg-zinc-800 text-zinc-500'
                                     }`}
                                 animate={isCurrent ? { scale: [1, 1.1, 1] } : { scale: 1 }}
                                 transition={{ duration: 0.5, repeat: isCurrent ? Infinity : 0, repeatDelay: 2 }}

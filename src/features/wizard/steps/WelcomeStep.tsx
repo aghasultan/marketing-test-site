@@ -12,10 +12,10 @@ export const WelcomeStep = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="text-center space-y-6 max-w-lg mx-auto"
         >
-            <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight">
                 Qualify for <span className="text-primary">Exponential Growth</span>
             </h1>
-            <p className="text-xl text-zinc-400">
+            <p className="text-xl text-muted-foreground">
                 See if you qualify for our Partner Network or Dedicated Growth Teams.
                 Takes less than 60 seconds.
             </p>

@@ -400,3 +400,130 @@ So that the project is maintainable.
 **Then** it completes without type errors
 **And** A README provides setup instructions
 **And** The site is deployed to Vercel (Production)
+
+## Epic 8: UI/UX Theme Compliance (Light & Dark Mode)
+
+Fix all light-mode UI/UX issues identified during the comprehensive visual audit. Currently, most components use hard-coded dark-mode colors (`text-white`, `text-zinc-300`, `bg-zinc-900`) without light-mode counterparts, making the site nearly unusable in light mode.
+
+**Root Cause:** Tailwind is configured with `darkMode: ["class"]` and CSS variables swap via `.light` class, but many components bypass the semantic variables and use hard-coded color classes intended only for the dark theme.
+
+**Strategy:** Replace hard-coded colors with semantic Tailwind classes using the `dark:` prefix pattern (e.g., `text-zinc-900 dark:text-white`) or CSS variable-based classes (`text-foreground`, `bg-background`).
+
+### Story 8.1: Hero Section & Global Layout Components
+
+As a User,
+I want all hero section text and global layout elements to be readable in both light and dark modes,
+So that I can use the site regardless of my theme preference.
+
+**Acceptance Criteria:**
+
+**Given** I toggle to light mode
+**When** I view the Hero section on the Home page
+**Then** the heading "Audit your Agency AI Readiness" is dark text on a light background
+**And** the subtitle text has sufficient contrast (WCAG AA)
+**And** the "AI-DRIVEN AUDIT ENGINE" badge is readable
+**And** the "Powered by" trust signal is readable
+**And** dark mode remains visually identical to current design
+
+**Files:** `src/components/layout/Hero.tsx`, `src/components/layout/Layout.tsx`, `src/components/layout/Footer.tsx`, `src/components/layout/Header.tsx`
+
+---
+
+### Story 8.2: Scale Page Theme Compliance
+
+As a User,
+I want the Scale page to be fully readable in light mode,
+So that I can understand the value proposition regardless of theme.
+
+**Acceptance Criteria:**
+
+**Given** I navigate to `/scale` in light mode
+**When** the page loads
+**Then** all headings are dark on light background
+**And** all body text paragraphs have sufficient contrast
+**And** all buttons have visible labels
+**And** certification badges are readable
+**And** case study stats and framework steps are legible
+**And** the CTA section at the bottom has proper contrast
+**And** dark mode remains visually identical to current design
+
+**Files:** `src/pages/Scale.tsx`
+
+---
+
+### Story 8.3: Case Studies & Results Page Theme Compliance
+
+As a User,
+I want case study cards and the Results page to adapt to light mode,
+So that I can browse verified results in any theme.
+
+**Acceptance Criteria:**
+
+**Given** I view the Case Studies section (Home or Results page) in light mode
+**When** the cards render
+**Then** card backgrounds adapt to the current theme (not hard-coded dark navy)
+**And** case study titles, metrics, and descriptions are readable
+**And** filter tabs on the Results page have visible active/inactive states
+**And** tags (CRO, Health, Google Ads) are readable in both themes
+**And** "Read Case Study" links have proper contrast
+
+**Files:** `src/components/CaseStudyGrid.tsx`, `src/pages/Home.tsx` (case studies section)
+
+---
+
+### Story 8.4: Wizard & Apply Flow Theme Compliance
+
+As a User,
+I want the qualification wizard and application flow to work correctly in light mode,
+So that I can complete the application process in any theme.
+
+**Acceptance Criteria:**
+
+**Given** I open the wizard or navigate to `/apply` in light mode
+**When** the wizard steps render
+**Then** all step headings and descriptions are readable
+**And** the wizard container background adapts to light mode
+**And** the review step shows all fields with proper contrast
+**And** the success step is readable
+**And** the step indicator bar and labels are visible
+**And** form inputs have appropriate styling for light mode
+
+**Files:** `src/features/apply/components/WizardLayout.tsx`, `src/features/apply/components/ReviewStep.tsx`, `src/features/apply/components/SuccessStep.tsx`, `src/features/apply/components/StepIndicator.tsx`, `src/features/wizard/components/WizardContainer.tsx`, `src/features/wizard/steps/WelcomeStep.tsx`, `src/features/wizard/steps/RevenueStep.tsx`
+
+---
+
+### Story 8.5: Audit Components Theme Compliance
+
+As a User,
+I want the audit input form and results display to work in light mode,
+So that I can use the audit feature regardless of theme.
+
+**Acceptance Criteria:**
+
+**Given** I navigate to `/audit` in light mode
+**When** the page loads
+**Then** the heading and instructional text are readable
+**And** the URL input field has appropriate light-mode styling
+**And** the "Audit Now" button is visible with proper label contrast
+**And** audit result cards (Headlines, Descriptions, Keywords) are readable
+
+**Files:** `src/components/AuditForm.tsx`, `src/components/AuditResults.tsx`, `src/pages/AuditPage.tsx`
+
+---
+
+### Story 8.6: Glass Utilities, Shared Components & Error Pages
+
+As a User,
+I want all shared UI components and error pages to work in both themes,
+So that the experience is consistent everywhere.
+
+**Acceptance Criteria:**
+
+**Given** I am in light mode
+**When** I encounter glass-styled panels, buttons, or error pages
+**Then** glass utilities (`.glass`, `.glass-panel`, `.glass-input`) adapt to light mode
+**And** the Button component variants work in both themes
+**And** the ErrorBoundary page is readable in light mode
+**And** the 404 page is readable in light mode
+
+**Files:** `src/app/globals.css`, `src/components/ui/button.tsx`, `src/components/ErrorBoundary.tsx`, `src/pages/NotFound.tsx`

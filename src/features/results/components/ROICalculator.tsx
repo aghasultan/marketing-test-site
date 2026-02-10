@@ -26,11 +26,11 @@ export const ROICalculator = ({ roas, onBack }: ROICalculatorProps) => {
         >
             <div>
                 <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-xl font-bold text-white flex items-center">
+                    <h3 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center">
                         <Calculator className="w-5 h-5 mr-2 text-primary" />
                         ROI Projector
                     </h3>
-                    <Button variant="ghost" size="sm" onClick={onBack} className="text-zinc-400 hover:text-white">
+                    <Button variant="ghost" size="sm" onClick={onBack} className="text-zinc-400 hover:text-zinc-900 dark:hover:text-white">
                         <ArrowLeft className="w-4 h-4" />
                     </Button>
                 </div>
@@ -39,7 +39,7 @@ export const ROICalculator = ({ roas, onBack }: ROICalculatorProps) => {
                     <div>
                         <div className="flex justify-between text-sm mb-2">
                             <span className="text-zinc-400">Monthly Ad Spend</span>
-                            <span className="text-white font-mono">${spend[0].toLocaleString()}</span>
+                            <span className="text-zinc-900 dark:text-white font-mono">${spend[0].toLocaleString()}</span>
                         </div>
                         <Slider
                             defaultValue={[5000]}
@@ -54,7 +54,7 @@ export const ROICalculator = ({ roas, onBack }: ROICalculatorProps) => {
 
                     <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-4 text-center">
                         <div className="text-emerald-400 text-xs uppercase tracking-wider mb-1">Projected Revenue</div>
-                        <div className="text-3xl font-bold text-white tracking-tight">
+                        <div className="text-3xl font-bold text-zinc-900 dark:text-white tracking-tight">
                             ${projectedRevenue.toLocaleString()}
                         </div>
                         <div className="text-zinc-500 text-xs mt-1">Based on {roas}x ROAS</div>

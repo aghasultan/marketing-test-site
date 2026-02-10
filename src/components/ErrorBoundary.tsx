@@ -24,10 +24,10 @@ export class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-zinc-950 text-white p-4">
-          <div className="text-center max-w-md p-8 border border-white/10 rounded-2xl bg-zinc-900/50 backdrop-blur-xl">
+        <div className="min-h-screen flex items-center justify-center bg-white dark:bg-zinc-950 text-foreground p-4">
+          <div className="text-center max-w-md p-8 border border-zinc-200 dark:border-white/10 rounded-2xl bg-zinc-50 dark:bg-zinc-900/50 backdrop-blur-xl">
             <h1 className="text-2xl font-bold mb-4 text-emerald-500 font-mono tracking-tight">System Malfunction</h1>
-            <p className="text-zinc-400 mb-6">
+            <p className="text-muted-foreground mb-6">
               The application encountered an unexpected state. Our engineers have been notified.
             </p>
             <button

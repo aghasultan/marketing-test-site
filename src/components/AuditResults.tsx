@@ -42,7 +42,7 @@ export const AuditResults: React.FC<AuditResultsProps> = ({ result }) => {
             <motion.div className="bento-item bento-span-2 flex items-center justify-between" variants={itemVariants}>
                 <div>
                     <h3 className="bento-title">Audit Score</h3>
-                    <p className="text-slate-400">Based on heuristics analysis</p>
+                    <p className="text-muted-foreground">Based on heuristics analysis</p>
                 </div>
                 <div className="text-right">
                     <div className={`text-6xl font-bold ${getScoreColor(result.grade)}`}>{result.score}</div>
@@ -52,18 +52,18 @@ export const AuditResults: React.FC<AuditResultsProps> = ({ result }) => {
 
             {/* Analysis Grid */}
             <motion.div className="bento-item" variants={itemVariants}>
-                <h4 className="font-bold mb-2 text-white">Headlines</h4>
-                <p className="text-sm text-slate-400">{result.analysis.headlines}</p>
+                <h4 className="font-bold mb-2 text-foreground">Headlines</h4>
+                <p className="text-sm text-muted-foreground">{result.analysis.headlines}</p>
             </motion.div>
 
             <motion.div className="bento-item" variants={itemVariants}>
-                <h4 className="font-bold mb-2 text-white">Descriptions</h4>
-                <p className="text-sm text-slate-400">{result.analysis.descriptions}</p>
+                <h4 className="font-bold mb-2 text-foreground">Descriptions</h4>
+                <p className="text-sm text-muted-foreground">{result.analysis.descriptions}</p>
             </motion.div>
 
             <motion.div className="bento-item" variants={itemVariants}>
-                <h4 className="font-bold mb-2 text-white">Keywords</h4>
-                <p className="text-sm text-slate-400">{result.analysis.keywords}</p>
+                <h4 className="font-bold mb-2 text-foreground">Keywords</h4>
+                <p className="text-sm text-muted-foreground">{result.analysis.keywords}</p>
             </motion.div>
 
             {/* Recommendations */}
@@ -71,7 +71,7 @@ export const AuditResults: React.FC<AuditResultsProps> = ({ result }) => {
                 <h3 className="bento-title mb-4">Recommendations</h3>
                 <ul className="space-y-3">
                     {result.recommendations.map((rec, i) => (
-                        <li key={i} className="flex items-start gap-3 text-slate-300">
+                        <li key={i} className="flex items-start gap-3 text-zinc-700 dark:text-slate-300">
                             <span className="text-emerald-500 mt-1">✓</span>
                             {rec}
                         </li>
