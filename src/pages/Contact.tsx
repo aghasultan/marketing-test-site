@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -47,7 +47,64 @@ export const Contact = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const { toast } = useToast();
 
+    // Track which fields the user interacted with
+    const [fieldsInteracted, setFieldsInteracted] = useState<Set<string>>(new Set());
+    const pageLoadTime = useRef(Date.now());
+    const hasSubmitted = useRef(false);
+    const partialSent = useRef(false);
+
+    const trackField = (field: string) => {
+        setFieldsInteracted(prev => new Set(prev).add(field));
+    };
+
+    // Send partial lead data on page exit
+    const sendPartialData = useCallback(() => {
+        if (hasSubmitted.current || partialSent.current) return;
+        if (fieldsInteracted.size === 0) return;
+
+        // Check if any field actually has data
+        const hasData = form.fullName || form.email || form.company || form.budget || form.services.length || form.message;
+        if (!hasData) return;
+
+        partialSent.current = true;
+
+        const payload = JSON.stringify({
+            ...form,
+            partial: true,
+            fieldsInteracted: Array.from(fieldsInteracted),
+            timeOnPage: Date.now() - pageLoadTime.current,
+        });
+
+        // Use sendBeacon for reliable delivery on page exit
+        if (navigator.sendBeacon) {
+            navigator.sendBeacon('/api/contact', new Blob([payload], { type: 'application/json' }));
+        } else {
+            fetch('/api/contact', { method: 'POST', body: payload, headers: { 'Content-Type': 'application/json' }, keepalive: true });
+        }
+    }, [form, fieldsInteracted]);
+
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (document.visibilityState === 'hidden') {
+                sendPartialData();
+            }
+        };
+
+        const handleBeforeUnload = () => {
+            sendPartialData();
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, [sendPartialData]);
+
     const toggleService = (id: string) => {
+        trackField('services');
         setForm(prev => ({
             ...prev,
             services: prev.services.includes(id)
@@ -70,15 +127,26 @@ export const Contact = () => {
 
         setIsSubmitting(true);
 
-        // TODO: Replace with your actual webhook/API endpoint
-        // Example: await fetch('https://your-n8n-webhook.com/contact', { method: 'POST', body: JSON.stringify(form) })
-        console.log('📩 Lead form submission:', form);
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(form),
+            });
 
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 1200));
+            if (!res.ok) throw new Error('Submission failed');
 
-        setIsSubmitting(false);
-        setIsSubmitted(true);
+            hasSubmitted.current = true;
+            setIsSubmitted(true);
+        } catch {
+            toast({
+                title: 'Something went wrong',
+                description: 'Please try again or email us directly.',
+                variant: 'destructive',
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -115,7 +183,7 @@ export const Contact = () => {
                                 Our growth team will review your details and reach out within <strong className="text-foreground">24 hours</strong> with a custom strategy.
                             </p>
                             <Button
-                                onClick={() => { setIsSubmitted(false); setForm(initialForm); }}
+                                onClick={() => { setIsSubmitted(false); setForm(initialForm); hasSubmitted.current = false; partialSent.current = false; setFieldsInteracted(new Set()); }}
                                 variant="outline"
                                 className="mt-4"
                             >
@@ -156,7 +224,7 @@ export const Contact = () => {
                                         <Input
                                             placeholder="Sultan Nasser"
                                             value={form.fullName}
-                                            onChange={e => setForm(prev => ({ ...prev, fullName: e.target.value }))}
+                                            onChange={e => { setForm(prev => ({ ...prev, fullName: e.target.value })); trackField('fullName'); }}
                                             className="h-12 bg-zinc-50 dark:bg-white/5 border-zinc-200 dark:border-white/10"
                                         />
                                     </div>
@@ -166,7 +234,7 @@ export const Contact = () => {
                                             type="email"
                                             placeholder="you@company.com"
                                             value={form.email}
-                                            onChange={e => setForm(prev => ({ ...prev, email: e.target.value }))}
+                                            onChange={e => { setForm(prev => ({ ...prev, email: e.target.value })); trackField('email'); }}
                                             className="h-12 bg-zinc-50 dark:bg-white/5 border-zinc-200 dark:border-white/10"
                                         />
                                     </div>
@@ -179,7 +247,7 @@ export const Contact = () => {
                                         <Input
                                             placeholder="Acme Corp"
                                             value={form.company}
-                                            onChange={e => setForm(prev => ({ ...prev, company: e.target.value }))}
+                                            onChange={e => { setForm(prev => ({ ...prev, company: e.target.value })); trackField('company'); }}
                                             className="h-12 bg-zinc-50 dark:bg-white/5 border-zinc-200 dark:border-white/10"
                                         />
                                     </div>
@@ -187,7 +255,7 @@ export const Contact = () => {
                                         <label className="text-sm font-medium text-foreground">Monthly Ad Budget</label>
                                         <select
                                             value={form.budget}
-                                            onChange={e => setForm(prev => ({ ...prev, budget: e.target.value }))}
+                                            onChange={e => { setForm(prev => ({ ...prev, budget: e.target.value })); trackField('budget'); }}
                                             className="w-full h-12 px-3 rounded-md bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                                         >
                                             <option value="" className="bg-white dark:bg-zinc-900">Select range...</option>
@@ -228,7 +296,7 @@ export const Contact = () => {
                                     <textarea
                                         placeholder="What are you looking to achieve? Any specific KPIs, challenges, or timelines?"
                                         value={form.message}
-                                        onChange={e => setForm(prev => ({ ...prev, message: e.target.value }))}
+                                        onChange={e => { setForm(prev => ({ ...prev, message: e.target.value })); trackField('message'); }}
                                         rows={4}
                                         className="w-full px-3 py-3 rounded-md bg-zinc-50 dark:bg-white/5 border border-zinc-200 dark:border-white/10 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none"
                                     />
