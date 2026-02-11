@@ -4,7 +4,7 @@ client: "FashionNovaClone"
 industry: "E-commerce"
 service: "Paid Social"
 date: "2025-10-15"
-author: "Riffat Labs Intelligence"
+author: "RR Labs Intelligence"
 claimReview:
   verdict: "Verified"
   rating: 5

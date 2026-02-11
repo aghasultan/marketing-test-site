@@ -9,7 +9,7 @@ export const NotFound = () => {
   return (
     <div className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 relative z-10 overflow-hidden">
       <SEO
-        title="Page Not Found | Riffat Labs"
+        title="Page Not Found | RR Labs"
         description="The page you are looking for does not exist."
       />
       <NebulaBackground />

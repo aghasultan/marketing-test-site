@@ -10,7 +10,7 @@ export const AuditPage = () => {
     return (
         <>
             <SEO
-                title="AI Ad Audit Tool | Riffat Labs"
+                title="AI Ad Audit Tool | RR Labs"
                 description="Get a free AI-powered audit of your ad landing pages."
             />
             <section className="min-h-screen pt-32 pb-20 px-5">

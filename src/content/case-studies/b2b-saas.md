@@ -4,7 +4,7 @@ client: "DataFlow Systems"
 industry: "SaaS"
 service: "Paid Search"
 date: "2025-11-01"
-author: "Riffat Labs Intelligence"
+author: "RR Labs Intelligence"
 claimReview:
   verdict: "Verified"
   rating: 5

@@ -3,7 +3,7 @@ title: "Scaling Men's Health Clinic from $50k to $300k/mo"
 client: "Gameday Men's Health"
 industry: "Healthcare"
 service: "Lead Generation"
-author: "Riffat Labs Intelligence"
+author: "RR Labs Intelligence"
 claimReview:
   verdict: "Verified"
   rating: 5

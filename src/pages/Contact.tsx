@@ -84,7 +84,7 @@ export const Contact = () => {
     return (
         <>
             <SEO
-                title="Get in Touch | Riffat Labs"
+                title="Get in Touch | RR Labs"
                 description="Ready to scale your paid media? Tell us about your business and we'll create a custom growth plan for your Meta, Google, or TikTok ad campaigns."
             />
             <div className="min-h-screen flex items-center justify-center py-20 px-4 relative overflow-hidden">

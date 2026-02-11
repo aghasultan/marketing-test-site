@@ -117,8 +117,8 @@ export const Scale = () => {
   return (
     <>
       <SEO
-        title="Meta & Google Ads Growth Partner | Riffat Labs"
-        description="Partner with Riffat Labs to architect full-funnel Meta & Google Ads systems that turn ad spend into profit."
+        title="Meta & Google Ads Growth Partner | RR Labs"
+        description="Partner with RR Labs to architect full-funnel Meta & Google Ads systems that turn ad spend into profit."
         canonical="https://riffatlabs.com/scale"
         schema={{
           "@context": "https://schema.org",
@@ -126,7 +126,7 @@ export const Scale = () => {
           "serviceType": "Performance Paid Media",
           "provider": {
             "@type": "Organization",
-            "name": "Riffat Labs",
+            "name": "RR Labs",
             "url": "https://riffatlabs.com"
           },
           "areaServed": ["US", "UK", "Europe"],

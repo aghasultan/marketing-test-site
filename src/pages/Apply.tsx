@@ -8,7 +8,7 @@ export const Apply = () => {
   return (
     <WizardProvider>
       <SEO
-        title="Qualify for Growth | Riffat Labs"
+        title="Qualify for Growth | RR Labs"
         description="Check if you qualify for our dedicated growth program or partner network. Takes less than 60 seconds."
       />
       <div className="min-h-screen flex items-center justify-center py-20 px-4 relative overflow-hidden">

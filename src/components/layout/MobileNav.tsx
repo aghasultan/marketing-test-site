@@ -16,7 +16,7 @@ export function MobileNav() {
             <SheetContent side="right" className="w-full sm:max-w-md glass border-l border-white/10 p-0" data-testid="mobile-menu-content">
                 <SheetHeader className="p-6 border-b border-white/10 text-left">
                     <SheetTitle className="text-xl font-bold font-sans text-foreground">
-                        Riffat Labs
+                        RR Labs
                     </SheetTitle>
                 </SheetHeader>
 

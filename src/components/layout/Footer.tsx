@@ -11,7 +11,7 @@ export function Footer() {
                     {/* Brand */}
                     <div className="flex flex-col gap-4">
                         <Link to="/" className="font-bold text-xl font-sans tracking-tight text-foreground">
-                            Riffat <span className="text-primary">Labs</span>
+                            RR <span className="text-primary">Labs</span>
                         </Link>
                         <p className="text-sm text-muted-foreground leading-relaxed">
                             Building high-performance automation for the verify-first era.
@@ -61,7 +61,7 @@ export function Footer() {
                 </div>
 
                 <div className="mt-8 md:mt-12 pt-8 border-t border-zinc-200 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-                    <p>© {new Date().getFullYear()} Riffat Labs. All rights reserved.</p>
+                    <p>© {new Date().getFullYear()} RR Labs. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link to="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
                         <Link to="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>

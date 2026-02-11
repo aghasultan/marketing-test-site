@@ -48,7 +48,7 @@ export const SEO: React.FC<SEOProps> = ({
             <meta property="og:type" content={type} />
             <meta property="og:image" content={imageUrl} />
             <meta property="og:url" content={canonicalUrl} />
-            <meta property="og:site_name" content="Riffat Labs" />
+            <meta property="og:site_name" content="RR Labs" />
 
             {/* Twitter */}
             <meta name="twitter:card" content="summary_large_image" />

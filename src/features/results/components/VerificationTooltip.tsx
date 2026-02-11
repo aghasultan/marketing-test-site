@@ -37,7 +37,7 @@ export const VerificationTooltip = ({ claim, date, children }: VerificationToolt
                             <span className="text-white">{claim.rating}/5</span>
 
                             <span className="text-zinc-500 text-[10px] uppercase tracking-wider">Author</span>
-                            <span className="text-white truncate max-w-[120px]">Riffat Labs</span>
+                            <span className="text-white truncate max-w-[120px]">RR Labs</span>
 
                             <span className="text-zinc-500 text-[10px] uppercase tracking-wider">Date</span>
                             <span className="text-white">{date}</span>

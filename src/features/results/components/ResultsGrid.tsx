@@ -60,7 +60,7 @@ export const ResultsGrid = () => {
             },
             "author": {
                 "@type": "Organization",
-                "name": "Riffat Labs Audit Protocol"
+                "name": "RR Labs Audit Protocol"
             },
             "itemReviewed": {
                 "@type": "CreativeWork",

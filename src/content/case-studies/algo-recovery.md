@@ -4,7 +4,7 @@ client: "HealthTech Inc"
 industry: "Health & Wellness"
 service: "Conversion Rate Optimization"
 date: "2025-12-01"
-author: "Riffat Labs Intelligence"
+author: "RR Labs Intelligence"
 claimReview:
   verdict: "Verified"
   rating: 5

@@ -52,7 +52,7 @@ export const sendLeadNotification = async (leadData: WizardData & { outcome?: st
             // Partner Referral Flow
             await emailService.send({
                 to: leadData.email,
-                subject: 'Riffat Labs - Partner Network Introduction',
+                subject: 'RR Labs - Partner Network Introduction',
                 html: `
                     <h1>Thanks for your interest</h1>
                     <p>Hi ${leadData.name},</p>
@@ -71,7 +71,7 @@ export const sendLeadNotification = async (leadData: WizardData & { outcome?: st
                 html: `
                     <h1>Application Received</h1>
                     <p>Hi ${leadData.name},</p>
-                    <p>Thanks for applying to work with Riffat Labs. Your revenue profile matches our ideal client criteria.</p>
+                    <p>Thanks for applying to work with RR Labs. Your revenue profile matches our ideal client criteria.</p>
                     <p>I am personally reviewing your audit request. Expect a personalized video breakdown of your ad account potential within 24 hours.</p>
                     <br>
                     <p>In the meantime, feel free to allowlist this email address.</p>

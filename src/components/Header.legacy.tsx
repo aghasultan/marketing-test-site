@@ -52,7 +52,7 @@ export const Header = () => {
           <div className="logo-icon-wrapper">
             <img
               src="/img/riffat-labs-transparent.svg"
-              alt="Riffat Labs Logo"
+              alt="RR Labs Logo"
               height="150"
               width="150"
             />

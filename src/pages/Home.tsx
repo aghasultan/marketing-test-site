@@ -25,7 +25,7 @@ export const Home = () => {
         schema={{
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "Riffat Labs",
+          "name": "RR Labs",
           "url": "https://riffatlabs.com",
           "logo": "https://riffatlabs.com/img/riffat-labs-transparent.svg",
           "sameAs": [
@@ -213,7 +213,7 @@ export const Home = () => {
             </div>
             <div className="relative">
               <div className="aspect-video bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-800 dark:to-zinc-900 rounded-2xl border border-zinc-200 dark:border-white/10 flex items-center justify-center overflow-hidden">
-                <div className="text-zinc-400 dark:text-zinc-500 font-mono text-sm">Riffat Labs Team</div>
+                <div className="text-zinc-400 dark:text-zinc-500 font-mono text-sm">RR Labs Team</div>
               </div>
             </div>
           </div>

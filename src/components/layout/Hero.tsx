@@ -75,7 +75,7 @@ export const Hero = () => {
 
                 {/* Trust Signals */}
                 <motion.div variants={itemVariants} className="pt-16 flex flex-col items-center gap-4 opacity-100">
-                    <div className="text-xs font-mono text-zinc-400 dark:text-zinc-500 font-medium uppercase tracking-widest drop-shadow-sm">Powered by Riffat Labs Intelligence</div>
+                    <div className="text-xs font-mono text-zinc-400 dark:text-zinc-500 font-medium uppercase tracking-widest drop-shadow-sm">Powered by RR Labs Intelligence</div>
                 </motion.div>
 
             </motion.div>
