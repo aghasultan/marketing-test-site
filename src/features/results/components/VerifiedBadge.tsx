@@ -26,7 +26,7 @@ export const VerifiedBadge = ({ claim, date }: VerifiedBadgeProps) => {
     return (
         <VerificationTooltip claim={claim} date={date}>
             <div className={cn(
-                "px-2 py-1 rounded-full text-xs font-medium flex items-center border transition-colors cursor-help relative overflow-hidden",
+                "px-3 py-1.5 rounded-full text-xs font-medium flex items-center border transition-colors cursor-help relative whitespace-nowrap shrink-0",
                 containerClass
             )}>
                 {/* Pulse Effect for Verified only */}
