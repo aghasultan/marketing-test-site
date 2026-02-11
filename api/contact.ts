@@ -132,28 +132,35 @@ function row(label: string, value?: string): string {
 // ─── Google Sheets CRM Logger ───────────────────────────────────────────────
 async function logToGoogleSheets(data: ContactPayload): Promise<void> {
   const sheetsUrl = process.env.GOOGLE_SHEETS_URL;
-  if (!sheetsUrl) return; // Silently skip if not configured
+  if (!sheetsUrl) {
+    console.log('GOOGLE_SHEETS_URL not configured, skipping');
+    return;
+  }
+
+  const payload = JSON.stringify({
+    timestamp: new Date().toISOString(),
+    type: data.partial ? 'Partial' : 'Full',
+    name: data.fullName || '',
+    email: data.email || '',
+    company: data.company || '',
+    budget: data.budget || '',
+    services: (data.services || []).map(s => SERVICE_LABELS[s] || s).join(', '),
+    message: data.message || '',
+    fieldsInteracted: (data.fieldsInteracted || []).join(', '),
+    timeOnPage: data.timeOnPage ? `${Math.round(data.timeOnPage / 1000)}s` : '',
+  });
 
   try {
-    await fetch(sheetsUrl, {
+    // Use text/plain to avoid CORS preflight and handle Apps Script redirect
+    const res = await fetch(sheetsUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        timestamp: new Date().toISOString(),
-        type: data.partial ? 'Partial' : 'Full',
-        name: data.fullName || '',
-        email: data.email || '',
-        company: data.company || '',
-        budget: data.budget || '',
-        services: (data.services || []).map(s => SERVICE_LABELS[s] || s).join(', '),
-        message: data.message || '',
-        fieldsInteracted: (data.fieldsInteracted || []).join(', '),
-        timeOnPage: data.timeOnPage ? `${Math.round(data.timeOnPage / 1000)}s` : '',
-      }),
+      body: payload,
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      redirect: 'follow',
     });
+    console.log('Google Sheets log status:', res.status);
   } catch (err) {
     console.error('Google Sheets logging failed:', err);
-    // Non-blocking — don't fail the request if Sheets logging fails
   }
 }
 
@@ -223,8 +230,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    // 3. Log to Google Sheets (fire-and-forget, non-blocking)
-    logToGoogleSheets(data).catch(() => { /* silently ignore */ });
+    // 3. Log to Google Sheets
+    await logToGoogleSheets(data);
 
     return res.status(200).json({ success: true });
   } catch (error) {
