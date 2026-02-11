@@ -16,6 +16,7 @@ const NotFound = lazy(() => import('@pages/NotFound').then(m => ({ default: m.No
 const AuditPage = lazy(() => import('@pages/AuditPage').then(m => ({ default: m.AuditPage })));
 const ResultsGrid = lazy(() => import('@/features/results/components/ResultsGrid').then(m => ({ default: m.ResultsGrid })));
 const DesignSystem = lazy(() => import('@pages/DesignSystem').then(m => ({ default: m.DesignSystem })));
+const Contact = lazy(() => import('@pages/Contact').then(m => ({ default: m.Contact })));
 
 import { HelmetProvider } from 'react-helmet-async';
 
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
             {
                 path: "design-system",
                 element: <DesignSystem />,
+            },
+            {
+                path: "contact",
+                element: <Contact />,
             },
             {
                 path: "*",
