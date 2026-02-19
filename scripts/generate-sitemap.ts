@@ -4,7 +4,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 const BLOG_DIR = path.resolve('src/content/blog');
-const CASE_STUDY_DIR = path.resolve('src/content/case-studies');
+
 const PUBLIC_DIR = path.resolve('public');
 const SITE_URL = 'https://riffatlabs.com';
 

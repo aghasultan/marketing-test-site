@@ -1,87 +1,54 @@
-# RR Labs — UI Component Inventory
+# UI Component Inventory
 
-## Layout Components
+> **Style System**: Tailwind CSS v3
+> **Primitives**: Radix UI + Custom
 
-| Component | File | Purpose |
+## 1. Design System Primitives (`src/components/ui/`)
+
+| Component | Description | Dependencies |
 |---|---|---|
-| `Layout` | `src/components/layout/Layout.tsx` | Main shell: Header + `<main>` + Footer |
-| `Header` | `src/components/layout/Header.tsx` | Sticky header with scroll detection, brand logo, desktop nav, CTA button |
-| `Footer` | `src/components/layout/Footer.tsx` | 4-column footer: brand, product links, resources, social icons |
-| `MobileNav` | `src/components/layout/MobileNav.tsx` | Sheet-based mobile nav drawer (Radix Dialog) |
-| `Hero` | `src/components/layout/Hero.tsx` | Landing hero section with animated badge, H1, subheadline, AuditScanner |
+| `button.tsx` | Primary, secondary, ghost (cn) | Lucide |
+| `input.tsx` | Text inputs (cn) | Lucide |
+| `currency-input.tsx` | Numeric input with formatter | |
+| `schema-slider.tsx` | Range input (Radix) | @radix-ui/react-slider |
+| `sheet.tsx` | Side drawers/modals (Radix) | @radix-ui/react-dialog |
+| `toast.tsx` | Notification toasts (Radix) | @radix-ui/react-toast |
+| `tooltip.tsx` | Tooltip overlays (Radix) | @radix-ui/react-tooltip |
+| `theme-toggle.tsx` | Light/Dark mode switch | Lucide |
+| `animated-background.ts` | Animation logic | Framer Motion |
+| `nebula-background.tsx` | Hero background | Three.js / Canvas |
 
-## Design System Primitives (shadcn/ui Style)
+## 2. Layout Components (`src/components/layout/`)
 
-| Component | File | Built On | Variants |
-|---|---|---|---|
-| `Button` | `src/components/ui/button.tsx` | CVA | default, destructive, outline, secondary, ghost, link / sm, default, lg, icon |
-| `Input` | `src/components/ui/input.tsx` | Native | Standard text input with design system styling |
-| `Slider` | `src/components/ui/slider.tsx` | Radix Slider | Range slider with track and thumb |
-| `Tooltip` | `src/components/ui/tooltip.tsx` | Radix Tooltip | Hover tooltip with portal |
-| `Toast` | `src/components/ui/toast.tsx` | Radix Toast | Notification toast with variants (default, destructive) |
-| `Toaster` | `src/components/ui/toaster.tsx` | Toast hook | Toast container/renderer |
-| `Sheet` | `src/components/ui/sheet.tsx` | Radix Dialog | Side panel overlay (used by MobileNav) |
-| `CurrencyInput` | `src/components/ui/currency-input.tsx` | Custom | Formatted currency input with locale support |
-| `ThemeToggle` | `src/components/ui/ThemeToggle.tsx` | Custom | Dark/light mode switch |
-| `NebulaBackground` | `src/components/ui/NebulaBackground.tsx` | Custom | Animated particle nebula canvas |
-| `AnimatedBackground` | `src/components/ui/AnimatedBackground.ts` | Custom | Canvas-based animated gradient |
-| `InteractiveBg` | `src/components/ui/InteractiveBg.tsx` | Custom | Mouse-tracking interactive gradient |
-
-## Feature Components
-
-### Audit Feature
-| Component | File | Purpose |
+| Component | Description | Usage |
 |---|---|---|
-| `AuditScanner` | `src/features/audit/components/AuditScanner.tsx` | Hero-embedded URL scanner with animated scan effect |
-| `ResultCard` | `src/features/audit/components/ResultCard.tsx` | Individual audit result display |
+| `Header.tsx` | Global navigation bar | Top of every page |
+| `Footer.tsx` | Global footer | Bottom of every page |
+| `Hero.tsx` | Landing page hero section | Home Page |
+| `MobileNav.tsx` | Responsive menu drawer | Mobile View (Sheet) |
+| `Layout.tsx` | Wrapper (Container) | Common Pages |
 
-### Results / Case Studies Feature
-| Component | File | Purpose |
-|---|---|---|
-| `ResultsGrid` | `src/features/results/components/ResultsGrid.tsx` | Filterable grid of case study cards |
-| `FilterBar` | `src/features/results/components/FilterBar.tsx` | Tag/industry/spend filter controls |
-| `CaseStudyCard` | `src/features/results/components/CaseStudyCard.tsx` | Individual case study card with metric, tags, verified badge |
-| `VerifiedBadge` | `src/features/results/components/VerifiedBadge.tsx` | "Verified" badge with tooltip |
-| `VerificationTooltip` | `src/features/results/components/VerificationTooltip.tsx` | Tooltip explaining verification methodology |
-| `ResultModal` | `src/features/results/components/ResultModal.tsx` | Full case study detail modal |
-| `ROICalculator` | `src/features/results/components/ROICalculator.tsx` | Interactive ROI projection calculator |
-| `MediaBuyingCalculator` | `src/features/results/components/MediaBuyingCalculator.tsx` | Media spend efficiency calculator |
+## 3. Feature Components (`src/features/`)
 
-### Qualification Wizard Feature
-| Component | File | Purpose |
-|---|---|---|
-| `WizardContainer` | `src/features/wizard/components/WizardContainer.tsx` | Global modal overlay container |
-| `WizardStepRenderer` | `src/features/wizard/components/WizardStepRenderer.tsx` | Renders current step based on state |
-| `WelcomeStep` | `src/features/wizard/steps/WelcomeStep.tsx` | Initial welcome + website URL |
-| `RevenueStep` | `src/features/wizard/steps/RevenueStep.tsx` | Revenue qualification input |
-| `GoalsStep` | `src/features/wizard/steps/GoalsStep.tsx` | Goal selection (for qualified leads) |
-| `ContactStep` | `src/features/wizard/steps/ContactStep.tsx` | Name + email capture |
-| `QualifiedStep` | `src/features/wizard/steps/QualifiedStep.tsx` | Qualified lead confirmation |
-| `PartnerReferralStep` | `src/features/wizard/steps/PartnerReferralStep.tsx` | Partner network referral path |
+### Audit (`src/features/audit/`)
+- `AuditForm.tsx`: Input form for URL submission.
+- `AuditResults.tsx`: Card grid displaying SEO/Pixel data.
 
-### Apply Feature (Zustand Wizard)
-| Component | File | Purpose |
-|---|---|---|
-| `WizardLayout` | `src/features/apply/components/WizardLayout.tsx` | Apply wizard page layout |
-| `StepIndicator` | `src/features/apply/components/StepIndicator.tsx` | Visual step progress indicator |
-| `ReviewStep` | `src/features/apply/components/ReviewStep.tsx` | Application review before submit |
-| `SuccessStep` | `src/features/apply/components/SuccessStep.tsx` | Post-submission success screen |
+### Apply Wizard (`src/features/apply/`)
+- Multi-step form components for qualification flow.
+- Relies on `src/features/wizard/` logic engine.
 
-## SEO Components
-| Component | File | Purpose |
-|---|---|---|
-| `SEO` / `Head` | `src/components/seo/Head.tsx` | Dynamic `<head>` tags via React Helmet (title, description, OG, JSON-LD) |
+### Results Grid (`src/features/results/`)
+- `CaseStudyGrid.tsx`: Filterable grid of Markdown case studies.
 
-## Utility Components
-| Component | File | Purpose |
-|---|---|---|
-| `ErrorBoundary` | `src/components/ErrorBoundary.tsx` | React error boundary with branded fallback UI |
-| `CaseStudyGrid` | `src/components/CaseStudyGrid.tsx` | Standalone case study grid (used on Home) |
-| `AuditForm` | `src/components/AuditForm.tsx` | URL input form for audit page |
-| `AuditResults` | `src/components/AuditResults.tsx` | Detailed audit results display |
+## 4. Pages (`src/pages/`)
 
-## Legacy Components (Superseded)
-| Component | File | Status |
+| Page | Route | Description |
 |---|---|---|
-| `Footer` | `src/components/Footer.tsx` | Replaced by `layout/Footer.tsx` |
-| `Header.legacy` | `src/components/Header.legacy.tsx` | Replaced by `layout/Header.tsx` |
+| `Home.tsx` | `/` | Marketing LP + Audit Tool |
+| `Scale.tsx` | `/scale` | Services Overview |
+| `AuditPage.tsx` | `/audit` | Standalone Audit Page |
+| `Contact.tsx` | `/contact` | Contact Form + Map |
+| `BlogIndex.tsx` | `/blog` | Blog List |
+| `BlogPost.tsx` | `/blog/:slug` | Individual Post |
+| `Apply.tsx` | `/apply` | Qualification Wizard |

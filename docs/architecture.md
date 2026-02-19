@@ -1,172 +1,63 @@
-# RR Labs — Architecture Documentation
+# Architecture Documentation
 
-## 1. High-Level Architecture
+> **Project Type**: Monolith SPA + Serverless Backend
+> **Framework**: React 18 (Vite) + Vercel Functions + TypeScript
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                        VERCEL EDGE                          │
-│  ┌────────────┐  ┌────────────┐  ┌────────────────────────┐ │
-│  │ /api/audit  │  │ /api/contact│  │ /api/og (Edge Runtime)│ │
-│  │ URL Scraper │  │ Email+Sheets│  │ Dynamic OG Images     │ │
-│  └─────┬──────┘  └─────┬──────┘  └────────────────────────┘ │
-│        │               │                                     │
-│        │               ├──→ Gmail SMTP (Nodemailer)          │
-│        │               ├──→ Google Sheets (Apps Script)      │
-│        │               │                                     │
-└────────┼───────────────┼─────────────────────────────────────┘
-         │               │
-    ┌────┴───────────────┴─────────────────────────────┐
-    │              REACT SPA (Vite Build)               │
-    │                                                   │
-    │  ┌──────────┐  ┌──────────┐  ┌──────────────────┐│
-    │  │  Router   │  │  Layout  │  │  Feature Modules ││
-    │  │ (Lazy)    │  │ Header/  │  │ wizard / audit / ││
-    │  │          │  │ Footer   │  │ results / apply  ││
-    │  └──────────┘  └──────────┘  └──────────────────┘│
-    │                                                   │
-    │  ┌──────────┐  ┌──────────┐  ┌──────────────────┐│
-    │  │ Services  │  │  Hooks   │  │  Design System   ││
-    │  │ email/crm │  │ tracking │  │ Radix+Tailwind   ││
-    │  └──────────┘  └──────────┘  └──────────────────┘│
-    │                                                   │
-    │  ┌──────────────────────────────────────────────┐ │
-    │  │ State: WizardContext (useReducer+localStorage)│ │
-    │  │        WizardStore (Zustand, apply module)    │ │
-    │  └──────────────────────────────────────────────┘ │
-    └───────────────────────────────────────────────────┘
-```
+## Executive Summary
+This project is a high-performance marketing agency website ("Riffat Labs") functioning as a Single Page Application (SPA). It integrates server-side capabilities via Vercel Serverless Functions for critical operations like data scraping (Audit Tool), email dispatch (SMTP), and CRM logging (Google Sheets). The architecture prioritizes client-side interactivity (Framer Motion) while offloading sensitive/heavy tasks to the backend.
 
----
+## Technology Stack
 
-## 2. Routing Architecture
-
-| Route | Page Component | Lazy? | Purpose |
-|---|---|---|---|
-| `/` | `Home` | No (eagerly loaded) | Landing page with hero, audit scanner, calculators |
-| `/audit` | `AuditPage` | Yes | AI ad performance audit tool |
-| `/results` | `ResultsGrid` | Yes | Case study grid with filters |
-| `/apply` | `Apply` | Yes | Multi-step qualification wizard |
-| `/scale` | `Scale` | Yes | Services detail page |
-| `/services` | `Scale` | Yes | Alias to Scale |
-| `/blog` | `BlogIndex` | Yes | Blog listing page |
-| `/blog/:slug` | `BlogPost` | Yes | Individual blog post |
-| `/contact` | `Contact` | Yes | Lead generation contact form |
-| `/design-system` | `DesignSystem` | Yes | Internal design system reference |
-| `*` | `NotFound` | Yes | 404 page |
-
-The router uses `createBrowserRouter` with a `Root` component wrapping all routes in:
-- `HelmetProvider` (SEO)
-- `SpeedInsights` (Vercel performance)
-- `Toaster` (toast notifications)
-- `WizardContainer` (global wizard overlay)
-- `ErrorBoundary` (graceful error handling)
-- `Layout` (Header + Footer + `<Outlet>`)
-
----
-
-## 3. Serverless API Layer
-
-### `POST /api/contact`
-
-**Purpose:** Lead capture backend — receives form submissions and partial tracking data.
-
-**Flow:**
-1. Validates incoming payload (fullName, email, company, budget, services, message, + partial tracking fields)
-2. Creates Gmail SMTP transporter via Nodemailer using `GMAIL_USER` + `GMAIL_APP_PASSWORD`
-3. Sends notification email to owner with HTML-formatted lead details
-4. If full submission (not partial) and has email → sends branded auto-reply to the lead
-5. Logs submission to Google Sheets via `GOOGLE_SHEETS_URL` webhook (POST with JSON payload)
-
-**Partial Tracking:** The contact form uses `sendBeacon` on `visibilitychange` and `beforeunload` events. If a user interacts with any field but doesn't submit, a partial payload is sent with `partial: true`, `fieldsInteracted[]`, and `timeOnPage`.
-
-### `POST /api/audit`
-
-**Purpose:** URL scraping proxy for the AI audit tool.
-
-**Flow:**
-1. Accepts a URL in the request body
-2. Fetches the target URL using axios with a custom User-Agent
-3. Parses HTML with cheerio to extract `<title>` and `<meta description>`
-4. Returns raw HTML (first 500KB), meta data, and status to the client
-5. Client-side `auditService.ts` then performs mock analysis to generate a score
-
-### `GET /api/og`
-
-**Purpose:** Dynamic Open Graph image generation using Vercel Edge Runtime.
-
-**Flow:**
-1. Reads `?title=` and `?description=` query parameters
-2. Renders an `ImageResponse` (1200×630) with the RR Labs branded template
-3. Returns the image for social media previews
-
----
-
-## 4. State Management Architecture
-
-### Wizard State (React Context + useReducer)
-
-**Location:** `src/features/wizard/context/WizardContext.tsx`
-
-State machine with 6 steps: `WELCOME → REVENUE → PARTNER_REFERRAL | GOALS → CONTACT → COMPLETED`
-
-- **Branching logic:** Revenue below threshold → `PARTNER_REFERRAL` (partner network), above → `GOALS → CONTACT`
-- **Persistence:** State saved to `localStorage` via `saveState`/`loadState` helpers
-- **Side effects on completion:** Analytics tracking, email notification (mock), CRM sync (mock)
-
-### Apply Form State (Zustand)
-
-**Location:** `src/features/apply/stores/wizardStore.ts`
-
-Separate store for the apply/application wizard form with step management.
-
-### Contact Form State (Local Component State)
-
-**Location:** `src/pages/Contact.tsx`
-
-- Local `useState` for form data, submission status, field interactions
-- `useRef` for partial submission guard and time tracking
-- `sendBeacon` for abandoned form tracking
-
----
-
-## 5. Design System
-
-### Theming
-
-- **Strategy:** Tailwind `darkMode: "class"` with CSS custom properties
-- **Tokens:** HSL-based color tokens defined in `globals.css` (e.g., `--primary`, `--background`, `--foreground`)
-- **Toggle:** `ThemeToggle` component in header switches classes
-- **Fonts:** Inter Tight (sans), JetBrains Mono (code)
-
-### Component Library
-
-Built on **Radix UI** primitives with **shadcn/ui** conventions:
-- `Button`, `Input`, `Slider`, `Tooltip`, `Toast`, `Dialog/Sheet`
-- Custom components: `NebulaBackground`, `AnimatedBackground`, `InteractiveBg`, `CurrencyInput`
-
-### Animation
-
-- **Framer Motion:** Page-level transitions, hero stagger animations, scroll-triggered effects
-- **CSS:** Custom `@keyframes` in `animations.css` and `globals.css`
-
----
-
-## 6. External Integrations
-
-| Integration | Type | Purpose |
+| Layer | Technology | Role |
 |---|---|---|
-| Gmail SMTP | Server-side (Nodemailer) | Send lead notification + auto-reply emails |
-| Google Sheets | Server-side (Apps Script webhook) | CRM logging for all form submissions |
-| Vercel Analytics | Client-side SDK | Page view + performance tracking |
-| Vercel Speed Insights | Client-side SDK | Core Web Vitals monitoring |
-| GTM dataLayer | Client-side (custom) | Event tracking (wizard steps, audit, calculator) |
+| **Frontend** | React 18, TypeScript | UI Library & Logic |
+| **Build Tool** | Vite 5 | Development Server & Bundling |
+| **Styling** | Tailwind CSS v3 | Utility-first Styling |
+| **Animation** | Framer Motion 12 | Interaction Design |
+| **State Management** | Zustand | Global State (Wizard/Apply Flow) |
+| **Backend** | Vercel Serverless (Node.js) | API Endpoints (`/api/*`) |
+| **Email** | Nodemailer | SMTP Transport (Gmail) |
+| **Content** | Markdown (frontmatter) | Blog & Case Studies CMS |
+| **Testing** | Playwright | End-to-End Testing |
 
----
+## Architecture Pattern
 
-## 7. Security
+### 1. Hybrid SPA with Serverless Backend
+The application is served as a static SPA (`dist/index.html`) but relies on dynamic API routes for specific features.
+- **Client-Side Routing**: Handled by `react-router-dom`.
+- **Server-Side API**: Handled by Vercel (`api/*.ts`).
+- **Data Flow**:
+    1. Client (React) initiates request (e.g., Audit or Contact Form).
+    2. Request hits Vercel Function (`/api/contact`).
+    3. Function processes logic (e.g., sends email, scrapes URL).
+    4. Function returns JSON response to Client.
+    5. Client updates UI state (Zustand or Local State).
 
-- **Headers:** HSTS, X-Frame-Options DENY, X-XSS-Protection, nosniff, strict referrer
-- **CORS:** Audit API sets dynamic origin; contact API allows all origins
-- **Secrets:** Gmail password and Sheets URL stored as Vercel environment variables (never in code)
-- **Input Limits:** Audit API limits response to 500KB, 8s timeout, 5MB max content
-- **SPA Fallback:** All non-API routes rewrite to `index.html` via `vercel.json`
+### 3. Feature-Based Organization
+Code is organized by domain in `src/features/` rather than purely technical layers.
+- **Wizard Engine**: Reusable logic in `src/features/wizard`.
+- **Apply Flow**: Specific implementation in `src/features/apply`.
+- **Audit Tool**: Scraper logic in `src/features/audit`.
+- **Newsletter**: Subscription logic in `api/subscribe.ts` and `Footer.tsx`.
+
+## Data Architecture
+
+### State Management
+- **Zustand**: Used for complex multi-step forms (e.g., `WizardState`).
+- **React Query / Fetch**: Used for API interactions (Audit, Contact).
+- **URL State**: Used for deep-linking (e.g., blog posts).
+
+### Persisted Data
+- **CRM**: Google Sheets (via Apps Script Webhook).
+- **Email**: Gmail (SMTP via Nodemailer).
+- **FileSystem**: Markdown files store static content (`src/content`).
+
+## Integration Architecture
+- **Nodemailer**: SMTP usage for transactional emails.
+- **Google Sheets**: "Poor man's CRM" via `contact.ts`.
+- **Cheerio/Axios**: Server-side scraping for Audit tool.
+
+## Security
+- **Environment Variables**: secrets (SMTP pass, Sheet URL) stored in Vercel Env Vars.
+- **Headers**: Production headers configured in `vercel.json` (HSTS, XSS Protection).
+- **CORS**: Configured in API functions to allow specific origins.
