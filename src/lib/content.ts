@@ -31,7 +31,7 @@ export async function getAllCaseStudies(): Promise<CaseStudy[]> {
     const caseStudies: CaseStudy[] = [];
 
     for (const path in modules) {
-        const mod = modules[path] as any;
+        const mod = modules[path] as { frontmatter: Record<string, unknown>, content: string };
         const parsedData = CaseStudySchema.safeParse(mod.frontmatter);
 
         if (!parsedData.success) {

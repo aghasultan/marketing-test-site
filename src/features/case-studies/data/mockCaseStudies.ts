@@ -2,10 +2,11 @@ import { CaseStudy } from '../types';
 // Dynamically import all case studies from the content directory
 const mdImports = import.meta.glob('/src/content/case-studies/*.md', { eager: true });
 
-export const caseStudies: CaseStudy[] = Object.values(mdImports).map((rawMod: any) => {
+export const caseStudies: CaseStudy[] = Object.values(mdImports).map((rawMod: unknown) => {
+    const mod = rawMod as { frontmatter: Record<string, unknown>, content: string };
     return {
-        ...rawMod.frontmatter,
-        markdownContent: rawMod.content
+        ...mod.frontmatter,
+        markdownContent: mod.content
     } as CaseStudy;
 });
 
