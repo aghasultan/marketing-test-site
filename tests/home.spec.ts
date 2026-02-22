@@ -13,8 +13,8 @@ test.describe('Home Page Visual & Accessibility', () => {
         await expect(heroTitle).toBeVisible();
         await expect(heroTitle).toHaveText(/Audit your Agency/i);
 
-        // Check for Audit Scanner presence (Analyze Now button)
-        const analyzeBtn = page.getByRole('button', { name: /Analyze Now/i });
+        // Check for Audit Scanner presence (Scan Now button)
+        const analyzeBtn = page.getByRole('button', { name: /Scan Now/i });
         await expect(analyzeBtn).toBeVisible();
     });
 
@@ -36,7 +36,7 @@ test.describe('Home Page Visual & Accessibility', () => {
     test('Audit Scanner visibility', async ({ page }) => {
         const scannerInput = page.getByPlaceholder(/Enter your website URL/i);
         await expect(scannerInput).toBeVisible();
-        const analyzeBtn = page.getByRole('button', { name: /Analyze Now/i });
+        const analyzeBtn = page.getByRole('button', { name: /Scan Now/i });
         await expect(analyzeBtn).toBeVisible();
     });
 

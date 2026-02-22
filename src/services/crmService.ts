@@ -1,10 +1,9 @@
-
-import { WizardData } from '@/features/wizard/context/WizardContext';
+import { WizardData } from '@/features/apply-wizard/types';
 
 export interface CrmLead {
     email: string; // Primary Key
     firstName?: string;
-    lastName?: string; // We only have 'name' in wizard, will fallback or split
+    lastName?: string;
     website?: string;
     monthlyRevenue?: number;
     goals?: string; // Semicolon separated
@@ -14,6 +13,8 @@ export interface CrmLead {
     customFields: {
         revenue_range?: string;
         outcome?: string;
+        consentGiven?: boolean;
+        consentTimestamp?: string;
     }
 }
 
@@ -43,30 +44,27 @@ export const crmService = new MockCrmService();
 
 // Helper to map Wizard Data to CRM Data
 export const mapWizardToCrm = (data: WizardData & { outcome?: string }): CrmLead => {
-    // Simple name splitting logic
-    const nameParts = (data.name || '').trim().split(' ');
-    const firstName = nameParts[0] || 'Unknown';
-    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
-
     return {
         email: data.email || 'no-email@example.com',
-        firstName,
-        lastName,
-        website: data.website,
-        monthlyRevenue: data.revenue,
-        goals: data.goals?.join('; '),
+        firstName: data.firstName || 'Unknown',
+        lastName: data.lastName || '',
+        website: data.companyName || '',
+        monthlyRevenue: data.monthlyRevenue,
+        goals: '',
         status: 'New', // Default, maybe update based on outcome
         source: 'Website Wizard',
         createdAt: new Date().toISOString(),
         customFields: {
-            revenue_range: data.revenueRange,
-            outcome: data.outcome
+            revenue_range: data.monthlyRevenue ? `$${data.monthlyRevenue}` : '',
+            outcome: data.outcome,
+            consentGiven: data.consentGiven,
+            consentTimestamp: data.consentGiven ? new Date().toISOString() : undefined,
         }
     };
 };
 
 // Business Logic Wrapper
-export const syncWizardLead = async (wizardData: WizardData & { outcome?: string }) => {
+export const syncWizardLead = async (wizardData: WizardData & { outcome?: string; consentGiven?: boolean }) => {
     const lead = mapWizardToCrm(wizardData);
 
     // Enrich status based on outcome

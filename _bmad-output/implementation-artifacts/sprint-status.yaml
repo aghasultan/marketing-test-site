@@ -1,4 +1,4 @@
-# generated: 2026-02-02
+# generated: 2026-02-22
 # project: marketing-test-site
 # project_key: NOKEY
 # tracking_system: file-system
@@ -12,8 +12,8 @@
 #   - done: All stories in epic completed
 #
 # Epic Status Transitions:
-#   - backlog -> in-progress: Automatically when first story is created (via create-story)
-#   - in-progress -> done: Manually when all stories reach 'done' status
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
 #
 # Story Status:
 #   - backlog: Story only exists in epic file
@@ -33,7 +33,7 @@
 # - SM typically creates next story after previous one is 'done' to incorporate learnings
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
-generated: 2026-02-02
+generated: 2026-02-22
 project: marketing-test-site
 project_key: NOKEY
 tracking_system: file-system
@@ -41,36 +41,30 @@ story_location: _bmad-output/implementation-artifacts
 
 development_status:
   epic-1: done
-  1-1-project-initialization-and-architecture-setup: done
-  1-2-design-system-and-glassmorphism-implementation: done
-  1-3-core-layout-and-navigation: done
-  1-4-seo-and-performance-foundations: done
+  1-1-audit-hero-ui-states: done
+  1-2-serverless-proxy-api: done
+  1-3-client-side-analysis-presentation: done
+  1-4-results-caching: done
   epic-1-retrospective: optional
 
   epic-2: done
-  2-1-audit-api-proxy-service: done
-  2-2-audit-analysis-logic-and-caching: done
-  2-3-audit-hero-component-and-input: done
-  2-4-audit-results-visualization: done
+  2-1-responsive-bento-grid-filtering: done
+  2-2-visual-verification-badges: done
+  2-3-schema-verification-interactive-tooltip: done
+  2-4-contextual-calculator-navigation: done
   epic-2-retrospective: optional
 
   epic-3: done
-  3-1-markown-content-system-and-zod-schema: done
-  3-2-case-study-bento-grid-ui: done
-  3-3-verified-badge-and-schema-tooltip: done
-  3-4-json-ld-schema-generation-injection: done
+  3-1-multi-step-wizard-state-machine: done
+  3-2-qualification-branching-logic: done
+  3-3-soft-landing-experience: done
+  3-4-wizard-ui-accessibility: done
   epic-3-retrospective: optional
 
-  epic-4: done
-  4-1-wizard-state-machine-and-persistence: done
-  4-2-step-logic-and-branching-system: done
-  4-3-wizard-ui-and-transitions: done
-  4-4-submission-handlers-and-pdf-generation: done
+  epic-4: backlog
+  4-1-markdown-content-publishing-pipeline: backlog
+  4-2-automated-schema-generation-claimreview: backlog
+  4-3-build-time-schema-validation: backlog
+  4-4-dynamic-seo-metadata-prerendering: backlog
+  4-5-asset-optimization-lazy-loading: backlog
   epic-4-retrospective: optional
-
-  epic-5: done
-  5-1-performance-optimization-lcp-cls: done
-  5-2-accessibility-and-seo-finalization: done
-  5-3-error-handling-and-fallbacks: done
-  5-4-deployment-pipeline-and-documentation: done
-  epic-5-retrospective: optional

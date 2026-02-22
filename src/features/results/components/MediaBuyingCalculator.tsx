@@ -1,13 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { trackEvent } from '@/lib/tracking';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 import { Calculator, ArrowRight } from 'lucide-react';
-import { useWizard } from '@/features/wizard/context/WizardContext';
+import { getBenchmarkForIndustry } from '@/features/shared/benchmarks';
 
 export const MediaBuyingCalculator = () => {
-    const { openWizard } = useWizard();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+
     // Inputs (State)
     const [spend, setSpend] = useState([10000]);
     const [cpm, setCpm] = useState([25]);      // $25 CPM
@@ -15,6 +18,28 @@ export const MediaBuyingCalculator = () => {
     const [cv, setCv] = useState([2.0]);       // 2.0% Conversion Rate
     const [aov, setAov] = useState([150]);     // $150 AOV
 
+    // Listen for Case Study Presets
+    useEffect(() => {
+        const preset = searchParams.get('preset');
+        if (!preset) return;
+
+        const presetNormalized = preset.toLowerCase();
+        const benchmark = getBenchmarkForIndustry(presetNormalized);
+
+        if (benchmark) {
+            setCpm([benchmark.cpm]);
+            setCtr([benchmark.ctr]);
+            setCv([benchmark.cv]);
+            setAov([benchmark.aov]);
+        }
+
+        // Handle scroll behavior since component is lazy loaded
+        if (window.location.hash === '#roi-calculator') {
+            setTimeout(() => {
+                document.getElementById('roi-calculator')?.scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+    }, [searchParams]);
     // Derived Metrics
     // Impressions = Spend / (CPM / 1000)
     const impressions = spend[0] / (cpm[0] / 1000);
@@ -210,7 +235,7 @@ export const MediaBuyingCalculator = () => {
                 <div className="mt-8">
                     <Button
                         className="w-full h-12 text-lg font-bold bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all"
-                        onClick={openWizard}
+                        onClick={() => navigate('/apply')}
                     >
                         Book Strategy Call <ArrowRight className="w-5 h-5 ml-2" />
                     </Button>

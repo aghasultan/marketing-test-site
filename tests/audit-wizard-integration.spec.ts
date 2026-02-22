@@ -1,4 +1,3 @@
-
 import { test, expect } from '@playwright/test';
 
 test.describe('Audit: Wizard Integration', () => {
@@ -18,26 +17,10 @@ test.describe('Audit: Wizard Integration', () => {
         // 3. Click it
         await bookButton.click();
 
-        // 4. Expect Wizard Trigger
-        // The wizard renders in a portal/overlay.
-        // It should have "Let's Get Started" or similar text from Welcome Step.
-        // Or check for the container class/id.
-        // Equal to: page.locator('[data-testid="wizard-container"]');
-        // If data-testid is not present, look for known text.
-        // Welcome step text: "Qualify Your Brand" or "Welcome"
+        // 4. Expect navigation to the Apply Wizard page
+        await expect(page).toHaveURL(/.*\/apply/);
 
-        // Let's assume there is a dialog or we look for text.
-        // Based on viewed files, WelcomeStep.tsx usually has "Qualify your brand for partnership" or similar.
-        // And WizardContainer.tsx usually wraps it.
-
-        // Let's rely on the text "Qualify your brand" (standard template)
-        // or the Close button I added "✕"
-
-        // Check for the heading text "Qualify for Exponential Growth"
-        await expect(page.getByRole('heading', { name: 'Qualify for Exponential Growth' })).toBeVisible({ timeout: 5000 });
-
-        // 5. Close it
-        await page.getByRole('button', { name: 'Close Wizard' }).click();
-        await expect(page.getByRole('heading', { name: 'Qualify for Exponential Growth' })).not.toBeVisible();
+        // 5. Verify the Wizard is loaded by checking for step 1 text
+        await expect(page.getByText("Let's start with the basics")).toBeVisible({ timeout: 5000 });
     });
 });

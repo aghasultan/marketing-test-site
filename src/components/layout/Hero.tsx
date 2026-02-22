@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AuditScanner } from '@/features/audit/components/AuditScanner';
+import { AuditHero } from '@/features/audit-tool';
 
 export const Hero = () => {
     const containerVariants = {
@@ -70,7 +70,7 @@ export const Hero = () => {
 
                 {/* Audit Scanner Feature */}
                 <motion.div variants={itemVariants} className="w-full mt-12">
-                    <AuditScanner />
+                    <AuditHero />
                 </motion.div>
 
                 {/* Trust Signals */}

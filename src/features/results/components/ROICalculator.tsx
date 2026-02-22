@@ -1,10 +1,11 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { trackEvent } from '@/lib/tracking';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Calculator } from 'lucide-react';
+import { Calculator, ArrowRight, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useWizard } from '@/features/wizard/context/WizardContext';
 
 interface ROICalculatorProps {
     roas: number;
@@ -12,7 +13,7 @@ interface ROICalculatorProps {
 }
 
 export const ROICalculator = ({ roas, onBack }: ROICalculatorProps) => {
-    const { openWizard } = useWizard();
+    const navigate = useNavigate();
     const [spend, setSpend] = useState([5000]);
 
     const projectedRevenue = spend[0] * roas;
@@ -63,10 +64,14 @@ export const ROICalculator = ({ roas, onBack }: ROICalculatorProps) => {
             </div>
 
             <Button
-                className="w-full mt-6 bg-primary font-bold hover:bg-primary/90"
-                onClick={openWizard}
+                className="w-full h-12 text-lg font-bold bg-emerald-500 hover:bg-emerald-600 text-white shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transition-all"
+                onClick={() => {
+                    trackEvent('Book Strategy Call Clicked', { location: 'ROI Calculator' });
+                    navigate('/apply');
+                }}
             >
                 Book Strategy Call
+                <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
         </motion.div>
     );

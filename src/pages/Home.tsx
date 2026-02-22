@@ -4,7 +4,7 @@ import { Hero } from '@/components/layout/Hero';
 import { SEO } from '@/components/seo/Head';
 
 // Lazy load heavy sections below the fold
-const CaseStudyGrid = React.lazy(() => import('../components/CaseStudyGrid').then(module => ({ default: module.CaseStudyGrid })));
+const ResultsSection = React.lazy(() => import('@/features/case-studies/components/ResultsSection').then(module => ({ default: module.ResultsSection })));
 const MediaBuyingCalculator = React.lazy(() => import('@/features/results/components/MediaBuyingCalculator').then(module => ({ default: module.MediaBuyingCalculator })));
 
 // Loading Skeleton
@@ -170,7 +170,7 @@ export const Home = () => {
 
       {/* Case Studies - Delayed */}
       <Suspense fallback={<SectionSkeleton />}>
-        <CaseStudyGrid />
+        <ResultsSection />
       </Suspense>
 
       {/* ROI Calculator - Delayed */}

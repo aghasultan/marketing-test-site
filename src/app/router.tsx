@@ -23,7 +23,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from "@/components/ui/toaster";
 
 // useState, useEffect removed
-import { WizardContainer } from '@/features/wizard/components/WizardContainer';
+
 
 function Root() {
     usePageTracking();
@@ -31,7 +31,7 @@ function Root() {
         <HelmetProvider>
             <SpeedInsights />
             <Toaster />
-            <WizardContainer />
+
             <ErrorBoundary>
                 <Layout>
                     {/* Suspense fallback can be a spinner or skeleton, using simple div for now */}
