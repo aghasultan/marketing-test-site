@@ -46,15 +46,15 @@ export const CaseStudyCard = ({ study, variant = 'standard', className }: CaseSt
                     <div className="flex justify-between items-start mb-6 relative z-10">
                         <div>
                             <span className="text-xs font-mono text-primary mb-2 block uppercase tracking-wider">
-                                {study.industry} • {study.service}
+                                {study.industry} • {study.adSpendRange}
                             </span>
                             <h3 className={cn("font-bold text-zinc-900 dark:text-white", variant === 'featured' ? "text-3xl md:text-4xl" : "text-xl")}>
                                 {study.title}
                             </h3>
-                            <p className="text-zinc-500 dark:text-zinc-400 mt-1">{study.client}</p>
+                            <p className="text-zinc-500 dark:text-zinc-400 mt-1">{study.clientName}</p>
                         </div>
 
-                        <VerifiedBadge claim={study.claimReview} date={study.date} />
+                        <VerifiedBadge claim={study.claimReview} />
                     </div>
 
                     <div className={cn("grid gap-4 mt-auto relative z-10", variant === 'featured' ? "grid-cols-3" : "grid-cols-2")}>

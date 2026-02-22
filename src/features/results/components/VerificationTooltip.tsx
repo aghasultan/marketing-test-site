@@ -11,11 +11,10 @@ import { ShieldCheck } from 'lucide-react';
 
 interface VerificationTooltipProps {
     claim: CaseStudy['claimReview'];
-    date: string;
     children: React.ReactNode;
 }
 
-export const VerificationTooltip = ({ claim, date, children }: VerificationTooltipProps) => {
+export const VerificationTooltip = ({ claim, children }: VerificationTooltipProps) => {
     return (
         <TooltipProvider delayDuration={200}>
             <Tooltip>
@@ -40,7 +39,7 @@ export const VerificationTooltip = ({ claim, date, children }: VerificationToolt
                             <span className="text-white truncate max-w-[120px]">RR Labs</span>
 
                             <span className="text-zinc-500 text-[10px] uppercase tracking-wider">Date</span>
-                            <span className="text-white">{date}</span>
+                            <span className="text-white">Live</span>
                         </div>
                     </div>
                 </TooltipContent>

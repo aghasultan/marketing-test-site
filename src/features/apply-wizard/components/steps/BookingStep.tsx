@@ -10,17 +10,6 @@ export const BookingStep: React.FC = () => {
     // Logic to send lead data via Webhook (FR12 & Setup for hand-off CRM integration)
     const handleBookNow = async () => {
         try {
-            // Webhook payload mimicking what will be sent to the CRM
-            const payload = {
-                lead: state.data,
-                qualified: true,
-                annualizedRevenue: (state.data.monthlyRevenue || 0) * 12,
-                source: "Marketing App Qualification Engine",
-                timestamp: new Date().toISOString()
-            };
-
-            console.log('Dispatching qualified lead to CRM webhook:', payload);
-
             // Note: Replace with actual booking calendar redirect or embedding.
             const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || "https://calendly.com/riffat-labs";
             window.location.href = calendlyUrl;

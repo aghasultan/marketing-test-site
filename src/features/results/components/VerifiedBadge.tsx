@@ -6,10 +6,9 @@ import { CaseStudy } from '@/lib/content';
 
 interface VerifiedBadgeProps {
     claim: CaseStudy['claimReview'];
-    date: string;
 }
 
-export const VerifiedBadge = ({ claim, date }: VerifiedBadgeProps) => {
+export const VerifiedBadge = ({ claim }: VerifiedBadgeProps) => {
     const { verdict } = claim;
 
     if (verdict === 'Pending') return null;
@@ -24,7 +23,7 @@ export const VerifiedBadge = ({ claim, date }: VerifiedBadgeProps) => {
     const Icon = isVerified ? ShieldCheck : CheckCircle2;
 
     return (
-        <VerificationTooltip claim={claim} date={date}>
+        <VerificationTooltip claim={claim}>
             <div className={cn(
                 "px-3 py-1.5 rounded-full text-xs font-medium flex items-center border transition-colors cursor-help relative whitespace-nowrap shrink-0",
                 containerClass
