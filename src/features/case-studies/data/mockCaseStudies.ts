@@ -1,16 +1,12 @@
 import { CaseStudy } from '../types';
-import matter from 'gray-matter';
-
 // Dynamically import all case studies from the content directory
-const mdImports = import.meta.glob('/src/content/case-studies/*.md', { query: '?raw', eager: true });
+const mdImports = import.meta.glob('/src/content/case-studies/*.md', { eager: true });
 
-export const caseStudies: CaseStudy[] = Object.values(mdImports).map((rawMod: unknown) => {
-    const rawString = (rawMod as { default: string }).default;
-    const parsed = matter(rawString);
+export const caseStudies: CaseStudy[] = Object.values(mdImports).map((rawMod: any) => {
     return {
-        ...parsed.data,
-        markdownContent: parsed.content
-    } as unknown as CaseStudy;
+        ...rawMod.frontmatter,
+        markdownContent: rawMod.content
+    } as CaseStudy;
 });
 
 console.log("Loaded case studies length:", caseStudies.length);

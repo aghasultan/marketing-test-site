@@ -1,5 +1,4 @@
 
-import matter from 'gray-matter';
 import { z } from 'zod';
 
 export const MetricSchema = z.object({
@@ -27,15 +26,13 @@ export type CaseStudy = z.infer<typeof CaseStudySchema> & {
 };
 
 export async function getAllCaseStudies(): Promise<CaseStudy[]> {
-    const modules = import.meta.glob('/src/content/case-studies/*.md', { as: 'raw', eager: true });
+    const modules = import.meta.glob('/src/content/case-studies/*.md', { eager: true });
 
     const caseStudies: CaseStudy[] = [];
 
     for (const path in modules) {
-        const rawContent = modules[path] as string;
-        const { data, content } = matter(rawContent);
-
-        const parsedData = CaseStudySchema.safeParse(data);
+        const mod = modules[path] as any;
+        const parsedData = CaseStudySchema.safeParse(mod.frontmatter);
 
         if (!parsedData.success) {
             console.error(`Validation failed for ${path}:`, parsedData.error);
@@ -47,7 +44,7 @@ export async function getAllCaseStudies(): Promise<CaseStudy[]> {
         caseStudies.push({
             ...parsedData.data,
             slug,
-            content,
+            content: mod.content,
         });
     }
 
