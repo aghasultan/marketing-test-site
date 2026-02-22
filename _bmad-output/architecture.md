@@ -44,11 +44,11 @@ Data access is decoupled from UI components via service modules.
     *   Or returned directly to the component for local rendering.
 5.  **UI Update:** React re-renders based on the new state.
 
-### Content Discovery Flow
-*   **Source:** Markdown files in `src/content/blog/*.md` with YAML frontmatter.
-*   **Ingestion:** `vite.glob` imports files at build/runtime.
-*   **Processing:** parsed by `gray-matter`, sorted by date in `useBlog`.
-*   **Syndication:** `scripts/generate-rss.ts` runs at build time to output `public/rss.xml`.
+### Content Discovery & Verification Flow
+*   **Source:** Markdown files in `src/content/case-studies/*.md` specifying highly-controlled YAML frontmatter.
+*   **Ingestion:** Custom Rollup/Vite plugin in `vite.config.ts` intercepts and directly executes `gray-matter` at build time to transpile Markdown payload efficiently over `import.meta.glob`.
+*   **Validation:** A strict Zod-based script (`scripts/validate-schema.ts`) runs at prebuild (`npm run prebuild`) verifying that the Markdown frontmatter is fully compliant with Google SEO ClaimReview Rich Snippet criteria. It automatically breaks the CI/CD pipeline if fields are missed.
+*   **Verification Render:** Within the `ResultsGrid`, an automatic matching filter injects `SeoMeta` which formats and outputs a fully structured `<script type="application/ld+json">` `ClaimReview` schema.
 
 ## Observability & Analytics
 *   **Layer:** `src/lib/tracking.ts` acts as the single abstraction.
@@ -57,7 +57,8 @@ Data access is decoupled from UI components via service modules.
 *   **Taxonomy:** Typed events (e.g., `wizard_step_view`) ensure consistency.
 
 ## Performance Strategy
-*   **Core Web Vitals:** targeted 100/100.
+*   **Core Web Vitals:** targeted 100/100 (sub-0.8s LCP).
+*   **Code Splitting:** Configured chunk reduction using `manualChunks` in `vite.config.ts`, splitting `vendor`, `react`, `ui`, and `markdown` dependencies for rapid concurrent downloads.
 *   **Rendering:** `content-visibility: auto` used to skip off-screen rendering.
 *   **Layout Stability:** All images have explicit `width`/`height` to prevent CLS.
 *   **Lazy Loading:** Strict policy for all non-hero assets.

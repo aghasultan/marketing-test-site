@@ -26,7 +26,7 @@ Built with Radix UI + Tailwind. Atomic blocks.
 *   **AuditForm**: Input form for the URL audit feature.
 *   **AuditResults**: Display component for showing audit scores and details.
 *   **CaseStudyGrid**: Grid layout for displaying case studies/testimonials.
-*   **SEO**: Head management component (React Helmet wrapper). Handles titles and meta tags.
+*   **SeoMeta**: Head management component (React Helmet wrapper). Dynamically generates and handles OpenGraph metadata, page titles, and `ClaimReview` JSON-LD rendering contextually.
 
 ### Utilities
 *   **ErrorBoundary**: React Error Boundary for catching render runtime errors.
@@ -50,4 +50,5 @@ Built with Radix UI + Tailwind. Atomic blocks.
 ## Pages (`src/pages/`)
 *   **Home**: Landing page. Composes `Hero`, `AuditScanner`, `MediaBuyingCalculator`.
 *   **Scale**: "Scale" offering page. Composes Hero-like sections and CTA.
-*   **Results**: Detailed report view.
+*   **Results**: Detailed report view displaying aggregate case study intelligence.
+*   **CaseStudy**: Dynamic page route `/case-studies/:slug` that leverages lazy-loading and strictly parses markdown components into fully materialized UI components via the new Content Discovery engine.

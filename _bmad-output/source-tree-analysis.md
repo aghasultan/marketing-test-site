@@ -11,9 +11,10 @@
 │   ├── components/          # Shared React Components
 │   │   ├── layout/          # Global layout structure (Header, Footer, Hero)
 │   │   ├── seo/             # SEO & Meta tag management
-│   │   ├── shared/          # Generic shared components (icons, etc.)
+│   │   ├── shared/          # Generic shared components (SeoMeta)
 │   │   └── ui/              # Design System primitives (Buttons, Cards, Forms)
 │   ├── content/             # Markdown/JSON content files
+│   │   └── case-studies/    # Zod-verified, generated SEO Markdown profiles
 │   ├── data/                # Static data definitions
 │   ├── features/            # Feature-Module Architecture
 │   │   ├── apply/           # 'Apply' Feature (Forms, Logic)
@@ -28,19 +29,20 @@
 │   ├── App.tsx              # Main Application Entry Component
 │   ├── main.tsx             # DOM Entry Point
 │   └── i18n.ts              # Localization configuration
+├── scripts/                 # Execution hooks (validate-schema.ts, generate-rss)
 ├── tests/                   # E2E Tests (Playwright)
 ├── package.json             # Dependencies and Scripts
-├── vite.config.ts           # Build Configuration
+├── vite.config.ts           # Build Configuration (incl custom roll-up Markdown engines)
 └── tailwind.config.js       # Styling Configuration
 ```
 
 ## Key Modules Analysis
 
 ### 1. `src/features/` (Domain Logic)
-This folder implements the "Feature-based" architecture. Each subdirectory (`apply`, `audit`, `results`) encapsulates:
+This folder implements the "Feature-based" architecture. Each subdirectory (`apply`, `audit`, `results`, `case-studies`) encapsulates:
 - Components specific to that feature
 - Hooks and state management for that feature
-- Types and utilities isolated to that domain
+- Types, data fetching arrays, and markdown schemas isolated to that domain
 
 ### 2. `src/components/ui/` (Design System)
 Contains atomic components (Button, Input, Slider, Card) built with **Radix UI** primitives and styled with **Tailwind CSS**. This ensures consistency and accessibility across the application.

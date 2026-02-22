@@ -1,10 +1,10 @@
 {
     "workflow_version": "1.2.0",
     "timestamps": {
-        "started": "2026-01-31T17:20:00Z",
-        "last_updated": "2026-01-31T17:25:00Z"
+        "started": "2026-02-22T18:50:00+05:00",
+        "last_updated": "2026-02-22T18:50:00+05:00"
     },
-    "mode": "initial_scan",
+    "mode": "full_rescan",
     "scan_level": "exhaustive",
     "project_root": "/Users/sultan/Desktop/marketing-test-site",
     "output_folder": "/Users/sultan/Desktop/marketing-test-site/_bmad-output",
@@ -55,7 +55,8 @@
     "current_step": "complete",
     "findings": {
         "project_classification": "Monolith Web Application (React/Vite)",
-        "technology_stack": "React 18, TypeScript, Vite, Tailwind CSS, Zustand, React Router"
+        "technology_stack": "React 18, TypeScript, Vite, Tailwind CSS, Zustand, React Router, Zod, Gray-Matter",
+        "recent_discoveries": "Full Markdown pipeline integration, Zod build-time validation scripts, React Helmet SeoMeta rendering, auto-generated ClaimReview schema injection, code-split manualChunks config"
     },
     "outputs_generated": [
         "project-scan-report.json",
