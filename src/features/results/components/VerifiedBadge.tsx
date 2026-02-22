@@ -9,6 +9,8 @@ interface VerifiedBadgeProps {
 }
 
 export const VerifiedBadge = ({ claim }: VerifiedBadgeProps) => {
+    if (!claim || !claim.verdict) return null;
+
     const { verdict } = claim;
 
     if (verdict === 'Pending') return null;
