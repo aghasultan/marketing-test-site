@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useScroll, useMotionValueEvent } from "framer-motion";
@@ -36,13 +36,28 @@ export function Header() {
                 {/* Desktop Nav */}
                 <div className="flex max-md:hidden items-center gap-8" data-testid="desktop-nav">
                     {NAV_LINKS.map((link) => (
-                        <Link
+                        <NavLink
                             key={link.href}
                             to={link.href}
-                            className="text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors font-medium text-sm"
+                            className={({ isActive }) => cn(
+                                "relative text-sm font-medium transition-colors hover:text-zinc-900 dark:hover:text-white pb-1 group",
+                                isActive
+                                    ? "text-zinc-900 dark:text-white"
+                                    : "text-zinc-600 dark:text-zinc-400"
+                            )}
                         >
-                            {link.label}
-                        </Link>
+                            {({ isActive }) => (
+                                <>
+                                    {link.label}
+                                    <span
+                                        className={cn(
+                                            "absolute bottom-0 left-0 w-full h-[2px] bg-emerald-500 rounded-full transition-transform duration-300 origin-left",
+                                            isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                                        )}
+                                    />
+                                </>
+                            )}
+                        </NavLink>
                     ))}
 
                     <ThemeToggle />
