@@ -195,3 +195,9 @@ functions/node_modules/
 *.tar
 *.tar.gz
 vendor/
+
+############################
+# BMAD Framework Data
+############################
+_bmad/
+_bmad-output/
