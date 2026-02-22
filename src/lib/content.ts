@@ -5,20 +5,18 @@ import { z } from 'zod';
 export const MetricSchema = z.object({
     label: z.string(),
     value: z.string(),
-    change: z.string(),
+    change: z.string().optional(),
 });
 
 export const CaseStudySchema = z.object({
+    id: z.string(),
     title: z.string(),
-    client: z.string(),
+    clientName: z.string(),
     industry: z.string(),
-    service: z.string(),
-    date: z.string(),
-    author: z.string(),
-    claimReview: z.object({
-        verdict: z.enum(['Verified', 'Trusted', 'Pending']),
-        rating: z.number().min(1).max(5),
-    }),
+    adSpendRange: z.string().optional(),
+    excerpt: z.string(),
+    isVerified: z.boolean(),
+    claimReview: z.any().optional(),
     metrics: z.array(MetricSchema),
     tags: z.array(z.string()).optional(),
 });

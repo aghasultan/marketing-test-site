@@ -35,9 +35,11 @@ export const CaseStudyCard: React.FC<CaseStudyCardProps> = ({ study }) => {
                     </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2 leading-tight">
-                    {study.title}
-                </h3>
+                <Link to={`/case-studies/${study.slug}`} className="hover:text-blue-400 focus:outline-none transition-colors">
+                    <h3 className="text-xl font-bold text-white mb-2 leading-tight">
+                        {study.title}
+                    </h3>
+                </Link>
 
                 <p className="text-sm text-zinc-400 mb-6 flex-1 line-clamp-3">
                     {study.excerpt}

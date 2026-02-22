@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "npx tsx scripts/validate-schema.ts",
     "build": "npm run build:rss && npm run build:sitemap && tsc && vite build",
     "build:rss": "npx tsx scripts/generate-rss.ts",
     "build:sitemap": "npx tsx scripts/generate-sitemap.ts",

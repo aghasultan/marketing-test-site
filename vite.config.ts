@@ -1,9 +1,27 @@
-import { defineConfig } from 'vite';
+import { defineConfig, Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import matter from 'gray-matter';
+
+function markdownPlugin(): Plugin {
+  return {
+    name: 'markdown-plugin',
+    enforce: 'pre',
+    transform(code, id) {
+      const cleanId = id.split('?')[0];
+      if (cleanId.endsWith('.md')) {
+        const { data, content } = matter(code);
+        return {
+          code: `export const frontmatter = ${JSON.stringify(data)};\nexport const content = ${JSON.stringify(content)};\nexport default content;`,
+          map: null
+        };
+      }
+    }
+  };
+}
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), markdownPlugin()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -21,9 +39,11 @@ export default defineConfig({
     sourcemap: false,
     rollupOptions: {
       output: {
-        // manualChunks: {
-        //   vendor: ['react', 'react-dom', 'framer-motion', 'react-router-dom'],
-        // },
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          ui: ['framer-motion', 'lucide-react', 'react-router-dom'],
+          markdown: ['gray-matter', 'zod']
+        },
       },
     },
     target: 'esnext',

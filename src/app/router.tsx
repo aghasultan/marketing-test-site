@@ -15,6 +15,7 @@ const BlogPost = lazy(() => import('@pages/BlogPost').then(m => ({ default: m.Bl
 const NotFound = lazy(() => import('@pages/NotFound').then(m => ({ default: m.NotFound })));
 const AuditPage = lazy(() => import('@pages/AuditPage').then(m => ({ default: m.AuditPage })));
 const ResultsGrid = lazy(() => import('@/features/results/components/ResultsGrid').then(m => ({ default: m.ResultsGrid })));
+const CaseStudyDetail = lazy(() => import('@pages/CaseStudy').then(m => ({ default: m.CaseStudyDetail })));
 const DesignSystem = lazy(() => import('@pages/DesignSystem').then(m => ({ default: m.DesignSystem })));
 const Contact = lazy(() => import('@pages/Contact').then(m => ({ default: m.Contact })));
 
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
             {
                 path: "results",
                 element: <ResultsGrid />,
+            },
+            {
+                path: "case-studies/:slug",
+                element: <CaseStudyDetail />,
             },
             {
                 path: "apply",

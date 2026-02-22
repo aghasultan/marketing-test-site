@@ -38,6 +38,7 @@ export interface CaseStudy {
     claimReview?: ClaimReviewSchema;
     featuredImage?: string;
     slug: string;
+    markdownContent?: string;
 }
 
 export interface FilterState {

@@ -61,10 +61,10 @@ development_status:
   3-4-wizard-ui-accessibility: done
   epic-3-retrospective: optional
 
-  epic-4: backlog
-  4-1-markdown-content-publishing-pipeline: backlog
-  4-2-automated-schema-generation-claimreview: backlog
-  4-3-build-time-schema-validation: backlog
-  4-4-dynamic-seo-metadata-prerendering: backlog
-  4-5-asset-optimization-lazy-loading: backlog
+  epic-4: done
+  4-1-markdown-content-publishing-pipeline: done
+  4-2-automated-schema-generation-claimreview: done
+  4-3-build-time-schema-validation: done
+  4-4-dynamic-seo-metadata-prerendering: done
+  4-5-asset-optimization-lazy-loading: done
   epic-4-retrospective: optional

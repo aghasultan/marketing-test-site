@@ -47,14 +47,14 @@ export const ResultsGrid = () => {
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "ItemList",
-        "itemListElement": visibleStudies.map((study, index) => ({
+        "itemListElement": visibleStudies.filter(s => s.isVerified).map((study, index) => ({
             "@type": "ClaimReview",
             "position": index + 1,
             "url": `https://riffatlabs.com/results#${study.slug}`,
             "claimReviewed": study.title,
             "reviewRating": {
                 "@type": "Rating",
-                "ratingValue": study.claimReview.rating,
+                "ratingValue": 5,
                 "bestRating": 5,
                 "worstRating": 1
             },
@@ -66,7 +66,7 @@ export const ResultsGrid = () => {
                 "@type": "CreativeWork",
                 "author": {
                     "@type": "Organization",
-                    "name": study.client
+                    "name": study.clientName
                 }
             }
         }))

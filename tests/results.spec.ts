@@ -12,12 +12,10 @@ test.describe('Results Grid', () => {
         // Note: Class 'group' is used in CaseStudyCard. 
         // We can look for the article titles.
 
-        await expect(page.getByText('Algorithm Recovery Protocol')).toBeVisible();
-        await expect(page.getByText('B2B SaaS Lead Gen Explosion')).toBeVisible();
-        await expect(page.getByText('Scaling E-commerce to $1M/mo')).toBeVisible();
-        // Use Regex for long title to be safe
-        // Note: usage of 'Scaling Men's Health Clinic' might fail if dev server is stale and hasn't picked up metadata fixes.
-        // await expect(page.getByText(/Scaling Men's Health Clinic/)).toBeVisible();
+        await expect(page.getByText(/Scaling B2B SaaS ARR/i)).toBeVisible();
+        await expect(page.getByText(/DTC Apparel Brand/i)).toBeVisible();
+        await expect(page.getByText(/Local Healthcare Clinics/i)).toBeVisible();
+        await expect(page.getByText(/FinTech App Drops Customer/i)).toBeVisible();
     });
 
     test('is responsive', async ({ page }) => {
@@ -31,7 +29,7 @@ test.describe('Results Grid', () => {
         await expect(mainSection).toBeVisible();
 
         // Check that at least one card is visible
-        await expect(page.getByText('Algorithm Recovery Protocol')).toBeVisible();
+        await expect(page.getByText(/Scaling B2B SaaS ARR/i)).toBeVisible();
     });
 
     /*
