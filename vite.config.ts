@@ -12,7 +12,7 @@ function markdownPlugin(): Plugin {
       if (cleanId.endsWith('.md')) {
         const { data, content } = matter(code);
         return {
-          code: `export const frontmatter = ${JSON.stringify(data)};\nexport const content = ${JSON.stringify(content)};\nexport default content;`,
+          code: `export default { frontmatter: ${JSON.stringify(data)}, content: ${JSON.stringify(content)} };`,
           map: null
         };
       }

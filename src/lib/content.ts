@@ -26,7 +26,7 @@ export type CaseStudy = z.infer<typeof CaseStudySchema> & {
 };
 
 export async function getAllCaseStudies(): Promise<CaseStudy[]> {
-    const modules = import.meta.glob('/src/content/case-studies/*.md', { eager: true });
+    const modules = import.meta.glob('/src/content/case-studies/*.md', { eager: true, import: 'default' });
 
     const caseStudies: CaseStudy[] = [];
 
